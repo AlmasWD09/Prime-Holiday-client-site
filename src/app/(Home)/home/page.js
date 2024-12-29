@@ -1,11 +1,11 @@
 "use client"
 
-import Banner from "@/app/components/Banner"
-import Comment from "@/app/components/Comment"
+import Banner from "@/app/components/home/Banner"
+import Comment from "@/app/components/home/Comment"
 // import Destination from "@/app/components/Destination"
-import InclusivePackage from "@/app/components/InclusivePackage"
-import PrimeDestination from "@/app/components/PrimeDestination"
-import Testimonial from "@/app/components/Testimonial"
+import InclusivePackage from "@/app/components/home/InclusivePackage"
+import PrimeDestination from "@/app/components/home/PrimeDestination"
+import Testimonial from "@/app/components/home/Testimonial"
 
 const HomePage = () => {
   return (

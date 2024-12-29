@@ -41,23 +41,23 @@ const Navbar = () => {
     },
     {
       path: "/about",
-      title: "About",
+      title: "About Us",
     },
     {
       path: "/blog",
-      title: "Blog",
+      title: "Blogs",
     },
     {
       path: "/conditions",
-      title: "Conditions",
+      title: "Terms & Conditions",
     },
     {
       path: "/privacy",
-      title: "Privacy",
+      title: "Privacy Policy",
     },
     {
       path: "/cancelation",
-      title: "Cancelation",
+      title: "Cancelation & Refund",
     },
   ];
   const handleDrawer = () => {
@@ -128,7 +128,7 @@ const Navbar = () => {
           {/* button start  */}
           <div className="group relative hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-4">
-              <button onClick={() => handleModal()} className="border border-white text-white px-6 py-2">Enquire now</button>
+              <button onClick={() => handleModal()} className="border border-primary rounded-md hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
             </div>
           </div>
         </div>

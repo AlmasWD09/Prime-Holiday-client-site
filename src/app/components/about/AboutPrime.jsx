@@ -4,8 +4,8 @@ const AboutPrime = () => {
   return (
     <>
     <section className="container mx-auto px-4 pt-20">
-    <div className="bg-white p-6 lg:p-12 font-sans">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div className="bg-white p-6  font-sans">
+      <div className="">
         {/* Left Section */}
         <div>
           <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">
@@ -21,8 +21,9 @@ const AboutPrime = () => {
             At PHD, our commitment to excellence begins with our partners. We carefully select local agents in each destination, choosing only those who meet our strict standards for reliability, professionalism, and expertise. This approach guarantees that our travelers receive the highest level of service, allowing them to enjoy a smooth and truly memorable holiday experience.
           </p>
         </div>
+
         {/* Right Section */}
-        <div>
+        <div className="pt-10">
           <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">
             Why Choose Us?
           </h2>
