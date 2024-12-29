@@ -5,7 +5,7 @@ import Image from "next/image"
 const Comment = () => {
   return (
     <>
-      <section className="container px-4 mx-auto pt-10">
+      <section className="container px-4 mx-auto pt-10 border-2 border-red-500">
         <div className="flex justify-center items-center flex-col lg:flex-row py-20">
           <div className="w-full lg:w-1/2 space-y-6">
             <h2 className="text-[48px] font-Roboto font-semibold text-primary">COMMITMENT TO EXCELLENCE</h2>
@@ -14,10 +14,10 @@ const Comment = () => {
 
           <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
             <Image className="w-full h-full max-w-md"
-              src="https://i.ibb.co.com/fkgt4r1/photo01.png"
+              src="/comment.png"
               alt="comment"
               width={500}
-              height={300}
+              height={500}
             />
           </div>
         </div>

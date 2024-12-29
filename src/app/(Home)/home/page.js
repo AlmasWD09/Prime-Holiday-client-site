@@ -13,7 +13,7 @@ const HomePage = () => {
      <Banner />
      <PrimeDestination />
      {/* <Destination /> */}
-     {/* <InclusivePackage /> */}
+     <InclusivePackage />
      <Comment />
      {/* <Testimonial /> */}
     </div>

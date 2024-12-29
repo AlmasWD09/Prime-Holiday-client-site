@@ -1,30 +1,20 @@
 "use client"
 
-import Image from "next/image"
+import { IoMdArrowDropleftCircle } from "react-icons/io";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
 
 const InclusivePackage = () => {
   return (
-    <section className="container mx-auto px-6 pt-20">
-      <h1 className="text-primary text-center font-Roboto text-[24px] md:text-[38px] font-semibold">ALL-INCLUSIVE Packages</h1>
+    <section className='container mx-auto px-4 pt-10'>
+      <div className="flex justify-between items-center">
+        <h1 className='text-5xl font-bold text-primary'>All-Inclusive Packages</h1>
+        <div className="flex gap-2">
+          <span><IoMdArrowDropleftCircle className="bg-gray-100 w-8 h-8 rounded-full hover:text-primary" /></span>
+          <span><IoMdArrowDroprightCircle className="bg-gray-100 w-8 h-8 rounded-full hover:text-primary" /></span>
+        </div>
+      </div>
 
-    <div className="container grid md:grid-cols-2 gap-4 p-4 mx-auto lg:grid-cols-5">
-      <div className="md:h-[600px] object-cover border rounded-md lg:col-start-1 lg:col-end-3 lg:row-span-2">
-        <Image className="md:h-[600px] w-full" src="https://i.ibb.co.com/fkgt4r1/photo01.png" alt="photo" width={200} height={200}/>
-      </div>
-      <div className=" object-cover border rounded-md ">
-      <Image className="h-full w-full" src="https://i.ibb.co.com/fkgt4r1/photo01.png" alt="photo" width={200} height={200} />
-      </div>
-      <div className=" object-cover border rounded-md ">
-      <Image className="h-full w-full" src="https://i.ibb.co.com/fkgt4r1/photo01.png" alt="photo" width={200} height={200} />
-      </div>
-      <div className=" object-cover border rounded-md ">
-      <Image className="h-full w-full" src="https://i.ibb.co.com/fkgt4r1/photo01.png" alt="photo" width={200} height={200} />
-      </div>
-      <div className="h-[300px] object-cover border rounded-md lg:col-start-3 lg:col-end-6">
-      <Image className="h-[300px] w-full" src="https://i.ibb.co.com/fkgt4r1/photo01.png" alt="photo" width={200} height={200} />
-      </div>
-    </div>
-  </section>
+    </section>
   )
 }
 
