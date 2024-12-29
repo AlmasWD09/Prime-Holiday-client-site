@@ -9,8 +9,10 @@ import CancelationPolicy from "@/app/components/cancelation/CancelationPolicy"
 const Cancelation = () => {
   return (
     <>
-    <Banner />
-    <CancelationPolicy />
+      <div className="pb-10">
+        <Banner />
+        <CancelationPolicy />
+      </div>
     </>
   )
 }

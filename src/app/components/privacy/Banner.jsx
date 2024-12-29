@@ -6,7 +6,7 @@ import Link from "next/link"
 const Banner = () => {
   return (
     <section className="relative w-full h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-center text-white" style={{
-      backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735118760/hhaue6mfdge2atqsry9b.png)"
+      backgroundImage: "url('/privacyPolicy.png')"
     }}>
      
       <div className="flex justify-center items-center h-full">
