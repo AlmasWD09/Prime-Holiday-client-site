@@ -13,7 +13,11 @@ const Banner = () => {
           <h2  className="text-2xl lg:text-[64px] text-primary w-[80%] mx-auto md:w-full">Your All-Inclusive Journey Starts Here</h2>
         </div>
       </div>
-
+      <div className="bg-[#135029] py-3">
+        <div className="container mx-auto px-2">
+            <h2><Link className="cursor-pointer text-primary" href={'/'}>Home</Link><span className="px-2">/</span>Destination</h2>
+        </div>
+      </div>
     </section>
   )
 }
