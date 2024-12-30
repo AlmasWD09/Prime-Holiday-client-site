@@ -37,19 +37,19 @@ const Testimonial = () => {
       description:
         "The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.",
       name: "TESTIMONIALS OF SATISFACTION",
-      image: "https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      image: "/testimonial02.png",
     },
     {
       quote: "Exceptional Design",
       description:
         "The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.",
         name: "TESTIMONIALS OF SATISFACTION",
-      image: "https://i.ibb.co.com/fkgt4r1/photo01.png",
+      image: "http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735190896/inbxylz2xcnyngok5ncq.png",
     },
   ];
 
   return (
-      <div className="w-full flex justify-center px-4 my-20">
+      <div className="container mx-auto px-4 mt-20 ">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -63,26 +63,30 @@ const Testimonial = () => {
         modules={[Autoplay, Pagination]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
         onSlideChange={onSlideChange}  // Reset timer on slide change
-        className="mySwiper max-w-4xl"
+        className="mySwiper max-w-6xl"
       >
         {reviews.map((review, index) => (
           <SwiperSlide key={index}>
-          <div  className="lg:-mx-6 lg:flex lg:items-center">
-            <Image
-              className="object-cover object-center lg:w-1/2 lg:mx-6 w-full h-96 rounded lg:h-[36rem]"
-              src={review.image}
-              alt="testimonial"
-              width={300}
-              height={300}
-            />
-            <div className="mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
-              <h1 className="text-5xl font-semibold text-primary lg:text-3xl lg:w-96">
+          <div  className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+
+             {/* left side content */}
+            <div className=" w-full ">
+              <h1 className="font-semibold text-primary text-2xl md:text-4xl ">
                 {review.name}
               </h1>
-              <p className="max-w-lg mt-6 font-Roboto">
+              <p className="max-w-md mt-6 font-Roboto">
                 {review.description}
               </p>
             </div>
+
+             {/* right side image */}
+             <Image
+              className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] w-[500px]"
+              src={review.image}
+              alt="testimonial"
+              width={100}
+              height={100}
+            />
           </div>
           </SwiperSlide>
         ))} 

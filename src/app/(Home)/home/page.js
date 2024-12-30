@@ -9,13 +9,13 @@ import Testimonial from "@/app/components/home/Testimonial"
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="pb-20">
      <Banner />
      <PrimeDestination />
      {/* <Destination /> */}
      <InclusivePackage />
      <Comment />
-     {/* <Testimonial /> */}
+     <Testimonial />
     </div>
   )
 }
