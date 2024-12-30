@@ -24,7 +24,7 @@ const Comment = () => {
 
       </section>
       {/* video */}
-      <div className=" rounded-md mt-10 bg-gradient-to-r from-[#b6a69602] to-[#9d8e753d]  py-20">
+      <div className=" rounded-xl mt-10 bg-gradient-to-r from-[#b6a69602] to-[#9d8e753d]  py-20">
         <iframe className="container mx-auto px-4 " width="100%" height="700" src="https://www.youtube.com/embed/fEErySYqItI?si=otaQYhvbetqggv2S" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
       </div>
     </>

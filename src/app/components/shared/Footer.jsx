@@ -45,7 +45,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex items-center gap-4 ">
-              <button onClick={() => handleModal()} className="border border-primary rounded-md hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
+              <button onClick={() => handleModal()} className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
             </div>
           </div>
           {/* div two */}
@@ -82,8 +82,8 @@ const Footer = () => {
             <h2 className="text-xl">Subscribe to Our Newsletter</h2>
           </div>
           <div className="flex gap-6">
-            <button className="border pl-2 pr-16 text-start py-2 rounded-md">Enter Your Email</button>
-            <button className="border px-4 py-2 uppercase rounded-md">Subscribe</button>
+            <button className="border pl-2 pr-16 text-start py-2 rounded-xl">Enter Your Email</button>
+            <button className="border px-4 py-2 uppercase rounded-xl">Subscribe</button>
           </div>
         </div>
       </div>

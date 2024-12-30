@@ -31,14 +31,14 @@ const Navbar = () => {
       path: "/",
       title: "Home",
     },
-    // {
-    //   path: "/destination",
-    //   title: "Destination",
-    // },
     {
-      path: "/oman",
-      title: "Oman",
+      path: "/destination",
+      title: "Destination",
     },
+    // {
+    //   path: "/oman",
+    //   title: "Oman",
+    // },
     {
       path: "/about",
       title: "About Us",
@@ -128,7 +128,7 @@ const Navbar = () => {
           {/* button start  */}
           <div className="group relative hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-4">
-              <button onClick={() => handleModal()} className="border border-primary rounded-md hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
+              <button onClick={() => handleModal()} className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
             </div>
           </div>
         </div>

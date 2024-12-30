@@ -20,7 +20,7 @@ export default function NotFound() {
         <p className='font-noto mb-6'>
         Your visited page not found. You may go home page.
         </p>
-        <Link className='bg-primary px-4 py-2 rounded-md text-white' href="/">
+        <Link className='bg-primary px-4 py-2 rounded-xl text-white' href="/">
         Go home page
         </Link>
       </div>

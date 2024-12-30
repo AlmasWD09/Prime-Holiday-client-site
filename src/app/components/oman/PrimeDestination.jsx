@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import Asia from "./Asia"
 
 const PrimeDestination = () => {
     const grounds = [
@@ -55,7 +54,6 @@ const PrimeDestination = () => {
                     }
                 </div>
 
-                <Asia />
             </section>
         </>
     )

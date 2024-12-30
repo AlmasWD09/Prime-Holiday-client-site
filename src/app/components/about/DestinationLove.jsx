@@ -35,9 +35,9 @@ const DestinationLove = () => {
             grounds.map((ground, idx) => {
               return (
                 <div key={idx}>
-                  <div className="relative max-w-md bg-[#135029] p-4 rounded-md space-y-4">
+                  <div className="relative max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
                     <Image
-                      className="object-cover object-center w-full h-64  lg:h-72 rounded-md "
+                      className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
                       src={ground.image}
                       alt={ground.title1}
                       width={300}
@@ -50,7 +50,7 @@ const DestinationLove = () => {
                         <h5>{ground.title2} <span className="font-bold text-primary">$2525</span></h5>
                       </div>
                       <div className="w-full pt-4">
-                        <button className="w-full text-center bg-primary text-white px-4 py-1 rounded-md">View</button>
+                        <button className="w-full text-center bg-primary text-white px-4 py-1 rounded-xl">View</button>
                       </div>
                     </div>
                   </div>

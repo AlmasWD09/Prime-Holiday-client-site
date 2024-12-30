@@ -45,9 +45,9 @@ const DestinationGuide = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-4">
                     {travelTrips.map((travel) => (
                         <div key={travel.id}>
-                            <div className="relative max-w-md border p-4 rounded-md space-y-4">
+                            <div className="relative max-w-md border p-4 rounded-xl space-y-4">
                                 <Image
-                                    className="object-cover object-center w-full h-64 lg:h-72 rounded-md"
+                                    className="object-cover object-center w-full h-64 lg:h-72 rounded-xl"
                                     src={travel.image}
                                     alt={travel.name}
                                     width={300}
