@@ -76,7 +76,7 @@ const Navbar = () => {
     setIsOpen(true)
   }
   return (
-    <nav className={navbar ? 'bg-black/90 fixed w-full z-50' : ' fixed w-full z-50'}>
+    <nav className={navbar ? 'bg-black/90 fixed w-full z-50 py-2' : ' fixed w-full z-50 py-4'}>
       <div className=" flex items-center justify-between container mx-auto px-4 ">
         <div className="lg:hidden" onClick={() => setMenu(!getMenu)}>
           {getMenu ? (
@@ -120,7 +120,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex ">
-          <Image src="/logo.png" alt="nav logo" width={200} height={200} />
+          <Image src="/logo.png" alt="nav logo" width={200} height={200} className="h-20 object-contain"/>
         </div>
         {/* navlinks / center section end  */}
 
