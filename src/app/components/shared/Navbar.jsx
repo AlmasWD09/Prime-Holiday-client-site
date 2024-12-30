@@ -18,13 +18,13 @@ const Navbar = () => {
   const [showDrower, setShowDrower] = useState(false);
 
   // background color add in navbar scroll
-  const changeBackground = () => {
-    if (window.scrollY >= 32) {
-      setNavbar(true)
-    }
-    else { setNavbar(false) }
-  }
-  window.addEventListener('scroll', changeBackground)
+  // const changeBackground = () => {
+  //   if (window.scrollY >= 32) {
+  //     setNavbar(true)
+  //   }
+  //   else { setNavbar(false) }
+  // }
+  // window.addEventListener('scroll', changeBackground)
 
   const navLinks = [
     {
