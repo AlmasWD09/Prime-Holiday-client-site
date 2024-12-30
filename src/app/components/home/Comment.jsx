@@ -28,7 +28,7 @@ const Comment = () => {
       </section>
 
       {/* video */}
-      <div className="container mx-auto px-4 bg-no-repeat bg-cover bg-center"
+      <div className="container mx-auto px-4 bg-no-repeat bg-cover bg-center rounded"
         style={{
           backgroundImage: "url(/videoBg.png)"
         }}
