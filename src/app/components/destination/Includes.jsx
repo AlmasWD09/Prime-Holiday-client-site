@@ -3,9 +3,13 @@
 import { PiShareFat } from "react-icons/pi";
 import { GiSelfLove } from "react-icons/gi";
 import { FcRating } from "react-icons/fc";
+import ReadMoreModal from "../modal/ReadMoreModal";
+import { useState } from "react";
 
 
 const Includes = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [singleData, setSingleData] = useState(null)
     const Itinerarys = [
         {
             id: "01",
@@ -63,9 +67,13 @@ const Includes = () => {
         },
     ]
 
+
+
     // handle modal show for single id
-    const handleModalShow = (id) =>{
-        console.log(id)
+    const handleModalShow = (id) => {
+        const findData = Itinerarys.find((item) => item.id === id)
+        setSingleData(findData)
+        setIsOpen(true)
     }
     return (
         <>
@@ -362,9 +370,9 @@ const Includes = () => {
                                             <h4>{item.lunchPeriod}</h4>
                                         </div>
                                         <div>
-                                            <p>{item.description} <span 
-                                            onClick={()=>handleModalShow(item.id)}
-                                            className="text-primary font-semibold cursor-pointer">... Read more</span>
+                                            <p>{item.description} <span
+                                                onClick={() => handleModalShow(item.id)}
+                                                className="text-primary font-semibold cursor-pointer">... Read more</span>
                                             </p>
                                         </div>
                                     </div>
@@ -372,9 +380,11 @@ const Includes = () => {
                             })
                         }
                     </div>
-
                 </section>
                 {/* =============== Itinerary Tab end ============================= */}
+                {
+                    isOpen && <ReadMoreModal isOpen={isOpen} setIsOpen={setIsOpen} singleData={singleData}/>
+                }
 
             </section>
         </>
