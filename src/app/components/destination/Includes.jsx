@@ -2,8 +2,71 @@
 "use client"
 import { PiShareFat } from "react-icons/pi";
 import { GiSelfLove } from "react-icons/gi";
+import { FcRating } from "react-icons/fc";
+
 
 const Includes = () => {
+    const Itinerarys = [
+        {
+            id: "01",
+            day: "Day 01",
+            lunchPeriod: "Dinner",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "02",
+            day: "Day 02",
+            lunchPeriod: "Breakfast",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "03",
+            day: "Day 03",
+            lunchPeriod: "Full-Board",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "04",
+            day: "Day 04",
+            lunchPeriod: "Full-Board",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "05",
+            day: "Day 05",
+            lunchPeriod: "Breakfast & Dinner",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "06",
+            day: "Day 06",
+            lunchPeriod: "Breakfast & Dinner",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "07",
+            day: "Day 07",
+            lunchPeriod: "Breakfast & Dinner",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "08",
+            day: "Day 08",
+            lunchPeriod: "Breakfast & Dinner",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+        {
+            id: "09",
+            day: "Day 09",
+            lunchPeriod: "Breakfast",
+            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+        },
+    ]
+
+    // handle modal show for single id
+    const handleModalShow = (id) =>{
+        console.log(id)
+    }
     return (
         <>
             <section className="container mx-auto px-4 mt-40">
@@ -137,144 +200,182 @@ const Includes = () => {
                     </div>
 
                     {/* tabs two */}
-                    <section className="container px-4 mx-auto">
-  <div className="flex flex-col mt-6">
-    <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="text-[#135029] font-bold">
-              <tr>
-                <th
-                  scope="col"
-                  className="py-3.5 px-4 text-[#135029] font-bold "
-                >
-                  <div className="flex items-center gap-x-3">
-                    <span>City</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-12 py-3.5 text-[#135029] font-bold "
-                >
-                 4* Standard Hotel
-                </th>
-                <th
-                  scope="col"
-                  className="px-4 py-3.5 text-[#135029] font-bold "
-                >
-                 Room Type
-                </th>
-                <th
-                  scope="col"
-                  className="px-4 py-3.5 text-[#135029] font-bold "
-                >
-                 4* Superior Hotel
-                </th>
-                <th
-                  scope="col"
-                  className="px-4 py-3.5 text-[#135029] font-bold "
-                >
-                  Room Type
-                </th>
-              </tr>
-            </thead>
-            <tbody className=" ">
-                {/* row one */}
-              <tr className="bg-black">
-                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                  <div className="inline-flex items-center gap-x-3">
-                 
-                    <div className="flex items-center gap-x-2">
-                      <div>
-                        <h2 className="font-normal text-white ">
-                        Muscat
-                        </h2>
-                      </div>
+                    <div className="flex flex-col mt-6">
+                        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                <div className="overflow-hidden border border-gray-200 dark:border-gray-700 ">
+                                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                        <thead className="text-[#135029] font-bold">
+                                            <tr>
+                                                <th
+                                                    scope="col"
+                                                    className="py-3.5 px-4 text-[#135029] font-bold "
+                                                >
+                                                    <div className="flex items-center gap-x-3">
+                                                        <span>City</span>
+                                                    </div>
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-12 py-3.5 text-[#135029] font-bold "
+                                                >
+                                                    4* Standard Hotel
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-4 py-3.5 text-[#135029] font-bold "
+                                                >
+                                                    Room Type
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-4 py-3.5 text-[#135029] font-bold "
+                                                >
+                                                    4* Superior Hotel
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-4 py-3.5 text-[#135029] font-bold "
+                                                >
+                                                    Room Type
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className=" ">
+                                            {/* row one */}
+                                            <tr className="bg-black">
+                                                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
+                                                    Muscat
+                                                </td>
+                                                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
+                                                    Golden Tulip or similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
+                                                    Standard
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Radisson Blu or Similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Standard
+                                                </td>
+
+                                            </tr>
+                                            {/* row two */}
+                                            <tr className="bg-gray-400">
+                                                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
+                                                    <div className="inline-flex items-center gap-x-3">
+
+                                                        <div className="flex items-center gap-x-2">
+                                                            <div>
+                                                                <h2 className="font-normal text-white ">
+                                                                    Muscat
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
+                                                    Golden Tulip or similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
+                                                    Standard
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Radisson Blu or Similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Standard
+                                                </td>
+
+                                            </tr>
+                                            {/* row three */}
+                                            <tr className="bg-black">
+                                                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
+                                                    <div className="inline-flex items-center gap-x-3">
+
+                                                        <div className="flex items-center gap-x-2">
+                                                            <div>
+                                                                <h2 className="font-normal text-white ">
+                                                                    Muscat
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
+                                                    Golden Tulip or similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
+                                                    Standard
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Radisson Blu or Similar
+                                                </td>
+                                                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                    Standard
+                                                </td>
+
+                                            </tr>
+                                            {/* Add other rows here */}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </td>
-                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                Golden Tulip or similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                Standard
-                </td>
-                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Radisson Blu or Similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Standard
-                </td>
-           
-              </tr>
-              {/* row two */}
-              <tr className="bg-gray-400">
-                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                  <div className="inline-flex items-center gap-x-3">
-                 
-                    <div className="flex items-center gap-x-2">
-                      <div>
-                        <h2 className="font-normal text-white ">
-                        Muscat
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                Golden Tulip or similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                Standard
-                </td>
-                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Radisson Blu or Similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Standard
-                </td>
-           
-              </tr>
-              {/* row three */}
-              <tr className="bg-black">
-                <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                  <div className="inline-flex items-center gap-x-3">
-                 
-                    <div className="flex items-center gap-x-2">
-                      <div>
-                        <h2 className="font-normal text-white ">
-                        Muscat
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                Golden Tulip or similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                Standard
-                </td>
-                <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Radisson Blu or Similar
-                </td>
-                <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                Standard
-                </td>
-           
-              </tr>
-              {/* Add other rows here */}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
                 </section>
                 {/* =============== Hotel Tab end ============================= */}
+
+
+
+                {/* =============== Price & Validity Tab start =========================== */}
+                <section className="my-20">
+                    <div className="py-3 text-center text-lg bg-[#135029] text-white">
+                        <h2 className="text-2xl font-semibold">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
+                        <div className="flex justify-between px-3">
+                            <h2>Validity 01 Oct 2024 - 30 Apr 2025</h2>
+                            <h2 className="text-red-500">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
+                        </div>
+                    </div>
+
+                </section>
+                {/* =============== Price & Validity Tab end ============================= */}
+
+
+                {/* =============== Itinerary Tab start =========================== */}
+                <section className="my-20">
+                    <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
+                        <h2>Itinerary</h2>
+                    </div>
+
+
+                    <div>
+                        {
+                            Itinerarys.map((item, idx) => {
+                                return (
+                                    <div key={idx} className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
+                                        <div className="flex justify-between text-[#135029] font-bold">
+                                            <h4>{item.day}</h4>
+                                            <h4>{item.lunchPeriod}</h4>
+                                        </div>
+                                        <div>
+                                            <p>{item.description} <span 
+                                            onClick={()=>handleModalShow(item.id)}
+                                            className="text-primary font-semibold cursor-pointer">... Read more</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+
+                </section>
+                {/* =============== Itinerary Tab end ============================= */}
+
             </section>
         </>
     )
