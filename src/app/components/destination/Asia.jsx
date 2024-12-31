@@ -6,9 +6,17 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Asia = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [tamName, setTabName] = useState("Includes & Excludes");
   return (
     <>
       <div className="pt-10">
+        {tamName === "Includes & Excludes" ? (
+          <h1 o className="text-primary text-xl font-bold py-2">
+            Includes & Excludes
+          </h1>
+        ) : (
+          <h1 className="text-primary text-xl font-bold py-2">Itinerary</h1>
+        )}
         <h1 className="text-primary text-xl font-bold py-2">Asia</h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* First Card (2 rows, 2 columns) */}
