@@ -70,7 +70,6 @@ const Includes = () => {
     ]
 
 
-
     // handle modal show for single id
     const handleModalShow = (id) => {
         const findData = Itinerarys.find((item) => item.id === id)
