@@ -14,10 +14,10 @@ const DestinationPage = () => {
     <>
   <Banner />
   <PrimeDestination />
-  {/* <Ground />
+  <Ground />
   <Immersition />
   <Includes />
-  <DestinationLove /> */}
+  <DestinationLove />
 
     </>
   )
