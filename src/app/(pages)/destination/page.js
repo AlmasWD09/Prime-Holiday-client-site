@@ -13,11 +13,11 @@ const DestinationPage = () => {
   return (
     <>
   <Banner />
-  <PrimeDestination />
+  {/* <PrimeDestination />
   <Ground />
-  <Immersition />
+  <Immersition /> */}
   <Includes />
-  <DestinationLove />
+  {/* <DestinationLove /> */}
 
     </>
   )
