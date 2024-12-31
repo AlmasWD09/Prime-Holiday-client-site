@@ -1,15 +1,16 @@
 "use client";
 
-import Banner from "@/app/components/destination/Banner";
-import PrimeDestination from "@/app/components/destination/PrimeDestination";
+import Banner from "@/app/components/oman/Banner";
+import PrimeDestination from "@/app/components/oman/PrimeDestination";
 
-const DestinationPage = ({}) => {
+const OmanPage = () => {
   return (
-    <>
+    <div className="pb-10">
       <Banner />
+
       <PrimeDestination />
-    </>
+    </div>
   );
 };
 
-export default DestinationPage;
+export default OmanPage;

@@ -23,3 +23,25 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif; */
 }
+/* Width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #001602;
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #074f16;
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #007b08;
+  border-radius: 10px; /* Ensures rounded corners on hover */
+}
