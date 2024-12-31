@@ -1,21 +1,30 @@
-"use client"
+"use client";
 
-import Banner from "@/app/components/home/Banner"
-import Comment from "@/app/components/home/Comment"
-import InclusivePackage from "@/app/components/home/InclusivePackage"
-import PrimeDestination from "@/app/components/home/PrimeDestination"
-import Testimonial from "@/app/components/home/Testimonial"
+import CustomBanner from "@/app/components/common/MainBanner/Banner";
+import Comment from "@/app/components/home/Comment";
+import InclusivePackage from "@/app/components/home/InclusivePackage";
+import PrimeDestination from "@/app/components/home/PrimeDestination";
+import Testimonial from "@/app/components/home/Testimonial";
 
 const HomePage = () => {
   return (
     <div className="pb-20">
-     <Banner />
-     <PrimeDestination />
-     <InclusivePackage />
-     <Comment />
-     <Testimonial />
+      {/* <Banner /> */}
+      <CustomBanner
+        title={"Your All-Inclusive Journey Starts Here"}
+        subtitle={
+          " “  The Essence of a Holiday is to Enrich Our Lives & Create Lasting Memories ”"
+        }
+        url={
+          "http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735362515/ggcunfjclwi1fpcvw67n.png"
+        }
+      />
+      <PrimeDestination />
+      <InclusivePackage />
+      <Comment />
+      <Testimonial />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
