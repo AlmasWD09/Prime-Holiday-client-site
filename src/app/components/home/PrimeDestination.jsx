@@ -117,14 +117,16 @@ const PrimeDestination = () => {
                                     height={300}
                                 />
 
-                                <div className="absolute z-10  w-full  bottom-10  p-3 bg-[#B0B0B0] opacity-30 text-red-200 flex justify-center gap-2">
-                                    <div className="flex text-start z-20">
-                                        <h2><FaLocationDot className="text-2xl pt-2" /></h2>
+                                <div className="absolute z-10  w-full  bottom-10  p-3 bg-[#B0B0B04D]  text-red-200 flex justify-start gap-2  rounded-lg">
+                                <div className="">
+                                    <div className="flex text-start ">
+                                        <h2><FaLocationDot size={30}  className="text-2xl pt-2 text-[#FFFFFF] " /></h2>
                                         <div>
-                                            <h2>{ground.title1}</h2>
-                                            <h2>{ground.title2}</h2>
+                                            <h2 className="text-[24px] font-bold text-[#FFFFFF]">{ground.title1}</h2>
+                                            <h2 className="text-[16px] font-medium text-[#FFFFFF]">{ground.title2}</h2>
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </SwiperSlide>
