@@ -11,6 +11,7 @@ import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 // Import required modules
 import { useRef } from "react";
@@ -106,7 +107,10 @@ const PrimeDestination = () => {
           {/* ================================== responsive all device end =========================== */}
           {grounds.map((ground, idx) => (
             <SwiperSlide key={idx}>
-              <div className="relative -z-10 cursor-pointer">
+              <Link
+                href={`/destination/${idx}`}
+                className="relative  cursor-pointer"
+              >
                 <Image
                   className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
                   src={ground.image}
@@ -130,7 +134,7 @@ const PrimeDestination = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
