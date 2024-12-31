@@ -84,8 +84,8 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-black/90 fixed w-full z-50 py-2"
-          : " fixed w-full z-50 py-4"
+          ? "bg-green-800  drop-shadow bg-opacity-40 fixed w-full z-50 py-0 duration-150 transition-all"
+          : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
       <div className=" flex items-center justify-between container mx-auto px-4 ">
@@ -132,7 +132,10 @@ const Navbar = () => {
           {/* ================================= drower show end ================================================================== */}
         </div>
 
-        <div className="flex items-center ml-60 gap-8 lg:hidden">
+        <Link
+          href={"/"}
+          className="flex items-center ml-60 gap-8 lg:hidden cursor-pointer"
+        >
           <Image
             className=""
             src="/logo.png"
@@ -140,15 +143,15 @@ const Navbar = () => {
             width={100}
             height={100}
           />
-        </div>
+        </Link>
 
-        <Link href={"/"} className="hidden lg:flex  cursor-pointer">
+        <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer">
           <Image
             src="/logo.png"
             alt="nav logo"
             width={200}
             height={200}
-            className="h-20 object-contain"
+            className={`object-contain ${navbar ? "h-16" : "h-20"}`}
           />
         </Link>
         {/* navlinks / center section end  */}

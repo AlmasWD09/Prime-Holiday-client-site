@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "image": "/prime01.png",
+    "title1": "Qatar",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 2,
+    "image": "/prime02.png",
+    "title1": "Sri Lanka",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 3,
+    "image": "/prime01.png",
+    "title1": "Morocco",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 4,
+    "image": "/prime01.png",
+    "title1": "Qatar",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 5,
+    "image": "/prime01.png",
+    "title1": "Sri Lanka",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 6,
+    "image": "/prime01.png",
+    "title1": "Morocco",
+    "title2": "9 Days From"
+  },
+  {
+    "id": 1,
+    "destinationId": 1,
+    "image": "https://i.ibb.co.com/qJFPFtT/immersion-Cultural-Oman-photo-1.png",
+    "title1": "Egypt",
+    "title2": "The Gift of the Nile"
+  },
+  {
+    "id": 2,
+    "destinationId": 1,
+    "image": "https://i.ibb.co.com/RcKjwcm/Picture6-1.png",
+    "title1": "Morocco",
+    "title2": "Land of Light"
+  },
+  {
+    "id": 3,
+    "destinationId": 1,
+    "image": "https://i.ibb.co.com/vJ5rW1J/Luxury-Oman-photo-1.png",
+    "title1": "Zanzibar",
+    "title2": "Spice Island"
+  }
+]
