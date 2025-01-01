@@ -12,7 +12,7 @@ const Banner = () => {
     >
       <div className="flex flex-col justify-center items-center h-full space-y-8 lg:space-y-32 text-center">
         <div>
-          <h2 className="text-2xl lg:text-[64px] text-primary w-[80%] mx-auto md:w-full">
+          <h2 className="text-2xl lg:text-[64px] text-primary w-[80%] mx-auto md:w-full" style={{ fontFamily: 'MyFont, sans-serif' }}>
             Your All-Inclusive Journey Starts Here
           </h2>
         </div>

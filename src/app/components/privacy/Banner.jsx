@@ -10,7 +10,7 @@ const Banner = () => {
     }}>
      
       <div className="flex justify-center items-center h-full">
-        <h1 className="lg:text-[64px] text-primary">Privacy</h1>
+        <h1 className="lg:text-[64px] text-primary" style={{ fontFamily: 'MyFont, sans-serif' }}>Privacy</h1>
       </div>
       <div className="bg-[#135029] py-3">
         <div className="container mx-auto px-2">
