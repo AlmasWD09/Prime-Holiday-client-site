@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+
 const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
   return (
     <section
@@ -16,8 +17,8 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex flex-col justify-center items-center h-full md:space-y-8">
-        <h1 className="text-center text-[24px] lg:text-[70px] text-primary font-semibold text-wrap  mb-5">
+      <div className="flex flex-col justify-center items-center h-full">
+        <h1 className="text-center text-[24px] lg:text-[70px] text-primary font-semibold text-wrap" style={{ fontFamily: 'MyFont, sans-serif' }}>
           {title}
         </h1>
         <p className="text-[20px] md:text-[32px] font-bold lg:w-[40%] w-full mx-auto text-center">
