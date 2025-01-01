@@ -10,15 +10,16 @@ const Immersition = () => {
         <div className="col-span-2  space-y-12 p-y ">
           <div>
             <div className=" text-white ">
-              <h3 className="bg-[#135029] py-2 px-4">
+              <h3 className="">
                 Immersion in Cultural Oman - 8 Nights 9 Days
               </h3>
             </div>
-            <h3 className="px-4">
-              From $2525/person in sharing twin/double room
-            </h3>
+            <h2 className="text-[#135029] text-xl font-bold">Immuration in cultural Oman</h2>
           </div>
           <div className="max-w-3xl">
+            <h3 className="font-bold opacity-80 text-xl">
+              From $2525/person in sharing twin/double room
+            </h3>
             <p>
               Immersion in Cultural Oman itinerary is the deep cultural
               immersion combined with exclusive and authentic Omani experiences
@@ -28,8 +29,9 @@ const Immersition = () => {
           </div>
           <div className="max-w-3xl">
             <h3 className="text-[#135029] font-bold">Highlights:</h3>
+            <h3 className="font-bold opacity-80">Exclusive Cultural Encounters:</h3>
             <p>
-              Exclusive Cultural Encounters: From visiting the Sidab Women's
+              From visiting the Sidab Women's
               Group to learning about traditional Omani handicrafts and enjoying
               a meal at a local's home, your clients will engage in authentic
               interactions with local communities that most tourists don't get
@@ -37,12 +39,10 @@ const Immersition = () => {
             </p>
           </div>
           <div className="max-w-3xl">
+            <h3 className="font-bold opacity-80">Spectacular Landscape & Off Road Adventure:</h3>
             <p>
-              Spectacular Landscapes and Off-Road Adventures: The journey
-              through Wadi Bani Auf, ...{" "}
-              <span className="text-primary font-bold cursor-pointer">
-                Read more
-              </span>
+              Immersion in Cultural Oman itinerary is the deep cultural immersion combined with exclusive and authentic Omani experiences that offer a rare glimpse
+              <span className="text-primary font-bold cursor-pointer"> ...Read more</span>
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ const Immersition = () => {
             alt="immersition"
             width={500}
             height={200}
-            className="h-[480px] object-cover"
+            className="h-[480px] object-cover rounded-xl"
           />
         </div>
       </div>

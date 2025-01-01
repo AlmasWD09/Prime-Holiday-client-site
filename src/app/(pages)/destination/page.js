@@ -13,9 +13,9 @@ const DestinationPage = () => {
       <Banner />
       <PrimeDestination />
       <Ground />
-      <Immersition />
+      {/* <Immersition />
       <Includes />
-      <DestinationLove />
+      <DestinationLove /> */}
     </>
   );
 };
