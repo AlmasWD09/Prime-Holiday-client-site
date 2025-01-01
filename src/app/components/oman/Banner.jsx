@@ -10,7 +10,7 @@ const Banner = () => {
     }}>
      
       <div className="flex justify-center items-center h-full">
-        <h1 className="lg:text-[64px] text-primary">Your All-Inclusive Journey Starts Here</h1>
+        <h1 className="lg:text-[64px] text-primary" style={{ fontFamily: 'MyFont, sans-serif' }}>Your All-Inclusive Journey Starts Here</h1>
       </div>
       <div className="bg-[#135029] py-3">
         <div className="container mx-auto px-2">
