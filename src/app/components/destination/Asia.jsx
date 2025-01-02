@@ -9,9 +9,9 @@ const Asia = () => {
   const [tamName, setTabName] = useState("Includes & Excludes");
   return (
     <>
-      <div className="pt-10">
+      <div className="pt-20">
         {tamName === "Includes & Excludes" ? (
-          <h1 o className="text-primary text-xl font-bold py-2">
+          <h1 className="text-primary font-Roboto text-2xl md:text-[38px] font-semibold">
             Includes & Excludes
           </h1>
         ) : (
@@ -37,10 +37,10 @@ const Asia = () => {
             <div className="absolute z-10 w-full  bottom-10 text-center p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center">
               <div className="flex text-start z-20">
                 <div>
-                  <FaLocationDot className="text-4xl pt-2" />
+                  <FaLocationDot className="text-2xl pt-2" />
                 </div>
                 <div>
-                  <h5 className="text-3xl font-bold uppercase">Kerala</h5>
+                  <h5 className="text-2xl font-bold uppercase">Kerala</h5>
                   <h5 className="font-bold">God's Own Country</h5>
                 </div>
               </div>
@@ -65,10 +65,10 @@ const Asia = () => {
             <div className="absolute z-10 w-full  bottom-10 text-center p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center ">
               <div className="flex text-start z-20">
                 <h2>
-                  <FaLocationDot className="text-4xl pt-2" />
+                  <FaLocationDot className="text-2xl pt-2" />
                 </h2>
                 <div>
-                  <h5 className="text-3xl font-bold uppercase">Oman</h5>
+                  <h5 className="text-2xl font-bold uppercase">Oman</h5>
                   <h5 className="font-bold">Beauty has an address</h5>
                 </div>
               </div>
@@ -93,10 +93,10 @@ const Asia = () => {
             <div className="absolute z-10 w-full  bottom-10 text-center p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center ">
               <div className="flex text-start z-20">
                 <h2>
-                  <FaLocationDot className="text-4xl pt-2" />
+                  <FaLocationDot className="text-2xl pt-2" />
                 </h2>
                 <div>
-                  <h5 className="text-3xl font-bold uppercase">Qatar</h5>
+                  <h5 className="text-2xl font-bold uppercase">Qatar</h5>
                   <h5 className="font-bold">Experience the World Beyond</h5>
                 </div>
               </div>
@@ -121,10 +121,10 @@ const Asia = () => {
             <div className="absolute z-10 w-full  bottom-10 text-center p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center ">
               <div className="flex text-start z-20">
                 <h2>
-                  <FaLocationDot className="text-4xl pt-2" />
+                  <FaLocationDot className="text-2xl pt-2" />
                 </h2>
                 <div>
-                  <h5 className="text-3xl font-bold uppercase">Sri lanka</h5>
+                  <h5 className="text-2xl font-bold uppercase">Sri lanka</h5>
                   <h5 className="font-bold">You'll Come Back for More</h5>
                 </div>
               </div>
