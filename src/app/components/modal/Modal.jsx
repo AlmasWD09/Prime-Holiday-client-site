@@ -54,8 +54,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
   return (
     <div className="relative">
       {isOpen && (
-        <div className="fixed inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-[#fffff0] w-full max-w-3xl p-8 rounded shadow-lg relative">
+        <div className="fixed h-screen inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-0">
+          <div className="bg-[#fffff0] w-full max-w-[95%] lg:max-w-3xl p-8 rounded shadow-lg relative">
             <button
               onClick={() => handleCloseModal()}
               className="absolute top-4 right-4 text-red-500 hover:text-gray-800"
@@ -70,7 +70,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
 
             <form onSubmit={handleSubmit}>
               {/* Title, First Name, Last Name */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 md:mb-4">
                 <div>
                   <label htmlFor="title" className="block text-sm font-medium">
                     Title
@@ -80,7 +80,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     name="title"
                     value={formData.title}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                   >
                     <option>Mr.</option>
                     <option>Ms.</option>
@@ -102,7 +102,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                   />
                 </div>
                 <div>
@@ -119,13 +119,13 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                   />
                 </div>
               </div>
 
               {/* Email and Telephone */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:mb-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium">
                     Email*
@@ -137,7 +137,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                   />
                 </div>
                 <div>
@@ -154,13 +154,13 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.telephone}
                     onChange={handleInputChange}
                     required
-                    className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                   />
                 </div>
               </div>
 
               {/* Preferred Contact Method */}
-              <div className="mb-4">
+              <div className="md:mb-4">
                 <p className="text-sm font-medium">
                   Preferred Method Of Contact
                 </p>
@@ -191,7 +191,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               </div>
 
               {/* Your Message */}
-              <div className="mb-4">
+              <div className="md:mb-4">
                 <label htmlFor="message" className="block text-sm font-medium">
                   Your Message*
                 </label>
@@ -202,12 +202,12 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   onChange={handleInputChange}
                   required
                   rows="4"
-                  className="mt-1 block w-full border border-[#135029] outline-none p-2"
+                  className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                 ></textarea>
               </div>
 
               {/* Subscribe Checkbox */}
-              <div className="mb-4">
+              <div className="md:mb-4">
                 <label className="flex items-center">
                   <input
                     type="checkbox"
@@ -218,7 +218,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   />
                   Subscribe to our newsletter
                 </label>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 md:mt-1">
                   Your details will not be passed to any other company, and you
                   can unsubscribe at any time.
                 </p>

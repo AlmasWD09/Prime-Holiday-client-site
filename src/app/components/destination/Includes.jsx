@@ -6,14 +6,22 @@ import { FcRating } from "react-icons/fc";
 import ReadMoreModal from "../modal/ReadMoreModal";
 import { useState } from "react";
 import HotalTable from "./table/HotalTable";
+import PriceValidatyTable from "./table/PriceValidatyTable";
+import ModalPage from "../modal/Modal";
 
 
 
 const Includes = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [readMoreOpen, setReadMoreOpen] = useState(false)
+    const [readMoremodal, setMeadMoremodal] = useState(false);
+    const [modal, setModal] = useState(false);
     const [singleData, setSingleData] = useState(null)
     const [buttonColor, setButtonColor] = useState(0);
     const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
+
+
+
     const Itinerarys = [
         {
             id: "01",
@@ -76,7 +84,8 @@ const Includes = () => {
     const handleModalShow = (id) => {
         const findData = Itinerarys.find((item) => item.id === id)
         setSingleData(findData)
-        setIsOpen(true)
+        setMeadMoremodal(true);
+        setReadMoreOpen(true);
     }
 
     // single button text get
@@ -86,10 +95,14 @@ const Includes = () => {
         setButtonColor(index);
     };
 
-
+    // modal show function
+    const handleModal = () => {
+        setIsOpen(true);
+        setModal(true);
+    };
     return (
         <>
-            <section className="container mx-auto px-4 py-20">
+            <section className="container mx-auto px-4 lg:py-20">
                 <div className="p-6 border border-[#135029] border-opacity-20 rounded-lg">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
                         {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
@@ -227,6 +240,8 @@ const Includes = () => {
                                     <h2 className="text-red-500">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
                                 </div>
                             </div>
+                            {/* price & validaty table component */}
+                            <PriceValidatyTable />
                         </div>
 
                     }
@@ -269,16 +284,20 @@ const Includes = () => {
 
 
                 <div className="flex justify-end mt-6">
-                    <button className="px-6 py-2 text-white bg-primary rounded-xl">
+                    <button
+                        onClick={() => handleModal()}
+                        className="px-6 py-2 text-white bg-primary rounded-xl">
                         ENQUIRE NOW
                     </button>
+                    {/* modal component */}
+                    {modal && <ModalPage isOpen={isOpen} setIsOpen={setIsOpen} />}
                 </div>
-
 
                 {/* Read More modal */}
                 {
-                    isOpen && <ReadMoreModal isOpen={isOpen} setIsOpen={setIsOpen} singleData={singleData} />
+                    readMoremodal && <ReadMoreModal readMoreOpen={readMoreOpen}  setReadMoreOpen={setReadMoreOpen} singleData={singleData} />
                 }
+                
             </section>
         </>
     )
