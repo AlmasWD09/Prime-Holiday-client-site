@@ -201,7 +201,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows="4"
+                  rows={window.innerWidth < 768 ? 2 : 4}
                   className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
                 ></textarea>
               </div>
@@ -225,7 +225,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="bg-primary text-white px-6 py-2">
+              <button type="submit" className="bg-primary text-white px-6 py-2 my-2 md:my-0">
                 Submit
               </button>
             </form>
