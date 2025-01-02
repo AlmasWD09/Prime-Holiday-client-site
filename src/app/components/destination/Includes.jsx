@@ -5,6 +5,8 @@ import { GiSelfLove } from "react-icons/gi";
 import { FcRating } from "react-icons/fc";
 import ReadMoreModal from "../modal/ReadMoreModal";
 import { useState } from "react";
+import HotalTable from "./table/HotalTable";
+
 
 
 const Includes = () => {
@@ -83,22 +85,23 @@ const Includes = () => {
         setButtonText(buttonText)
         setButtonColor(index);
     };
+
+
     return (
         <>
             <section className="container mx-auto px-4 py-20">
                 <div className="p-6 border border-[#135029] border-opacity-20 rounded-lg">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
-                    {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
-                <button
-                    key={index}
-                    onClick={(event) => handleButtonClick(event, index)}
-                    className={`py-3 text-center text-lg font-bold border border-[#135029] text-[#135029] border-opacity-30 ${
-                        buttonColor === index ? "bg-[#135029] text-white" : ""
-                    }`}
-                >
-                    {label}
-                </button>
-            ))}
+                        {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
+                            <button
+                                key={index}
+                                onClick={(event) => handleButtonClick(event, index)}
+                                className={`py-3 text-center text-lg font-bold border border-[#135029] text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-white" : ""
+                                    }`}
+                            >
+                                {label}
+                            </button>
+                        ))}
                     </div>
 
                     {/* =============== INCLUDES & EXCLUDES Tab start =========================== */}
@@ -207,132 +210,8 @@ const Includes = () => {
                             <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
                                 <h2>Hotels</h2>
                             </div>
-
-                            {/* tabs two */}
-                            <div className="flex flex-col mt-6">
-                                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                        <div className="overflow-hidden border border-gray-200 dark:border-gray-700 ">
-                                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                                <thead className="text-[#135029] font-bold">
-                                                    <tr>
-                                                        <th
-                                                            scope="col"
-                                                            className="py-3.5 px-4 text-[#135029] font-bold "
-                                                        >
-                                                            <div className="flex items-center gap-x-3">
-                                                                <span>City</span>
-                                                            </div>
-                                                        </th>
-                                                        <th
-                                                            scope="col"
-                                                            className="px-12 py-3.5 text-[#135029] font-bold "
-                                                        >
-                                                            4* Standard Hotel
-                                                        </th>
-                                                        <th
-                                                            scope="col"
-                                                            className="px-4 py-3.5 text-[#135029] font-bold "
-                                                        >
-                                                            Room Type
-                                                        </th>
-                                                        <th
-                                                            scope="col"
-                                                            className="px-4 py-3.5 text-[#135029] font-bold "
-                                                        >
-                                                            4* Superior Hotel
-                                                        </th>
-                                                        <th
-                                                            scope="col"
-                                                            className="px-4 py-3.5 text-[#135029] font-bold "
-                                                        >
-                                                            Room Type
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className=" ">
-                                                    {/* row one */}
-                                                    <tr className="bg-black">
-                                                        <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                                                            Muscat
-                                                        </td>
-                                                        <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                                                            Golden Tulip or similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Radisson Blu or Similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-
-                                                    </tr>
-                                                    {/* row two */}
-                                                    <tr className="bg-gray-400">
-                                                        <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                                                            <div className="inline-flex items-center gap-x-3">
-
-                                                                <div className="flex items-center gap-x-2">
-                                                                    <div>
-                                                                        <h2 className="font-normal text-white ">
-                                                                            Muscat
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                                                            Golden Tulip or similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Radisson Blu or Similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-
-                                                    </tr>
-                                                    {/* row three */}
-                                                    <tr className="bg-black">
-                                                        <td className="px-4 py-4 text-center text-sm font-medium text-white whitespace-nowrap">
-                                                            <div className="inline-flex items-center gap-x-3">
-
-                                                                <div className="flex items-center gap-x-2">
-                                                                    <div>
-                                                                        <h2 className="font-normal text-white ">
-                                                                            Muscat
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-12 py-4 text-center text-sm font-normal text-white whitespace-nowrap">
-                                                            Golden Tulip or similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-white whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm  text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Radisson Blu or Similar
-                                                        </td>
-                                                        <td className="px-4 py-4 text-center text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            Standard
-                                                        </td>
-
-                                                    </tr>
-                                                    {/* Add other rows here */}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {/* hotal table component */}
+                            <HotalTable />
                         </div>
                     }
                     {/* =============== Hotel Tab end ============================= */}
@@ -390,7 +269,7 @@ const Includes = () => {
 
 
                 <div className="flex justify-end mt-6">
-                    <button className="px-6 py-2 text-white bg-primary">
+                    <button className="px-6 py-2 text-white bg-primary rounded-xl">
                         ENQUIRE NOW
                     </button>
                 </div>
