@@ -102,7 +102,7 @@ const Includes = () => {
     };
     return (
         <>
-            <section className="container mx-auto px-4 py-20">
+            <section className="container mx-auto px-4 lg:py-20">
                 <div className="p-6 border border-[#135029] border-opacity-20 rounded-lg">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
                         {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
