@@ -22,7 +22,7 @@ const DestinationLove = () => {
   ];
   return (
     <>
-      <section className="container mx-auto px-4 pt-10 pb-10">
+      <section className="container mx-auto px-4 pt-10 pb-10 ">
         <h2 className="text-primary font-Roboto text-[38px] font-semibold">
           Destinations you'll love
         </h2>
@@ -32,7 +32,7 @@ const DestinationLove = () => {
             grounds.map((ground, idx) => {
               return (
                 <div key={idx}>
-                  <div className="relative max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
+                  <div className="max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
                     <Image
                       className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
                       src={ground.image}
