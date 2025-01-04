@@ -286,7 +286,7 @@ const Includes = () => {
                 <div className="flex justify-end mt-6">
                     <button
                         onClick={() => handleModal()}
-                        className="px-6 py-2 text-white bg-primary rounded-xl">
+                        className="px-6 py-3 text-white bg-primary rounded-xl">
                         ENQUIRE NOW
                     </button>
                     {/* modal component */}

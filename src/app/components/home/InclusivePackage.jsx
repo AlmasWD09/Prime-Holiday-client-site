@@ -19,32 +19,32 @@ const InclusivePackage = () => {
   const grounds = [
     {
       image: "/photo01.png",
-      title1: "Qatar",
+      title1: "Immersion in cultural Oman",
       title2: "9 Days From",
     },
     {
       image: "/photo02.png",
-      title1: "Sri Lanka",
+      title1: "Essence of Oman",
       title2: "9 Days From",
     },
     {
       image: "/photo03.png",
-      title1: "Morocco",
+      title1: "Luxury Oman",
       title2: "9 Days From",
     },
     {
       image: "/photo01.png",
-      title1: "Qatar",
+      title1: "Immersion in cultural Oman",
       title2: "9 Days From",
     },
     {
       image: "/photo02.png",
-      title1: "Sri Lanka",
+      title1: "Essence of Oman",
       title2: "9 Days From",
     },
     {
       image: "/photo03.png",
-      title1: "Morocco",
+      title1: "Luxury Oman",
       title2: "9 Days From",
     },
   ];
@@ -116,7 +116,7 @@ const InclusivePackage = () => {
                   />
                   <div className="bg-[#135029] text-white">
                     <div className="space-y-2">
-                      <h5 className="uppercase">{ground.title1}</h5>
+                      <h5 className="text-xl font-semibold">{ground.title1}</h5>
                       <h5>
                         {ground.title2}{" "}
                         <span className="font-bold text-primary">$2525</span>
