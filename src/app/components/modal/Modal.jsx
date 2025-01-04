@@ -22,7 +22,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  console.log("Email Service ID:", process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
