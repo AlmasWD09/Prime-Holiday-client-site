@@ -54,7 +54,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
   return (
     <div className="relative">
       {isOpen && (
-        <div className="fixed h-screen inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-0">
+        <div className="fixed h-screen inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-0">
           <div className="bg-[#fffff0] w-full max-w-[95%] lg:max-w-3xl p-8 rounded shadow-lg relative">
             <button
               onClick={() => handleCloseModal()}
@@ -68,7 +68,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               Enquiry Form
             </h2>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="text-black">
               {/* Title, First Name, Last Name */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 md:mb-4">
                 <div>

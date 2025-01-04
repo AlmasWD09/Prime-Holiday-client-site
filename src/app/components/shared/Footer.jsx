@@ -5,10 +5,22 @@ import { FaInstagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { FaWhatsapp } from "react-icons/fa";
 import { RiMessage2Line } from "react-icons/ri";
+import { useState } from "react";
+import Modal from "../modal/Modal";
+
 
 
 
 const Footer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState(false);
+
+
+  // modal show function
+  const handleModal = () => {
+    setModal(true);
+    setIsOpen(true);
+  };
 
   return (
     <footer className="text-white"
@@ -48,7 +60,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="">
-              <button  className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2 cursor-pointer">Enquire now</button>
+              <button
+                onClick={() => handleModal()}
+                className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2 cursor-pointer">Enquire now</button>
             </div>
           </div>
           {/* div two */}
@@ -90,7 +104,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
+      {/* modal component */}
+      {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
     </footer>
   )
 }
