@@ -6,7 +6,7 @@ import PrimeDestination from "@/app/components/destination/PrimeDestination";
 const DestinationPage = () => {
   return (
     <>
-      <div className="pb-20">
+      <div className="">
         <Banner />
         <PrimeDestination />
       </div>

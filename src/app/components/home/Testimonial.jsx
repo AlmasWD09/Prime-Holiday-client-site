@@ -63,25 +63,25 @@ const Testimonial = () => {
         modules={[Autoplay, Pagination]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
         onSlideChange={onSlideChange}  // Reset timer on slide change
-        className="mySwiper max-w-6xl"
+        className="mySwiper container mx-auto"
       >
         {reviews.map((review, index) => (
           <SwiperSlide key={index}>
-          <div  className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+          <div  className="mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
 
              {/* left side content */}
-            <div className=" w-full ">
-              <h1 className="font-semibold text-primary text-2xl md:text-4xl ">
+            <div className=" w-full">
+              <h1 className="font-bold text-primary text-2xl md:text-5xl">
                 {review.name}
               </h1>
-              <p className="max-w-md mt-6 font-Roboto">
+              <p className="max-w-xl mt-6 font-Roboto">
                 {review.description}
               </p>
             </div>
 
              {/* right side image */}
              <Image
-              className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] w-[500px]"
+              className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
               src={review.image}
               alt="testimonial"
               width={100}

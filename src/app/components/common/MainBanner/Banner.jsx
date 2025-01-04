@@ -27,7 +27,7 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
       </div>
       {Breadcrumb && (
         <div className="bg-[#135029] py-3">
-          <div className="container mx-auto px-2 flex">
+          <div className="container mx-auto px-2">
             {Breadcrumb?.map((item, index) => {
               return (
                 <div key={index} className="flex items-center">

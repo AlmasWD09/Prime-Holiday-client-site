@@ -60,7 +60,7 @@ const InclusivePackage = () => {
               All-Inclusive Packages
             </h1>
 
-            <div className="text-end md:text-start md:flex justify-between mt-8 md:mt-0">
+            <div className="text-end md:text-start md:flex justify-between mt-8 md:mt-0 lg:pr-6">
               <button
                 title="Previous Slide"
                 onClick={() => swiperRef.current?.slidePrev()}
@@ -114,7 +114,7 @@ const InclusivePackage = () => {
                     className="object-cover object-center w-full h-64 lg:h-72 rounded-xl"
                     src={ground.image}
                     alt="inclusive photo"
-                    width={300}
+                    width={500}
                     height={300}
                   />
                   <div className="bg-[#135029] text-white">

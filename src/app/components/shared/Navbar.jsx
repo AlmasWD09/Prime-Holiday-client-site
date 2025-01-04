@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+ 
 import Image from "next/image";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -38,7 +38,7 @@ const Navbar = () => {
     },
     {
       path: "/destination",
-      title: "Destination",
+      title: "Destinations",
     },
     // {
     //   path: "/oman",
@@ -52,18 +52,18 @@ const Navbar = () => {
       path: "/blog",
       title: "Blogs",
     },
-    {
-      path: "/conditions",
-      title: "Terms & Conditions",
-    },
-    {
-      path: "/privacy",
-      title: "Privacy Policy",
-    },
-    {
-      path: "/cancelation",
-      title: "Cancelation & Refund",
-    },
+    // {
+    //   path: "/conditions",
+    //   title: "Terms & Conditions",
+    // },
+    // {
+    //   path: "/privacy",
+    //   title: "Privacy Policy",
+    // },
+    // {
+    //   path: "/cancelation",
+    //   title: "Cancelation & Refund",
+    // },
   ];
   const handleDrawer = () => {
     setShowDrower(!showDrower);

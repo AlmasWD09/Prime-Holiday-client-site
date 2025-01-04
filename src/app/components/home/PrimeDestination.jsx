@@ -75,9 +75,9 @@ const PrimeDestination = () => {
 
   return (
     <section>
-      <div className="container mx-auto px-4 ">
+      <div className="container mx-auto px-4 lg:pr-10 ">
         <div className="md:flex md:items-center md:justify-between pt-16">
-          <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary">
+          <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary pb-4">
             Prime Destinations
           </h1>
 
@@ -147,11 +147,11 @@ const PrimeDestination = () => {
                     </h2>
                     <div>
                       <div>
-                        <h2 className=" font-bold text-white">
+                        <h2 className="text-xl font-bold text-white">
                           {ground.title1}
                         </h2>
                       </div>
-                      <h2>{ground.title2}</h2>
+                      <h2 >{ground.title2}</h2>
                     </div>
                   </div>
                 </div>
