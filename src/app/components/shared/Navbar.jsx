@@ -90,7 +90,7 @@ const Navbar = () => {
     setIsOpen(true);
   };
 
-console.log(modal, 'modal')
+
   return (
     <nav
       className={
