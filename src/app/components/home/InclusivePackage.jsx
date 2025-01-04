@@ -54,9 +54,9 @@ const InclusivePackage = () => {
 
   return (
       <section>
-        <div className="container mx-auto px-4 pt-10">
+        <div className="container mx-auto px-4 pt-16">
           <div className="md:flex md:items-center md:justify-between pb-4">
-            <h1 className="text-2xl md:text-4xl font-bold text-primary">
+            <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary">
               All-Inclusive Packages
             </h1>
 

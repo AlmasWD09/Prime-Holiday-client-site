@@ -75,9 +75,9 @@ const PrimeDestination = () => {
 
   return (
     <section>
-      <div className="container mx-auto px-4 py-10">
-        <div className="md:flex md:items-center md:justify-between pb-4">
-          <h1 className="text-2xl md:text-4xl font-bold text-primary">
+      <div className="container mx-auto px-4 ">
+        <div className="md:flex md:items-center md:justify-between pt-16">
+          <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary">
             Prime Destinations
           </h1>
 
@@ -140,7 +140,7 @@ const PrimeDestination = () => {
                   height={300}
                 />
 
-                <div className="absolute z-10  w-full  bottom-10  p-3 bg-[#B0B0B0] bg-opacity-30 text-red-200 flex justify-center gap-2">
+                <div className="absolute z-10  w-[96%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-red-200 flex gap-2">
                   <div className="flex  text-start z-20 text-white">
                     <h2 className="">
                       <FaLocationDot className="text-2xl pt-2 " />

@@ -19,11 +19,11 @@ const Comment = () => {
 
   return (
     <>
-      <section className="max-w-6xl px-4 mx-auto py-20">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+      <section className="max-w-7xl px-4 mx-auto py-20">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-2">
           {/* Left side content */}
           <div className="w-full">
-            <h1 className="font-semibold text-primary text-2xl md:text-4xl">
+            <h1 className="font-bold font-Roboto text-primary text-2xl md:text-5xl">
               COMMITMENT TO EXCELLENCE
             </h1>
             <p className="max-w-xl mt-6 font-Roboto">
@@ -38,7 +38,7 @@ const Comment = () => {
 
           {/* Right side image */}
           <Image
-            className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] md:w-[350px] lg:w-[500px]"
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] md:w-[350px] lg:w-[540px]"
             src="/comment.png"
             alt="comment"
             width={500}
