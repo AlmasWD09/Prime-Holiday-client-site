@@ -80,6 +80,14 @@ const Navbar = () => {
     setModal(true);
     setIsOpen(true);
   };
+
+
+  // Mobile device modal sidebar remove
+  const handleMobileModal = () => {
+   console.log('clcik hoica...')
+  };
+
+
   return (
     <nav
       className={
@@ -192,8 +200,8 @@ const Navbar = () => {
           <div className="flex flex-col gap-4 mt-4">
             <div className="flex items-center gap-4">
               <button
-                onClick={() => handleModal()}
-                className="border px-6 py-2"
+                onClick={() => handleMobileModal}
+                className="border border-primary rounded-xl hover:bg-primary uppercase px-6 py-2"
               >
                 Enquire now
               </button>

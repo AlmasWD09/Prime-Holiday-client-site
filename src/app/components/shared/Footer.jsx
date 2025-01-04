@@ -7,18 +7,21 @@ import { FaWhatsapp } from "react-icons/fa";
 import { RiMessage2Line } from "react-icons/ri";
 
 
+
 const Footer = () => {
+
   return (
-    <footer className="relative bg-gray-900 text-white -z-10"
+    <footer className="text-white"
       style={{
-        backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)"
+        backgroundImage: "url(/footer.png)",
+        // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
       }}>
 
-      {/* Overlay */}
-      <div className="absolute -z-20 top-0 left-0 w-full h-full bg-green-900 bg-opacity-70"></div>
 
-
-      <section className="container mx-auto px-4 py-8  h-full z-20">
+      <section className="container mx-auto px-4 py-8  h-full">
         <div className="flex justify-center">
           <h1 className="text-[36px] md:text-[64px] font-Roboto font-semibold text-primary">Connect with us</h1>
         </div>
@@ -44,8 +47,8 @@ const Footer = () => {
                 <p className="border-b pb-4">contact@primeholidaydestinations.com</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 ">
-              <button onClick={() => handleModal()} className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2 cursor-pointer">Enquire now</button>
+            <div className="">
+              <button  className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2 cursor-pointer">Enquire now</button>
             </div>
           </div>
           {/* div two */}
@@ -87,6 +90,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
     </footer>
   )
 }
