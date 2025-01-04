@@ -1,5 +1,4 @@
 
-
 import { Geist, Geist_Mono } from "next/font/google";
 
 import Footer from "../components/shared/Footer";
