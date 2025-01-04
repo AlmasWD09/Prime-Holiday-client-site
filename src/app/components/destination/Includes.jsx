@@ -282,7 +282,6 @@ const Includes = () => {
                     {/* =============== Itinerary Tab end ============================= */}
                 </div>
 
-
                 <div className="flex justify-end mt-6">
                     <button
                         onClick={() => handleModal()}
