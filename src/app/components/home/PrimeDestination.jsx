@@ -14,42 +14,63 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 // Import required modules
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const PrimeDestination = () => {
-  const grounds = [
-    {
-      image: "/prime01.png",
-      title1: "Qatar",
-      title2: "9 Days From",
-    },
-    {
-      image: "/prime02.png",
-      title1: "Sri Lanka",
-      title2: "9 Days From",
-    },
-    {
-      image: "/prime01.png",
-      title1: "Morocco",
-      title2: "9 Days From",
-    },
-    {
-      image: "/prime01.png",
-      title1: "Qatar",
-      title2: "9 Days From",
-    },
-    {
-      image: "/prime01.png",
-      title1: "Sri Lanka",
-      title2: "9 Days From",
-    },
-    {
-      image: "/prime01.png",
-      title1: "Morocco",
-      title2: "9 Days From",
-    },
-  ];
+  const [grounds, setgrounds] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);  
+  // const grounds = [
+  //   {
+  //     image: "/prime01.png",
+  //     title1: "Qatar",
+  //     title2: "9 Days From",
+  //   },
+  //   {
+  //     image: "/prime02.png",
+  //     title1: "Sri Lanka",
+  //     title2: "9 Days From",
+  //   },
+  //   {
+  //     image: "/prime01.png",
+  //     title1: "Morocco",
+  //     title2: "9 Days From",
+  //   },
+  //   {
+  //     image: "/prime01.png",
+  //     title1: "Qatar",
+  //     title2: "9 Days From",
+  //   },
+  //   {
+  //     image: "/prime01.png",
+  //     title1: "Sri Lanka",
+  //     title2: "9 Days From",
+  //   },
+  //   {
+  //     image: "/prime01.png",
+  //     title1: "Morocco",
+  //     title2: "9 Days From",
+  //   },
+  // ];
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/Destination.json");
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await response.json();
+        setgrounds(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   const swiperRef = useRef(null);
 
   return (
