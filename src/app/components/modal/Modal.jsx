@@ -54,7 +54,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
   return (
     <div className="relative">
       {isOpen && (
-        <div className="fixed h-screen inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 pt-40 md:pt-0">
+        <div className="fixed h-screen inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 pt-10 md:pt-0">
           <div className="bg-[#fffff0] w-full max-w-[95%] lg:max-w-3xl p-8 rounded shadow-lg relative">
             <button
               onClick={() => handleCloseModal()}

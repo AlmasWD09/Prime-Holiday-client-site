@@ -84,7 +84,10 @@ const Navbar = () => {
 
   // Mobile device modal sidebar remove
   const handleMobileModal = () => {
-   console.log('clcik hoica...')
+    setMenu(false);
+    setShowDrower(false);
+    setModal(true);
+    setIsOpen(true);
   };
 
 
@@ -200,7 +203,7 @@ const Navbar = () => {
           <div className="flex flex-col gap-4 mt-4">
             <div className="flex items-center gap-4">
               <button
-                onClick={() => handleMobileModal}
+                onClick={() => handleMobileModal()}
                 className="border border-primary rounded-xl hover:bg-primary uppercase px-6 py-2"
               >
                 Enquire now
@@ -208,6 +211,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        {/* modal component */}
+      {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
       </div>
       {/* modal component */}
       {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}

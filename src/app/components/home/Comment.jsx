@@ -38,7 +38,7 @@ const Comment = () => {
 
           {/* Right side image */}
           <Image
-            className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] w-[500px]"
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] md:w-[350px] lg:w-[500px]"
             src="/comment.png"
             alt="comment"
             width={500}
