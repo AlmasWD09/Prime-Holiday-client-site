@@ -40,10 +40,10 @@ const Navbar = () => {
       path: "/destination",
       title: "Destination",
     },
-    {
-      path: "/oman",
-      title: "Oman",
-    },
+    // {
+    //   path: "/oman",
+    //   title: "Oman",
+    // },
     {
       path: "/about",
       title: "About Us",

@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 
 // Import required modules
 import { FreeMode, Pagination } from "swiper/modules";
+import Link from "next/link";
 
 const InclusivePackage = () => {
   const grounds = [
@@ -106,7 +107,9 @@ const InclusivePackage = () => {
             {/* ================================== responsive all device end =========================== */}
             {grounds.map((ground, idx) => (
               <SwiperSlide key={idx}>
+                <Link href={`/destination/${idx}`}>
                 <div className="relative max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
+
                   <Image
                     className="object-cover object-center w-full h-64 lg:h-72 rounded-xl"
                     src={ground.image}
@@ -124,6 +127,7 @@ const InclusivePackage = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
