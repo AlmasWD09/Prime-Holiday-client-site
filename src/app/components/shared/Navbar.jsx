@@ -95,7 +95,7 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-green-800  drop-shadow bg-opacity-40 fixed w-full z-50 py-0 duration-150 transition-all"
+          ? "bg-[#135029] drop-shadow fixed w-full z-50 py-0 duration-150 transition-all"
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
@@ -118,7 +118,7 @@ const Navbar = () => {
           {/* ================================= drower show start ================================================================== */}
 
           {showDrower && (
-            <div className="absolute top-10 left-2 -20-left-0 w-[300px] bg-gray-300">
+            <div className="absolute top-10 left-2 -20-left-0 w-[300px] bg-[#fffff0] rounded-md">
               <div className="flex justify-between p-10">
                 <ul className=" flex flex-col gap-6">
                   {navLinks.map((item) => (

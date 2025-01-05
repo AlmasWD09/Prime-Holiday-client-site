@@ -6,7 +6,7 @@ import Link from "next/link";
 const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
   return (
     <section
-      className="relative w-full h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-black bg-opacity-50 bg-center text-white"
+      className="relative w-full h-[456px] lg:h-[750px] bg-no-repeat bg-cover bg-black bg-opacity-50 bg-center text-white"
       style={{
         backgroundImage: `url('${url}')`,
         backgroundSize: "cover",
@@ -17,11 +17,11 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-center text-[24px] lg:text-[80px] text-primary font-semibold text-wrap" style={{ fontFamily: 'MyFont, sans-serif' }}>
+      <div className="flex flex-col justify-center items-center h-full w-[94%] lg:w-[88%] mx-auto">
+        <h1 className="text-center text-[26px] md:text-[48px] lg:text-[60px] xl:text-[80px] text-primary font-semibold text-wrap" style={{ fontFamily: 'MyFont, sans-serif' }}>
           {title}
         </h1>
-        <p className="text-[20px] md:text-[36px] font-semibold lg:w-[35%] w-full mx-auto text-center">
+        <p className="xl:max-w-[680px] mx-auto text-[22px] md:text-[40px] lg:text-[48px] xl:text-[36px] font-semibold  text-center">
           {subtitle}
         </p>
       </div>
