@@ -23,7 +23,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white"
+    <footer className="text-white font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",

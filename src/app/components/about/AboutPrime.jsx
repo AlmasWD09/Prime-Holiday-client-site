@@ -4,12 +4,12 @@ const AboutPrime = () => {
   return (
     <>
     <section className="container mx-auto px-4 pt-20">
-    <div className="bg-white p-6  font-sans">
+    <div className="p-6 font-Roboto">
       <div className="">
         {/* Left Section */}
         <div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">
-            About Prime Holiday Destinations
+          <h2 className="text-2xl lg:text-[28px] font-medium text-primary mb-4">
+          About Prime Holiday Destinations
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6">
             Welcome to Prime Holiday Destinations, your gateway to unforgettable travel experiences! We are an outbound tour operator dedicated to providing all-inclusive packages to some of the most exquisite and carefully selected holiday destinations worldwide. Whether you're seeking adventure, relaxation, or cultural immersion, our expertly crafted itineraries promise to deliver the perfect vacation experience.
@@ -24,7 +24,7 @@ const AboutPrime = () => {
 
         {/* Right Section */}
         <div className="pt-10">
-          <h2 className="text-2xl lg:text-3xl font-bold text-primary mb-4">
+          <h2 className="text-2xl lg:text-[28px] font-medium text-primary mb-4">
             Why Choose Us?
           </h2>
           <ul className="list-disc list-inside space-y-4 text-gray-700 leading-relaxed mb-6">

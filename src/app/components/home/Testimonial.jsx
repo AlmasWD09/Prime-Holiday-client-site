@@ -93,28 +93,28 @@ const Testimonial = () => {
     //   </Swiper>
     // </div>
     <>
-    <section className="container mx-auto px-4 my-16">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+      <section className="container mx-auto px-4 my-16">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
 
-        {/* left side content */}
-        <div className=" w-full">
-          <h1 className="font-bold text-primary text-2xl md:text-5xl">
-          TESTIMONIALS OF SATISFACTION
-          </h1>
-          <p className="max-w-xl mt-6 font-Roboto">
-          he best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
-          </p>
+          {/* left side content */}
+          <div className=" w-full">
+            <h1 className="font-bold text-primary text-2xl lg:text-5xl">
+              TESTIMONIALS OF SATISFACTION
+            </h1>
+            <p className="max-w-xl mt-6 font-Roboto">
+              he best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
+            </p>
+          </div>
+
+          {/* right side image */}
+          <Image
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] md:w-[330px] lg:w-[440px]"
+            src="/testimonial02.png"
+            alt="testimonial"
+            width={500}
+            height={400}
+          />
         </div>
-
-        {/* right side image */}
-        <Image
-          className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
-          src="/testimonial02.png"
-          alt="testimonial"
-          width={100}
-          height={100}
-        />
-      </div>
       </section>
     </>
   );

@@ -44,17 +44,17 @@ const InclusivePackage = () => {
 
   return (
       <section>
-        <div className="container mx-auto px-4 pt-16 ">
-          <div className="md:flex md:items-center md:justify-between pb-4 ">
-            <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary ">
+        <div className="container mx-auto px-4">
+          <div className="md:flex md:items-center md:justify-between pt-10 md:pt-16">
+            <h1 className="text-2xl lg:text-5xl font-bold font-Roboto text-primary md:pb-4">
               All-Inclusive Packages
             </h1>
 
-            <div className="text-end md:text-start md:flex justify-between gap-3 mt-8 md:mt-0 ">
+            <div className="text-end md:text-start md:flex justify-between gap-3 pb-4">
               <button
                 title="Previous Slide"
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="p-2  text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+                className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
               >
                 <BiSolidLeftArrow className="w-4 h-4" />
               </button>
@@ -108,6 +108,7 @@ const InclusivePackage = () => {
                     width={500}
                     height={300}
                   />
+                  
                   <div className="bg-[#135029] text-white">
                     <div className="space-y-2">
                       <h5 className="text-xl font-semibold">{ground.title1}</h5>

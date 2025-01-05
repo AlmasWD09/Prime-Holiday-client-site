@@ -23,7 +23,7 @@ const Comment = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
           {/* Left side content */}
           <div className="w-full ">
-            <h1 className="font-bold font-Roboto text-primary text-2xl md:text-5xl">
+            <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
               COMMITMENT TO EXCELLENCE
             </h1>
             <p className="max-w-2xl mt-6 font-Roboto">
