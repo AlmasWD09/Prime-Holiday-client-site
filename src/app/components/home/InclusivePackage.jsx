@@ -17,30 +17,69 @@ import { FreeMode, Pagination } from "swiper/modules";
 import Link from "next/link";
 
 const InclusivePackage = () => {
-    const [grounds, setgrounds] = useState([]);
-    const [loading, setLoading] = useState(true); 
-    const [error, setError] = useState(null); 
+    // const [grounds, setgrounds] = useState([]);
+    // const [loading, setLoading] = useState(true); 
+    // const [error, setError] = useState(null); 
 
 
- useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/inclusive.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const result = await response.json();
-        setgrounds(result);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+//  useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch("/Inclusive.json");
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch data");
+//         }
+//         const result = await response.json();
+//         setgrounds(result);
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchData();
-  }, []);
-  const swiperRef = useRef(null);
+//     fetchData();
+//   }, []);
+  
+
+const grounds = [
+  {
+    image: "/photo01.png",
+    title1: "Immersion in cultural Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo02.png",
+   title1: "Essence of Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo03.png",
+    title1: "Luxury Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo01.png",
+    title1: "Immersion in cultural Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo02.png",
+    title1: "Essence of Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo03.png",
+    title1: "Luxury Oman",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo02.png",
+    title1: "Essence of Oman",
+    title2: "9 Days From"
+  }
+];
+const swiperRef = useRef(null);
 
   return (
       <section>
@@ -111,7 +150,7 @@ const InclusivePackage = () => {
                   
                   <div className="bg-[#135029] text-white">
                     <div className="space-y-2">
-                      <h5 className="text-xl font-semibold">{ground.title1}</h5>
+                      <h5 className="text-[24px] font-bold">{ground.title1}</h5>
                       <h5>
                         {ground.title2}{" "}
                         <span className="font-bold text-primary">$2525</span>

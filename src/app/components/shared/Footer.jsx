@@ -1,10 +1,5 @@
 "use client"
 import Image from "next/image";
-import { CiFacebook } from "react-icons/ci";
-import { FaInstagram } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
-import { FaWhatsapp } from "react-icons/fa";
-import { RiMessage2Line } from "react-icons/ri";
 import { useState } from "react";
 import Modal from "../modal/Modal";
 
