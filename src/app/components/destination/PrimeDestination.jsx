@@ -24,12 +24,11 @@ const PrimeDestination = () => {
   ];
   return (
     <>
-      <section className="container mx-auto px-4 pt-20">
-        <h2 className="text-primary font-Roboto text-2xl md:text-[38px] font-semibold">
+      <section className="container mx-auto px-4 pt-24">
+        <h2 className="text-primary font-Roboto text-2xl md:text-[48px] font-bold">
           Prime Destinations
         </h2>
 
-        {/* ************** */}
         <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
           {grounds.map((ground, idx) => {
@@ -44,7 +43,7 @@ const PrimeDestination = () => {
                     height={300}
                   />
 
-                  <div className="absolute z-10  w-full  bottom-10  p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center gap-2">
+                  <div className="absolute z-10  w-[93%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
                     <div className="flex text-start z-20">
                       <div>
                         <FaLocationDot className="text-2xl pt-2" />
