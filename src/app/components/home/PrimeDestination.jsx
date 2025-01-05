@@ -20,39 +20,7 @@ const PrimeDestination = () => {
   const [grounds, setgrounds] = useState([]);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);  
-  // const grounds = [
-  //   {
-  //     image: "/prime01.png",
-  //     title1: "Qatar",
-  //     title2: "9 Days From",
-  //   },
-  //   {
-  //     image: "/prime02.png",
-  //     title1: "Sri Lanka",
-  //     title2: "9 Days From",
-  //   },
-  //   {
-  //     image: "/prime01.png",
-  //     title1: "Morocco",
-  //     title2: "9 Days From",
-  //   },
-  //   {
-  //     image: "/prime01.png",
-  //     title1: "Qatar",
-  //     title2: "9 Days From",
-  //   },
-  //   {
-  //     image: "/prime01.png",
-  //     title1: "Sri Lanka",
-  //     title2: "9 Days From",
-  //   },
-  //   {
-  //     image: "/prime01.png",
-  //     title1: "Morocco",
-  //     title2: "9 Days From",
-  //   },
-  // ];
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,24 +43,24 @@ const PrimeDestination = () => {
 
   return (
     <section>
-      <div className="container mx-auto px-4 lg:pr-10 ">
+      <div className="container mx-auto px-4">
         <div className="md:flex md:items-center md:justify-between pt-16">
           <h1 className="text-2xl md:text-5xl font-bold font-Roboto text-primary pb-4">
             Prime Destinations
           </h1>
 
-          <div className="text-end md:text-start md:flex justify-between mt-8 md:mt-0">
+          <div className="text-end md:text-start md:flex justify-between gap-3 mt-8 md:mt-0">
             <button
               title="Previous Slide"
               onClick={() => swiperRef.current?.slidePrev()}
-              className="p-2 mx-3 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+              className="p-2 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
             >
               <BiSolidLeftArrow className="w-4 h-4" />
             </button>
             <button
               title="Next Slide"
               onClick={() => swiperRef.current?.slideNext()}
-              className="p-2 mx-3 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+              className="p-2 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
             >
               <BiSolidRightArrow className="w-4 h-4" />
             </button>

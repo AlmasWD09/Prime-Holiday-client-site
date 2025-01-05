@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
+import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { FaWhatsapp } from "react-icons/fa";
@@ -42,20 +42,20 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 pb-4 text-primary">
-                <FaInstagram />
-                <FaFacebook />
-                <Image src="http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735185926/vsqrzow0aghuq7iskhmk.png" alt="icon" width={16} height={16} />
-                <FaFacebook />
+                <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
               </div>
               <div className="border-t py-4">
-                <GoLocation className="text-primary" />
+              <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p>65 Hartfield Crescent</p>
                 <p>Birmingham
                 </p>
                 <p>B27 7QE</p>
               </div>
               <div className="border-t pt-4">
-                <RiMessage2Line className="text-primary" />
+              <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p className="border-b pb-4">contact@primeholidaydestinations.com</p>
               </div>
             </div>
@@ -68,7 +68,7 @@ const Footer = () => {
           {/* div two */}
           <div className="flex flex-col md:flex-row justify-between pb-16 space-y-4 md:space-y-0">
             <div className=" pt-4">
-              <FaWhatsapp className="text-primary" />
+            <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
               <p>+44 7553 778086</p>
             </div>
             <div>
@@ -78,7 +78,7 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p>About | Destinations | Blog | Terms & Conditions | Privacy | Cancellation & Refund</p>
+              <p>About | Terms & Conditions | Privacy | Cancellation & Refund</p>
               <p>© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 

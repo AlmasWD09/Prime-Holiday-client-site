@@ -43,56 +43,80 @@ const Testimonial = () => {
       quote: "Exceptional Design",
       description:
         "The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.",
-        name: "TESTIMONIALS OF SATISFACTION",
+      name: "TESTIMONIALS OF SATISFACTION",
       image: "http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735190896/inbxylz2xcnyngok5ncq.png",
     },
   ];
 
   return (
-      <div className="container mx-auto px-4 my-16 ">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
-        onSlideChange={onSlideChange}  // Reset timer on slide change
-        className="mySwiper container mx-auto"
-      >
-        {reviews.map((review, index) => (
-          <SwiperSlide key={index}>
-          <div  className="mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+    //   <div className="container mx-auto px-4 my-16 ">
+    //   <Swiper
+    //     spaceBetween={30}
+    //     centeredSlides={true}
+    //     autoplay={{
+    //       delay: 3000,
+    //       disableOnInteraction: false,
+    //     }}
+    //     pagination={{
+    //       clickable: true,
+    //     }}
+    //     modules={[Autoplay, Pagination]}
+    //     onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
+    //     onSlideChange={onSlideChange}  // Reset timer on slide change
+    //     className="mySwiper container mx-auto px-4"
+    //   >
+    //     {reviews.map((review, index) => (
+    //       <SwiperSlide key={index}>
+    //       <div  className="mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
 
-             {/* left side content */}
-            <div className=" w-full">
-              <h1 className="font-bold text-primary text-2xl md:text-5xl">
-                {review.name}
-              </h1>
-              <p className="max-w-xl mt-6 font-Roboto">
-                {review.description}
-              </p>
-            </div>
+    //          {/* left side content */}
+    //         <div className=" w-full">
+    //           <h1 className="font-bold text-primary text-2xl md:text-5xl">
+    //             {review.name}
+    //           </h1>
+    //           <p className="max-w-xl mt-6 font-Roboto">
+    //             {review.description}
+    //           </p>
+    //         </div>
 
-             {/* right side image */}
-             <Image
-              className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
-              src={review.image}
-              alt="testimonial"
-              width={100}
-              height={100}
-            />
-          </div>
-          </SwiperSlide>
-        ))} 
-      </Swiper>
-    </div>
+    //          {/* right side image */}
+    //          <Image
+    //           className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
+    //           src={review.image}
+    //           alt="testimonial"
+    //           width={100}
+    //           height={100}
+    //         />
+    //       </div>
+    //       </SwiperSlide>
+    //     ))} 
+    //   </Swiper>
+    // </div>
+    <>
+    <section className="container mx-auto px-4 my-16">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
 
+        {/* left side content */}
+        <div className=" w-full">
+          <h1 className="font-bold text-primary text-2xl md:text-5xl">
+          TESTIMONIALS OF SATISFACTION
+          </h1>
+          <p className="max-w-xl mt-6 font-Roboto">
+          he best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
+          </p>
+        </div>
+
+        {/* right side image */}
+        <Image
+          className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
+          src="/testimonial02.png"
+          alt="testimonial"
+          width={100}
+          height={100}
+        />
+      </div>
+      </section>
+    </>
   );
 };
 

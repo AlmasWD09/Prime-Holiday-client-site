@@ -19,7 +19,7 @@ const Comment = () => {
 
   return (
     <>
-      <section className="container mx-auto px-4 lg:pr-10 py-20">
+      <section className="container mx-auto px-4 py-20 ">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
           {/* Left side content */}
           <div className="w-full ">
@@ -56,7 +56,7 @@ const Comment = () => {
       >
 
 
-        <div className=" container mx-auto  relative w-full h-[700px] p-4 ">
+        <div className=" container mx-auto px-4  relative w-full  h-[700px] ">
           <video
             style={{ width: "100%", height: "100%" }}
             ref={videoRef}
@@ -68,7 +68,7 @@ const Comment = () => {
             controls={false} // Hide default controls
           />
           {!isPlaying && (
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center rounded-md">
+            <div className="absolute inset-0 bg-black bg-opacity-30 mx-4 flex items-center justify-center rounded-md">
               <button
                 onClick={handlePlayPause}
                 className="text-white text-4xl"

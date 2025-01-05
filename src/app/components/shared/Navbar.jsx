@@ -99,10 +99,10 @@ const Navbar = () => {
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
-      <div className=" flex items-center justify-between container mx-auto px-4 ">
+      <div className=" flex items-center justify-between container mx-auto px-4">
         <div className="lg:hidden" onClick={() => setMenu(!getMenu)}>
           {getMenu ? (
-            <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
+            <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary " />
           ) : (
             <GiHamburgerMenu className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
           )}

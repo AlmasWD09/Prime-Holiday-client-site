@@ -6,7 +6,7 @@ import Link from "next/link";
 const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
   return (
     <section
-      className="relative w-full h-[456px] lg:h-[750px] bg-no-repeat bg-cover bg-black bg-opacity-50 bg-center text-white"
+      className="relative w-full h-[456px] lg:h-[850px] text-white"
       style={{
         backgroundImage: `url('${url}')`,
         backgroundSize: "cover",
