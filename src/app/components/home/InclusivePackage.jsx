@@ -17,30 +17,64 @@ import { FreeMode, Pagination } from "swiper/modules";
 import Link from "next/link";
 
 const InclusivePackage = () => {
-    const [grounds, setgrounds] = useState([]);
-    const [loading, setLoading] = useState(true); 
-    const [error, setError] = useState(null); 
+    // const [grounds, setgrounds] = useState([]);
+    // const [loading, setLoading] = useState(true); 
+    // const [error, setError] = useState(null); 
 
 
- useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/inclusive.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const result = await response.json();
-        setgrounds(result);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+//  useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch("/Inclusive.json");
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch data");
+//         }
+//         const result = await response.json();
+//         setgrounds(result);
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchData();
-  }, []);
-  const swiperRef = useRef(null);
+//     fetchData();
+//   }, []);
+  
+
+const grounds = [
+  {
+    image: "/photo01.png",
+    title1: "Qatar",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo02.png",
+    title1: "Sri Lanka",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo03.png",
+    title1: "Morocco",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo01.png",
+    title1: "Qatar",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo02.png",
+    title1: "Sri Lanka",
+    title2: "9 Days From",
+  },
+  {
+    image: "/photo03.png",
+    title1: "Morocco",
+    title2: "9 Days From",
+  },
+];
+const swiperRef = useRef(null);
 
   return (
       <section>
