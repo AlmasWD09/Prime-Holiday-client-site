@@ -97,11 +97,11 @@ const Testimonial = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
 
           {/* left side content */}
-          <div className=" w-full">
+          <div className=" w-full ">
             <h1 className="font-bold text-primary text-2xl lg:text-5xl">
               TESTIMONIALS OF SATISFACTION
             </h1>
-            <p className="max-w-xl mt-6 font-Roboto">
+            <p className="max-w-3xl mt-6 font-Roboto text-[28px] text-[#454545]">
               he best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
             </p>
           </div>

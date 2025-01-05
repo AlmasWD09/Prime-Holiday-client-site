@@ -43,7 +43,7 @@ const DestinationLove = () => {
                     />
                     <div className="bg-[#135029] text-white">
                       <div className="space-y-2">
-                        <h5 className="text-[24px] font-Roboto">{ground.title1}</h5>
+                        <h5 className="text-[24px] font-bold font-Roboto">{ground.title1}</h5>
                         <h5>{ground.title2} <span className="font-bold text-primary">$2525</span></h5>
                       </div>
                       <div className="w-full pt-4">

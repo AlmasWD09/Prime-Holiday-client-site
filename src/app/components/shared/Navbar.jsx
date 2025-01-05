@@ -204,7 +204,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => handleMobileModal()}
-                className="border border-primary rounded-xl hover:bg-primary uppercase px-6 py-2"
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2"
               >
                 Enquire now
               </button>
