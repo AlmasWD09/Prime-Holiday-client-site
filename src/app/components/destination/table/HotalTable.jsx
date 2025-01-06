@@ -1,5 +1,7 @@
 "use client"
-// import { Card, Typography } from "@material-tailwind/react";
+
+
+
 
 const HotalTable = () => {
     const TABLE_HEAD = ["City", "4* Standard Hotel", "Room Type", "4* Superior Hotel", "Room Type"];
@@ -67,56 +69,56 @@ const HotalTable = () => {
         <div className="relative max-w-full">
             {/* Scroll Wrapper */}
             <div className="overflow-x-auto overflow-y-hidden max-w-full custom-scrollbar">
-                <Card className="w-full">
-                    <table className="w-full min-w-max table-auto text-left mt-8">
+                <div className="w-full">
+                    <table className="w-full min-w-max table-auto text-left mt-8 ">
                         <thead>
                             <tr>
                                 {TABLE_HEAD.map((head, index) => (
                                     <th key={index} className="border-b border-blue-gray-100 bg-[#fffff0] p-4">
-                                        <Typography
+                                        <td
                                             variant="small"
                                             color="blue-gray"
                                             className="font-bold text-xl"
                                         >
                                             {head}
-                                        </Typography>
+                                        </td>
                                     </th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
                             {TABLE_ROWS.map(({ name, job, romType01, romType02, superior }, index) => (
-                                <tr key={index} className="even:bg-[#ffe3bd]">
+                                <tr key={index} className="even:bg-[#FFE3BD]">
                                     <td className="p-4">
-                                        <Typography variant="small" color="blue-gray" className="font-normal">
+                                        <td variant="small" color="blue-gray" className="font-normal">
                                             {name}
-                                        </Typography>
+                                        </td>
                                     </td>
                                     <td className="p-4">
-                                        <Typography variant="small" color="blue-gray" className="font-normal">
+                                        <td variant="small" color="blue-gray" className="font-normal">
                                             {job}
-                                        </Typography>
+                                        </td>
                                     </td>
                                     <td className="p-4">
-                                        <Typography variant="small" color="blue-gray" className="font-normal">
+                                        <td variant="small" color="blue-gray" className="font-normal">
                                             {romType01}
-                                        </Typography>
+                                        </td>
                                     </td>
                                     <td className="p-4">
-                                        <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
+                                        <td as="a" href="#" variant="small" color="blue-gray" className="font-medium">
                                             {superior}
-                                        </Typography>
+                                        </td>
                                     </td>
                                     <td className="p-4">
-                                        <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
+                                        <td as="a" href="#" variant="small" color="blue-gray" className="font-medium">
                                             {romType02}
-                                        </Typography>
+                                        </td>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                </Card>
+                </div>
             </div>
         </div>
     );
