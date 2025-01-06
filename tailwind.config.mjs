@@ -11,7 +11,7 @@ export default {
         primary: "#F49D2A",
       },
       fontFamily: {
-        Roboto: "'Roboto', 'sans-serif'",
+        'Roboto': "'Roboto', 'sans-serif'",
       },
     },
   },

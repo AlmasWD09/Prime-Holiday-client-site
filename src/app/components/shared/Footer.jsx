@@ -57,7 +57,7 @@ const Footer = () => {
             <div className="">
               <button
                 onClick={() => handleModal()}
-                className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2 cursor-pointer">Enquire now</button>
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2">Enquire now</button>
             </div>
           </div>
           {/* div two */}
@@ -73,7 +73,7 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p>About | Terms & Conditions | Privacy | Cancellation & Refund</p>
+              <p>About | Destinations | Blogs | Terms & Conditions | Privacy | Cancellation & Refund</p>
               <p>© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 

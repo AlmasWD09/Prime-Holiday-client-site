@@ -49,60 +49,17 @@ const Testimonial = () => {
   ];
 
   return (
-    //   <div className="container mx-auto px-4 my-16 ">
-    //   <Swiper
-    //     spaceBetween={30}
-    //     centeredSlides={true}
-    //     autoplay={{
-    //       delay: 3000,
-    //       disableOnInteraction: false,
-    //     }}
-    //     pagination={{
-    //       clickable: true,
-    //     }}
-    //     modules={[Autoplay, Pagination]}
-    //     onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
-    //     onSlideChange={onSlideChange}  // Reset timer on slide change
-    //     className="mySwiper container mx-auto px-4"
-    //   >
-    //     {reviews.map((review, index) => (
-    //       <SwiperSlide key={index}>
-    //       <div  className="mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
-
-    //          {/* left side content */}
-    //         <div className=" w-full">
-    //           <h1 className="font-bold text-primary text-2xl md:text-5xl">
-    //             {review.name}
-    //           </h1>
-    //           <p className="max-w-xl mt-6 font-Roboto">
-    //             {review.description}
-    //           </p>
-    //         </div>
-
-    //          {/* right side image */}
-    //          <Image
-    //           className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] w-[400px]"
-    //           src={review.image}
-    //           alt="testimonial"
-    //           width={100}
-    //           height={100}
-    //         />
-    //       </div>
-    //       </SwiperSlide>
-    //     ))} 
-    //   </Swiper>
-    // </div>
     <>
       <section className="container mx-auto px-4 my-16">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
 
           {/* left side content */}
-          <div className=" w-full">
+          <div className=" w-full ">
             <h1 className="font-bold text-primary text-2xl lg:text-5xl">
               TESTIMONIALS OF SATISFACTION
             </h1>
-            <p className="max-w-xl mt-6 font-Roboto">
-              he best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
+            <p className="max-w-3xl mt-6 font-Roboto text-[20px] md:text-[28px] text-[#454545]">
+            The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
             </p>
           </div>
 

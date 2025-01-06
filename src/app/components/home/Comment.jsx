@@ -26,7 +26,7 @@ const Comment = () => {
             <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
               COMMITMENT TO EXCELLENCE
             </h1>
-            <p className="max-w-2xl mt-6 font-Roboto">
+            <p className="max-w-2xl mt-6 font-Roboto text-[20px] md:text-[28px] text-[#454545] text-justify">
               At PHD, we are committed to transforming each holiday into a
               memorable experience, prioritizing our clients' comfort,
               enjoyment, and peace of mind from start to finish. When you travel
@@ -38,7 +38,7 @@ const Comment = () => {
 
           {/* Right side image */}
           <Image
-            className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] md:w-[350px] lg:w-[440px]"
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[394px] md:w-[350px] lg:w-[440px]"
             src="/comment.png"
             alt="comment"
             width={500}

@@ -1,8 +1,5 @@
 
 "use client"
-import { PiShareFat } from "react-icons/pi";
-import { GiSelfLove } from "react-icons/gi";
-import { FcRating } from "react-icons/fc";
 import ReadMoreModal from "../modal/ReadMoreModal";
 import { useState } from "react";
 import HotalTable from "./table/HotalTable";
@@ -218,20 +215,20 @@ const Includes = () => {
 
 
                     {/* =============== Hotel Tab start =========================== */}
-                    {
+                    {/* {
                         buttonText === "HOTELS" && <div>
                             <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
                                 <h2>Hotels</h2>
                             </div>
-                            {/* hotal table component */}
+               
                             <HotalTable />
                         </div>
-                    }
+                    } */}
                     {/* =============== Hotel Tab end ============================= */}
 
 
                     {/* =============== Price & Validity Tab start =========================== */}
-                    {
+                    {/* {
                         buttonText === "PRICE & VALIDITY" && <div>
                             <div className="py-3 text-center text-lg bg-[#135029] text-white">
                                 <h2 className="text-2xl font-semibold">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
@@ -240,11 +237,11 @@ const Includes = () => {
                                     <h2 className="text-red-500">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
                                 </div>
                             </div>
-                            {/* price & validaty table component */}
+ 
                             <PriceValidatyTable />
                         </div>
 
-                    }
+                    } */}
                     {/* =============== Price & Validity Tab end ============================= */}
 
 

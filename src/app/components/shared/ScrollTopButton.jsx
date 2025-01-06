@@ -30,7 +30,7 @@ const ScrollTopButton = () => {
     }
     return (<>
         {
-            backTopBtn && <div onClick={top} className="animate-pulse w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full  bg-primary hover:animate-none flex justify-center items-center text-center text-white fixed right-[24px] md:right-[40px] bottom-[40px] cursor-pointer z-40">
+            backTopBtn && <div onClick={top} className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-xl border-2 border-primary  hover:bg-primary  flex justify-center items-center text-center text-primary hover:text-white fixed right-[24px] md:right-[40px] bottom-[40px] cursor-pointer z-40">
                 <IoIosArrowUp className="text-3xl flex justify-center items-center text-center" /></div>
 
         }
