@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "../modal/Modal";
+import Link from "next/link";
 
 
 
@@ -29,28 +30,41 @@ const Footer = () => {
 
       <section className="container mx-auto px-4 py-10  h-full">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-5xl font-Roboto font-semibold text-primary">Connect with us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect with us</h1>
         </div>
         <div className="pt-10 space-y-20 md:space-y-0">
           {/* div onte */}
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 pb-4 text-primary">
+                <Link href={'https://www.instagram.com/'}>
                 <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+
+                <Link href={'https://developers.facebook.com/docs/facebook-login/'}>
                 <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+
+                <Link href={'https://www.paypal.com/bd/home'}>
                 <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+                <Link href={'https://www.videolan.org/'}>
                 <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+                
+                
+                
               </div>
               <div className="border-t py-4">
               <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-                <p>65 Hartfield Crescent</p>
-                <p>Birmingham
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">65 Hartfield Crescent</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Birmingham
                 </p>
-                <p>B27 7QE</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">B27 7QE</p>
               </div>
               <div className="border-t pt-4">
               <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-                <p className="border-b pb-4">contact@primeholidaydestinations.com</p>
+                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0]">contact@primeholidaydestinations.com</p>
               </div>
             </div>
             <div className="">
@@ -60,28 +74,28 @@ const Footer = () => {
             </div>
           </div>
           {/* div two */}
-          <div className="flex flex-col md:flex-row justify-between pb-16 space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between  space-y-4 md:space-y-0">
             <div className=" pt-4">
             <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-              <p>+44 7553 778086</p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]">+44 7553 778086</p>
             </div>
             <div>
-              <Image src="/logo.png" alt="nav logo" width={200} height={200} />
+              <Image src="/logo.png" alt="nav logo" width={200} height={200}  className="w-[358px] h-[198px]"/>
             </div>
           </div>
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p>About | Destinations | Blogs | Terms & Conditions | Privacy | Cancellation & Refund</p>
-              <p>© 2024 Rizmali Travel & Tours Limited</p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]">About | Destinations | Blogs | Terms & Conditions | Privacy | Cancellation & Refund</p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]">© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 
             <div className="md:text-end space-y-4">
               <div>
-                <p>Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
-                <p>Company Number 14730696  I  Registered in England</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div><p>Colour palette inspired by @thehousewiththepinkbed</p></div>
+              <div><p className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</p></div>
             </div>
           </div>
         </div>
@@ -89,8 +103,8 @@ const Footer = () => {
       <div className="bg-[#135029] py-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between space-y-6 md:space-y-0">
           <div>
-            <p className="uppercase text-xs">Stay Up To Date</p>
-            <h2 className="text-xl">Subscribe to Our Newsletter</h2>
+            <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
+            <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
           <div className="flex gap-6">
             <button className="border pl-2 pr-16 text-start py-2 rounded-xl">Enter Your Email</button>

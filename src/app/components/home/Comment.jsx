@@ -26,7 +26,7 @@ const Comment = () => {
             <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
               COMMITMENT TO EXCELLENCE
             </h1>
-            <p className="max-w-2xl mt-6 font-Roboto text-[20px] md:text-[28px] text-[#454545] text-justify">
+            <p className="max-w-2xl mt-6 font-Roboto text-[20px] lg:text-[28px] text-[#454545] text-justify">
               At PHD, we are committed to transforming each holiday into a
               memorable experience, prioritizing our clients' comfort,
               enjoyment, and peace of mind from start to finish. When you travel
@@ -49,14 +49,14 @@ const Comment = () => {
 
       {/* Video Section */}
       <div
-        className=" bg-no-repeat bg-cover bg-center rounded h-[900px] flex items-center justify-center"
+        className=" bg-no-repeat bg-cover bg-center rounded h-[480px] md:h-[900px] flex items-center justify-center"
         style={{
           backgroundImage: "url(/videoBg.png)",
         }}
       >
 
 
-        <div className=" container mx-auto px-4  relative w-full  h-[700px] ">
+        <div className=" container mx-auto px-4  relative w-full h-[400px]  md:h-[700px] ">
           <video
             style={{ width: "100%", height: "100%" }}
             ref={videoRef}
