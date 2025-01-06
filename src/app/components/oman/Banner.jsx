@@ -14,7 +14,7 @@ const Banner = () => {
       </div>
       <div className="bg-[#135029] py-3">
         <div className="container mx-auto px-2">
-            <h2><Link className="cursor-pointer text-primary" href={'/'}>Home</Link><span className="px-2">/</span>Oman</h2>
+            <h2><Link className="cursor-pointer text-primary" href={'/'}>Home / </Link>Destination<span className="px-2">/</span>Oman</h2>
         </div>
       </div>
     </section>

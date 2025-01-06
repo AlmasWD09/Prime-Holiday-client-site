@@ -21,8 +21,8 @@ const DestinationLove = () => {
   ];
   return (
     <>
-      <section className="container mx-auto px-4 pt-10 pb-10 ">
-        <h2 className="text-primary font-Roboto text-[38px] font-semibold">
+      <section className="container mx-auto px-4 pt-[56px] pb-10 ">
+        <h2 className="text-primary font-Roboto text-[28px] font-medium">
           Destinations you'll love
         </h2>
 
@@ -41,7 +41,7 @@ const DestinationLove = () => {
                     />
                     <div className="bg-[#135029] text-white">
                       <div className="space-y-2">
-                        <h5 className="text-xl font-semibold">{ground.title1}</h5>
+                        <h5 className="text-[24px] font-bold">{ground.title1}</h5>
                         <h5>{ground.title2} <span className="font-bold text-primary">$2525</span></h5>
                       </div>
                       <div className="w-full pt-4">

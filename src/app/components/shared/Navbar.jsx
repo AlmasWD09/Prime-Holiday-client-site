@@ -128,9 +128,9 @@ const Navbar = () => {
                     </Link>
                   ))}
 
-                  <div class="relative group inline-block">
+                  <div className="relative group inline-block">
                     <p>Blogs</p>
-                    <div class="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[200px] py-1 -top-6 left-[40%] transform -translate-x-[10px] transition-opacity duration-300">
+                    <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[200px] py-1 -top-6 left-[40%] transform -translate-x-[10px] transition-opacity duration-300">
                       Comming Soon
                     </div>
                   </div>
@@ -153,11 +153,11 @@ const Navbar = () => {
           className="flex items-center ml-60 gap-8 lg:hidden cursor-pointer"
         >
           <Image
-            className="w-[178px] h-[63px]"
+            className=""
             src="/logo.png"
             alt="avater"
-            width={100}
-            height={100}
+            width={200}
+            height={200}
           />
         </Link>
 
@@ -167,7 +167,7 @@ const Navbar = () => {
             alt="nav logo"
             width={200}
             height={200}
-            className="w-[178px] h-[73px]"
+            className=""
           />
         </Link>
         {/* navlinks / center section end  */}

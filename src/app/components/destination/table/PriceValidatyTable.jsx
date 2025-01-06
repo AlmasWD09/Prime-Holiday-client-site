@@ -33,7 +33,7 @@ const PriceValidatyTable = () => {
             {/* Scroll Wrapper */}
             <div className="overflow-x-auto overflow-y-hidden max-w-full custom-scrollbar">
                 <div className="w-full">
-                    <table className="w-full min-w-max table-auto text-left mt-4">
+                    <table className="w-full min-w-max table-auto text-left mt-[24px]">
                         <thead>
                             <tr>
                                 {TABLE_HEAD.map((head, index) => (
@@ -41,7 +41,7 @@ const PriceValidatyTable = () => {
                                         <p
                                             variant="small"
                                             color="blue-gray"
-                                            className="font-bold text-xl"
+                                            className="text[20px] font-bold text-[#FFFFF0]"
                                         >
                                             {head}
                                         </p>
@@ -65,27 +65,27 @@ const PriceValidatyTable = () => {
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-semibold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-lg">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
                                             ${firstPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-semibold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-lg">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
                                             ${secondPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-semibold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-lg">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
                                             ${thirdPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-semibold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-lg">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
                                             ${fourPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-semibold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-lg">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
                                             ${singleSupliment}
                                         </p>
                                     </td>

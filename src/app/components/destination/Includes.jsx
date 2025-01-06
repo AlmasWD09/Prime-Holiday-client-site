@@ -99,14 +99,14 @@ const Includes = () => {
     };
     return (
         <>
-            <section className="container mx-auto px-4 lg:py-20">
-                <div className="p-6 border border-[#135029] border-opacity-20 rounded-lg">
+            <section className="container mx-auto px-4 pt-[56px]">
+                <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
                         {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
                             <button
                                 key={index}
                                 onClick={(event) => handleButtonClick(event, index)}
-                                className={`py-3 text-center text-lg font-bold border border-[#135029] text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-white" : ""
+                                className={`py-3 text-center text-[24px] font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-white " : ""
                                     }`}
                             >
                                 {label}
@@ -118,58 +118,56 @@ const Includes = () => {
                     {
                         buttonText === "INCLUDES & EXCLUDES" && <div>
                             <div className="flex justify-evenly bg-[#135029] py-4">
-                                <h3 className="text-white uppercase">Includes</h3>
-                                <h3 className="text-white uppercase">Excludes</h3>
+                                <h3 className="text-[24px] font-bold text-[#FFFFFF]">Includes</h3>
+                                <h3 className="text-[24px] font-bold text-[#FFFFFF]">Excludes</h3>
                             </div>
 
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
                                 {/* Includes Section */}
-                                <div className="lg:border-r border-[#135029] border-opacity-30">
+                                <div className="lg:border-r border-[#D1D1D1] border-opacity-30">
                                     <ul className="p-6 space-y-4 text-gray-800">
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Return Airport Transfers.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>8 Nights Hotel Accommodation in Selected Hotel Category.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">8 nights hotel accommodation in selected hotel category.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Meals Are Provided As Outlined In The Itinerary.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Meals are provided as outlined in the itinerary.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>
-                                                Full Day City Tour Of Muscat By Sedan Car/SUV/10 Seat Van By
-                                                English Speaking Guide.
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Full day city tour of Muscat by Sedan car/SUV/10 seat van by English speaking guide.
                                             </p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Desert Safari Tour.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Desert safari tour.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>
-                                                Round Trip Transfer From Day 3 To Day 8 By 4x4 Jeep (4 Pax Per
-                                                Jeep) With English Speaking Guide.
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Round trip transfer from day 3 to day 8 by 4x4 Jeep (4 pax per Jeep) with English speaking guide.
                                             </p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>
-                                                Visit To Amouage Perfume Factory By Car/SUV/Van With English
-                                                Speaking Guide.
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Visit to Amouage perfume factory by car/SUV/van with English speaking guide. 
                                             </p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Entrance Fee Wherever Applicable.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Entrance fee wherever applicable.
+                                            </p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>All Applicable Taxes.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">All applicable taxes. </p>
                                         </li>
                                     </ul>
                                 </div>
@@ -179,30 +177,48 @@ const Includes = () => {
                                     <ul className="p-6 space-y-4 text-gray-800">
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Air Fare.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Travel Insurance.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">8 nights hotel accommodation in selected hotel category.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Oman Visa.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Meals are provided as outlined in the itinerary.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>Meals Other Than What Is Included The Itinerary.</p>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Full day city tour of Muscat by Sedan car/SUV/10 seat van by English speaking guide.</p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>
-                                                Tours & Activities Other What Is Included In The Itinerary.
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Desert safari tour.
                                             </p>
                                         </li>
                                         <li className="flex items-start space-x-2">
                                             <span className="text-primary">&#9679;</span>
-                                            <p>
-                                                All Expenses Of Personal Nature Such As Laundry, Tips, Etc.
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Round trip transfer from day 3 to day 8 by 4x4 Jeep (4 pax per Jeep) with English speaking guide.
+                                            </p>
+                                        </li>
+                                        <li className="flex items-start space-x-2">
+                                            <span className="text-primary">&#9679;</span>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Visit to Amouage perfume factory by car/SUV/van with English speaking guide. 
+                                            </p>
+                                        </li>
+                                        <li className="flex items-start space-x-2">
+                                            <span className="text-primary">&#9679;</span>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            Entrance fee wherever applicable.
+                                            </p>
+                                        </li>
+                                        <li className="flex items-start space-x-2">
+                                            <span className="text-primary">&#9679;</span>
+                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
+                                            All applicable taxes.
                                             </p>
                                         </li>
                                     </ul>
@@ -218,7 +234,7 @@ const Includes = () => {
                     {
                         buttonText === "HOTELS" && <div>
                             <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
-                                <h2>Hotels</h2>
+                                <h2 className="text-[24px] font-bold">Hotels</h2>
                             </div>
                
                             <HotalTable />
@@ -231,10 +247,10 @@ const Includes = () => {
                     {
                         buttonText === "PRICE & VALIDITY" && <div>
                             <div className="py-3 text-center text-lg bg-[#135029] text-white">
-                                <h2 className="text-2xl font-semibold">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
+                                <h2 className="text-[24px] font-bold text-[#FFFFF0] pb-[16px]">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
                                 <div className="flex justify-between px-3">
-                                    <h2>Validity 01 Oct 2024 - 30 Apr 2025</h2>
-                                    <h2 className="text-red-500">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
+                                    <h2 className="text-[20px] font-medium">Validity 01 Oct 2024 - 30 Apr 2025</h2>
+                                    <h2 className="text-[#E15E59] text-[20px] font-medium">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
                                 </div>
                             </div>
  
@@ -258,12 +274,12 @@ const Includes = () => {
                                     Itinerarys.map((item, idx) => {
                                         return (
                                             <div key={idx} className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
-                                                <div className="flex justify-between text-[#135029] font-bold">
-                                                    <h4>{item.day}</h4>
-                                                    <h4>{item.lunchPeriod}</h4>
+                                                <div className="flex justify-between ">
+                                                    <h4 className="text-[24px] text-[#135029] font-bold">{item.day}</h4>
+                                                    <h4 className="text-[24px] text-[#135029] font-bold">{item.lunchPeriod}</h4>
                                                 </div>
                                                 <div>
-                                                    <p>{item.description} <span
+                                                    <p className="text-[18px] text-[#454545] font-medium">{item.description} <span
                                                         onClick={() => handleModalShow(item.id)}
                                                         className="text-primary font-semibold cursor-pointer">... Read more</span>
                                                     </p>
@@ -282,7 +298,7 @@ const Includes = () => {
                 <div className="flex justify-end mt-6">
                     <button
                         onClick={() => handleModal()}
-                        className="px-6 py-3 text-white bg-primary rounded-xl">
+                        className="px-6 py-3 text-[#FFFFFF] font-medium bg-primary rounded-xl font-Roboto">
                         ENQUIRE NOW
                     </button>
                     {/* modal component */}
