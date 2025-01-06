@@ -12,7 +12,7 @@ const Banner = () => {
       {/* Content */}
       <div className="relative z-10 grid justify-center items-center h-[356px] lg:h-[550px] text-white py-20 md:p-8">
         <div className="lg:pt-[15%]">
-          <h1 className=" text-center text-[24px] lg:text-[70px] text-primary font-semibold text-wrap  mb-5">
+          <h1 className=" text-center text-[24px] lg:text-[80px] text-primary text-wrap  mb-5">
             Your All-Inclusive Journey Starts Here
           </h1>
           <p className="text-[20px] md:text-[32px] font-bold w-[65%] mx-auto text-center">

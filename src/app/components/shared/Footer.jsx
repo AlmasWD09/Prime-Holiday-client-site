@@ -1,10 +1,5 @@
 "use client"
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
-import { FaWhatsapp } from "react-icons/fa";
-import { RiMessage2Line } from "react-icons/ri";
 import { useState } from "react";
 import Modal from "../modal/Modal";
 
@@ -23,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white"
+    <footer className="text-white font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
@@ -33,29 +28,29 @@ const Footer = () => {
       }}>
 
 
-      <section className="container mx-auto px-4 py-8  h-full">
+      <section className="container mx-auto px-4 py-10  h-full">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-[64px] font-Roboto font-semibold text-primary">Connect with us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-semibold text-primary">Connect with us</h1>
         </div>
         <div className="pt-10 space-y-20 md:space-y-0">
           {/* div onte */}
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 pb-4 text-primary">
-                <FaInstagram />
-                <FaFacebook />
-                <Image src="http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735185926/vsqrzow0aghuq7iskhmk.png" alt="icon" width={16} height={16} />
-                <FaFacebook />
+                <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
               </div>
               <div className="border-t py-4">
-                <GoLocation className="text-primary" />
+              <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p>65 Hartfield Crescent</p>
                 <p>Birmingham
                 </p>
                 <p>B27 7QE</p>
               </div>
               <div className="border-t pt-4">
-                <RiMessage2Line className="text-primary" />
+              <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p className="border-b pb-4">contact@primeholidaydestinations.com</p>
               </div>
             </div>
@@ -68,7 +63,7 @@ const Footer = () => {
           {/* div two */}
           <div className="flex flex-col md:flex-row justify-between pb-16 space-y-4 md:space-y-0">
             <div className=" pt-4">
-              <FaWhatsapp className="text-primary" />
+            <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
               <p>+44 7553 778086</p>
             </div>
             <div>
@@ -78,7 +73,7 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p>About | Destinations | Blog | Terms & Conditions | Privacy | Cancellation & Refund</p>
+              <p>About | Terms & Conditions | Privacy | Cancellation & Refund</p>
               <p>© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 

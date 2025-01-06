@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+ 
 import Image from "next/image";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -38,12 +38,12 @@ const Navbar = () => {
     },
     {
       path: "/destination",
-      title: "Destination",
+      title: "Destinations",
     },
-    {
-      path: "/oman",
-      title: "Oman",
-    },
+    // {
+    //   path: "/oman",
+    //   title: "Oman",
+    // },
     {
       path: "/about",
       title: "About Us",
@@ -52,18 +52,18 @@ const Navbar = () => {
       path: "/blog",
       title: "Blogs",
     },
-    {
-      path: "/conditions",
-      title: "Terms & Conditions",
-    },
-    {
-      path: "/privacy",
-      title: "Privacy Policy",
-    },
-    {
-      path: "/cancelation",
-      title: "Cancelation & Refund",
-    },
+    // {
+    //   path: "/conditions",
+    //   title: "Terms & Conditions",
+    // },
+    // {
+    //   path: "/privacy",
+    //   title: "Privacy Policy",
+    // },
+    // {
+    //   path: "/cancelation",
+    //   title: "Cancelation & Refund",
+    // },
   ];
   const handleDrawer = () => {
     setShowDrower(!showDrower);
@@ -84,7 +84,10 @@ const Navbar = () => {
 
   // Mobile device modal sidebar remove
   const handleMobileModal = () => {
-   console.log('clcik hoica...')
+    setMenu(false);
+    setShowDrower(false);
+    setModal(true);
+    setIsOpen(true);
   };
 
 
@@ -92,14 +95,14 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-green-800  drop-shadow bg-opacity-40 fixed w-full z-50 py-0 duration-150 transition-all"
+          ? "bg-[#135029] drop-shadow fixed w-full z-50 py-0 duration-150 transition-all"
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
-      <div className=" flex items-center justify-between container mx-auto px-4 ">
+      <div className=" flex items-center justify-between container mx-auto px-4">
         <div className="lg:hidden" onClick={() => setMenu(!getMenu)}>
           {getMenu ? (
-            <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
+            <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary " />
           ) : (
             <GiHamburgerMenu className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
           )}
@@ -115,7 +118,7 @@ const Navbar = () => {
           {/* ================================= drower show start ================================================================== */}
 
           {showDrower && (
-            <div className="absolute top-10 left-2 -20-left-0 w-[300px] bg-gray-300">
+            <div className="absolute top-10 left-2 -20-left-0 w-[300px] bg-[#fffff0] rounded-md">
               <div className="flex justify-between p-10">
                 <ul className=" flex flex-col gap-6">
                   {navLinks.map((item) => (
@@ -170,7 +173,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => handleModal()}
-                className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2"
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2"
               >
                 Enquire now
               </button>
@@ -200,7 +203,7 @@ const Navbar = () => {
           <div className="flex flex-col gap-4 mt-4">
             <div className="flex items-center gap-4">
               <button
-                onClick={() => handleMobileModal}
+                onClick={() => handleMobileModal()}
                 className="border border-primary rounded-xl hover:bg-primary uppercase px-6 py-2"
               >
                 Enquire now
@@ -208,6 +211,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        {/* modal component */}
+      {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
       </div>
       {/* modal component */}
       {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}

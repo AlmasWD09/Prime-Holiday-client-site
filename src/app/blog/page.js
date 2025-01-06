@@ -23,7 +23,7 @@ const BlogPage = () => {
         <HolidayInspiration />
       </div> */}
       <div className="h-screen flex  justify-center items-center">
-        <h className="text-xl md:text-4xl font-bold text-primary">Comming Soon!!</h>
+        <h1 className="text-xl md:text-4xl font-bold text-primary">Comming Soon!!</h1>
       </div>
     </>
   );

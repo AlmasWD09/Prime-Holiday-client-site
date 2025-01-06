@@ -19,14 +19,14 @@ const Comment = () => {
 
   return (
     <>
-      <section className="max-w-6xl px-4 mx-auto py-20">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+      <section className="container mx-auto px-4 py-20 ">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
           {/* Left side content */}
-          <div className="w-full">
-            <h1 className="font-semibold text-primary text-2xl md:text-4xl">
+          <div className="w-full ">
+            <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
               COMMITMENT TO EXCELLENCE
             </h1>
-            <p className="max-w-xl mt-6 font-Roboto">
+            <p className="max-w-2xl mt-6 font-Roboto">
               At PHD, we are committed to transforming each holiday into a
               memorable experience, prioritizing our clients' comfort,
               enjoyment, and peace of mind from start to finish. When you travel
@@ -38,7 +38,7 @@ const Comment = () => {
 
           {/* Right side image */}
           <Image
-            className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] w-[500px]"
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] md:w-[350px] lg:w-[440px]"
             src="/comment.png"
             alt="comment"
             width={500}
@@ -54,7 +54,9 @@ const Comment = () => {
           backgroundImage: "url(/videoBg.png)",
         }}
       >
-        <div className=" container mx-auto  relative w-full h-[700px] p-4 ">
+
+
+        <div className=" container mx-auto px-4  relative w-full  h-[700px] ">
           <video
             style={{ width: "100%", height: "100%" }}
             ref={videoRef}
@@ -66,7 +68,7 @@ const Comment = () => {
             controls={false} // Hide default controls
           />
           {!isPlaying && (
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center rounded-md">
+            <div className="absolute inset-0 bg-black bg-opacity-30 mx-4 flex items-center justify-center rounded-md">
               <button
                 onClick={handlePlayPause}
                 className="text-white text-4xl"

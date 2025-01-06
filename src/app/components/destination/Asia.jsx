@@ -34,13 +34,13 @@ const Asia = () => {
               width={500}
               height={500}
             />
-            <div className="absolute z-10 w-full  bottom-10 text-center p-3 bg-[#B0B0B0] bg-opacity-30 text-white flex justify-center">
+            <div className="absolute z-10  w-[98%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
               <div className="flex text-start z-20">
                 <div>
                   <FaLocationDot className="text-2xl pt-2" />
                 </div>
                 <div>
-                  <h5 className="text-2xl font-bold uppercase">Kerala</h5>
+                  <h5 className="font-bold uppercase">Kerala</h5>
                   <h5 className="font-bold">God's Own Country</h5>
                 </div>
               </div>

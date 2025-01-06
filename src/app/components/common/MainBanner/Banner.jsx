@@ -6,7 +6,7 @@ import Link from "next/link";
 const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
   return (
     <section
-      className="relative w-full h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-black bg-opacity-50 bg-center mb-20 text-white"
+      className="relative w-full h-[456px] lg:h-[850px] text-white"
       style={{
         backgroundImage: `url('${url}')`,
         backgroundSize: "cover",
@@ -17,17 +17,17 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-center text-[24px] lg:text-[70px] text-primary font-semibold text-wrap" style={{ fontFamily: 'MyFont, sans-serif' }}>
+      <div className="flex flex-col justify-center items-center h-full  w-[94%] lg:w-[88%] mx-auto">
+        <h1 className="text-center text-[22px] sm:text-[26px] md:text-[48px] lg:text-[60px] xl:text-[80px] text-primary font-semibold text-wrap" style={{ fontFamily: 'MyFont, sans-serif' }}>
           {title}
         </h1>
-        <p className="text-[20px] md:text-[32px] font-bold lg:w-[40%] w-full mx-auto text-center">
+        <p className="xl:max-w-[680px] max-w-[300px] sm:max-w-full mx-auto sm:text-[22px] md:text-[40px] lg:text-[48px] xl:text-[36px] font-semibold  text-center">
           {subtitle}
         </p>
       </div>
       {Breadcrumb && (
         <div className="bg-[#135029] py-3">
-          <div className="container mx-auto px-2 flex">
+          <div className="container mx-auto px-2">
             {Breadcrumb?.map((item, index) => {
               return (
                 <div key={index} className="flex items-center">
