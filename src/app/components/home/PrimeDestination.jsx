@@ -21,10 +21,12 @@ const PrimeDestination = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);  
   
+  console.log('rounds',grounds)
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("/Destination.json");
+       
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -97,7 +99,7 @@ const PrimeDestination = () => {
           {grounds.map((ground, idx) => (
             <SwiperSlide key={idx}>
               <Link
-                href={`/destination/${idx}`}
+                href={`/destination/${ground?.id}`}
                 className="relative  cursor-pointer"
               >
                 <Image

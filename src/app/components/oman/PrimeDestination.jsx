@@ -25,13 +25,13 @@ const PrimeDestination = () => {
     return (
         <>
             <section className="container mx-auto px-4 pt-20">
-                <h2 className="text-primary font-Roboto text-[38px] font-semibold">Oman Packages </h2>
+                <h2 className="text-primary font-Roboto text-[28px] font-medium">Oman Packages </h2>
                  <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
                           {
                             grounds.map((ground, idx) => {
                               return (
                                 <div key={idx}>
-                                  <div className="relative max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
+                                  <div className="relative bg-[#135029] p-4 rounded-xl space-y-4">
                                     <Image
                                       className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
                                       src={ground.image}
@@ -41,7 +41,7 @@ const PrimeDestination = () => {
                                     />
                                     <div className="bg-[#135029] text-white">
                                       <div className="space-y-2">
-                                        <h5 className="">{ground.title1}</h5>
+                                        <h5 className="text-[24px] font-Roboto">{ground.title1}</h5>
                                         <h5>{ground.title2} <span className="font-bold text-primary">$5656.00</span></h5>
                                       </div>
                                       <div className="w-full pt-4">

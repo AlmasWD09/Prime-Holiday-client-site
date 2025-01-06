@@ -6,15 +6,6 @@ import Footer from "../components/shared/Footer";
 import Navbar from "../components/shared/Navbar";
 import ScrollTopButton from "../components/shared/ScrollTopButton";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Prime Holiday Destinations",
@@ -24,14 +15,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
  
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      <div
+        className={` antialiased`}
       >
         <Navbar />
         {children}
         <Footer />
         <ScrollTopButton />
-      </body>
+      </div>
  
   );
 }

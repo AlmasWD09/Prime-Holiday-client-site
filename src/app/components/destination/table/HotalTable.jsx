@@ -78,7 +78,7 @@ const HotalTable = () => {
                                         <p
                                             variant="small"
                                             color="blue-gray"
-                                            className="font-bold text-xl"
+                                            className="font-bold text-[20px] text-[#135029]"
                                         >
                                             {head}
                                         </p>
@@ -90,27 +90,27 @@ const HotalTable = () => {
                             {TABLE_ROWS.map(({ name, job, romType01, romType02, superior }, index) => (
                                 <tr key={index} className="even:bg-[#ffe3bd]">
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-normal">
+                                        <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
                                             {name}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-normal">
+                                        <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
                                             {job}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-normal">
+                                        <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
                                             {romType01}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p as="a" href="#" variant="small" color="blue-gray" className="font-medium">
+                                        <p as="a" href="#" variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
                                             {superior}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p as="a" href="#" variant="small" color="blue-gray" className="font-medium">
+                                        <p as="a" href="#" variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
                                             {romType02}
                                         </p>
                                     </td>
