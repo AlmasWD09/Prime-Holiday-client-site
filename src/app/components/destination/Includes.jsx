@@ -215,7 +215,7 @@ const Includes = () => {
 
 
                     {/* =============== Hotel Tab start =========================== */}
-                    {/* {
+                    {
                         buttonText === "HOTELS" && <div>
                             <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
                                 <h2>Hotels</h2>
@@ -223,7 +223,7 @@ const Includes = () => {
                
                             <HotalTable />
                         </div>
-                    } */}
+                    }
                     {/* =============== Hotel Tab end ============================= */}
 
 

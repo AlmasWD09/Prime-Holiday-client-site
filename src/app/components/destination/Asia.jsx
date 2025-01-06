@@ -29,7 +29,7 @@ const Asia = () => {
               width={500}
               height={500}
             />
-            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+            <div className="absolute z-10  w-[98%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
               <div className="flex text-start z-20">
                 <div>
                   <FaLocationDot className="text-2xl pt-2" />
@@ -64,7 +64,7 @@ const Asia = () => {
                 </h2>
                 <div>
                   <h5 className="text-[24px] font-bold font-Roboto ">Oman</h5>
-                  <h5 className="text-[16px] font-medium">Beauty has an address</h5>
+                  <h5 className="text-[16px] font-medium">Beauty Has an Address</h5>
                 </div>
               </div>
             </div>
