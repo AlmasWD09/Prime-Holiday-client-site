@@ -27,7 +27,6 @@ const Footer = () => {
         backgroundSize: "cover"
       }}>
 
-
       <section className="container mx-auto px-4 py-10  h-full">
         <div className="flex justify-center">
           <h1 className="text-[36px] md:text-5xl font-Roboto font-semibold text-primary">Connect with us</h1>
