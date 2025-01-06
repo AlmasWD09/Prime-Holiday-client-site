@@ -228,7 +228,7 @@ const Includes = () => {
 
 
                     {/* =============== Price & Validity Tab start =========================== */}
-                    {/* {
+                    {
                         buttonText === "PRICE & VALIDITY" && <div>
                             <div className="py-3 text-center text-lg bg-[#135029] text-white">
                                 <h2 className="text-2xl font-semibold">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
@@ -241,7 +241,7 @@ const Includes = () => {
                             <PriceValidatyTable />
                         </div>
 
-                    } */}
+                    }
                     {/* =============== Price & Validity Tab end ============================= */}
 
 

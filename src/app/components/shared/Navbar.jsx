@@ -158,7 +158,7 @@ const Navbar = () => {
             alt="avater"
             width={100}
             height={100}
-            />
+          />
         </Link>
 
         <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer ">
