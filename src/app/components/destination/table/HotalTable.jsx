@@ -121,5 +121,4 @@ const HotalTable = () => {
         </div>
     );
 };
-
 export default HotalTable;
