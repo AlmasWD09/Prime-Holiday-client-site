@@ -1,5 +1,5 @@
 "use client"
-import { Card, Typography } from "@material-tailwind/react";
+// import { Card, Typography } from "@material-tailwind/react";
 
 const HotalTable = () => {
     const TABLE_HEAD = ["City", "4* Standard Hotel", "Room Type", "4* Superior Hotel", "Room Type"];

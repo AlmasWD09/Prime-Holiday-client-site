@@ -19,16 +19,12 @@ const PrimeDestination = () => {
     {
       image: "/primeDestination03.png",
       title1: "Zanzibar",
-      title2: "Spice Spiceland",
+      title2: "Spice Island",
     },
   ];
   return (
     <>
       <section className="container mx-auto px-4 pt-24">
-        <h2 className="text-primary font-Roboto text-2xl md:text-[48px] font-bold">
-          Prime Destinations
-        </h2>
-
         <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
           {grounds.map((ground, idx) => {
