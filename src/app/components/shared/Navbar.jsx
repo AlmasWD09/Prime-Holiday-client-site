@@ -92,7 +92,7 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-[#135029] drop-shadow fixed w-full z-50 py-0 duration-150 transition-all"
+          ? "bg-[#135029] drop-shadow fixed w-full z-50 duration-150 transition-all py-2"
           : " fixed w-full z-50 py-4 transition-all duration-150 "
       }
     >
@@ -153,12 +153,12 @@ const Navbar = () => {
           className="flex items-center ml-60 gap-8 lg:hidden cursor-pointer"
         >
           <Image
-            className=""
+            className="w-[178px] h-[63px]"
             src="/logo.png"
             alt="avater"
             width={100}
             height={100}
-          />
+            />
         </Link>
 
         <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer ">

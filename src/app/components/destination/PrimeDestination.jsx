@@ -9,12 +9,12 @@ const PrimeDestination = () => {
     {
       image: "/primeDestination01.png",
       title1: "Egypt",
-      title2: "The Gift of the Nile",
+      title2: "The Gift of The Nile",
     },
     {
       image: "/primeDestination02.png",
       title1: "Morocco",
-      title2: "Land of Light",
+      title2: "Land Of Light",
     },
     {
       image: "/primeDestination03.png",
@@ -45,8 +45,8 @@ const PrimeDestination = () => {
                         <FaLocationDot className="text-2xl pt-2" />
                       </div>
                       <div>
-                        <h2>{ground.title1}</h2>
-                        <h2>{ground.title2}</h2>
+                        <h2 className="text-[24px] font-bold font-Roboto">{ground.title1}</h2>
+                        <h2 className="text-[16px] font-medium">{ground.title2}</h2>
                       </div>
                     </div>
                   </div>
