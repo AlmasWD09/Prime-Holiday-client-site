@@ -3,6 +3,10 @@ import "./globals.css";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
+import Footer from "./components/shared/Footer";
+import Navbar from "./components/shared/Navbar";
+import ScrollTopButton from "./components/shared/ScrollTopButton";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,11 +29,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fffff0]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-    
+        <Navbar />
         {children}
-   
+        <Footer />
+        <ScrollTopButton />
       </body>
     </html>
   );

@@ -1,13 +1,11 @@
 
 "use client"
-import { PiShareFat } from "react-icons/pi";
-import { GiSelfLove } from "react-icons/gi";
-import { FcRating } from "react-icons/fc";
+
 import ReadMoreModal from "../modal/ReadMoreModal";
 import { useState } from "react";
 import HotalTable from "./table/HotalTable";
 import PriceValidatyTable from "./table/PriceValidatyTable";
-import ModalPage from "../modal/Modal";
+import ModalPage from "../modal/Modal"; 
 
 
 

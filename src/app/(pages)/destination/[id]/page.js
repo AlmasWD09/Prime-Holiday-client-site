@@ -7,7 +7,7 @@ import Immersition from "@/app/components/destination/Immersition";
 import Includes from "@/app/components/destination/Includes";
 
 const DestinationDetails = ({params}) => {
-  
+  console.log(params, 'details page')
   return (
     <div className="pb-10">
       <Banner />
