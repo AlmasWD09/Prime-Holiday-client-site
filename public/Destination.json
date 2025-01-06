@@ -3,42 +3,42 @@
     "id": 1,
     "image": "/prime01.png",
     "title1": "Morocco",
-    "title2": "Land of light"
+    "title2": "Land of Light"
   },
   {
     "id": 2,
     "image": "/prime02.png",
     "title1": "Sri Lanka",
-    "title2": "You will come back for more"
+    "title2": "You Will Come Back For More"
   },
   {
     "id": 3,
     "image": "/prime01.png",
     "title1": "Oman",
-    "title2": "Land of light"
+    "title2": "Land of Light"
   },
   {
     "id": 4,
     "image": "/prime01.png",
     "title1": "Zanzibar",
-    "title2": "You will come back for more"
+    "title2": "You Will Come Back For More"
   },
   {
     "id": 5,
     "image": "/prime01.png",
     "title1": "Egypt",
-    "title2": "You will come back for more"
+    "title2": "You Will Come Back For More"
   },
   {
     "id": 6,
     "image": "/prime01.png",
     "title1": "Morocco",
-    "title2": "Land of light"
+    "title2": "Land of Light"
   },
   {
     "id": 7,
-    "image": "/prime02.png",
-    "title1": "Morocco",
-    "title2": "You will come back for more"
+    "image": "/prime01.png",
+    "title1": "Egypt",
+    "title2": "You Will Come Back For More"
   }
 ]

@@ -162,7 +162,7 @@ const Navbar = () => {
             alt="nav logo"
             width={200}
             height={200}
-            className={`object-contain ${navbar ? "h-16" : "h-20"}`}
+            className="w-[178px] h-[73px]"
           />
         </Link>
         {/* navlinks / center section end  */}
@@ -173,7 +173,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => handleModal()}
-                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2"
+                className="text-[18px] font-bold font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] px-4 py-2"
               >
                 Enquire now
               </button>
@@ -204,7 +204,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => handleMobileModal()}
-                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2"
+                className="text-[18px] font-bold font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] px-4 py-2"
               >
                 Enquire now
               </button>

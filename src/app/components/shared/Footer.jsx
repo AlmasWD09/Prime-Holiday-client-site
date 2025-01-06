@@ -30,7 +30,7 @@ const Footer = () => {
 
       <section className="container mx-auto px-4 py-10  h-full">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-5xl font-Roboto font-semibold text-primary">Connect with us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect with us</h1>
         </div>
         <div className="pt-10 space-y-20 md:space-y-0">
           {/* div onte */}
@@ -57,7 +57,7 @@ const Footer = () => {
             <div className="">
               <button
                 onClick={() => handleModal()}
-                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
+                className="text-[18px] font-bold font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] px-4 py-2">Enquire now</button>
             </div>
           </div>
           {/* div two */}
