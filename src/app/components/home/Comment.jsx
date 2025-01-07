@@ -24,7 +24,7 @@ const Comment = () => {
           {/* Left side content */}
           <div className="w-full ">
             <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
-              COMMITMENT TO EXCELLENCE
+            Commitment To Excellence
             </h1>
             <p className="max-w-2xl mt-6 font-Roboto text-[20px] lg:text-[28px] text-[#454545] text-justify">
               At PHD, we are committed to transforming each holiday into a

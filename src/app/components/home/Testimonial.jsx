@@ -7,7 +7,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { FaQuoteLeft } from "react-icons/fa";
 import Image from "next/image";
 
 const Testimonial = () => {
@@ -56,7 +55,7 @@ const Testimonial = () => {
           {/* left side content */}
           <div className=" w-full ">
             <h1 className="font-bold text-primary text-2xl lg:text-5xl">
-              TESTIMONIALS OF SATISFACTION
+            Testimonials Of Satisfaction
             </h1>
             <p className="max-w-3xl mt-6 font-Roboto text-[20px] lg:text-[28px] text-[#454545]">
             The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.

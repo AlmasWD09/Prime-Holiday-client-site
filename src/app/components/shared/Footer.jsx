@@ -19,7 +19,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white font-Roboto"
+    <footer className="text-[#FFFFF0] font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
@@ -30,7 +30,7 @@ const Footer = () => {
 
       <section className="container mx-auto px-4 py-10  h-full">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect with us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect With Us</h1>
         </div>
         <div className="pt-10  md:space-y-0">
           {/* div onte */}
@@ -64,7 +64,7 @@ const Footer = () => {
               </div>
               <div className="border-t pt-4">
               <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0]">contact@primeholidaydestinations.com</p>
+                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-4">contact@primeholidaydestinations.com</p>
               </div>
             </div>
             <div className="">
