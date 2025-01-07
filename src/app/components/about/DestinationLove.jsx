@@ -25,7 +25,7 @@ const DestinationLove = () => {
   return (
     <>
       <section className="container mx-auto px-4 pt-10 pb-10">
-        <h2 className="text-primary font-Roboto text-2xl md:text-[28px] font-medium">Destinations you'll love</h2>
+        <h2 className="text-primary font-Roboto text-2xl md:text-[28px] font-medium">Destinations You’ll Love</h2>
 
         {/* ************** */}
         <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
@@ -41,9 +41,9 @@ const DestinationLove = () => {
                       width={300}
                       height={300}
                     />
-                    <div className="bg-[#135029] text-white">
+                    <div className="bg-[#135029] text-[#FFFFF0]">
                       <div className="space-y-2">
-                        <h5 className="text-[24px] font-Roboto">{ground.title1}</h5>
+                        <h5 className="text-[24px] font-bold font-Roboto">{ground.title1}</h5>
                         <h5>{ground.title2} <span className="font-bold text-primary">$2525</span></h5>
                       </div>
                       <div className="w-full pt-4">
