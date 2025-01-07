@@ -129,8 +129,8 @@ const Navbar = () => {
                   ))}
 
                   <div className="relative group inline-block">
-                    <p>Blogs</p>
-                    <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[200px] py-1 -top-6 left-[40%] transform -translate-x-[10px] transition-opacity duration-300">
+                    <p className="text-[#4545458a]">Blogs</p>
+                    <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[150px] py-1 -top-1 left-[80%] transform -translate-x-[10px] transition-opacity duration-300">
                       Comming Soon
                     </div>
                   </div>
@@ -148,6 +148,7 @@ const Navbar = () => {
           {/* ================================= drower show end ================================================================== */}
         </div>
 
+        {/* for small device.. */}
         <Link
           href={"/"}
           className="flex items-center ml-60 gap-8 lg:hidden cursor-pointer"
@@ -162,13 +163,7 @@ const Navbar = () => {
         </Link>
 
         <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer ">
-          <Image
-            src="/logo.png"
-            alt="nav logo"
-            width={200}
-            height={200}
-            className=""
-          />
+         <Image src="/logo.png" alt="nav logo" width={300} height={300}  className="w-[358px] h-[198px]"/>
         </Link>
         {/* navlinks / center section end  */}
 
