@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { FaLocationDot } from "react-icons/fa6"
 
 const PrimeDestination = () => {
     const grounds = [
@@ -18,7 +17,7 @@ const PrimeDestination = () => {
         {
 
             image: "https://i.ibb.co.com/vJ5rW1J/Luxury-Oman-photo-1.png",
-            title1: "7 Days From $5656.00",
+            title1: "Luxury Oman",
             title2: "7 Days From"
         },
     ]
@@ -39,9 +38,9 @@ const PrimeDestination = () => {
                                       width={300}
                                       height={300}
                                     />
-                                    <div className="bg-[#135029] text-white">
+                                    <div className="bg-[#135029] text-[#FFFFF0]">
                                       <div className="space-y-2">
-                                        <h5 className="text-[24px] font-Roboto">{ground.title1}</h5>
+                                        <h5 className="text-[24px] font-Roboto font-bold">{ground.title1}</h5>
                                         <h5>{ground.title2} <span className="font-bold text-primary">$5656.00</span></h5>
                                       </div>
                                       <div className="w-full pt-4">

@@ -1,7 +1,4 @@
 
-
-import { Geist, Geist_Mono } from "next/font/google";
-
 import Footer from "../components/shared/Footer";
 import Navbar from "../components/shared/Navbar";
 import ScrollTopButton from "../components/shared/ScrollTopButton";
