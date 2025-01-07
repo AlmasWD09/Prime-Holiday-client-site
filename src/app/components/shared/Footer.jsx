@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="flex justify-center">
           <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect with us</h1>
         </div>
-        <div className="pt-10 space-y-20 md:space-y-0">
+        <div className="pt-10  md:space-y-0">
           {/* div onte */}
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
