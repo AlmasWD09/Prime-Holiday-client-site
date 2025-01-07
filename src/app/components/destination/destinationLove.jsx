@@ -1,4 +1,4 @@
-"use client";
+
 import Image from "next/image";
 
 const DestinationLove = () => {
@@ -20,7 +20,6 @@ const DestinationLove = () => {
     },
   ];
   return (
-    <>
       <section className="container mx-auto px-4 pt-[56px] pb-10 ">
         <h2 className="text-primary font-Roboto text-[28px] font-medium">
           Destinations you'll love
@@ -55,7 +54,7 @@ const DestinationLove = () => {
           }
         </div>
       </section>
-    </>
+  
   );
 };
 

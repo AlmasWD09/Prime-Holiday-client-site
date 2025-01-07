@@ -6,10 +6,10 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Asia = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [tamName, setTabName] = useState("Includes & Excludes");
+  // const [tamName, setTabName] = useState("Includes & Excludes");
   
   return (
-    <>
+
       <div className="pt-20">
         
         <h1 className="text-primary text-xl font-bold py-2">Asia</h1>
@@ -127,7 +127,7 @@ const Asia = () => {
           </div>
         </div>
       </div>
-    </>
+   
   );
 };
 
