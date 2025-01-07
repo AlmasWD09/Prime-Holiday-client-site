@@ -10,13 +10,16 @@ const Asia = () => {
   
   return (
 
-      <div className="pt-20">
-        
+      <div className="pt-6 lg:pt-20">
         <h1 className="text-primary text-xl font-bold py-2">Asia</h1>
+
+
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
           {/* First Card (2 rows, 2 columns) */}
           <div
-            className="relative lg:col-span-3 h-full lg:h-[600px] overflow-hidden  rounded-xl"
+            className="relative w-full lg:col-span-3 h-full lg:h-[600px] overflow-hidden  rounded-xl"
             onMouseEnter={() => setHoveredIndex(0)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -29,7 +32,7 @@ const Asia = () => {
               width={500}
               height={500}
             />
-            <div className="absolute z-10  w-[98%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+            <div className="absolute z-10 w-[94%] md:w-[96%] lg:w-[97%] bottom-3 lg:bottom-5 left-1/2 transform -translate-x-1/2 p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white">
               <div className="flex text-start z-20">
                 <div>
                   <FaLocationDot className="text-2xl pt-2" />
@@ -41,6 +44,18 @@ const Asia = () => {
               </div>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* second Card (1 row, 1 column) */}
           <div

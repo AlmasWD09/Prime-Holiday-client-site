@@ -24,21 +24,21 @@ const PrimeDestination = () => {
   ];
   return (
     <>
-      <section className="container mx-auto px-4 pt-24">
+      <section className="container mx-auto px-4 pt-16 md:pt-20">
         <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
           {grounds.map((ground, idx) => {
             return (
               <div key={idx}>
-                <div className="relative max-w-md -z-10">
+                <div className="relative -z-10">
                   <Image
-                    className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
+                    className="object-cover object-center w-full h-96 lg:h-96 rounded-xl"
                     src={ground.image}
                     alt={ground.title1}
                     width={300}
                     height={300}
                   />
-
+                  
                   <div className="absolute z-10  w-[93%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
                     <div className="flex text-start z-20">
                       <div>
