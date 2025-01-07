@@ -5,12 +5,12 @@ const DestinationLove = () => {
   const grounds = [
     {
       image: "/photo01.png",
-      title1: "Immersion in cultural Qatar",
+      title1: "Luxury of Morocco",
       title2: "7 Days From",
     },
     {
       image: "/photo02.png",
-      title1: "Luxury of Morocco",
+      title1: "Immersion in cultural Qatar",
       title2: "7 Days From",
     },
     {

@@ -21,7 +21,6 @@ const PrimeDestination = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);  
   
-  console.log('rounds',grounds)
   useEffect(() => {
     const fetchData = async () => {
       try {
