@@ -183,7 +183,7 @@ const Navbar = () => {
 
       {/* mobile responsive section  */}
       <div
-        className={`h-screen overflow-y-auto w-full lg:hidden  absolute z-[9999]   transition-all bg-white ease-in-out duration-300 transform ${getMenu ? "translate-x-0" : "-translate-x-full"
+        className={`h-screen overflow-y-auto w-full lg:hidden  absolute z-[9999]  transition-all bg-[#fffff0] ease-in-out duration-300 transform ${getMenu ? "translate-x-0" : "-translate-x-full"
           }`}
       >
         <div className="p-10 ">

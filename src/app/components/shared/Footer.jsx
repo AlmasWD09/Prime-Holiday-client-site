@@ -38,49 +38,56 @@ const Footer = () => {
             <div>
               <div className="flex gap-4 pb-4 text-primary">
                 <Link href={'https://www.instagram.com/'}>
-                <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                  <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
                 <Link href={'https://developers.facebook.com/docs/facebook-login/'}>
-                <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                  <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
                 <Link href={'https://www.paypal.com/bd/home'}>
-                <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                  <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
                 <Link href={'https://www.videolan.org/'}>
-                <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                  <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
-                
-                
-                
+
+
+
               </div>
               <div className="border-t py-4">
-              <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">65 Hartfield Crescent</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Birmingham
                 </p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">B27 7QE</p>
               </div>
               <div className="border-t pt-4">
-              <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-4">contact@primeholidaydestinations.com</p>
               </div>
             </div>
             <div className="">
               <button
                 onClick={() => handleModal()}
-                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2">Enquire now</button>
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2 hidden md:block">Enquire now</button>
             </div>
           </div>
           {/* div two */}
           <div className="flex flex-col md:flex-row justify-between  space-y-4 md:space-y-0">
             <div className=" pt-4">
-            <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+              <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">+44 7553 778086</p>
             </div>
+            {/* small/laptob device for */}
+            <div className="">
+              <button
+                onClick={() => handleModal()}
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2 md:hidden">Enquire now</button>
+            </div>
+
             <div>
-              <Image src="/logo.png" alt="nav logo" width={200} height={200}  className="w-[358px] h-[198px]"/>
+              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px]"/>
             </div>
           </div>
           {/* div three */}
