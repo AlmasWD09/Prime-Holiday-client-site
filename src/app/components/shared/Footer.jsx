@@ -53,7 +53,6 @@ const Footer = () => {
                 </Link>
 
 
-
               </div>
               <div className="border-t py-4">
                 <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
