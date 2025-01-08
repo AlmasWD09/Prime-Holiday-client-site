@@ -82,11 +82,11 @@ const Footer = () => {
             <div className="">
               <button
                 onClick={() => handleModal()}
-                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2 md:hidden">Enquire now</button>
+                className="font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] text-xs font-semibold px-3 py-2 md:py-3 md:text-[18px] md:hidden">Enquire now</button>
             </div>
 
             <div>
-              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px]"/>
+              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px] object-contain"/>
             </div>
           </div>
           {/* div three */}

@@ -97,12 +97,37 @@ const Navbar = () => {
       }
     >
       <div className=" flex items-center justify-between container mx-auto px-4 ">
-        <div className="lg:hidden" onClick={() => setMenu(!getMenu)} >
-          {getMenu ? (
-            <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary " />
-          ) : (
-            <GiHamburgerMenu className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
-          )}
+        <div className="lg:hidden flex justify-center items-center w-full" onClick={() => setMenu(!getMenu)} >
+          <div className="w-[30%] ">
+            {getMenu ? (
+              <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary " />
+            ) : (
+              <GiHamburgerMenu className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
+            )}
+          </div>
+          <div className="w-[30%] flex justify-center mr-8 md:mr-0">
+            <Link
+              href={"/"}
+              className="flex items-center lg:hidden cursor-pointer "
+            >
+              <Image
+                src="/logo.png"
+                alt="avater"
+                width={100}
+                height={100}
+                className="w-[108px] md:w-[358px] md:h-[108px] object-cover md:object-contain lg:object-cover"
+              />
+            </Link>
+          </div>
+
+
+          <div className="w-[40%] flex justify-end items-center">
+            <button
+              onClick={() => handleModal()}
+              className="font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] text-xs font-semibold px-3 py-2 md:py-3 md:text-[18px]">
+              Enquire now
+            </button>
+          </div>
         </div>
 
         {/* left section  */}
@@ -138,7 +163,7 @@ const Navbar = () => {
                 </ul>
                 <div
                   onClick={() => setShowDrower(false)}
-                  className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"
+                  className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer "
                 >
                   <IoCloseSharp className="text-xl text-white w-10 h-10 p-2" />
                 </div>
@@ -149,21 +174,37 @@ const Navbar = () => {
         </div>
 
         {/* for small device.. */}
-        <Link
+        {/* <Link
           href={"/"}
-          className="flex items-center ml-[180px] md:ml-[520px] lg:hidden cursor-pointer "
+          className="flex items-center lg:hidden cursor-pointer "
         >
           <Image
             src="/logo.png"
             alt="avater"
-            width={200}
-            height={200}
-            className="w-[158px] md:h-[100px] object-cover"
+            width={100}
+            height={100}
+            className="w-[108px] md:h-[100px] object-cover"
           />
+
+
         </Link>
+        <div className="lg:hidden flex justify-between gap-8 ">
+          <button
+            onClick={() => handleMobileModal()}
+            className=" w-full border border-primary text-primary hover:text-white rounded-xl hover:bg-primary text-[12px] font-Roboto uppercase font-semibold px-2 py-2"
+          >
+            Enquire now
+          </button>
+        </div> */}
+
+
+
+
+
+
 
         <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer ">
-         <Image src="/logo.png" alt="nav logo" width={300} height={300}  className="w-[358px] h-[198px]"/>
+          <Image src="/logo.png" alt="nav logo" width={300} height={300} className="w-[358px] h-[198px]" />
         </Link>
         {/* navlinks / center section end  */}
 
@@ -181,12 +222,25 @@ const Navbar = () => {
         </div>
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* mobile responsive section  */}
       <div
         className={`h-screen overflow-y-auto w-full lg:hidden  absolute z-[9999]  transition-all bg-[#fffff0] ease-in-out duration-300 transform ${getMenu ? "translate-x-0" : "-translate-x-full"
           }`}
       >
-        <div className="p-10 ">
+        <div className="p-10">
           <ul className=" flex flex-col gap-6">
             {navLinks.map((item) => (
               <Link
@@ -199,13 +253,19 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex flex-col gap-4 mt-4">
-            <div className="w-full flex justify-center items-center gap-4">
+            {/* <div className="w-full flex justify-center items-center gap-4">
               <button
                 onClick={() => handleMobileModal()}
                 className="w-full border border-primary text-primary hover:text-white rounded-xl hover:bg-primary uppercasetext-[18px] font-Roboto uppercase font-bold py-2"
               >
                 Enquire now
               </button>
+            </div> */}
+            <div className="relative group inline-block">
+              <p className="text-[#4545458a]">Blogs</p>
+              <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[150px] py-1 -top-1 left-[20%] transform -translate-x-[10px] transition-opacity duration-300">
+                Comming Soon
+              </div>
             </div>
           </div>
         </div>
