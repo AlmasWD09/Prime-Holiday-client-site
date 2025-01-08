@@ -49,19 +49,19 @@ const Comment = () => {
 
       {/* Video Section */}
       <div
-        className=" bg-no-repeat bg-cover bg-center rounded h-[480px] md:h-[900px] flex items-center justify-center"
+        className=" bg-no-repeat bg-cover bg-center rounded h-[380px] lg:h-[900px] flex items-center justify-center"
         style={{
           backgroundImage: "url(/videoBg.png)",
         }}
       >
 
 
-        <div className=" container mx-auto px-4  relative w-full h-[400px]  md:h-[700px] ">
+        <div className=" container mx-auto px-4  relative w-full h-[300px]  lg:h-[700px] ">
           <video
             style={{ width: "100%", height: "100%" }}
             ref={videoRef}
             src="/video01.mp4" // Correct path to the video
-            className="w-full h-56 object-cover rounded-md"
+            className="w-full h-56 object-contain rounded-md"
             onClick={handlePlayPause}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
