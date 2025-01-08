@@ -49,26 +49,26 @@ const Comment = () => {
 
       {/* Video Section */}
       <div
-        className=" bg-no-repeat bg-cover bg-center rounded-md h-[400px] md:h-[500px] lg:h-[800px] flex items-center justify-center"
+        className=" bg-no-repeat bg-cover bg-center rounded h-[380px] lg:h-[900px] flex items-center justify-center"
         style={{
           backgroundImage: "url(/videoBg.png)",
         }}
       >
 
 
-        <div className=" container mx-auto px-4  relative w-full h-[300px]  md:h-[400px] lg:h-[700px] ">
+        <div className=" container mx-auto px-4  relative w-full h-[300px]  lg:h-[700px] ">
           <video
             style={{ width: "100%", height: "100%" }}
             ref={videoRef}
             src="/video01.mp4" // Correct path to the video
-            className="w-full  object-contain rounded-md"
+            className="w-full h-56 object-contain rounded-md"
             onClick={handlePlayPause}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             controls={false} // Hide default controls
           />
           {!isPlaying && (
-            <div className="absolute inset-0 bg-black bg-opacity-30 mx-4 md:mx-7 lg:mx-4 xl:mx-[145px] flex items-center justify-center rounded-md">
+            <div className="absolute inset-0 bg-black bg-opacity-30 mx-4 flex items-center justify-center rounded-md">
               <button
                 onClick={handlePlayPause}
                 className="text-white text-4xl"
