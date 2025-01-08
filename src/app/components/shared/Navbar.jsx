@@ -92,7 +92,7 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-[#135029] drop-shadow fixed w-full z-50 duration-150 transition-all py-2 "
+          ? "bg-[#135029] drop-shadow fixed w-full z-50 duration-150 transition-all"
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
@@ -100,16 +100,16 @@ const Navbar = () => {
         <div className="lg:hidden flex justify-center items-center w-full" onClick={() => setMenu(!getMenu)} >
           <div className="w-[30%] ">
             {getMenu ? (
-              <IoCloseSharp className="text-xl text-white w-10 h-10 p-2 hover:text-primary " />
+              <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2 hover:text-primary " />
             ) : (
-              <GiHamburgerMenu className="text-xl text-white w-10 h-10 p-2 hover:text-primary" />
+              <GiHamburgerMenu className="text-xl text-[#FFFFF0] w-10 h-10 p-2 hover:text-primary" />
             )}
           </div>
-          <div className="w-[30%] flex justify-center mr-8 md:mr-0">
             <Link
               href={"/"}
               className="flex items-center lg:hidden cursor-pointer "
             >
+          <div className="w-[30%] flex justify-center mr-8 md:mr-0">
               <Image
                 src="/logo.png"
                 alt="avater"
@@ -117,8 +117,8 @@ const Navbar = () => {
                 height={100}
                 className="w-[108px] md:w-[358px] md:h-[108px] object-cover md:object-contain lg:object-cover"
               />
-            </Link>
           </div>
+            </Link>
 
 
           <div className="w-[40%] flex justify-end items-center">
@@ -134,13 +134,13 @@ const Navbar = () => {
         <div className="relative hidden lg:block ">
           <GiHamburgerMenu
             onClick={() => handleDrawer()}
-            className=" text-xl text-white  w-10 h-10 p-2 cursor-pointer hover:text-primary"
+            className=" text-xl text-[#FFFFF0] w-[55px] h-[55px] p-2 cursor-pointer hover:text-primary"
           />
 
           {/* ================================= drower show start ================================================================== */}
 
           {showDrower && (
-            <div className="absolute top-10 left-2 -20-left-0 w-[300px] bg-[#fffff0] rounded-md ">
+            <div className="absolute top-14 left-2 -20-left-0 w-[300px] bg-[#fffff0] rounded-md ">
               <div className="flex justify-between p-10 ">
                 <ul className=" flex flex-col gap-6">
                   {navLinks.map((item) => (
@@ -155,7 +155,7 @@ const Navbar = () => {
 
                   <div className="relative group inline-block">
                     <p className="text-[#4545458a]">Blogs</p>
-                    <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[150px] py-1 -top-1 left-[80%] transform -translate-x-[10px] transition-opacity duration-300">
+                    <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-[#FFFFF0]  rounded flex justify-center w-[150px] py-1 -top-1 left-[80%] transform -translate-x-[10px] transition-opacity duration-300">
                       Comming Soon
                     </div>
                   </div>
@@ -165,7 +165,7 @@ const Navbar = () => {
                   onClick={() => setShowDrower(false)}
                   className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer "
                 >
-                  <IoCloseSharp className="text-xl text-white w-10 h-10 p-2" />
+                  <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2" />
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@ const Navbar = () => {
         <div className="lg:hidden flex justify-between gap-8 ">
           <button
             onClick={() => handleMobileModal()}
-            className=" w-full border border-primary text-primary hover:text-white rounded-xl hover:bg-primary text-[12px] font-Roboto uppercase font-semibold px-2 py-2"
+            className=" w-full border border-primary text-primary hover:text-[#FFFFF0] rounded-xl hover:bg-primary text-[12px] font-Roboto uppercase font-semibold px-2 py-2"
           >
             Enquire now
           </button>
@@ -256,14 +256,14 @@ const Navbar = () => {
             {/* <div className="w-full flex justify-center items-center gap-4">
               <button
                 onClick={() => handleMobileModal()}
-                className="w-full border border-primary text-primary hover:text-white rounded-xl hover:bg-primary uppercasetext-[18px] font-Roboto uppercase font-bold py-2"
+                className="w-full border border-primary text-primary hover:text-[#FFFFF0] rounded-xl hover:bg-primary uppercasetext-[18px] font-Roboto uppercase font-bold py-2"
               >
                 Enquire now
               </button>
             </div> */}
             <div className="relative group inline-block">
               <p className="text-[#4545458a]">Blogs</p>
-              <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-white  rounded flex justify-center w-[150px] py-1 -top-1 left-[20%] transform -translate-x-[10px] transition-opacity duration-300">
+              <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-[#FFFFF0]  rounded flex justify-center w-[150px] py-1 -top-1 left-[20%] transform -translate-x-[10px] transition-opacity duration-300">
                 Comming Soon
               </div>
             </div>

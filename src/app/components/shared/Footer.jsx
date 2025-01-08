@@ -63,7 +63,7 @@ const Footer = () => {
               </div>
               <div className="border-t pt-4">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-4">contact@primeholidaydestinations.com</p>
+                <a href="#" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-4">contact@primeholidaydestinations.com</a>
               </div>
             </div>
             <div className="">
@@ -101,7 +101,7 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div><p className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</p></div>
+              <div><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
             </div>
           </div>
         </div>
@@ -112,9 +112,9 @@ const Footer = () => {
             <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
             <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
-          <div className="flex gap-6">
-            <button className="border pl-2 pr-16 text-start py-2 rounded-xl">Enter Your Email</button>
-            <button className="border px-4 py-2 uppercase rounded-xl">Subscribe</button>
+          <div className="flex gap-[16px]">
+            <button className="border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center">Enter Your Email</button>
+            <button className="border text-start rounded-xl w-[103px] h-[35px] py-[10px] pl-[16px] flex items-center">Subscribe</button>
           </div>
         </div>
       </div>
