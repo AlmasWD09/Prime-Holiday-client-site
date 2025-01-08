@@ -92,8 +92,8 @@ const Navbar = () => {
     <nav
       className={
         navbar
-          ? "bg-[#135029] drop-shadow fixed w-full z-50 duration-150 transition-all py-2"
-          : " fixed w-full z-50 py-4 transition-all duration-150 "
+          ? "bg-[#135029] drop-shadow fixed w-full z-50 duration-150 transition-all py-2 "
+          : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
       <div className=" flex items-center justify-between container mx-auto px-4 ">
@@ -151,14 +151,14 @@ const Navbar = () => {
         {/* for small device.. */}
         <Link
           href={"/"}
-          className="flex items-center ml-60 gap-8 lg:hidden cursor-pointer"
+          className="flex items-center ml-[180px] md:ml-[520px] lg:hidden cursor-pointer "
         >
           <Image
-            className=""
             src="/logo.png"
             alt="avater"
             width={200}
             height={200}
+            className="w-[158px] md:h-[100px] object-cover"
           />
         </Link>
 
