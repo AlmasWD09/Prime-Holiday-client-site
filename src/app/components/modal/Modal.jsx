@@ -193,7 +193,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               {/* Your Message */}
               <div className="md:mb-4">
                 <label htmlFor="message" className="block text-sm font-medium">
-                  Your Message*
+                  Your Enquiry*
                 </label>
                 <textarea
                   id="message"

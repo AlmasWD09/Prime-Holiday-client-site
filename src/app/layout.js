@@ -1,3 +1,4 @@
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import '../styles/fonts.css';
 import "./globals.css";
 
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
         className={` antialiased bg-[#fffff0]`}
       >
     
-        {children}
+    <AntdRegistry>{children}</AntdRegistry>
    
       </body>
     </html>

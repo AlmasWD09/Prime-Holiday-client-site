@@ -28,15 +28,15 @@ const Footer = () => {
         backgroundSize: "cover"
       }}>
 
-      <section className="container mx-auto px-4 pt-10 pb-20 md:pt-20 md:pb-20 h-full">
+      <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary">Connect With Us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary pt-[54px]">Connect With Us</h1>
         </div>
         <div className="pt-10  md:space-y-0">
           {/* div onte */}
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
-              <div className="flex gap-4 pb-4 text-primary">
+              <div className="flex gap-4 border-b pb-[16px] text-primary">
                 <Link href={'https://www.instagram.com/'}>
                   <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
@@ -54,18 +54,20 @@ const Footer = () => {
 
 
               </div>
-              <div className="border-t py-4">
-                <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+
+              <div className="border-b py-[16px]">
+                <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">65 Hartfield Crescent</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Birmingham
                 </p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">B27 7QE</p>
               </div>
-              <div className="border-t pt-4">
-                <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
-                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-4">contact@primeholidaydestinations.com</p>
+              <div className="pt-[16px]">
+                <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
+                <a href="#" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
               </div>
             </div>
+
             <div className="">
               <button
                 onClick={() => handleModal()}
@@ -74,8 +76,8 @@ const Footer = () => {
           </div>
           {/* div two */}
           <div className="flex flex-col md:flex-row justify-between  space-y-4 md:space-y-0">
-            <div className=" pt-4">
-              <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+            <div className="pt-[16px]">
+              <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">+44 7553 778086</p>
             </div>
             {/* small/laptob device for */}
@@ -101,20 +103,26 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div><p className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</p></div>
+              <div><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
             </div>
           </div>
+
+
+
         </div>
       </section>
-      <div className="bg-[#135029] py-6">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between space-y-6 md:space-y-0">
+
+
+
+      <div className="bg-[#135029] py-[24px]">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div>
             <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
             <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
-          <div className="flex gap-6">
-            <button className="border pl-2 pr-16 text-start py-2 rounded-xl">Enter Your Email</button>
-            <button className="border px-4 py-2 uppercase rounded-xl">Subscribe</button>
+          <div className="flex gap-[16px]">
+            <button className="border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center">Enter Your Email</button>
+            <button className="border text-start rounded-xl w-[103px] h-[35px] py-[10px] pl-[16px] flex items-center">Subscribe</button>
           </div>
         </div>
       </div>
