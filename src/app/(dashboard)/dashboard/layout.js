@@ -1,25 +1,15 @@
 "use client"
 import React from 'react';
-import { Layout, Menu, } from 'antd';
-import { FaHouseMedical } from 'react-icons/fa6';
-const { Header, Content, Footer, Sider } = Layout;
+import { Layout, } from 'antd';
+import Sidebar from '@/app/components/dashboard/sidebar/Sidebar';
+const { Content, Sider } = Layout;
 
-
-const items = [...Array(4)].map(
-  (icon, index) => ({
-    key: String(index + 1),
-    icon: <FaHouseMedical />,
-    label: `nav ${index + 1}`,
-  }),
-);
-
-
-const DashboardLayout = () => {
+const DashboardLayout = ({ children }) => {
 
   return (
     <Layout>
       <Sider
-      className="w-[354px] h-screen !bg-red-800"
+        className="w-[354px] h-screen fixed"
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -29,40 +19,19 @@ const DashboardLayout = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+        {/* sidebar component */}
+        <Sidebar />
       </Sider>
-      
+
       <Layout>
-        {/* <Header
-          style={{
-            padding: 0,
-            background: "white",
-          }}
-        /> */}
-        <Content
-          style={{
-            margin: '24px 16px 0',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: "gray",
-              borderRadius: 45,
-            }}
-          >
-            content
+
+
+        <Content>
+          <div className='min-h-screen bg-[#FFFFFF]'>
+            {children}
           </div>
         </Content>
-        {/* <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer> */}
+
       </Layout>
     </Layout>
   );

@@ -12,13 +12,11 @@ export const metadata = {
 export default function layout({ children }) {
   return (
  
-      <div
-        className={` antialiased`}
-      >
+      <div>
         <Navbar />
         {children}
         <Footer />
-        <ScrollTopButton />
+        {/* <ScrollTopButton /> */}
       </div>
  
   );

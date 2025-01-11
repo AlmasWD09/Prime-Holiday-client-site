@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Modal from "../modal/Modal";
 import Link from "next/link";
+import ScrollTopButton from "./ScrollTopButton";
 
 
 
@@ -19,14 +20,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-[#FFFFF0] font-Roboto"
+    <footer  className="text-[#FFFFF0] font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
-      }}>
+      }}
+      >
 
       <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full">
         <div className="flex justify-center">
@@ -106,12 +108,11 @@ const Footer = () => {
               <div><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
             </div>
           </div>
-
-
-
         </div>
       </section>
 
+{/* scroll button */}
+<ScrollTopButton />
 
 
       <div className="bg-[#135029] py-[24px]">

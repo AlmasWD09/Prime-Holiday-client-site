@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
       <body
         className={` antialiased bg-[#fffff0]`}
       >
-    
-    <AntdRegistry>{children}</AntdRegistry>
-   
+
+        <AntdRegistry>{children}</AntdRegistry>
+
       </body>
     </html>
   );
