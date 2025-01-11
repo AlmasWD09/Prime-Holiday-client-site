@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Modal from "../modal/Modal";
 import Link from "next/link";
+import ScrollTopButton from "./ScrollTopButton";
 
 
 
@@ -19,16 +20,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-[#FFFFF0] font-Roboto"
+    <footer  className="relative text-[#FFFFF0] font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
-      }}>
+      }}
+      >
 
-      <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full">
+      <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full ">
         <div className="flex justify-center">
           <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary pt-[54px]">Connect With Us</h1>
         </div>
@@ -103,15 +105,16 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
+              <div className="md:pb-16 lg:pb-0"><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
             </div>
           </div>
-
-
-
         </div>
       </section>
 
+{/* scroll button */}
+<div className="absolute w-full flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
+<ScrollTopButton />
+</div>
 
 
       <div className="bg-[#135029] py-[24px]">
