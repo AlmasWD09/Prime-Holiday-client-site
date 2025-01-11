@@ -134,7 +134,7 @@ const Navbar = () => {
         <div className="relative hidden lg:block col-span-1">
           <GiHamburgerMenu
             onClick={() => handleDrawer()}
-            className=" text-xl text-[#FFFFF0] w-[55px] h-[55px] cursor-pointer hover:text-primary"
+            className=" text-xl text-[#FFFFF0] w-[40px] h-[40px] cursor-pointer hover:text-primary"
           />
 
           {/* ================================= drower show start ================================================================== */}
@@ -199,7 +199,7 @@ const Navbar = () => {
 
 
 
-        <div className="col-span-1 flex justify-center pt-10">
+        <div className="col-span-1 flex justify-center pt-8">
         <Link href={"/"} className="hidden lg:flex cursor-pointer">
           <Image src="/logo.png" alt="nav logo" width={300} height={300} className="h-[180px] object-contain" />
         </Link>
