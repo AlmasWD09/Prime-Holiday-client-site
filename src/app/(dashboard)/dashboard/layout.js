@@ -1,22 +1,70 @@
-import Sidebar from "@/app/components/dashboard/sidebar/Sidebar";
+"use client"
+import React from 'react';
+import { Layout, Menu, } from 'antd';
+import { FaHouseMedical } from 'react-icons/fa6';
+const { Header, Content, Footer, Sider } = Layout;
 
-export const metadata = {
-  title: 'Dashboard',
-  description: 'Dashboard layout for the application',
-};
 
-export default function DashboardLayout({ children }) {
+const items = [...Array(4)].map(
+  (icon, index) => ({
+    key: String(index + 1),
+    icon: <FaHouseMedical />,
+    label: `nav ${index + 1}`,
+  }),
+);
+
+
+const DashboardLayout = () => {
+
   return (
-    <div className="grid grid-cols-8">
-    {/* Sidebar */}
-    <div className="bg-red-300 h-screen overflow-y-hidden">
-      <Sidebar />
-    </div>
-
-    {/* Outlet */}
-    <div className="col-span-7 bg-green-400">
-    {children}
-    </div>
-  </div>
+    <Layout>
+      <Sider
+      className="w-[354px] h-screen !bg-red-800"
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className="demo-logo-vertical" />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+      </Sider>
+      
+      <Layout>
+        {/* <Header
+          style={{
+            padding: 0,
+            background: "white",
+          }}
+        /> */}
+        <Content
+          style={{
+            margin: '24px 16px 0',
+          }}
+        >
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: "gray",
+              borderRadius: 45,
+            }}
+          >
+            content
+          </div>
+        </Content>
+        {/* <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer> */}
+      </Layout>
+    </Layout>
   );
-}
+};
+export default DashboardLayout;
