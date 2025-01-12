@@ -19,6 +19,10 @@ const Footer = () => {
     setIsOpen(true);
   };
 
+  const handleSubmit = () =>{
+    console.log('click hoica')
+  }
+
   return (
     <footer className="relative text-[#FFFFF0] font-Roboto"
       style={{
@@ -115,7 +119,7 @@ const Footer = () => {
       </section>
 
       {/* scroll button */}
-      <div className="absolute w-full flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
+      <div className="absolute w-fit flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
         <ScrollTopButton />
       </div>
 
@@ -126,9 +130,12 @@ const Footer = () => {
             <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
             <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
-          <div className="flex gap-[16px]">
-            <button className="border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center">Enter Your Email</button>
-            <button className="border text-start rounded-xl w-[103px] h-[35px] py-[10px] pl-[16px] flex items-center">Subscribe</button>
+          <div>
+            {/* Email form */}
+           <form  onSubmit={handleSubmit} className="flex gap-[16px]">
+           <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center"/>
+           <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit px-[16px] flex items-center cursor-pointer"/>
+           </form>
           </div>
         </div>
       </div>
