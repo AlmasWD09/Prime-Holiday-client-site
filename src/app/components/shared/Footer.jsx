@@ -39,19 +39,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 border-b pb-[16px] text-primary">
-                <Link href={'https://www.instagram.com/'}>
+                <Link href={'https://www.instagram.com/phdbyrizmali'}>
                   <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
-                <Link href={'https://developers.facebook.com/docs/facebook-login/'}>
+                <Link href={'https://www.facebook.com/phdbyrizmali'}>
                   <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
-                <Link href={'https://www.paypal.com/bd/home'}>
-                  <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Link href={'https://www.pinterest.com/phdbyrizmali'}>
+                  <Image src="/logo/pinterest.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
-                <Link href={'https://www.videolan.org/'}>
-                  <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Link href={'https://www.youtube.com/phdbyrizmali'}>
+                  <Image src="/logo/youtube.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
 
@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
               <div className="pt-[16px]">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
-                <a href="#" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
+                <a href="mailto:contact@primeholidaydestinations.com" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
               </div>
             </div>
 
@@ -105,7 +105,10 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div className="md:pb-16 lg:pb-0"><a href="/@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
+              <div className="md:pb-16 lg:pb-0 flex justify-end items-center gap-2">
+                 <p>Colour palette inspired by</p>
+                 <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0]">@thehousewiththepinkbed</a>
+                 </div>
             </div>
           </div>
         </div>

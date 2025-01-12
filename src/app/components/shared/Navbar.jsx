@@ -199,9 +199,9 @@ const Navbar = () => {
 
 
 
-        <div className="col-span-1 flex justify-center pt-8">
+        <div className="col-span-1 flex justify-center pt-12">
         <Link href={"/"} className="hidden lg:flex cursor-pointer">
-          <Image src="/logo.png" alt="nav logo" width={300} height={300} className="h-[180px] object-contain" />
+          <Image src="/logo.png" alt="nav logo" width={300} height={300} className="h-[170px] object-contain" />
         </Link>
         </div>
      
