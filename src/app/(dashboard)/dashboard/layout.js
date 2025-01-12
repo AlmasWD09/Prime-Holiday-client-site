@@ -28,7 +28,7 @@ const DashboardLayout = ({ children }) => {
 
 
         <Content>
-          <div className='min-h-screen bg-[#FFFFFF]'>
+          <div className='bg-[#FFFFFF]'>
             {children}
           </div>
         </Content>
