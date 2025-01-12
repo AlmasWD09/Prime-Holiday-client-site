@@ -96,7 +96,7 @@ const Navbar = () => {
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
-      <div className=" flex items-center justify-between container mx-auto px-4 ">
+      <div className="grid grid-cols-3 justify-between items-center container mx-auto px-4 ">
         <div className="lg:hidden flex justify-center items-center w-full" onClick={() => setMenu(!getMenu)} >
           <div className="w-[30%] ">
             {getMenu ? (
@@ -131,10 +131,10 @@ const Navbar = () => {
         </div>
 
         {/* left section  */}
-        <div className="relative hidden lg:block ">
+        <div className="relative hidden lg:block col-span-1">
           <GiHamburgerMenu
             onClick={() => handleDrawer()}
-            className=" text-xl text-[#FFFFF0] w-[55px] h-[55px] p-2 cursor-pointer hover:text-primary"
+            className=" text-xl text-[#FFFFF0] w-[40px] h-[40px] cursor-pointer hover:text-primary"
           />
 
           {/* ================================= drower show start ================================================================== */}
@@ -199,16 +199,15 @@ const Navbar = () => {
 
 
 
-
-
-
-
-        <Link href={"/"} className="hidden lg:flex pt-2 cursor-pointer ">
-          <Image src="/logo.png" alt="nav logo" width={300} height={300} className="w-[358px] h-[198px]" />
+        <div className="col-span-1 flex justify-center pt-12">
+        <Link href={"/"} className="hidden lg:flex cursor-pointer">
+          <Image src="/logo.png" alt="nav logo" width={300} height={300} className="h-[170px] object-contain" />
         </Link>
+        </div>
+     
         {/* navlinks / center section end  */}
 
-        <div className="flex items-center gap-2 lg:gap-6 ">
+        <div className="lg:gap-6 col-span-1 flex justify-end">
           {/* button start  */}
           <div className="group relative hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-4">
@@ -221,6 +220,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+
 
 
 
@@ -279,3 +280,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

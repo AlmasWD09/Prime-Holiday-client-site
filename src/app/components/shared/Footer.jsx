@@ -19,8 +19,12 @@ const Footer = () => {
     setIsOpen(true);
   };
 
+  const handleSubmit = () =>{
+    console.log('click hoica')
+  }
+
   return (
-    <footer  className="relative text-[#FFFFF0] font-Roboto"
+    <footer className="relative text-[#FFFFF0] font-Roboto"
       style={{
         backgroundImage: "url(/footer.png)",
         // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
@@ -28,7 +32,7 @@ const Footer = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
       }}
-      >
+    >
 
       <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full ">
         <div className="flex justify-center">
@@ -39,19 +43,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 border-b pb-[16px] text-primary">
-                <Link href={'https://www.instagram.com/'}>
+                <Link href={'https://www.instagram.com/phdbyrizmali'}>
                   <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
-                <Link href={'https://developers.facebook.com/docs/facebook-login/'}>
+                <Link href={'https://www.facebook.com/phdbyrizmali'}>
                   <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
-                <Link href={'https://www.paypal.com/bd/home'}>
-                  <Image src="/logo/paypal.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Link href={'https://www.pinterest.com/phdbyrizmali'}>
+                  <Image src="/logo/pinterest.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
-                <Link href={'https://www.videolan.org/'}>
-                  <Image src="/logo/play.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                <Link href={'https://www.youtube.com/phdbyrizmali'}>
+                  <Image src="/logo/youtube.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
 
@@ -66,7 +70,7 @@ const Footer = () => {
               </div>
               <div className="pt-[16px]">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
-                <a href="#" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
+                <a href="mailto:contact@primeholidaydestinations.com" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
               </div>
             </div>
 
@@ -90,7 +94,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px] object-contain"/>
+              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px] object-contain" />
             </div>
           </div>
           {/* div three */}
@@ -105,16 +109,19 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div className="md:pb-16 lg:pb-0"><a href="#" className="text-[16px] font-Roboto text-[#FFFFF0]">Colour palette inspired by @thehousewiththepinkbed</a></div>
+              <div className="md:pb-16 lg:pb-0 flex justify-end items-center gap-2">
+                 <p>Colour palette inspired by</p>
+                 <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0]">@thehousewiththepinkbed</a>
+                 </div>
             </div>
           </div>
         </div>
       </section>
 
-{/* scroll button */}
-<div className="absolute w-full flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
-<ScrollTopButton />
-</div>
+      {/* scroll button */}
+      <div className="absolute w-fit flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
+        <ScrollTopButton />
+      </div>
 
 
       <div className="bg-[#135029] py-[24px]">
@@ -123,9 +130,12 @@ const Footer = () => {
             <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
             <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
-          <div className="flex gap-[16px]">
-            <button className="border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center">Enter Your Email</button>
-            <button className="border text-start rounded-xl w-[103px] h-[35px] py-[10px] pl-[16px] flex items-center">Subscribe</button>
+          <div>
+            {/* Email form */}
+           <form  onSubmit={handleSubmit} className="flex gap-[16px]">
+           <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center"/>
+           <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit px-[16px] flex items-center cursor-pointer"/>
+           </form>
           </div>
         </div>
       </div>
