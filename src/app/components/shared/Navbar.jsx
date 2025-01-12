@@ -96,37 +96,16 @@ const Navbar = () => {
           : " fixed w-full z-50 py-4 transition-all duration-150"
       }
     >
-      <div className="grid grid-cols-3 justify-between items-center container mx-auto px-4 ">
-        <div className="lg:hidden flex justify-center items-center w-full" onClick={() => setMenu(!getMenu)} >
-          <div className="w-[30%] ">
+      <div className="grid grid-cols-3 justify-between items-center container mx-auto px-4 h-[70px] md:h-full ">
+
+        {/* menu */}
+        <div className="lg:hidden " onClick={() => setMenu(!getMenu)} >
+          <div className="">
             {getMenu ? (
-              <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2 hover:text-primary " />
+              <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 hover:text-primary " />
             ) : (
-              <GiHamburgerMenu className="text-xl text-[#FFFFF0] w-10 h-10 p-2 hover:text-primary" />
+              <GiHamburgerMenu className="text-xl text-[#FFFFF0] w-10 h-10 hover:text-primary" />
             )}
-          </div>
-            <Link
-              href={"/"}
-              className="flex items-center lg:hidden cursor-pointer "
-            >
-          <div className="w-[30%] flex justify-center mr-8 md:mr-0">
-              <Image
-                src="/logo.png"
-                alt="avater"
-                width={100}
-                height={100}
-                className="w-[108px] md:w-[358px] md:h-[108px] object-cover md:object-contain lg:object-cover"
-              />
-          </div>
-            </Link>
-
-
-          <div className="w-[40%] flex justify-end items-center">
-            <button
-              onClick={() => handleModal()}
-              className="font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] text-xs font-semibold px-3 py-2 md:py-3 md:text-[18px]">
-              Enquire now
-            </button>
           </div>
         </div>
 
@@ -173,11 +152,10 @@ const Navbar = () => {
           {/* ================================= drower show end ================================================================== */}
         </div>
 
-        {/* for small device.. */}
-        {/* <Link
-          href={"/"}
-          className="flex items-center lg:hidden cursor-pointer "
-        >
+        {/* image*/}
+       <div className="flex justify-center items-center lg:hidden cursor-pointer pt-3">
+       <Link
+          href={"/"}>
           <Image
             src="/logo.png"
             alt="avater"
@@ -185,19 +163,20 @@ const Navbar = () => {
             height={100}
             className="w-[108px] md:h-[100px] object-cover"
           />
-
-
         </Link>
-        <div className="lg:hidden flex justify-between gap-8 ">
+       </div>
+
+       {/* button */}
+        <div className="lg:hidden flex justify-end ">
           <button
             onClick={() => handleMobileModal()}
-            className=" w-full border border-primary text-primary hover:text-[#FFFFF0] rounded-xl hover:bg-primary text-[12px] font-Roboto uppercase font-semibold px-2 py-2"
+            className=" w-fit border border-primary text-primary hover:text-[#FFFFF0] rounded-xl hover:bg-primary text-[12px] font-Roboto uppercase font-semibold px-2 py-2"
           >
             Enquire now
           </button>
-        </div> */}
+        </div>
 
-
+ 
 
         <div className="col-span-1 flex justify-center pt-12">
         <Link href={"/"} className="hidden lg:flex cursor-pointer">
