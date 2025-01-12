@@ -82,15 +82,9 @@ const Footer = () => {
           </div>
           {/* div two */}
           <div className="flex flex-col md:flex-row justify-between  space-y-4 md:space-y-0">
-            <div className="pt-[16px]">
+            <div className="md:pt-[16px]">
               <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">+44 7553 778086</p>
-            </div>
-            {/* small/laptob device for */}
-            <div className="">
-              <button
-                onClick={() => handleModal()}
-                className="font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] text-xs font-semibold px-3 py-2 md:py-3 md:text-[18px] md:hidden">Enquire now</button>
             </div>
 
             <div>
@@ -104,12 +98,12 @@ const Footer = () => {
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 
-            <div className="md:text-end space-y-4">
+            <div className="md:text-end space-y-4 md:pb-10 2xl:pb-0">
               <div>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div className="md:pb-16 lg:pb-0 flex justify-end items-center gap-2">
+              <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
                  <p>Colour palette inspired by</p>
                  <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0]">@thehousewiththepinkbed</a>
                  </div>
@@ -119,22 +113,22 @@ const Footer = () => {
       </section>
 
       {/* scroll button */}
-      <div className="absolute w-fit flex justify-end right-[30px] md:right-[35px] bottom-[160px] md:bottom-[130px] lg:right-[120px] lg:bottom-[150px]">
+      <div className="absolute w-fit flex justify-end right-[30px] md:right-[16px] bottom-[240px] md:bottom-[185px] lg:bottom-[120px] 2xl:right-[120px] 2xl:bottom-[150px]">
         <ScrollTopButton />
       </div>
 
 
       <div className="bg-[#135029] py-[24px]">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row md:justify-between lg:items-center gap-8">
           <div>
             <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
             <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
           <div>
             {/* Email form */}
-           <form  onSubmit={handleSubmit} className="flex gap-[16px]">
+           <form  onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-[16px] ">
            <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center"/>
-           <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit px-[16px] flex items-center cursor-pointer"/>
+           <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit h-[35px] 4xl:h-0 px-[16px]  flex items-center cursor-pointer"/>
            </form>
           </div>
         </div>
