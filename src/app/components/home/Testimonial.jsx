@@ -54,7 +54,7 @@ const Testimonial = () => {
 
           {/* left side content */}
           <div className=" w-full ">
-            <h1 className="font-bold text-primary text-2xl lg:text-5xl">
+            <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
             Testimonials Of Satisfaction
             </h1>
             <p className="max-w-3xl mt-6 font-Roboto text-[20px] lg:text-[28px] text-[#454545]">

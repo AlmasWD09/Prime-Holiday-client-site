@@ -166,6 +166,9 @@ const Navbar = () => {
         </Link>
        </div>
 
+        
+      
+
        {/* button */}
         <div className="lg:hidden flex justify-end ">
           <button
