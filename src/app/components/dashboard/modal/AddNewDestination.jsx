@@ -40,35 +40,39 @@ const AddNewDestination = () => {
 
     // Handle Form Submission
     const handleSubmit = async (values) => {
-        if (!uploadedImage) {
-            message.error('Please upload an image before saving!');
-            return;
-        }
+        console.log(values)
+        // if (!uploadedImage) {
+        //     message.error('Please upload an image before saving!');
+        //     return;
+        // }
 
-        const formData = {
-            continent: values.continent,
-            countryName: values.countryName,
-            image: uploadedImage,
-        };
+        // const formData = {
+        //     continent: values.continent,
+        //     countryName: values.countryName,
+        //     image: uploadedImage,
+        // };
 
-        console.log('Form Data:', formData);
+        // console.log('Form Data:', formData);
 
-        try {
-            const response = await axios.post(
-                'https://your-backend-api-endpoint.com/api/destination', 
-                formData
-            );
-            message.success('Destination added successfully!');
-            console.log('Response:', response.data);
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            message.error('Failed to add destination. Please try again.');
-        }
+
+
+        // try {
+        //     const response = await axios.post(
+        //         'https://your-backend-api-endpoint.com/api/destination', 
+        //         formData
+        //     );
+        //     message.success('Destination added successfully!');
+        //     console.log('Response:', response.data);
+        // } catch (error) {
+        //     console.error('Error submitting form:', error);
+        //     message.error('Failed to add destination. Please try again.');
+        // }
     };
 
     return (
         <div className="relative">
-            <div className="max-w-7xl mx-auto my-8 fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 pt-10 md:pt-0 border">
+             <div className="fixed inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50">
+            <div className="max-w-5xl mx-auto my-16 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
                 <div className="w-full m-8">
                     <Form
                         onFinish={handleSubmit}
@@ -140,6 +144,8 @@ const AddNewDestination = () => {
                         </Form.Item>
                     </Form>
                 </div>
+
+            </div>
             </div>
         </div>
     );

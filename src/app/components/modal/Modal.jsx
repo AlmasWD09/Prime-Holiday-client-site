@@ -64,7 +64,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                 <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2" />
               </div>
             </button>
-            <h2 className="text-2xl font-semibold text-center mb-6">
+            <h2 className="text-2xl text-primary font-semibold text-center mb-6">
               Enquiry Form
             </h2>
 
@@ -80,7 +80,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     name="title"
                     value={formData.title}
                     onChange={handleInputChange}
-                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                    className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                   >
                     <option>Mr.</option>
                     <option>Ms.</option>
@@ -102,7 +102,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                    placeholder="Enter your first name"
+                    className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                   />
                 </div>
                 <div>
@@ -119,7 +120,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                    placeholder="Enter your last name"
+                    className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                   />
                 </div>
               </div>
@@ -137,7 +139,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                    placeholder="Enter your email"
+                    className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                   />
                 </div>
                 <div>
@@ -154,7 +157,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                     value={formData.telephone}
                     onChange={handleInputChange}
                     required
-                    className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                    placeholder="Enter your telephone"
+                    className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                   />
                 </div>
               </div>
@@ -201,8 +205,9 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  placeholder="Enter your Message"
                   rows={window.innerWidth < 768 ? 2 : 4}
-                  className="md:mt-1 block w-full border border-[#135029] outline-none p-1 md:p-2"
+                  className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
                 ></textarea>
               </div>
 
@@ -225,7 +230,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="bg-primary text-[#FFFFF0] px-6 py-2 my-2 md:my-0">
+              <button type="submit" className="bg-primary text-[#FFFFF0] px-6 py-2 my-2 md:my-0 rounded-lg">
                 Submit
               </button>
             </form>

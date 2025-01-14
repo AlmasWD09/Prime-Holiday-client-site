@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table, Modal } from 'antd';
+import { Button, Form, message, Upload, Input, Popconfirm, Table, Modal, Select } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+const { Option } = Select;
 
 const EditableContext = React.createContext(null);
 
@@ -100,6 +102,8 @@ const AddDestinationTable = () => {
     ]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingRecord, setEditingRecord] = useState(null);
+    const [uploadedImage, setUploadedImage] = useState(null);
+    const [isUploading, setIsUploading] = useState(false);
     const [form] = Form.useForm();
 
     const handleDelete = (key) => {
@@ -190,6 +194,33 @@ const AddDestinationTable = () => {
         };
     });
 
+    const uploadProps = {
+        name: 'file',
+        action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+        headers: {
+            authorization: 'authorization-text',
+        },
+        beforeUpload(file) {
+            setIsUploading(true);
+            return true;
+        },
+        onChange(info) {
+            if (info.file.status === 'done') {
+                setIsUploading(false);
+                const uploadedUrl = info.file.response?.url || null;
+                if (uploadedUrl) {
+                    setUploadedImage(uploadedUrl);
+                    message.success(`${info.file.name} uploaded successfully`);
+                } else {
+                    message.error('File upload failed: No URL returned');
+                }
+            } else if (info.file.status === 'error') {
+                setIsUploading(false);
+                message.error(`${info.file.name} upload failed.`);
+            }
+        },
+    };
+
     return (
         <div>
             <Table
@@ -206,27 +237,56 @@ const AddDestinationTable = () => {
                 onCancel={() => setIsModalOpen(false)}
             >
                 <Form form={form} layout="vertical">
+
+                    {/* Continent Select */}
                     <Form.Item
-                        label="Name"
-                        name="name"
-                        rules={[{ required: true, message: 'Name is required' }]}
+                        label="Select the Continent"
+                        name="continent"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please select a continent!',
+                            },
+                        ]}
                     >
-                        <Input />
+                        <Select placeholder="Select the continent" className="max-w-xl">
+                            <Option value="Asia">Asia</Option>
+                            <Option value="Africa">Africa</Option>
+                            <Option value="North America">North America</Option>
+                            <Option value="Antarctica">Antarctica</Option>
+                            <Option value="Europe">Europe</Option>
+                            <Option value="Oceania">Oceania</Option>
+                        </Select>
                     </Form.Item>
+
+                    {/* Country Name Input */}
                     <Form.Item
-                        label="Age"
-                        name="age"
-                        rules={[{ required: true, message: 'Age is required' }]}
-                    >
-                        <Input />
+                        label="Country Name"
+                        name="countryName"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please enter the country name!',
+                            },
+                        ]}>
+                        <Input
+                            placeholder="Enter the country name"
+                            className="bg-transparent bg-[#FEF5EA] w-full py-[4px] px-[8px] max-w-xl"
+                        />
                     </Form.Item>
-                    <Form.Item
-                        label="Address"
-                        name="address"
-                        rules={[{ required: true, message: 'Address is required' }]}
-                    >
-                        <Input />
+
+                    {/* Upload Country Image */}
+                    <Form.Item label="Add c ountry image">
+                        <Upload {...uploadProps} className="w-full">
+                            <Button
+                                icon={<UploadOutlined />}
+                                disabled={isUploading}
+                            >
+                                {isUploading ? 'Uploading...' : 'Click to Upload'}
+                            </Button>
+                        </Upload>
                     </Form.Item>
+
                 </Form>
             </Modal>
         </div>
