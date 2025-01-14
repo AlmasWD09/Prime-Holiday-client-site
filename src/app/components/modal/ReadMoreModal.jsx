@@ -19,7 +19,7 @@ const ReadMoreModal = ({ readMoreOpen, setReadMoreOpen, singleData }) => {
                             onClick={() => handleCloseModal()}
                             className="absolute top-4 right-4 text-red-500 hover:text-gray-800"
                         >
-                            <div className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"><IoCloseSharp className="text-xl text-white w-10 h-10 p-2" /></div>
+                            <div className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"><IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2" /></div>
 
                         </button>
                         <h2 className="text-2xl font-bold text-center text-[#135029] mb-6">

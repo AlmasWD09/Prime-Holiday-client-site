@@ -40,7 +40,7 @@ const LoginPage = () => {
                     </div>
 
                     <div className="mt-6">
-                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-primary rounded-lg hover:bg-primborder-primary focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-[#FFFFF0] capitalize transition-colors duration-300 transform bg-primary rounded-lg hover:bg-primborder-primary focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             Sign in
                         </button>
                     </div>

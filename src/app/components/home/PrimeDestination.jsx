@@ -54,14 +54,14 @@ const PrimeDestination = () => {
             <button
               title="Previous Slide"
               onClick={() => swiperRef.current?.slidePrev()}
-              className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+              className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
             >
               <BiSolidLeftArrow className="w-4 h-4" />
             </button>
             <button
               title="Next Slide"
               onClick={() => swiperRef.current?.slideNext()}
-              className="p-2 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+              className="p-2 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
             >
               <BiSolidRightArrow className="w-4 h-4" />
             </button>
@@ -110,13 +110,13 @@ const PrimeDestination = () => {
                 />
 
                 <div className="absolute z-10 w-[96%] md:w-[92%] lg:w-[94%] xl:w-[96%]  mx-auto ml-2 sm:ml-0 md:ml-4  bottom-2 sm:bottom-4 xl:bottom-3 p-1 sm:p-3 rounded-xl flex gap-2 bg-[#B0B0B0] bg-opacity-30 ">
-                  <div className="flex  text-start z-20 text-white">
+                  <div className="flex  text-start z-20 text-[#FFFFF0]">
                     <h2 className="">
                       <FaLocationDot className="text-2xl pt-2 " />
                     </h2>
                     <div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">
+                        <h2 className="text-xl font-bold text-[#FFFFF0]">
                           {ground.title1}
                         </h2>
                       </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 const Banner = ({ title, subtitle, Breadcrumb, url }) => {
   return (
     <section
-      className="relative w-full h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-center text-white"
+      className="relative w-full h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-center text-[#FFFFF0]"
       style={{
         backgroundImage: `url('${url}')`,
       }}

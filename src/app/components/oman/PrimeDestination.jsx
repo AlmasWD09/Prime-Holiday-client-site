@@ -44,7 +44,7 @@ const PrimeDestination = () => {
                                         <h5>{ground.title2} <span className="font-bold text-primary">$5656.00</span></h5>
                                       </div>
                                       <div className="w-full pt-4">
-                                        <button className="w-full text-center bg-primary text-white px-4 py-1 rounded-xl">View</button>
+                                        <button className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
                                       </div>
                                     </div>
                                   </div>

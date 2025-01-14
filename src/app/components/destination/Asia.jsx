@@ -32,7 +32,7 @@ const Asia = () => {
               width={500}
               height={500}
             />
-            <div className="absolute z-10 w-[94%] md:w-[96%] lg:w-[97%] bottom-3 lg:bottom-5 left-1/2 transform -translate-x-1/2 p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white">
+            <div className="absolute z-10 w-[94%] md:w-[96%] lg:w-[97%] bottom-3 lg:bottom-5 left-1/2 transform -translate-x-1/2 p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-[#FFFFF0]">
               <div className="flex text-start z-20">
                 <div>
                   <FaLocationDot className="text-2xl pt-2" />
@@ -72,7 +72,7 @@ const Asia = () => {
               width={100}
               height={100}
             />
-            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-[#FFFFF0] flex gap-2">
               <div className="flex text-start z-20">
                 <h2>
                   <FaLocationDot className="text-2xl pt-2" />
@@ -100,7 +100,7 @@ const Asia = () => {
               width={100}
               height={100}
             />
-            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-[#FFFFF0] flex gap-2">
               <div className="flex text-start z-20">
                 <h2>
                   <FaLocationDot className="text-2xl pt-2" />
@@ -128,7 +128,7 @@ const Asia = () => {
               width={100}
               height={100}
             />
-            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+            <div className="absolute z-10  w-[94%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-[#FFFFF0] flex gap-2">
               <div className="flex text-start z-20">
                 <h2>
                   <FaLocationDot className="text-2xl pt-2" />
