@@ -106,7 +106,7 @@ const Includes = () => {
                             <button
                                 key={index}
                                 onClick={(event) => handleButtonClick(event, index)}
-                                className={`py-3 text-center text-[24px] font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-white " : ""
+                                className={`py-3 text-center text-[24px] font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-[#FFFFF0] " : ""
                                     }`}
                             >
                                 {label}
@@ -233,7 +233,7 @@ const Includes = () => {
                     {/* =============== Hotel Tab start =========================== */}
                     {
                         buttonText === "HOTELS" && <div>
-                            <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
+                            <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-[#FFFFF0]">
                                 <h2 className="text-[24px] font-bold">Hotels</h2>
                             </div>
                
@@ -246,7 +246,7 @@ const Includes = () => {
                     {/* =============== Price & Validity Tab start =========================== */}
                     {
                         buttonText === "PRICE & VALIDITY" && <div>
-                            <div className="py-3 text-center text-lg bg-[#135029] text-white">
+                            <div className="py-3 text-center text-lg bg-[#135029] text-[#FFFFF0]">
                                 <h2 className="text-[24px] font-bold text-[#FFFFF0] pb-[16px]">Package Cost Per Person Sharing Twin/Double Occupancy in USD</h2>
                                 <div className="flex justify-between px-3">
                                     <h2 className="text-[20px] font-medium">Validity 01 Oct 2024 - 30 Apr 2025</h2>
@@ -265,7 +265,7 @@ const Includes = () => {
                     {/* =============== Itinerary Tab start =========================== */}
                     {
                         buttonText === "ITINERARY" && <div>
-                            <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-white">
+                            <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-[#FFFFF0]">
                                 <h2>Itinerary</h2>
                             </div>
 

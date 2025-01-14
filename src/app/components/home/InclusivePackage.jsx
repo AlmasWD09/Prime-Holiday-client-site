@@ -93,14 +93,14 @@ const swiperRef = useRef(null);
               <button
                 title="Previous Slide"
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+                className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
               >
                 <BiSolidLeftArrow className="w-4 h-4" />
               </button>
               <button
                 title="Next Slide"
                 onClick={() => swiperRef.current?.slideNext()}
-                className="p-2  text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
+                className="p-2  text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
               >
                 <BiSolidRightArrow className="w-4 h-4" />
               </button>
@@ -148,7 +148,7 @@ const swiperRef = useRef(null);
                     height={300}
                   />
                   
-                  <div className="bg-[#135029] text-white">
+                  <div className="bg-[#135029] text-[#FFFFF0]">
                     <div className="space-y-2">
                       <h5 className="text-[24px] font-bold">{ground.title1}</h5>
                       <h5>

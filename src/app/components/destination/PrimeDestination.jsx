@@ -39,7 +39,7 @@ const PrimeDestination = () => {
                     height={300}
                   />
                   
-                  <div className="absolute z-10  w-[93%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-white flex gap-2">
+                  <div className="absolute z-10  w-[93%]  bottom-4 mx-4  p-3 bg-[#B0B0B0] bg-opacity-30 rounded-xl text-[#FFFFF0] flex gap-2">
                     <div className="flex text-start z-20">
                       <div>
                         <FaLocationDot className="text-2xl pt-2" />

@@ -89,7 +89,7 @@ const AddNewDestination = () => {
                                 },
                             ]}
                         >
-                            <Select placeholder="Select the continent">
+                            <Select placeholder="Select the continent" className='max-w-xl'>
                                 <Option value="Asia">Asia</Option>
                                 <Option value="Africa">Africa</Option>
                                 <Option value="North America">North America</Option>
@@ -112,7 +112,7 @@ const AddNewDestination = () => {
                         >
                             <Input
                                 placeholder="Enter the country name"
-                                className="bg-transparent bg-[#FEF5EA] w-full py-[4px] px-[8px]"
+                                className="bg-transparent bg-[#FEF5EA] w-full py-[4px] px-[8px] max-w-xl"
                             />
                         </Form.Item>
 

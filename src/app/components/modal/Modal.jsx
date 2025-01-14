@@ -61,7 +61,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               className="absolute top-4 right-4 text-red-500 hover:text-gray-800"
             >
               <div className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer">
-                <IoCloseSharp className="text-xl text-white w-10 h-10 p-2" />
+                <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2" />
               </div>
             </button>
             <h2 className="text-2xl font-semibold text-center mb-6">
@@ -225,7 +225,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="bg-primary text-white px-6 py-2 my-2 md:my-0">
+              <button type="submit" className="bg-primary text-[#FFFFF0] px-6 py-2 my-2 md:my-0">
                 Submit
               </button>
             </form>

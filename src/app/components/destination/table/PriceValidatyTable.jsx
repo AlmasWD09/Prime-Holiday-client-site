@@ -37,7 +37,7 @@ const PriceValidatyTable = () => {
                         <thead>
                             <tr>
                                 {TABLE_HEAD.map((head, index) => (
-                                    <th key={index} className="border-b border-blue-gray-100 text-lg text-center bg-[#135029] text-white p-4">
+                                    <th key={index} className="border-b border-blue-gray-100 text-lg text-center bg-[#135029] text-[#FFFFF0] p-4">
                                         <p
                                             variant="small"
                                             color="blue-gray"
@@ -65,27 +65,27 @@ const PriceValidatyTable = () => {
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                             ${firstPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                             ${secondPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                             ${thirdPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                             ${fourPax}
                                         </p>
                                     </td>
                                     <td className="p-4">
-                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-white rounded text-[18px]">
+                                        <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                             ${singleSupliment}
                                         </p>
                                     </td>

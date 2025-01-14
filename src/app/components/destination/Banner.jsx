@@ -5,7 +5,7 @@ import Link from "next/link";
 const Banner = () => {
   return (
     <section
-      className="relative h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-center text-white"
+      className="relative h-[356px] lg:h-[750px] bg-no-repeat bg-cover bg-center text-[#FFFFF0]"
       style={{
         backgroundImage: "url('/destionationBanner.png')",
       }}

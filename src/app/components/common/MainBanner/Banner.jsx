@@ -6,7 +6,7 @@
 // const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
 //   return (
 //     <section
-//       className="relative w-full h-[456px] lg:h-[850px] text-white"
+//       className="relative w-full h-[456px] lg:h-[850px] text-[#FFFFF0]"
 //       style={{
 //         backgroundImage: `url('${url}')`,
 //         backgroundSize: "cover",
@@ -35,7 +35,7 @@
 //                     className={
 //                       item?.active
 //                         ? `cursor-pointer text-primary font-medium text-base`
-//                         : `cursor-pointer text-white font-medium text-base `
+//                         : `cursor-pointer text-[#FFFFF0] font-medium text-base `
 //                     }
 //                     href={item.href}
 //                   >
@@ -75,7 +75,7 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
 
   return (
     <section
-      className="relative w-full h-[456px] lg:h-[850px] text-white"
+      className="relative w-full h-[456px] lg:h-[850px] text-[#FFFFF0]"
       style={{
         backgroundImage: `url('${url}')`,
         backgroundSize: "cover",
@@ -103,7 +103,7 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
                   className={
                     item?.active
                       ? "cursor-pointer text-primary font-medium text-base"
-                      : "cursor-pointer text-white font-medium text-base"
+                      : "cursor-pointer text-[#FFFFF0] font-medium text-base"
                   }
                   href={item.href}
                 >

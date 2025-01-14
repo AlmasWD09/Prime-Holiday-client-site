@@ -71,7 +71,7 @@ const Comment = () => {
             <div className="absolute inset-0 bg-black bg-opacity-30 mx-4 flex items-center justify-center rounded-md">
               <button
                 onClick={handlePlayPause}
-                className="text-white text-4xl"
+                className="text-[#FFFFF0] text-4xl"
                 aria-label="Play Video"
                 role="button"
               >

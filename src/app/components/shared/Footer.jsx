@@ -50,7 +50,7 @@ const Footer = () => {
                 <Link href={'https://www.pinterest.com/phdbyrizmali'}>
                   <Image src="/logo/pinterest.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
-                <Link href={'https://www.youtube.com/phdbyrizmali'}>
+                <Link href={'https://www.youtube.com/phdbyrizmali7'}>
                   <Image src="/logo/youtube.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
               <div className="pt-[16px]">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
-                <a href="mailto:contact@primeholidaydestinations.com" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</a>
+                <a href="mailto:contact@primeholidaydestinations.com" className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px] hover:underline">contact@primeholidaydestinations.com</a>
               </div>
             </div>
 
@@ -101,7 +101,7 @@ const Footer = () => {
               </div>
               <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
                 <p>Colour palette inspired by</p>
-                <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0]">@thehousewiththepinkbed</a>
+                <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">@thehousewiththepinkbed</a>
               </div>
             </div>
           </div>
