@@ -1,7 +1,6 @@
 
 import Footer from "../components/shared/Footer";
 import Navbar from "../components/shared/Navbar";
-import ScrollTopButton from "../components/shared/ScrollTopButton";
 
 
 export const metadata = {
@@ -16,7 +15,6 @@ export default function layout({ children }) {
         <Navbar />
         {children}
         <Footer />
-        {/* <ScrollTopButton /> */}
       </div>
  
   );

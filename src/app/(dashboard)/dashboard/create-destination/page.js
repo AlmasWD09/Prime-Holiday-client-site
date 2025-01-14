@@ -1,15 +1,16 @@
 "use client"
 
 import AddNewDestination from "@/app/components/dashboard/modal/AddNewDestination"
+import AddDestinationTable from "@/app/components/dashboard/table/AddDestinationTable"
 import Image from "next/image"
 import { useState } from "react"
 
 const createDestinationPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
-const handleModal = () =>{
-  setModalOpen(true)
-}
+  const handleModal = () => {
+    setModalOpen(true)
+  }
   return (
     <div className="bg-gray-200 m-8 p-8 h-[700px]">
       <div className="flex justify-between items-center">
@@ -18,9 +19,9 @@ const handleModal = () =>{
           <Image src={"/hands.png"} alt="hands" width={100} height={100} className="w-[42px] h-[42px]" />
         </div>
         <div>
-          <button 
-          onClick={()=>handleModal()}
-          className="bg-primary text-[#FFFFFF] px-[16px] py-[6px] rounded-xl">Add new destination</button>
+          <button
+            onClick={() => handleModal()}
+            className="bg-primary text-[#FFFFFF] px-[16px] py-[6px] rounded-xl">Add new destination</button>
         </div>
       </div>
 
@@ -29,8 +30,17 @@ const handleModal = () =>{
         <p className="text-xl">Please Data Added!!</p>
       </div> */}
 
+
+
+
+      {/* add destination table component */}
+      <AddDestinationTable />
+  
+
+
+      {/* add new destination modal */}
       {
-      modalOpen && <AddNewDestination />
+        modalOpen && <AddNewDestination />
       }
     </div>
   )
