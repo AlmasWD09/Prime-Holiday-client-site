@@ -90,8 +90,11 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
         >
           {title}
         </h1>
-        <p className="xl:max-w-[680px] max-w-[300px] sm:max-w-full mx-auto sm:text-[22px] md:text-[40px] lg:text-[48px] xl:text-[36px] font-Roboto font-semibold text-center">
-          {subtitle}
+        <p className="xl:max-w-[680px] max-w-[300px] sm:max-w-full mx-auto sm:text-[20px] md:text-[30px] lg:text-[36px] font-Roboto font-semibold text-center">
+        “ The Essence of a Holiday is to Enrich 
+        </p>
+        <p className="xl:max-w-[680px] max-w-[300px] sm:max-w-full mx-auto sm:text-[20px] md:text-[30px] lg:text-[36px] font-Roboto font-semibold text-center pl-[20px] md:pl-12">
+        Our Lives & Create Lasting Memories ”
         </p>
       </div>
       {Breadcrumb && (
