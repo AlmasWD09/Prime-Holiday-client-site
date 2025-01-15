@@ -14,7 +14,7 @@ const Banner = ({ title, subtitle, Breadcrumb, url }) => {
         <h1 className="text-2xl lg:text-[64px] text-primary">{title}</h1>
         <p className="text-lg md:text-[30px]">{subtitle}</p>
       </div>
-      <div className="bg-[#135029] py-3">
+      <div className="bg-[#135029] py-3 font-Roboto">
         <div className="container mx-auto px-2">
           {Breadcrumb?.map((item, index) => {
             return (

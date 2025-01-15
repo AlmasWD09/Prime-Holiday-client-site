@@ -1,8 +1,10 @@
 import { Select, Input, Button, Form, Upload } from "antd";
+import { useEffect } from "react";
+
 
 
 const AddDestinationTable = () => {
-    const [form] = Form.useForm(); 
+    const [form] = Form.useForm();
     const countries = ["Asia", "Africa", "North America", "Antarctica", "Antarctica", "Europe", "Oceania"]
 
     // handle form submit
@@ -14,10 +16,37 @@ const AddDestinationTable = () => {
         form.resetFields()
     };
 
+    // fetch('http://10.0.80.13:8000/api/admin/destination/store',data)
+
     return (
         <div className="space-y-4">
             <Form form={form} onFinish={handleSubmit}>
                 <h1 className="font-Roboto font-bold text-primary text-[24px]">Add New Destination</h1>
+
+                {/* name */}
+                <div className="mb-2">
+                    <p>Name</p>
+                    <Form.Item
+                        name="name"
+                        rules={[{ required: true, message: "Please enter the title!" }]}
+                    >
+                        <Input placeholder="Enter the country title" className="max-w-sm" />
+                    </Form.Item>
+                </div>
+
+
+                {/* title */}
+                <div className="mb-2">
+                    <p>Title</p>
+                    <Form.Item
+                        name="title"
+                        rules={[{ required: true, message: "Please enter the title!" }]}
+                    >
+                        <Input placeholder="Enter the country title" className="max-w-sm" />
+                    </Form.Item>
+                </div>
+
+                
 
                 {/* select  */}
                 <div className="mb-2">
@@ -48,19 +77,9 @@ const AddDestinationTable = () => {
                     </Form.Item>
                 </div>
 
-                {/* title */}
-                <div className="mb-2">
-                    <p>Title</p>
-                    <Form.Item
-                        name="title"
-                        rules={[{ required: true, message: "Please enter the title!" }]}
-                    >
-                        <Input placeholder="Enter the country title" className="max-w-sm" />
-                    </Form.Item>
-                </div>
 
                 {/* image upload */}
-                {/* <div className="mb-2">
+                <div className="mb-2">
                     <Form.Item
                         name={"profilePicture"}
                         rules={[
@@ -74,7 +93,7 @@ const AddDestinationTable = () => {
                             <Button>Upload Profile Picture</Button>
                         </Upload>
                     </Form.Item>
-                </div> */}
+                </div>
 
                 {/* button */}
                 <div className="mb-2">

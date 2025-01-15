@@ -12,7 +12,7 @@ const Banner = () => {
       <div className="flex justify-center items-center h-full">
         <h1 className="text-2xl lg:text-[64px] text-primary" style={{ fontFamily: 'MyFont, sans-serif' }}>Terms & Conditions</h1>
       </div>
-      <div className="bg-[#135029] py-3">
+      <div className="bg-[#135029] py-3 font-Roboto">
         <div className="container mx-auto px-2">
             <h2><Link className="cursor-pointer text-primary" href={'/'}>Home</Link><span className="px-2">/</span>Terms & Conditions</h2>
         </div>
