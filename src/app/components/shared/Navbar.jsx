@@ -102,9 +102,9 @@ const Navbar = () => {
         <div className="lg:hidden " onClick={() => setMenu(!getMenu)} >
           <div className="">
             {getMenu ? (
-              <IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 hover:text-primary " />
+              <IoCloseSharp className="text-xl text-[#FFFFF0] md:w-10 md:h-10 hover:text-primary " />
             ) : (
-              <GiHamburgerMenu className="text-xl text-[#FFFFF0] w-10 h-10 hover:text-primary" />
+              <GiHamburgerMenu className="text-xl text-[#FFFFF0] md:w-10 md:h-10 hover:text-primary" />
             )}
           </div>
         </div>
@@ -133,7 +133,7 @@ const Navbar = () => {
                   ))}
 
                   <div className="relative group inline-block">
-                    <p className="text-[#4545458a]">Blogs</p>
+                    <p className="text-[#4545458a]">Blog</p>
                     <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-[#FFFFF0]  rounded flex justify-center w-[150px] py-1 -top-1 left-[80%] transform -translate-x-[10px] transition-opacity duration-300">
                       Comming Soon
                     </div>
@@ -245,7 +245,7 @@ const Navbar = () => {
               </button>
             </div> */}
             <div className="relative group inline-block">
-              <p className="text-[#4545458a]">Blogs</p>
+              <p className="text-[#4545458a]">Blog</p>
               <div className="absolute invisible group-hover:visible bg-primary opacity-60 text-[#FFFFF0]  rounded flex justify-center w-[150px] py-1 -top-1 left-[20%] transform -translate-x-[10px] transition-opacity duration-300">
                 Comming Soon
               </div>

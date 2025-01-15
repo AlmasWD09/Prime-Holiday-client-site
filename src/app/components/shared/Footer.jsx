@@ -50,7 +50,7 @@ const Footer = () => {
                 <Link href={'https://www.pinterest.com/phdbyrizmali'}>
                   <Image src="/logo/pinterest.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
-                <Link href={'https://www.youtube.com/phdbyrizmali7'}>
+                <Link href={'https://www.youtube.com/@phdbyrizmali7'}>
                   <Image src="/logo/youtube.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
                 </Link>
 
@@ -90,7 +90,7 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><a href="/about">About</a> | <a href="/destination">Destinations</a> | <a href="/blog">Blogs</a> | <a href="/conditions">Terms & Conditions</a> | <a href="/privacy">Privacy</a> | <a href="/cancelation">Cancellation & Refund</a></p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><a href="/about">About</a> | <a href="/destination">Destinations</a> | Blog | <a href="/conditions">Terms & Conditions</a> | <a href="/privacy">Privacy</a> | <a href="/cancelation">Cancellation & Refund</a></p>
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 
@@ -101,7 +101,7 @@ const Footer = () => {
               </div>
               <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
                 <p>Colour palette inspired by</p>
-                <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">@thehousewiththepinkbed</a>
+                <a href="mailto:@thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</a>
               </div>
             </div>
           </div>

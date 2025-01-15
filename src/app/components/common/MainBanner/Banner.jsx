@@ -85,7 +85,7 @@ const CustomBanner = ({ title, subtitle, Breadcrumb, url }) => {
     >
       <div className="flex flex-col justify-center items-center h-full w-[94%] lg:w-[88%] mx-auto">
         <h1
-          className="text-center text-[22px] sm:text-[26px] md:text-[48px] lg:text-[60px] xl:text-[80px] text-primary font-semibold text-wrap font-Roboto"
+          className="text-center text-[22px] sm:text-[26px] md:text-[48px] lg:text-[60px] xl:text-[80px] text-primary font-semibold text-wrap"
           style={{ fontFamily: "MyFont, sans-serif" }}
         >
           {title}
