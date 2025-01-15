@@ -138,7 +138,7 @@ const swiperRef = useRef(null);
             {grounds.map((ground, idx) => (
               <SwiperSlide key={idx}>
                 <Link href={`/destination/${idx}`}>
-                <div className="relative  bg-[#135029] p-4 rounded-xl space-y-4 lg:h-[440px] xl:h-full">
+                <div className="relative  bg-[#135029] p-4 rounded-xl space-y-4 h-[400px] md:h-[440px] xl:h-full">
 
                   <Image
                     className="object-cover object-center w-full h-64 lg:h-72 rounded-xl"

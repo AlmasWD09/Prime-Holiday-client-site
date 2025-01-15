@@ -123,7 +123,7 @@ const Footer = () => {
           <div>
             {/* Email form */}
             <form className="flex flex-col md:flex-row gap-[16px] ">
-              <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center" />
+              <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-[#FFFFF0] text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center" />
               <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit h-[35px] 4xl:h-0 px-[16px]  flex items-center cursor-pointer" />
             </form>
           </div>

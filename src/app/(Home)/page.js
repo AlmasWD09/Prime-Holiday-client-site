@@ -13,7 +13,7 @@ const HomePage = () => {
       <CustomBanner
         title={"Your All-Inclusive Journey Starts Here"}
         subtitle={
-          " “ The Essence of a Holiday is to Enrich Our Lives & Create Lasting Memories ”"
+          "The Essence of a Holiday is to Enrich Our Lives & Create Lasting Memories"
         }
         url={
           "http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735362515/ggcunfjclwi1fpcvw67n.png"
