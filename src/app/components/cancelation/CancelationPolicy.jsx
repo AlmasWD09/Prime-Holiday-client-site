@@ -3,7 +3,7 @@
 const CancelationPolicy = () => {
     return (
         <>
-            <section className="container mx-auto px-4 pt-20">
+            <section className="container mx-auto px-4 pt-20 font-Roboto">
                 <div className="">
                     <h1 className="text-[20px] md:text-[24px] text-primary font-Roboto font-semibold pb-[24px]">
                         Cancellation and Refund Policy

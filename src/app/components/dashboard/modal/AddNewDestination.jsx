@@ -13,7 +13,7 @@ const AddNewDestination = () => {
     // Ant Design Upload Props
     const uploadProps = {
         name: 'file',
-        action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload', 
+        // action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload', 
         headers: {
             authorization: 'authorization-text',
         },
