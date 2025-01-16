@@ -10,7 +10,7 @@ const Sidebar = () => {
                     <Link href={'/dashboard/create-destination'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]"><FaUserGroup />Create Destinations</Link>
                 </div>
                 <div className="my-[8px] " >
-                    <Link href={'/dashboard/manage-users'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]"><FaUserGroup />Manage users</Link>
+                    <Link href={'/dashboard/manage-users'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]"><FaUserGroup />Create Packages</Link>
                 </div>
             </div>
 
