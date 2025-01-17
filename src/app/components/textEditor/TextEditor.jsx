@@ -5,6 +5,7 @@ import JoditEditor from 'jodit-react';
 // import "jodit-react/examples/app.css"
 
 const TextEditor = ({onchange}) => {
+    console.log(typeof onchange, 'line------> 8')
     const editor = useRef(null);
     const [content, setContent] = useState('');
 
@@ -15,8 +16,9 @@ const TextEditor = ({onchange}) => {
                  value={content}
                  tabIndex={1}
                  onChange={(newContent) => {
-                   setContent(newContent);
-                   onchange(newContent); // Update the form value with the editor content
+                    setContent(newContent);
+                    const plainText = newContent.replace(/<[^>]+>/g, ''); // Remove HTML tags
+                    onchange(plainText); // Pass plain text to the parent
                 }}
             />
         </div>

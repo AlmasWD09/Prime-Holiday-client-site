@@ -101,7 +101,7 @@ console.log(updatedValues)
 
       {/* Package description */}
       <div className="max-w-xl mb-2">
-        <TextEditor onChange={setEditorContent}/>
+        <TextEditor onchange={setEditorContent}/>
       </div>
 
       {/* Price Field */}
