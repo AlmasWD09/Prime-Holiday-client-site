@@ -1,7 +1,17 @@
+"use client"
+
 import CreatePackagesTable from '@/app/components/dashboard/table/CreatePackagesTable'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
+
 
 const createPpackages = () => {
+    const router = useRouter();
+
+    // handleNavigate page
+    const handleCreateNewPackage = () =>{
+        router.push('/dashboard/create-new-packages')
+    }
   return (
     <div className="bg-gray-200 m-8 p-8 h-[700px]">
       <div className="flex  items-center gap-[16px]">
@@ -11,7 +21,7 @@ const createPpackages = () => {
 
     <div className='flex justify-between'>
       <h1 className='text-[24px] font-Roboto font-bold text-primary'>All-Inclusive Packages</h1>
-      <button className="bg-primary text-[#FFFFFF] px-[16px] py-[6px] rounded-xl">Create New Packages</button>
+      <button onClick={()=>handleCreateNewPackage()} className="bg-primary text-[#FFFFFF] px-[16px] py-[6px] rounded-xl">Create New Packages</button>
   </div>
 
 

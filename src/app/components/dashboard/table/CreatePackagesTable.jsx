@@ -39,10 +39,10 @@ const CreatePackagesTable = () => {
   // Handle modal form submission
   const handleModalSubmit = async (values) => {
     console.log(values, 'values field')
-    const updatedData = dataSource.map((item) => console.log(item.countryName) );
-    //   item.key === editingRecord.key ? { ...item, ...values } : item
-
-    // );
+    const updatedData = dataSource.map((item) => {
+      console.log(item.image); // Debugging log
+      return item.key === editingRecord.key ? { ...item, ...values } : item;
+    });
     setDataSource(updatedData);
     console.log(values, 'update modal here....')
 
