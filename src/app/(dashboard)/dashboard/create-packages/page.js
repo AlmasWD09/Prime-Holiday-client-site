@@ -23,4 +23,4 @@ const createPpackages = () => {
   )
 }
 
-export default createPpackages
+export default createPpackages;
