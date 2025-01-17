@@ -1,65 +1,58 @@
-
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Modal, Table, Image, Popconfirm } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
-import axios from "axios";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 const CreatePackagesTable = () => {
-  const [dataSource, setDataSource] = useState([
-    {
-      key: "0",
-      image: "/asia04.png",
-      title: "Immersion in culture Oman",
-      countryName: "Oman",
-      continent: "Asia",
-      price: "5656.00",
-    },
-    {
-      key: "1",
-      image: "/asia02.png",
-      title: "Adventure in Sahara",
-      countryName: "Morocco",
-      continent: "Africa",
-      price: "4599.00",
-    },
-  ]);
-
+  const [dataSource, setDataSource] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingRecord, setEditingRecord] = useState(null);
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+    total: 0,
+    showSizeChanger: true,
+    pageSizeOptions: ["5", "10", "20"],
+  });
 
-  // Open modal with selected record data
+  useEffect(() => {
+    // Fetch data dynamically from the JSON file
+    const fetchData = async () => {
+      const response = await fetch("/createPackages.json");
+      const result = await response.json();
+      setDataSource(result);
+      setPagination((prev) => ({ ...prev, total: result.length }));
+    };
+
+    fetchData();
+  }, []);
+
+  const handleTableChange = (pagination) => {
+    setPagination({
+      ...pagination,
+      current: pagination.current,
+      pageSize: pagination.pageSize,
+    });
+  };
+
   const showUpdateModal = (record) => {
     setEditingRecord(record);
     setIsModalOpen(true);
   };
 
-  // Handle modal form submission
-  const handleModalSubmit = async (values) => {
-    console.log(values, 'values field')
-    const updatedData = dataSource.map((item) => {
-      console.log(item.image); // Debugging log
-      return item.key === editingRecord.key ? { ...item, ...values } : item;
-    });
+  const handleModalSubmit = (values) => {
+    const updatedData = dataSource.map((item) =>
+      item.key === editingRecord.key ? { ...item, ...values } : item
+    );
     setDataSource(updatedData);
-    console.log(values, 'update modal here....')
-
-    // Simulate API call
-    // try {
-    //   await axios.put("/api/update", { ...editingRecord, ...values });
-    //   console.log("Data updated successfully!");
-    // } catch (error) {
-    //   console.error("Failed to update data:", error);
-    // }
-
-    // setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
+    setPagination((prev) => ({ ...prev, total: newData.length }));
   };
 
   const columns = [
@@ -81,7 +74,9 @@ const CreatePackagesTable = () => {
               <DeleteOutlined className="bg-gray-100 text-red-600 text-md p-2 rounded" />
             </a>
           </Popconfirm>
-          <Button onClick={() => showUpdateModal(record)}>Update</Button>
+          <a onClick={() => showUpdateModal(record)}>
+            <EditOutlined className="bg-gray-100 text-red-600 text-md p-2 rounded" />
+          </a>
         </div>
       ),
     },
@@ -93,7 +88,8 @@ const CreatePackagesTable = () => {
         dataSource={dataSource}
         columns={columns}
         rowKey="key"
-        bordered
+        pagination={pagination}
+        onChange={handleTableChange}
       />
 
       {/* Modal for updating data */}
