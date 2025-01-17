@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Modal, Table, Image, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import EditPackagesModal from "../modal/EditPackagesModal";
 
 const CreatePackagesTable = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -15,6 +16,69 @@ const CreatePackagesTable = () => {
     showSizeChanger: true,
     pageSizeOptions: ["5", "10", "20"],
   });
+
+  const [readMoremodal, setMeadMoremodal] = useState(false);
+  const [readMoreOpen, setReadMoreOpen] = useState(false)
+  const [modal, setModal] = useState(false);
+  const [singleData, setSingleData] = useState(null)
+
+  
+  const Itinerarys = [
+    {
+        id: "01",
+        day: "Day 01",
+        lunchPeriod: "Dinner",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "02",
+        day: "Day 02",
+        lunchPeriod: "Breakfast",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "03",
+        day: "Day 03",
+        lunchPeriod: "Full-Board",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "04",
+        day: "Day 04",
+        lunchPeriod: "Full-Board",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "05",
+        day: "Day 05",
+        lunchPeriod: "Breakfast & Dinner",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "06",
+        day: "Day 06",
+        lunchPeriod: "Breakfast & Dinner",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "07",
+        day: "Day 07",
+        lunchPeriod: "Breakfast & Dinner",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "08",
+        day: "Day 08",
+        lunchPeriod: "Breakfast & Dinner",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+    {
+        id: "09",
+        day: "Day 09",
+        lunchPeriod: "Breakfast",
+        description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
+    },
+]
 
   useEffect(() => {
     // Fetch data dynamically from the JSON file
@@ -37,6 +101,7 @@ const CreatePackagesTable = () => {
   };
 
   const showUpdateModal = (record) => {
+    console.log(record, 'line------> 40 createpackagesTable')
     setEditingRecord(record);
     setIsModalOpen(true);
   };
@@ -54,6 +119,14 @@ const CreatePackagesTable = () => {
     setDataSource(newData);
     setPagination((prev) => ({ ...prev, total: newData.length }));
   };
+
+  const hnadleClick = (id) => {
+    console.log(id)
+    const findData = Itinerarys.find((item) => item.id === id)
+    setSingleData(findData)
+    setMeadMoremodal(true);
+    setReadMoreOpen(true);
+  }
 
   const columns = [
     {
@@ -74,9 +147,14 @@ const CreatePackagesTable = () => {
               <DeleteOutlined className="bg-gray-100 text-red-600 text-md p-2 rounded" />
             </a>
           </Popconfirm>
-          <a onClick={() => showUpdateModal(record)}>
+          {/* <a onClick={() => showUpdateModal(record)}>
             <EditOutlined className="bg-gray-100 text-red-600 text-md p-2 rounded" />
-          </a>
+          </a> */}
+          <button onClick={() => hnadleClick(record.id)}>Edit</button>
+          {
+            readMoremodal && <EditPackagesModal readMoreOpen={readMoreOpen} setReadMoreOpen={setReadMoreOpen} singleData={singleData} />
+          }
+
         </div>
       ),
     },
