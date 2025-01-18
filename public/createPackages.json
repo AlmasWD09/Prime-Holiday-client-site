@@ -43,59 +43,5 @@
     "countryName": "Morocco",
     "continent": "Africa",
     "price": "4599.00"
-  },
-  {
-    "id": 6,
-    "key": "6",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
-  },
-  {
-    "id": 7,
-    "key": "7",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
-  },
-  {
-    "id": 8,
-    "key": "8",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
-  },
-  {
-    "id": 9,
-    "key": "9",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
-  },
-  {
-    "id": 10,
-    "key": "10",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
-  },
-  {
-    "id": 11,
-    "key": "11",
-    "image": "/asia02.png",
-    "title": "Adventure in Sahara",
-    "countryName": "Morocco",
-    "continent": "Africa",
-    "price": "4599.00"
   }
 ]
