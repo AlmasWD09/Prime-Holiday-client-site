@@ -135,27 +135,59 @@ const CreateNewPage = () => {
           </Form.Item>
         </div>
 
-        <div className="max-w-xl mb-2 border border-primary p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
-            {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
-              <button
-                key={index}
-                onClick={(event) => handleButtonClick(event, index)}
-                className={`py-2 text-center font-bold  border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-[#FFFFF0] " : ""
-                  }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
+ 
+      
+          {/* ************ */}
+          <section className=" pt-[56px]">
+            <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
+                {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
+                  <button
+                    key={index}
+                    onClick={(event) => handleButtonClick(event, index)}
+                    className={`py-3 text-center text-[24px] font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-[#FFFFF0] " : ""
+                      }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
 
-        <div>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Save
-            </Button>
-          </Form.Item>
+              {/* =============== INCLUDES & EXCLUDES Tab start =========================== */}
+              {
+                buttonText === "INCLUDES & EXCLUDES" && <div>
+                  <div className="flex justify-evenly bg-[#135029] py-4">
+                    <h3 className="text-[24px] font-bold text-[#FFFFFF]">Includes</h3>
+                    <h3 className="text-[24px] font-bold text-[#FFFFFF]">Excludes</h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                    {/* Includes Section */}
+                    <div className="lg:border-r border-[#D1D1D1] border-opacity-30">
+                     dddddddd
+                    </div>
+
+                    {/* Excludes Section */}
+                    <div>
+                  ddddddddddd
+                  
+                    </div>
+                  </div>
+                </div>
+              }
+              {/* =============== INCLUDES & EXCLUDES Tab end ============================= */}
+
+
+            
+
+
+            </div>
+          </section>
+          {/* ************ */}
+    
+
+        <div className="py-8">
+         <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
         </div>
       </Form>
     </div>
