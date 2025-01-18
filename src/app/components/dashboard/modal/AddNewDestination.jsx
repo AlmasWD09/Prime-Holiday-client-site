@@ -140,11 +140,13 @@ const AddNewDestination = () => {
                             </Form.Item> */}
 
                             {/* Submit Button */}
-                            <Form.Item>
-                                <Button type="primary" htmlType="submit">
-                                    Save
-                                </Button>
-                            </Form.Item>
+                            <div className="py-4">
+                                <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                            </div>
+                            
+                            <div className="bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
+                            <button className="text-xl">c</button>
+                            </div>
                         </Form>
                     </div>
                 </div>
