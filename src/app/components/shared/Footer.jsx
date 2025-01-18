@@ -36,7 +36,7 @@ const Footer = () => {
         </div>
         <div className="pt-10  md:space-y-0">
           {/* div onte */}
-          <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between pb-0 space-y-4 md:space-y-0">
             <div>
               <div className="flex gap-4 border-b pb-[16px] text-primary">
                 <Link href={'https://www.instagram.com/phdbyrizmali'}>

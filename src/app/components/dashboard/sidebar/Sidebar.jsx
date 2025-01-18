@@ -1,6 +1,7 @@
 import { FaUserGroup } from 'react-icons/fa6';
 import Link from 'next/link';
 import { MdLogout } from 'react-icons/md';
+import { FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
     return (
@@ -16,15 +17,21 @@ const Sidebar = () => {
 
 
 
-            <div className=" bg-[#cdd9da] p-[8px] flex justify-between items-center rounded-[8px]">
-                <div className="flex items-center gap-1 font-Roboto font-medium">
-                    <FaUserGroup />Rizmali
+            <div>
+                <div className="bg-[#cdd9da] p-[8px] rounded-[8px] my-[8px] " >
+                    <Link href={'/'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]"><FaHome />Home</Link>
                 </div>
+                <div className=" bg-[#cdd9da] p-[8px] flex justify-between items-center rounded-[8px]">
+                    <div className="flex items-center gap-1 font-Roboto font-medium">
+                        <FaUserGroup />Rizmali
+                    </div>
 
-                <div>
-                    <Link href={'/dashboard/login'} className="text-[16px] cursor-pointer"><MdLogout /></Link>
+                    <div>
+                        <Link href={'/dashboard/login'} className="text-[16px] cursor-pointer"><MdLogout /></Link>
+                    </div>
                 </div>
             </div>
+
         </div>
     )
 }

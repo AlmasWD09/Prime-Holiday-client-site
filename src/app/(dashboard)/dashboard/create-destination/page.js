@@ -11,6 +11,8 @@ const createDestinationPage = () => {
   const handleModal = () => {
     setModalOpen(true)
   }
+
+  
   return (
     <div className="bg-gray-200 m-8 p-8 h-[880px]">
         <div className="flex  items-center gap-[16px]">
@@ -41,7 +43,7 @@ const createDestinationPage = () => {
 
       {/* add new destination modal */}
       {
-        modalOpen && <AddNewDestination />
+        modalOpen && <AddNewDestination setModalOpen={setModalOpen}/>
       }
     </div>
   )

@@ -3,8 +3,9 @@
 import { Select, Input, Button, Form, Upload } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
+import { IoMdClose } from "react-icons/io";
 
-const AddNewDestination = () => {
+const AddNewDestination = ({setModalOpen}) => {
     const [form] = Form.useForm();
     const countries = ["Asia", "Africa", "North America", "Antarctica", "Antarctica", "Europe", "Oceania"]
 
@@ -44,6 +45,10 @@ const AddNewDestination = () => {
         }
     };
 
+    const handleBack = () =>{
+        setModalOpen(false)
+    }
+
     return (
         <div className="relative">
             <div className="fixed inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50">
@@ -53,13 +58,13 @@ const AddNewDestination = () => {
                             <h1 className="font-Roboto font-bold text-primary text-[24px]">Add New Destination</h1>
 
                             {/* select  */}
-                            <div className="mb-2">
+                            <div className="max-w-2xl mb-2">
                                 <p>Select the continent</p>
                                 <Form.Item
                                     name="continent"
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
-                                    <Select placeholder="Select the continent" className="max-w-sm">
+                                    <Select placeholder="Select the continent" className="">
                                         {countries.map((country, index) => (
                                             <Select.Option key={index} value={country}>
                                                 {country}
@@ -71,25 +76,25 @@ const AddNewDestination = () => {
                             </div>
 
                             {/* country name */}
-                            <div className="mb-2">
+                            <div className="max-w-2xl mb-2">
                                 <p>Country Name</p>
                                 <Form.Item
                                     name="countryName"
                                     rules={[{ required: true, message: "Please enter the country name!" }]}
                                 >
-                                    <Input placeholder="Enter the country name" className="max-w-sm" />
+                                    <Input placeholder="Enter the country name" className="" />
                                 </Form.Item>
                             </div>
 
 
                             {/* Title Field */}
-                            <div className="mb-2">
+                            <div className="max-w-2xl mb-2">
                                 <Form.Item
                                     label="title"
                                     name="title"
                                     rules={[{ required: true, message: "Please enter the title!" }]}
                                 >
-                                    <Input placeholder="Enter the destination name" className="max-w-sm" />
+                                    <Input placeholder="Enter the destination name" className="" />
                                 </Form.Item>
                             </div>
 
@@ -99,11 +104,11 @@ const AddNewDestination = () => {
                                 name="days"
                                 rules={[{ required: true, message: "Please enter the number of days!" }]}
                             >
-                                <Input type="number" placeholder="Enter the number of days" className="max-w-sm" />
+                                <Input type="number" placeholder="Enter the number of days" className="" />
                             </Form.Item> */}
 
                             {/* Description Field */}
-                            {/* <div className="max-w-sm">
+                            {/* <div className="">
                                 <Form.Item
                                     label="Description"
                                     name="description"
@@ -116,7 +121,7 @@ const AddNewDestination = () => {
 
 
                             {/* Image Upload Field */}
-                            <div className="mb-2">
+                            <div className="max-w-2xl mb-2">
                                 <Form.Item
                                     label="Upload Image"
                                     name="image"
@@ -136,18 +141,20 @@ const AddNewDestination = () => {
                                 name="price"
                                 rules={[{ required: true, message: "Please enter the price!" }]}
                             >
-                                <Input placeholder="Enter the price" className="max-w-sm" type="number" min={0} />
+                                <Input placeholder="Enter the price" className="" type="number" min={0} />
                             </Form.Item> */}
 
                             {/* Submit Button */}
                             <div className="py-4">
                                 <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
                             </div>
-                            
-                            <div className="bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
-                            <button className="text-xl">c</button>
-                            </div>
+
                         </Form>
+                        <div 
+                        onClick={handleBack}
+                        className="absolute right-2 -top-3 bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
+                            <button className="text-xl"><IoMdClose /></button>
+                        </div>
                     </div>
                 </div>
             </div>

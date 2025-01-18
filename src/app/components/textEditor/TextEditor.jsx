@@ -5,9 +5,11 @@ import JoditEditor from 'jodit-react';
 // import "jodit-react/examples/app.css"
 
 const TextEditor = ({onchange}) => {
-    console.log(typeof onchange, 'line------> 8')
+
     const editor = useRef(null);
     const [content, setContent] = useState('');
+
+    console.log(content)
 
     return (
         <div>
