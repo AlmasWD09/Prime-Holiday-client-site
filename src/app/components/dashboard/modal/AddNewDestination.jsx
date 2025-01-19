@@ -1,53 +1,73 @@
 'use client'
 
 import { Select, Input, Button, Form, Upload } from "antd";
-import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-const AddNewDestination = ({setModalOpen}) => {
+const AddNewDestination = ({ setModalOpen }) => {
     const [form] = Form.useForm();
-    const countries = ["Asia", "Africa", "North America", "Antarctica", "Antarctica", "Europe", "Oceania"]
+    const [contentData, setContentData] = useState([])
+
+    useEffect(() => {
+        // Fetch data dynamically from the JSON file
+        const fetchData = async () => {
+            const response = await fetch('http://10.0.80.13:8000/api/admin/continent');
+            const result = await response.json();
+            setContentData(result.continents);
+        };
+
+        fetchData();
+    }, []);
 
     // Handle form submission
     const handleSubmit = async (values) => {
-        // Extract file data
-        const imageFile = values.image[0].originFileObj;
-        console.log(values.image[0].originFileObj)
-        if (!imageFile) {
-            console.error("Image file is required.");
-            return;
-        }
+        // Create an object to capture the form values
+        const formData = {
+            name: values.name,  
+            title: values.title, 
+            continent_id: values.continent,  
+            days: values.days, 
+            description: values.description,  
+            price: values.price,  
+            image: values.image ? values.image[0]?.originFileObj : null  
+        };
 
-        const formData = new FormData();
-        formData.append("country_id", "4"); // Hardcoded country_id
-        formData.append("name", values.name);
-        formData.append("days", values.days);
-        formData.append("description", values.description);
-        formData.append("price", values.price);
-        formData.append("image", imageFile);
 
-        try {
-            const response = await axios.post(
-                "http://10.0.80.13:8000/api/admin/destination/store",
-                formData,
-                {
+        // Here you can also handle the image upload (if present) and send the formData to your API.
+        if (formData.image) {
+            const uploadFormData = new FormData();
+            uploadFormData.append("country_id", "4"); 
+            uploadFormData.append("name", formData.name);
+            uploadFormData.append("title", formData.title);
+            uploadFormData.append("days", formData.days);
+            uploadFormData.append("description", formData.description);
+            uploadFormData.append("price", formData.price);
+            uploadFormData.append("image", formData.image);
+            
+            try {
+                // Send the data to the server via axios POST request
+                const response = await axios.post('http://10.0.80.13:8000/api/admin/country/store', formData, {
                     headers: {
-                        "Content-Type": "multipart/form-data",
+                        'Content-Type': 'multipart/form-data',  // Ensure the correct content type is set
                     },
-                }
-            );
+                });
+    
+                // Log the server response (success message or data)
+                console.log('Response:', response.data);
 
-            console.log("Response: line--------> 40", response.data);
-            form.resetFields(); // Reset the form after successful submission
-        } catch (error) {
-            console.error("Error submitting data:", error);
+                
+            } catch (error) {
+                // Log error if the request fails
+                console.error('Error submitting form:', error);
+            }
+           
         }
     };
 
-    const handleBack = () =>{
-        setModalOpen(false)
-    }
+    const handleBack = () => {
+        setModalOpen(false);
+    };
 
     return (
         <div className="relative">
@@ -55,70 +75,44 @@ const AddNewDestination = ({setModalOpen}) => {
                 <div className="max-w-5xl mx-auto my-16 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
                     <div className="space-y-4">
                         <Form form={form} onFinish={handleSubmit} layout="vertical">
-                            <h1 className="font-Roboto font-bold text-primary text-[24px]">Add New Destination</h1>
-
-                            {/* select  */}
+                            {/* Select Continent */}
                             <div className="max-w-2xl mb-2">
                                 <p>Select the continent</p>
                                 <Form.Item
                                     name="continent"
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
-                                    <Select placeholder="Select the continent" className="">
-                                        {countries.map((country, index) => (
-                                            <Select.Option key={index} value={country}>
-                                                {country}
+                                    <Select placeholder="Select the continent">
+                                        {contentData.map((singleContent, index) => (
+                                            <Select.Option key={index} value={singleContent.id}>
+                                                {singleContent.name}
                                             </Select.Option>
                                         ))}
                                     </Select>
                                 </Form.Item>
-
                             </div>
 
-                            {/* country name */}
+                            {/* Country Name */}
                             <div className="max-w-2xl mb-2">
                                 <p>Country Name</p>
                                 <Form.Item
-                                    name="countryName"
+                                    name="name"
                                     rules={[{ required: true, message: "Please enter the country name!" }]}
                                 >
-                                    <Input placeholder="Enter the country name" className="" />
+                                    <Input placeholder="Enter the country name" />
                                 </Form.Item>
                             </div>
-
 
                             {/* Title Field */}
                             <div className="max-w-2xl mb-2">
                                 <Form.Item
-                                    label="title"
+                                    label="Title"
                                     name="title"
                                     rules={[{ required: true, message: "Please enter the title!" }]}
                                 >
-                                    <Input placeholder="Enter the destination name" className="" />
+                                    <Input placeholder="Enter the destination name" />
                                 </Form.Item>
                             </div>
-
-                            {/* Days Field */}
-                            {/* <Form.Item
-                                label="Days"
-                                name="days"
-                                rules={[{ required: true, message: "Please enter the number of days!" }]}
-                            >
-                                <Input type="number" placeholder="Enter the number of days" className="" />
-                            </Form.Item> */}
-
-                            {/* Description Field */}
-                            {/* <div className="">
-                                <Form.Item
-                                    label="Description"
-                                    name="description"
-                                    rules={[{ required: true, message: "Please enter a description!" }]}
-                                >
-                                    <TextArea placeholder="Enter a description of the destination" rows={4} />
-                                </Form.Item>
-                            </div> */}
-
-
 
                             {/* Image Upload Field */}
                             <div className="max-w-2xl mb-2">
@@ -135,24 +129,16 @@ const AddNewDestination = ({setModalOpen}) => {
                                 </Form.Item>
                             </div>
 
-                            {/* Price Field */}
-                            {/* <Form.Item
-                                label="Price"
-                                name="price"
-                                rules={[{ required: true, message: "Please enter the price!" }]}
-                            >
-                                <Input placeholder="Enter the price" className="" type="number" min={0} />
-                            </Form.Item> */}
-
                             {/* Submit Button */}
                             <div className="py-4">
                                 <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
                             </div>
-
                         </Form>
-                        <div 
-                        onClick={handleBack}
-                        className="absolute right-2 -top-3 bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
+
+                        {/* Close Button */}
+                        <div
+                            onClick={handleBack}
+                            className="absolute right-2 -top-3 bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
                             <button className="text-xl"><IoMdClose /></button>
                         </div>
                     </div>
@@ -163,7 +149,3 @@ const AddNewDestination = ({setModalOpen}) => {
 };
 
 export default AddNewDestination;
-
-
-
-

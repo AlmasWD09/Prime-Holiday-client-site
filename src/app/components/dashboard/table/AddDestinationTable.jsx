@@ -7,6 +7,7 @@ import { TbTrashXFilled } from "react-icons/tb";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 
 const AddDestinationTable = () => {
   const [tableData, setTableData] = useState([]);
@@ -54,10 +55,7 @@ const AddDestinationTable = () => {
 
 
 
-  // Edit package
-  const handleEdit = (id) => {
-    router.push(`/dashboard/edit-destination`);
-  };
+ 
 
   return (
     <section className="container px-4 mx-auto">
@@ -110,12 +108,13 @@ const AddDestinationTable = () => {
                           >
                             <TbTrashXFilled />
                           </button>
+                          <Link href={`/dashboard/edit-destination/${item.id}`}>
                           <button
-                            onClick={() => handleEdit(item.id)}
                             className="text-blue-500"
                           >
                             <FiEdit />
                           </button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
