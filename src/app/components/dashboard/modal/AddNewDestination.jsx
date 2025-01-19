@@ -33,11 +33,13 @@ const AddNewDestination = ({ setModalOpen }) => {
             image: values.image ? values.image[0]?.originFileObj : null  
         };
 
+        // Log the object to console
+        console.log("Form Data as Object:", formData);
 
         // Here you can also handle the image upload (if present) and send the formData to your API.
         if (formData.image) {
             const uploadFormData = new FormData();
-            uploadFormData.append("country_id", "4"); 
+            uploadFormData.append("country_id", "4"); // Hardcoded country_id
             uploadFormData.append("name", formData.name);
             uploadFormData.append("title", formData.title);
             uploadFormData.append("days", formData.days);
@@ -55,8 +57,7 @@ const AddNewDestination = ({ setModalOpen }) => {
     
                 // Log the server response (success message or data)
                 console.log('Response:', response.data);
-
-                
+                form.resetFields();
             } catch (error) {
                 // Log error if the request fails
                 console.error('Error submitting form:', error);
