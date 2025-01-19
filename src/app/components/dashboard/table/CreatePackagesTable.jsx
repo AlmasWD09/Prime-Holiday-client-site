@@ -24,6 +24,7 @@ const CreatePackagesTable = () => {
         fetchData();
     }, []);
 
+    
      // delete package for..
      const handleDelete = async (item) => {
         Swal.fire({
