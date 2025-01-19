@@ -6,6 +6,8 @@ import { FiEdit } from "react-icons/fi";
 import { TbTrashXFilled } from "react-icons/tb";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import Link from "next/link";
 
 const AddDestinationTable = () => {
   const [tableData, setTableData] = useState([]);
@@ -14,37 +16,46 @@ const AddDestinationTable = () => {
   useEffect(() => {
     // Fetch data dynamically from the JSON file
     const fetchData = async () => {
-      const response = await fetch("/createPackages.json");
+      const response = await fetch("http://10.0.80.13:8000/api/admin/country");
       const result = await response.json();
-      setTableData(result);
+      setTableData(result.countries);
     };
 
     fetchData();
   }, []);
 
+
+
   // Delete package
-  const handleDelete = async (id) => {
+  const handleDelete = async (item) => {
+
     Swal.fire({
       title: "Are you sure?",
-      text: `This package will be deleted.`,
+      text: `${item.name} is deleted to the menu.`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        // Perform delete operation here
-        setTableData((prevData) => prevData.filter((item) => item.id !== id));
-        Swal.fire("Deleted!", "The package has been deleted.", "success");
+        const res = await axios.delete(`http://10.0.80.13:8000/api/admin/country/delete/${item.id}`)
+        if (res.data.deletedCount > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `${item.name} has been deleted`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
       }
     });
   };
 
-  // Edit package
-  const handleEdit = (id) => {
-    router.push(`/dashboard/edit-destination`);
-  };
+
+
+ 
 
   return (
     <section className="container px-4 mx-auto">
@@ -76,7 +87,7 @@ const AddDestinationTable = () => {
                         <div className="inline-flex items-center gap-x-3">
                           <Image
                             className="object-cover w-10 h-10 rounded-full"
-                            src={item.image}
+                            src={item.image || "/404.jpg"}
                             alt={item.title}
                             width={100}
                             height={100}
@@ -84,25 +95,26 @@ const AddDestinationTable = () => {
                         </div>
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.countryName}
+                        {item.name}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.title}
+                        {item.title || 'N/A'}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
                           <button
-                            onClick={() => handleDelete(item.id)}
+                            onClick={() => handleDelete(item)}
                             className="text-red-500"
                           >
                             <TbTrashXFilled />
                           </button>
+                          <Link href={`/dashboard/edit-destination/${item.id}`}>
                           <button
-                            onClick={() => handleEdit(item.id)}
                             className="text-blue-500"
                           >
                             <FiEdit />
                           </button>
+                          </Link>
                         </div>
                       </td>
                     </tr>

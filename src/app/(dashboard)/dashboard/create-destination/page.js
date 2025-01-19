@@ -10,6 +10,7 @@ const createDestinationPage = () => {
 
   const handleModal = () => {
     setModalOpen(true)
+    
   }
 
   
