@@ -13,7 +13,6 @@ const CreateNewPage = () => {
   
   const [form] = Form.useForm();
   const [editorContent, setEditorContent] = useState("");
-  const [buttonColor, setButtonColor] = useState(0);
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
@@ -74,16 +73,13 @@ const CreateNewPage = () => {
     formData.append("description", values.description);
     formData.append("price", values.price);
     formData.append("image", imageFile);
+    formData.append("includes",items );
 
     form.resetFields();
+
+    
   };
 
-  // single button text get
-  const handleButtonClick = (event, index) => {
-    const buttonText = event.target.innerText;
-    setButtonText(buttonText)
-    setButtonColor(index);
-  };
 
   return (
     <div className="bg-gray-200 m-8 p-8 ">
@@ -176,18 +172,9 @@ const CreateNewPage = () => {
         <section className=" pt-[56px]">
           <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
-              {/* {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
-                <button
-                  key={index}
-                  onClick={(event) => handleButtonClick(event, index)}
-                  className={`py-3 text-center font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-[#FFFFF0] " : ""
-                    }`}>
-                  {label}
-                </button>
-              ))} */}
               <button className="py-3 text-center font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] ">INCLUDES & EXCLUDES</button>
               <Link href={'/dashboard/hotal-package'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >HOTELS</button></Link>
-              <button className="py-3 text-center font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] ">PRICE & VALIDITY</button>
+              <Link href={'/dashboard/price-validity'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >PRICE & VALIDITY</button></Link>
               <Link href={'/dashboard/itinery'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >ITINERARY</button></Link>
             </div>
 
