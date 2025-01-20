@@ -13,16 +13,18 @@ import axios from "axios";
 const CreatePackagesTable = () => {
     const [packagesData, setPackagesData] = useState([])
     const router = useRouter();
+
+     // Fetch all packagesData
     useEffect(() => {
-        // Fetch data dynamically from the JSON file
         const fetchData = async () => {
             const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page");
             const result = await response.json();
             setPackagesData(result.destinations?.data)
         };
-
         fetchData();
     }, []);
+
+
 
      // delete package for..
      const handleDelete = async (item) => {
@@ -51,6 +53,8 @@ const CreatePackagesTable = () => {
     }
 
 
+
+    
     // Edit package
     const handleEdit = (id) =>{
         router.push('/dashboard/edit-package')

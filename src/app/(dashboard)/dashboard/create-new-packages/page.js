@@ -5,23 +5,35 @@ import { Select, Input, Button, Form, Upload } from "antd";
 import { LeftOutlined } from "@ant-design/icons"
 import Image from "next/image"
 import TextEditor from "@/app/components/textEditor/TextEditor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 const CreateNewPage = () => {
-  const countries = ["Asia", "Africa", "North America", "Antarctica", "Antarctica", "Europe", "Oceania"]
-
+  
   const [form] = Form.useForm();
   const [editorContent, setEditorContent] = useState("");
   const [buttonColor, setButtonColor] = useState(0);
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
-
-
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
   const [inputValueExcludes, setInputValueExcludes] = useState("");
   const [itemsExcludes, setItemsExcludes] = useState([]);
   const [items, setItems] = useState([]); // For storing the array of objects
+  const [contentData, setContentData] = useState([])
+
+  // Fetch contient data
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://10.0.80.13:8000/api/admin/continent');
+      const result = await response.json();
+      setContentData(result.continents);
+    };
+
+    fetchData();
+  }, []);
+
+
 
   const handleAdd = () => {
     if (inputValue.trim() !== "") {
@@ -40,9 +52,6 @@ const CreateNewPage = () => {
       setInputValueExcludes(""); // Clear the input field
     }
   }
-
-console.log(items)
-console.log(itemsExcludes)
 
   // Handle form submission
   const handleSubmit = async (values) => {
@@ -96,10 +105,10 @@ console.log(itemsExcludes)
             name="continent"
             rules={[{ required: true, message: "Please select a continent!" }]}
           >
-            <Select placeholder="Enter the country name" className="max-w-xl">
-              {countries.map((country, index) => (
-                <Select.Option key={index} value={country}>
-                  {country}
+            <Select placeholder="Enter the contry name" className="max-w-xl">
+              {contentData.map((singleContaient, index) => (
+                <Select.Option key={index} value={singleContaient.id}>
+                  {singleContaient.name}
                 </Select.Option>
               ))}
             </Select>
@@ -163,20 +172,23 @@ console.log(itemsExcludes)
 
 
 
-        {/* ************ */}
+        {/* **** tab button *** */}
         <section className=" pt-[56px]">
           <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
-              {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
+              {/* {["INCLUDES & EXCLUDES", "HOTELS", "PRICE & VALIDITY", "ITINERARY"].map((label, index) => (
                 <button
                   key={index}
                   onClick={(event) => handleButtonClick(event, index)}
                   className={`py-3 text-center font-bold border border-[#135029] rounded-xl text-[#135029] border-opacity-30 ${buttonColor === index ? "bg-[#135029] text-[#FFFFF0] " : ""
-                    }`}
-                >
+                    }`}>
                   {label}
                 </button>
-              ))}
+              ))} */}
+              <button className="py-3 text-center font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] ">INCLUDES & EXCLUDES</button>
+              <Link href={'/dashboard/hotal-package'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >HOTELS</button></Link>
+              <button className="py-3 text-center font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] ">PRICE & VALIDITY</button>
+              <Link href={'/dashboard/itinery'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >ITINERARY</button></Link>
             </div>
 
             {/* =============== INCLUDES & EXCLUDES Tab start =========================== */}
@@ -249,7 +261,7 @@ console.log(itemsExcludes)
             {/* =============== INCLUDES & EXCLUDES Tab end ============================= */}
           </div>
         </section>
-        {/* ************ */}
+
 
 
         <div className="py-8">
