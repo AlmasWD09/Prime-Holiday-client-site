@@ -71,3 +71,10 @@ body {
   display: none; /* Hide vertical scrollbar */
 }
 /*=================== scroll bar table(Hotal) thick end =======================*/
+
+
+
+/* sidebar design */
+aside.ant-layout-sider.ant-layout-sider-dark {
+  background-color: #FFFFFF;
+}

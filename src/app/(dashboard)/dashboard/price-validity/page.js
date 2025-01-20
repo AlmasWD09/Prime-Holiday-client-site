@@ -18,7 +18,7 @@ const PriceValidityPage = () => {
             eight,
             singleSupplement
         }
-        console.log(priceValidityInfo)
+        localStorage.setItem('priceValidityDetails',JSON.stringify(priceValidityInfo))
     }
     return (
         <div className="border border-red-500 m-4 p-4">

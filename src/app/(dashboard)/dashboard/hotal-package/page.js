@@ -24,11 +24,15 @@ const HotelPage = () => {
             roomTypeTwo,
         };
 
-        console.log(hotelInfo)
+        localStorage.setItem('hotelDetails', JSON.stringify(hotelInfo))
+
+        
         // Optionally, reset the form
         form.reset();
     };
 
+
+    
     return (
         <div className="border border-red-500 m-4 p-4">
             <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>

@@ -7,10 +7,11 @@ import Image from "next/image"
 import TextEditor from "@/app/components/textEditor/TextEditor";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 
 const CreateNewPage = () => {
-  
+
   const [form] = Form.useForm();
   const [editorContent, setEditorContent] = useState("");
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
@@ -20,6 +21,7 @@ const CreateNewPage = () => {
   const [itemsExcludes, setItemsExcludes] = useState([]);
   const [items, setItems] = useState([]); // For storing the array of objects
   const [contentData, setContentData] = useState([])
+  const [imageData, setImageData] = useState(null)
 
   // Fetch contient data
   useEffect(() => {
@@ -60,25 +62,68 @@ const CreateNewPage = () => {
     };
 
 
+
     const imageFile = values.image[0].originFileObj;
     if (!imageFile) {
       console.error("Image file is required.");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("country_id", "4"); // Hardcoded country_id
-    formData.append("name", values.name);
-    formData.append("days", values.days);
-    formData.append("description", values.description);
-    formData.append("price", values.price);
-    formData.append("image", imageFile);
-    formData.append("includes",items );
+    setImageData(imageFile)
+    form.resetFields()
 
-    form.resetFields();
-
-    
+    localStorage.setItem('packegeDetails', JSON.stringify(values))
   };
+
+  const packegeDetails = localStorage.getItem('packegeDetails')
+  const hotelDetails = localStorage.getItem('hotelDetails')
+  const priceValidityDetails = localStorage.getItem('priceValidityDetails')
+  const initeryDetails = localStorage.getItem('initeryDetails')
+
+
+  // all data parse in localStorage
+  const packageData = JSON.parse(packegeDetails)
+  const hotelData = JSON.parse(hotelDetails)
+  const priceValidityData = JSON.parse(priceValidityDetails)
+  const initeryData = JSON.parse(initeryDetails)
+
+const countryId = contentData.map((item)=> item.id)
+const countryName = contentData.map((item)=> item.name)
+
+
+  const allData = {
+    name: countryName,
+    country_id : countryId,
+    image: imageData,
+    days: packageData.days,
+    price: packageData.price,
+    title: packageData.title,
+    city: hotelData.city,
+    hotel: hotelData.hotel,
+    roomTypeOne: hotelData.roomTypeOne,
+    roomTypeTwo: hotelData.roomTypeTwo,
+    supeiorHotel: hotelData.supeiorHotel,
+    eight: priceValidityData.eight,
+    singleSupplement: priceValidityData.singleSupplement,
+    days: initeryData.days,
+    lunchTime: initeryData.lunchTime,
+  }
+
+  console.log(allData)
+
+  const handleSubmitPublishedPackege = async () => {
+    try {
+      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", allData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("Server Response:", response.data);
+    } catch (error) {
+      console.error("Error sending data to the server:", error);
+    }
+  }
 
 
   return (
@@ -251,8 +296,15 @@ const CreateNewPage = () => {
 
 
 
-        <div className="py-8">
-          <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+        <div className="flex justify-between items-center py-8">
+          <div className="">
+            <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+          </div>
+          <div className="">
+            <button
+              onClick={() => handleSubmitPublishedPackege()}
+              className="bg-primary text-white px-6 py-1 rounded">PublishedPackege</button>
+          </div>
         </div>
       </Form>
     </div>
