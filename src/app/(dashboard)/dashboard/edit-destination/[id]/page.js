@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-const EditPage = () => {
+const EditDestination = () => {
   const { id } = useParams();
   const [form] = Form.useForm();
   const [contentData, setContentData] = useState([]);
@@ -159,4 +159,4 @@ const EditPage = () => {
   );
 };
 
-export default EditPage;
+export default EditDestination;

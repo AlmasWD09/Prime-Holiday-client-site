@@ -24,7 +24,7 @@ const HotelPage = () => {
             roomTypeTwo,
         };
 
-        localStorage.setItem('hotelDetails', JSON.stringify(hotelInfo))
+        // localStorage.setItem('hotelDetails', JSON.stringify(hotelInfo))
 
         
         // Optionally, reset the form

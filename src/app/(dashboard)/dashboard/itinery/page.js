@@ -22,7 +22,9 @@ const ItineryPage = () => {
            description,
         };
 
-        localStorage.setItem('initeryDetails',JSON.stringify(initeryInfo))
+
+        console.log(initeryInfo)
+        // localStorage.setItem('initeryDetails',JSON.stringify(initeryInfo))
         // Optionally, reset the form
         form.reset();
     };
