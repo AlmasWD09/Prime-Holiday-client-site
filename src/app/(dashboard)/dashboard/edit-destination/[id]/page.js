@@ -1,106 +1,162 @@
-'use client'
+"use client";
 
 import { Select, Input, Button, Form, Upload } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from 'next/navigation'
+import { useParams } from "next/navigation";
 
+const EditDestination = () => {
+  const { id } = useParams();
+  const [form] = Form.useForm();
+  const [contentData, setContentData] = useState([]);
+  const [singleContentData, setSingleContentData] = useState(null);
+  const [fileList, setFileList] = useState([]);
+  const [selectedContinent, setSelectedContinent] = useState(null);
 
-const EditPage = () => {
-    const { id } = useParams()
-    const [form] = Form.useForm();
-    const countries = ["Asia", "Africa", "North America", "Antarctica", "Antarctica", "Europe", "Oceania"]
-    const [editTableData, setEditTableData] = useState([]);
+  // Load all continent data
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://10.0.80.13:8000/api/admin/continent");
+      const result = await response.json();
+      setContentData(result.continents); // Set continent data
+    };
 
+    fetchData();
+  }, []);
 
+  // Load single country data and set form fields
+  useEffect(() => {
+    const fetchSingleData = async () => {
+      const response = await fetch(
+        `http://10.0.80.13:8000/api/admin/country/${id}`
+      );
+      const result = await response.json();
+      setSingleContentData(result.country); // Set single country data
+      setSelectedContinent(result.country?.continentId || null); // Set selected continent
 
-    useEffect(() => {
-        // Fetch data dynamically from the JSON file
-        const fetchData = async () => {
-            const response = await fetch(`http://10.0.80.13:8000/api/admin/country/${id}`);
-            const result = await response.json();
-            setEditTableData(result.country);
-        };
+      // Set default values in the form
+      form.setFieldsValue({
+        continent: result.country?.continentId,
+        countryName: result.country?.name,
+        title: result.country?.title,
+      });
 
-        fetchData();
-    }, []);
+      // Set default image if available
+      if (result.country?.image) {
+        setFileList([
+          {
+            uid: "-1",
+            name: "image.png",
+            status: "done",
+            url: result.country.image, // Image URL from server
+          },
+        ]);
+      }
+    };
 
+    fetchSingleData();
+  }, [id, form]);
 
+  // Handle image change
+  const handleImageChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
 
-    console.log(editTableData)
+  // Handle form submission
+  const handleSubmit = async (values) => {
+    const formData = {
+      ...values,
+      image: fileList[0]?.url || null, // Include the image URL or uploaded file
+    };
 
-    return (
-        <div className="m-8 p-8">
-            <Form  layout="vertical">
-            {/* <Form form={form} onFinish={handleSubmit} layout="vertical"> */}
-                <h1 className="font-Roboto font-bold text-primary text-[24px]">Edit Destination</h1>
+    try {
+      const response = await axios.put(
+        `http://10.0.80.13:8000/api/admin/country/${id}`,
+        formData
+      );
+      console.log("Updated successfully:", response.data);
+    } catch (error) {
+      console.error("Error updating:", error);
+    }
+  };
 
-                {/* select  */}
-                <div className="mb-2">
-                    <p>Select the continent</p>
-                    <Form.Item
-                        name="continent"
-                        rules={[{ required: true, message: "Please select a continent!" }]}
-                    >
-                        <Select placeholder="Select the continent" className="max-w-sm">
-                            {countries.map((country, index) => (
-                                <Select.Option key={index} value={country}>
-                                    {country}
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
+  return (
+    <div className="m-8 p-8">
+      <Form form={form} onFinish={handleSubmit} layout="vertical">
+        <h1 className="font-Roboto font-bold text-primary text-[24px]">
+          Edit Destination
+        </h1>
 
-                </div>
-
-                {/* country name */}
-                <div className="mb-2">
-                    <p>Country Name</p>
-                    <Form.Item
-                        name="countryName"
-                        rules={[{ required: true, message: "Please enter the country name!" }]}
-                    >
-                        <Input placeholder="Enter the country name" className="max-w-sm" />
-                    </Form.Item>
-                </div>
-
-
-                {/* Title Field */}
-                <div className="mb-2">
-                    <Form.Item
-                        label="title"
-                        name="title"
-                        rules={[{ required: true, message: "Please enter the title!" }]}
-                    >
-                        <Input placeholder="Enter the destination name" className="max-w-sm" />
-                    </Form.Item>
-                </div>
-
-
-                {/* Image Upload Field */}
-                <div className="mb-2">
-                    <Form.Item
-                        label="Upload Image"
-                        name="image"
-                        valuePropName="fileList"
-                        getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
-                        rules={[{ required: true, message: "Please upload an image!" }]}
-                    >
-                        <Upload beforeUpload={() => false} listType="picture">
-                            <Button>Upload Image</Button>
-                        </Upload>
-                    </Form.Item>
-                </div>
-
-                {/* Submit Button */}
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        Save
-                    </Button>
-                </Form.Item>
-            </Form>
+        {/* Select Continent */}
+        <div className="max-w-2xl mb-2">
+          <p>Select the continent</p>
+          {contentData.length > 0 && singleContentData ? (
+            <Select
+            defaultValue={'lsf'}
+              value={selectedContinent} // Controlled value
+              onChange={(value) => setSelectedContinent(value)} // Update selected value
+              style={{ width: 200 }}
+            >
+              {contentData.map((singleContent) => (
+                <Select.Option key={singleContent.id} value={singleContent.id}>
+                  {singleContent.name}
+                </Select.Option>
+              ))}
+            </Select>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
-    )
-}
 
-export default EditPage
+        {/* Country Name */}
+        <div className="mb-2">
+          <p>Country Name</p>
+          <Form.Item
+            name="countryName"
+            rules={[{ required: true, message: "Please enter the country name!" }]}
+          >
+            <Input placeholder="Enter the country name" className="max-w-sm" />
+          </Form.Item>
+        </div>
+
+        {/* Title Field */}
+        <div className="mb-2">
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[{ required: true, message: "Please enter the title!" }]}
+          >
+            <Input placeholder="Enter the destination name" className="max-w-sm" />
+          </Form.Item>
+        </div>
+
+        {/* Image Upload Field */}
+        <div className="mb-2 max-w-sm">
+          <Form.Item
+            label="Upload Image"
+            name="image"
+            rules={[{ required: true, message: "Please upload an image!" }]}
+          >
+            <Upload
+              listType="picture"
+              fileList={fileList}
+              beforeUpload={() => false} // Prevent automatic upload
+              onChange={handleImageChange}
+            >
+              <Button>Upload Image</Button>
+            </Upload>
+          </Form.Item>
+        </div>
+
+        {/* Submit Button */}
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Save
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+};
+
+export default EditDestination;

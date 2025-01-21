@@ -33,11 +33,13 @@ const AddNewDestination = ({ setModalOpen }) => {
             image: values.image ? values.image[0]?.originFileObj : null  
         };
 
+        // Log the object to console
+        console.log("Form Data as Object:", formData);
 
         // Here you can also handle the image upload (if present) and send the formData to your API.
         if (formData.image) {
             const uploadFormData = new FormData();
-            uploadFormData.append("country_id", "4"); 
+            uploadFormData.append("country_id", "4"); // Hardcoded country_id
             uploadFormData.append("name", formData.name);
             uploadFormData.append("title", formData.title);
             uploadFormData.append("days", formData.days);
@@ -55,8 +57,7 @@ const AddNewDestination = ({ setModalOpen }) => {
     
                 // Log the server response (success message or data)
                 console.log('Response:', response.data);
-
-                
+                form.resetFields();
             } catch (error) {
                 // Log error if the request fails
                 console.error('Error submitting form:', error);
@@ -72,11 +73,11 @@ const AddNewDestination = ({ setModalOpen }) => {
     return (
         <div className="relative">
             <div className="fixed inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50">
-                <div className="max-w-5xl mx-auto my-16 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
+                <div className="max-w-2xl mx-auto my-16 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
                     <div className="space-y-4">
                         <Form form={form} onFinish={handleSubmit} layout="vertical">
                             {/* Select Continent */}
-                            <div className="max-w-2xl mb-2">
+                            <div className="mb-2">
                                 <p>Select the continent</p>
                                 <Form.Item
                                     name="continent"
@@ -93,7 +94,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                             </div>
 
                             {/* Country Name */}
-                            <div className="max-w-2xl mb-2">
+                            <div className=" mb-2">
                                 <p>Country Name</p>
                                 <Form.Item
                                     name="name"
@@ -104,7 +105,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                             </div>
 
                             {/* Title Field */}
-                            <div className="max-w-2xl mb-2">
+                            <div className=" mb-2">
                                 <Form.Item
                                     label="Title"
                                     name="title"
@@ -115,7 +116,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                             </div>
 
                             {/* Image Upload Field */}
-                            <div className="max-w-2xl mb-2">
+                            <div className=" mb-2">
                                 <Form.Item
                                     label="Upload Image"
                                     name="image"

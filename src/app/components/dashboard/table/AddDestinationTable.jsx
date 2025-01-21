@@ -66,16 +66,16 @@ const AddDestinationTable = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <th className="py-3.5 px-4 text-lg font-bold text-left text-gray-800">
                       Image
                     </th>
-                    <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <th className="py-3.5 px-4 text-lg font-bold text-left text-gray-800">
                       Country Name
                     </th>
-                    <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <th className="py-3.5 px-4 text-lg font-bold text-left text-gray-800">
                       Title
                     </th>
-                    <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                    <th className="py-3.5 px-4 text-lg font-bold text-left text-gray-800">
                       Action
                     </th>
                   </tr>
@@ -104,15 +104,15 @@ const AddDestinationTable = () => {
                         <div className="flex items-center gap-x-6">
                           <button
                             onClick={() => handleDelete(item)}
-                            className="text-red-500"
+                            className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
                           >
-                            <TbTrashXFilled />
+                            <TbTrashXFilled className="text-xl text-red-600"/>
                           </button>
                           <Link href={`/dashboard/edit-destination/${item.id}`}>
                           <button
-                            className="text-blue-500"
+                            className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
                           >
-                            <FiEdit />
+                            <FiEdit className="text-xl "/>
                           </button>
                           </Link>
                         </div>

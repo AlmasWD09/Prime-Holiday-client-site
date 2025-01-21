@@ -1,8 +1,11 @@
 "use client"
 
 import React, { useState, useRef, useEffect, } from 'react';
-import JoditEditor from 'jodit-react';
 // import "jodit-react/examples/app.css"
+import dynamic from 'next/dynamic';
+const JoditEditor = dynamic(() => import('jodit-react'), {
+    ssr: false,  // Disable server-side rendering for this component
+  });
 
 const TextEditor = ({onchange}) => {
 
