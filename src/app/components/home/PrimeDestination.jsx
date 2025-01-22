@@ -24,13 +24,9 @@ const PrimeDestination = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/Destination.json");
-       
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country?per_page");
         const result = await response.json();
-        setgrounds(result);
+        setgrounds(result.countries.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -41,7 +37,7 @@ const PrimeDestination = () => {
     fetchData();
   }, []);
   const swiperRef = useRef(null);
-
+  
   return (
     <section>
       <div className="container mx-auto px-4">
@@ -95,7 +91,7 @@ const PrimeDestination = () => {
           }}
         >
           {/* ================================== responsive all device end =========================== */}
-          {grounds.map((ground, idx) => (
+          {grounds?.map((ground, idx) => (
             <SwiperSlide key={idx}>
               <Link
                 href={`/destination/${ground?.id}`}
@@ -104,7 +100,7 @@ const PrimeDestination = () => {
                 <Image
                   className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
                   src={ground.image}
-                  alt={ground.title1}
+                  alt='ground title'
                   width={300}
                   height={300}
                 />
@@ -117,10 +113,10 @@ const PrimeDestination = () => {
                     <div>
                       <div>
                         <h2 className="text-xl font-bold text-[#FFFFF0]">
-                          {ground.title1}
+                          {ground.name}
                         </h2>
                       </div>
-                      <h2 >{ground.title2}</h2>
+                      <h2 >{ground.title}</h2>
                     </div>
                   </div>
                 </div>
