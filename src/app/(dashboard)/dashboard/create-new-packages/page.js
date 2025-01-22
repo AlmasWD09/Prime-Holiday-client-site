@@ -12,10 +12,10 @@ import axios from "axios";
 
 const CreateNewPage = () => {
 
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [form] = Form.useForm();
-  const [editorContent, setEditorContent] = useState("");
+  const [editorContent, setEditorContent] = useState(null);
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
@@ -23,7 +23,13 @@ const CreateNewPage = () => {
   const [itemsExcludes, setItemsExcludes] = useState([]);
   const [items, setItems] = useState([]); // For storing the array of objects
   const [countryData, setCountryData] = useState([])
-  const [imageData, setImageData] = useState(null)
+  const [selectedCountry, setSelectedCountry] = useState({
+    id: null,
+    name: "",
+  });
+  const [formValue, setFormValue] = useState(null);
+
+
 
   // Fetch contient data
   useEffect(() => {
@@ -36,9 +42,28 @@ const CreateNewPage = () => {
     fetchData();
   }, []);
 
-   useEffect(()=>{
-      setLoading(false)
-   },[])
+  useEffect(() => {
+    setLoading(false)
+  }, [])
+
+
+  const handleChange = (value) => {
+    // Find the selected country from the data array
+    const country = countryData.find((singleCountry) => singleCountry.id === value);
+
+    if (country) {
+      // Update state with the selected country's details
+      setSelectedCountry({
+        id: country.id,
+        name: country.name,
+      });
+    }
+  };
+
+
+  const handleTextEditorChange = (plainText) => {
+    setEditorContent(plainText)
+  };
 
 
 
@@ -57,74 +82,33 @@ const CreateNewPage = () => {
       const newItem = { text: inputValueExcludes, id: Date.now() }; // Create an object with text and unique ID
       setItemsExcludes([...itemsExcludes, newItem]); // Add new object to the array
       setInputValueExcludes(""); // Clear the input field
-    } 
+    }
   }
 
   // Handle form submission
-  const handleSubmit = async (values) => {
+  const handleSubmit = (values) => {
     const updatedValues = {
       ...values,
       description: editorContent,
+      image: values.image[0].originFileObj,
+      includesText: items,
+      excludesText: itemsExcludes,
+      country_id: selectedCountry.id,
+      name: selectedCountry.name,
     };
 
-    console.log(values,updatedValues)
-
-    const imageFile = values.image[0].originFileObj;
-    if (!imageFile) {
-      console.error("Image file is required.");
-      return;
-    }
-
-    setImageData(imageFile)
-    form.resetFields()
-
-    // localStorage.setItem('packegeDetails', JSON.stringify(values))
+setFormValue(updatedValues)
+    // form.resetFields()
   };
 
 
-  // const packegeDetails = localStorage.getItem('packegeDetails')
-  // const hotelDetails = localStorage.getItem('hotelDetails')
-  // const priceValidityDetails = localStorage.getItem('priceValidityDetails')
-  // const initeryDetails = localStorage.getItem('initeryDetails')
 
 
-  // all data parse in localStorage
-  // const packageData = JSON.parse(packegeDetails)
-  // const hotelData = JSON.parse(hotelDetails)
-  // const priceValidityData = JSON.parse(priceValidityDetails)
-  // const initeryData = JSON.parse(initeryDetails)
-
-  // const countryId = countryData.map((item) => item.id)
-  // const countryName = countryData.map((item) => item.name)
-
-
-  // const allData = {
-  //   name: 'country name',
-    
-  //   country_id: "20",
-  //   image: imageData,
-  //   // image: "The image field must be an image/ The image field must be a file of type: jpeg, png, jpg.",
-  //   days: packageData?.days,
-  //   description: 'ddddddddddddddddddddddddddddddd',
-  //   // price: packageData?.price,
-  //   price: '22',
-  //   title: packageData?.title,
-  //   city: hotelData?.city,
-  //   hotel: hotelData?.hotel,
-  //   roomTypeOne: hotelData?.roomTypeOne,
-  //   roomTypeTwo: hotelData?.roomTypeTwo,
-  //   supeiorHotel: hotelData?.supeiorHotel,
-  //   eight: priceValidityData?.eight,
-  //   singleSupplement: priceValidityData?.singleSupplement,
-  //   // days: initeryData?.days,
-  //   days: '2', // integer number dao
-  //   lunchTime: initeryData?.lunchTime,
-  // }
 
 
   const handleSubmitPublishedPackege = async () => {
     try {
-      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", allData, {
+      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formValue, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -136,7 +120,7 @@ const CreateNewPage = () => {
     }
   }
 
-  if(loading){
+  if (loading) {
     return <div>Loading</div>
   }
 
@@ -157,7 +141,7 @@ const CreateNewPage = () => {
           {/* select  */}
           <div className="mb-2">
             <p>Select the continent</p>
-            <Form.Item
+            {/* <Form.Item
               name="continent"
               rules={[{ required: true, message: "Please select a continent!" }]}
             >
@@ -168,6 +152,28 @@ const CreateNewPage = () => {
                   </Select.Option>
                 ))}
               </Select>
+            </Form.Item> */}
+            <Form.Item
+              name="continent"
+              
+            >
+              <Select
+                placeholder="Enter the country name"
+                className="max-w-xl"
+                onChange={handleChange}
+              >
+                {countryData.map((singleCountry, index) => (
+                  <Select.Option key={index} value={singleCountry.id}>
+                    {singleCountry.name}
+                  </Select.Option>
+                ))}
+              </Select>
+              {/* Displaying the selected country for demonstration */}
+              <div className="mt-4">
+                <strong>Selected Country ID:</strong> {selectedCountry.id}
+                <br />
+                <strong>Selected Country Name:</strong> {selectedCountry.name}
+              </div>
             </Form.Item>
 
           </div>
@@ -201,7 +207,7 @@ const CreateNewPage = () => {
 
           {/* Package description */}
           <div className="max-w-xl mb-2">
-            <TextEditor onchange={setEditorContent} />
+            <TextEditor onChange={handleTextEditorChange} />
           </div>
 
           {/* Price Field */}
@@ -256,7 +262,7 @@ const CreateNewPage = () => {
                           className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
                         />
                         <button
-                        type="button"
+                          type="button"
                           onClick={handleAdd}
                           className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg"
                         >
@@ -309,14 +315,18 @@ const CreateNewPage = () => {
             </div>
           </section>
           {/* save button */}
-          <div className="py-4">
+          {/* <div className="py-4">
             <button type="submit" className="bg-primary text-white px-10 rounded py-1">Save</button>
-          </div>
+          </div> */}
+
+          <Button htmlType="submit" type="primary" className="mt-4">
+            Save
+          </Button>
         </Form>
       </div>
 
 
-    
+
       <div className="flex justify-center py-4">
         <button
           onClick={() => handleSubmitPublishedPackege()}

@@ -20,7 +20,7 @@ const CreatePackagesTable = () => {
         const fetchData = async () => {
             const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page");
             const result = await response.json();
-            setPackagesData(result.destinations?.data)
+            setPackagesData(result?.destinations?.data)
         };
         fetchData();
     }, []);
