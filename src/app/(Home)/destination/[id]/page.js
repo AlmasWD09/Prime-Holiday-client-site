@@ -6,7 +6,8 @@ import DestinationLove from "@/app/components/destination/destinationLove";
 import Immersition from "@/app/components/destination/Immersition";
 import Includes from "@/app/components/destination/Includes";
 
-const DestinationDetails = ({params}) => {
+const DestinationDetails = ({ params }) => {
+
 
   return (
     <div className="pb-10">
