@@ -97,7 +97,7 @@ const CreateNewPage = () => {
       name: selectedCountry.name,
     };
 
-setFormValue(updatedValues)
+    setFormValue(updatedValues)
     // form.resetFields()
   };
 
@@ -155,7 +155,7 @@ setFormValue(updatedValues)
             </Form.Item> */}
             <Form.Item
               name="continent"
-              
+
             >
               <Select
                 placeholder="Enter the country name"
