@@ -18,7 +18,15 @@ const PriceValidityPage = () => {
             eight,
             singleSupplement
         }
-        // localStorage.setItem('priceValidityDetails',JSON.stringify(priceValidityInfo))
+
+        // Set the hotelInfo object in a cookie
+        document.cookie = `priceValidityInfo=${encodeURIComponent(
+            JSON.stringify(priceValidityInfo)
+        )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+
+        // Optionally, reset the form
+        form.reset();
+        alert("priceValidityo Info saved in cookies!");
     }
     return (
         <div className="border border-red-500 m-4 p-4">

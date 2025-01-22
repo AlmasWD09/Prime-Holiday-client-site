@@ -28,6 +28,51 @@ const CreateNewPage = () => {
     name: "",
   });
   const [formValue, setFormValue] = useState(null);
+  const [hotelInfo, setHotelInfo] = useState(null);
+  const [priceValidityInfo, setPriceValidityInfo] = useState(null);
+  const [itineryInfo, setItineryInfo] = useState(null);
+
+  // ================= all inor get cookie for start poine ===========================
+  // hotel info get cookie 
+  useEffect(() => {
+    // Retrieve the `hotelInfo` cookie
+    const cookies = document.cookie.split("; ");
+    const hotelInfoCookie = cookies.find(cookie => cookie.startsWith("hotelInfo="));
+
+    if (hotelInfoCookie) {
+      // Parse the JSON value of the cookie
+      const hotelInfoValue = decodeURIComponent(hotelInfoCookie.split("=")[1]);
+      setHotelInfo(JSON.parse(hotelInfoValue));
+    }
+  }, []);
+
+  // price validaty info
+  useEffect(() => {
+    // Retrieve the `priceValidityInfo` cookie
+    const cookies = document.cookie.split("; ");
+    const priceValidityCookie = cookies.find(cookie => cookie.startsWith("priceValidityInfo="));
+
+    if (priceValidityCookie) {
+      // Parse the JSON value of the cookie
+      const priceValidityValue = decodeURIComponent(priceValidityCookie.split("=")[1]);
+      setPriceValidityInfo(JSON.parse(priceValidityValue));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    // Retrieve the `initeryInfo` cookie
+    const cookies = document.cookie.split("; ");
+    const itineryCookie = cookies.find(cookie => cookie.startsWith("initeryInfo="));
+
+    if (itineryCookie) {
+      // Parse the JSON value of the cookie
+      const itineryValue = decodeURIComponent(itineryCookie.split("=")[1]);
+      setItineryInfo(JSON.parse(itineryValue));
+    }
+  }, []);
+
+  // ================= all inor get cookie for end poine ===========================
 
 
 
@@ -36,7 +81,7 @@ const CreateNewPage = () => {
     const fetchData = async () => {
       const response = await fetch('http://10.0.80.13:8000/api/admin/country');
       const result = await response.json();
-      setCountryData(result.countries);
+      setCountryData(result.countries.data);
     };
 
     fetchData();
@@ -95,11 +140,16 @@ const CreateNewPage = () => {
       excludesText: itemsExcludes,
       country_id: selectedCountry.id,
       name: selectedCountry.name,
+      hotel_all_data: hotelInfo,
+      priceValidity_all_data: priceValidityInfo,
+      itinery_all_data: itineryInfo,
     };
 
     setFormValue(updatedValues)
     // form.resetFields()
   };
+
+
 
 
 
@@ -114,6 +164,7 @@ const CreateNewPage = () => {
         },
       });
 
+      alert('posted ok')
       console.log("Server Response:", response.data);
     } catch (error) {
       console.error("Error sending data to the server:", error);
@@ -141,18 +192,6 @@ const CreateNewPage = () => {
           {/* select  */}
           <div className="mb-2">
             <p>Select the continent</p>
-            {/* <Form.Item
-              name="continent"
-              rules={[{ required: true, message: "Please select a continent!" }]}
-            >
-              <Select placeholder="Enter the contry name" className="max-w-xl">
-                {countryData.map((singleCountry, index) => (
-                  <Select.Option key={index} value={singleCountry.id}>
-                    {singleCountry.name}
-                  </Select.Option>
-                ))}
-              </Select>
-            </Form.Item> */}
             <Form.Item
               name="continent"
 
@@ -162,18 +201,12 @@ const CreateNewPage = () => {
                 className="max-w-xl"
                 onChange={handleChange}
               >
-                {countryData.map((singleCountry, index) => (
+                {countryData?.map((singleCountry, index) => (
                   <Select.Option key={index} value={singleCountry.id}>
                     {singleCountry.name}
                   </Select.Option>
                 ))}
               </Select>
-              {/* Displaying the selected country for demonstration */}
-              <div className="mt-4">
-                <strong>Selected Country ID:</strong> {selectedCountry.id}
-                <br />
-                <strong>Selected Country Name:</strong> {selectedCountry.name}
-              </div>
             </Form.Item>
 
           </div>
@@ -314,10 +347,6 @@ const CreateNewPage = () => {
               {/* =============== INCLUDES & EXCLUDES Tab end ============================= */}
             </div>
           </section>
-          {/* save button */}
-          {/* <div className="py-4">
-            <button type="submit" className="bg-primary text-white px-10 rounded py-1">Save</button>
-          </div> */}
 
           <Button htmlType="submit" type="primary" className="mt-4">
             Save

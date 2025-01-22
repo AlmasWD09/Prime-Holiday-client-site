@@ -23,10 +23,14 @@ const ItineryPage = () => {
         };
 
 
-        console.log(initeryInfo)
-        // localStorage.setItem('initeryDetails',JSON.stringify(initeryInfo))
-        // Optionally, reset the form
-        form.reset();
+            // Set the hotelInfo object in a cookie
+            document.cookie = `initeryInfo=${encodeURIComponent(
+                JSON.stringify(initeryInfo)
+            )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+    
+            // Optionally, reset the form
+            form.reset();
+            alert("initery Info saved in cookies!");
     };
 
 
@@ -66,6 +70,3 @@ const ItineryPage = () => {
 }
 
 export default ItineryPage
-
-
-// lunchPeriod

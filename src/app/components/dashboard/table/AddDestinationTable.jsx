@@ -18,13 +18,13 @@ const AddDestinationTable = () => {
     const fetchData = async () => {
       const response = await fetch("http://10.0.80.13:8000/api/admin/country");
       const result = await response.json();
-      setTableData(result.countries);
+      setTableData(result.countries.data);
     };
 
     fetchData();
   }, []);
 
-
+console.log(tableData)
 
   // Delete package
   const handleDelete = async (item) => {
@@ -81,7 +81,7 @@ const AddDestinationTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {tableData.map((item) => (
+                  {tableData?.map((item) => (
                     <tr key={item.id}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div className="inline-flex items-center gap-x-3">

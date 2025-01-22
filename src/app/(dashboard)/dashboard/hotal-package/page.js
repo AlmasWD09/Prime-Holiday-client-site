@@ -24,15 +24,18 @@ const HotelPage = () => {
             roomTypeTwo,
         };
 
-        // localStorage.setItem('hotelDetails', JSON.stringify(hotelInfo))
+          // Set the hotelInfo object in a cookie
+          document.cookie = `hotelInfo=${encodeURIComponent(
+            JSON.stringify(hotelInfo)
+        )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
 
-        
         // Optionally, reset the form
         form.reset();
+        alert("Hotel Info saved in cookies!");
     };
 
 
-    
+
     return (
         <div className="border border-red-500 m-4 p-4">
             <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
