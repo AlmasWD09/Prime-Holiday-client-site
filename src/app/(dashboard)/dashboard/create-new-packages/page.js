@@ -134,42 +134,38 @@ const CreateNewPage = () => {
   const handleSubmit = (values) => {
     const updatedValues = {
       ...values,
-      description: editorContent,
-      image: values.image[0].originFileObj,
-      includesText: items,
-      excludesText: itemsExcludes,
-      country_id: selectedCountry.id,
-      name: selectedCountry.name,
-      hotel_all_data: hotelInfo,
-      priceValidity_all_data: priceValidityInfo,
-      itinery_all_data: itineryInfo,
     };
 
     setFormValue(updatedValues)
-    // form.resetFields()
+    form.resetFields()
   };
 
 
-
-
-
-
-
-
   const handleSubmitPublishedPackege = async () => {
-    try {
-      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formValue, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    const formData = new FormData();
+    formData.append("image", formValue.image[0].originFileObj); // Attach image
+    formData.append("description", editorContent);
+    formData.append("title", formValue.title);
+    formData.append("price", formValue.price);
+    formData.append("days", formValue.days);
+    formData.append("country_id", selectedCountry.id);
+    formData.append("name", selectedCountry.name);
+    formData.append("includesText", JSON.stringify(items));
+    formData.append("excludesText", JSON.stringify(itemsExcludes));
+    formData.append("hotel_all_data", JSON.stringify(hotelInfo));
+    formData.append("priceValidity_all_data", JSON.stringify(priceValidityInfo));
+    formData.append("itinery_all_data", JSON.stringify(itineryInfo));
 
-      alert('posted ok')
-      console.log("Server Response:", response.data);
+    try {
+      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Package created successfully!");
+      console.log("Response:", response.data);
     } catch (error) {
-      console.error("Error sending data to the server:", error);
+      console.error("Error submitting form:", error);
     }
-  }
+  };
 
   if (loading) {
     return <div>Loading</div>
@@ -219,7 +215,10 @@ const CreateNewPage = () => {
               name="image"
               valuePropName="fileList"
               getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
-              rules={[{ required: true, message: "Please upload an image!" }]}
+              rules={[
+                { required: true, message: "Please upload an image!" },
+                { validator: (_, value) => (value?.[0]?.type?.startsWith("image/") ? Promise.resolve() : Promise.reject("File must be an image")) },
+              ]}
             >
               <Upload beforeUpload={() => false} listType="picture">
                 <Button>Upload Image</Button>
@@ -348,7 +347,7 @@ const CreateNewPage = () => {
             </div>
           </section>
 
-          <Button htmlType="submit" type="primary" className="mt-4">
+          <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: '#F49D2A', color: 'white' }}>
             Save
           </Button>
         </Form>
