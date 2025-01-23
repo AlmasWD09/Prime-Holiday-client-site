@@ -23,60 +23,29 @@ const CreateNewPage = () => {
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
   const [inputValueExcludes, setInputValueExcludes] = useState("");
   const [itemsExcludes, setItemsExcludes] = useState([]);
-  const [items, setItems] = useState([]); // For storing the array of objects
+  const [items, setItems] = useState([{}]); // For storing the array of objects
   const [countryData, setCountryData] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({
     id: null,
     name: "",
   });
-  const [formValue, setFormValue] = useState([]);
-  const [hotelInfo, setHotelInfo] = useState([]);
+  const [allhotelInfo, setAllHotelInfo] = useState([]);
+  const [hotelInfo, setHotelInfo] = useState({
+    city : "",
+    standard_hotel : "",
+    room_type : "", 
+    supeior_hotel : "",
+    room_type1 : ""
+
+  });
+
   const [priceValidityInfo, setPriceValidityInfo] = useState([]);
+  const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
+
+
   const [itineryInfo, setItineryInfo] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
-
-
-  // ================= all inor get cookie for start poine ===========================
-  // hotel info get cookie 
-  useEffect(() => {
-    // Retrieve the `hotelInfo` cookie
-    const cookies = document.cookie.split("; ");
-    const hotelInfoCookie = cookies.find(cookie => cookie.startsWith("hotelInfo="));
-
-    if (hotelInfoCookie) {
-      // Parse the JSON value of the cookie
-      const hotelInfoValue = decodeURIComponent(hotelInfoCookie.split("=")[1]);
-      setHotelInfo(JSON.parse(hotelInfoValue));
-    }
-  }, []);
-
-  // price validaty info
-  useEffect(() => {
-    // Retrieve the `priceValidityInfo` cookie
-    const cookies = document.cookie.split("; ");
-    const priceValidityCookie = cookies.find(cookie => cookie.startsWith("priceValidityInfo="));
-
-    if (priceValidityCookie) {
-      // Parse the JSON value of the cookie
-      const priceValidityValue = decodeURIComponent(priceValidityCookie.split("=")[1]);
-      setPriceValidityInfo(JSON.parse(priceValidityValue));
-    }
-  }, []);
-
-
-  useEffect(() => {
-    // Retrieve the `initeryInfo` cookie
-    const cookies = document.cookie.split("; ");
-    const itineryCookie = cookies.find(cookie => cookie.startsWith("initeryInfo="));
-
-    if (itineryCookie) {
-      // Parse the JSON value of the cookie
-      const itineryValue = decodeURIComponent(itineryCookie.split("=")[1]);
-      setItineryInfo(JSON.parse(itineryValue));
-    }
-  }, []);
-
-  // ================= all inor get cookie for end poine ===========================
+  const [formValue, setFormValue] = useState([]);
 
 
   useEffect(() => {
@@ -136,136 +105,51 @@ const CreateNewPage = () => {
 
   // hotel form
   const handleSubmitHotel = (event) => {
-    event.preventDefault();
-    const form = event.target;
+  
+    setAllHotelInfo(prev=>{
+      if(prev?.length){
+      return  prev?.concat(hotelInfo)
 
-    // Extracting values from the form
-    const city = form.city.value;
-    const hotel = form.hotel.value;
-    const roomTypeOne = form.roomTypeOne.value;
-    const supeiorHotel = form.supeiorHotel.value;
-    const roomTypeTwo = form.roomTypeTwo.value;
+      }else{
+        return [hotelInfo]
+      }
+    })
+  
 
-    // Create hotelInfo object
-    const hotelInfo = {
-      city,
-      hotel,
-      roomTypeOne,
-      supeiorHotel,
-      roomTypeTwo,
-    };
-
-    // Set the hotelInfo object in a cookie
-    document.cookie = `hotelInfo=${encodeURIComponent(
-      JSON.stringify(hotelInfo)
-    )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
-
-    // Optionally, reset the form
-    form.reset();
-    alert("Hotel Info saved in cookies!");
   };
 
-  // price validaty form
-  const handleSubmitPriceValidity = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const two = form.two.value;
-    const four = form.four.value;
-    const six = form.six.value;
-    const eight = form.eight.value;
-    const singleSupplement = form.singleSupplement.value;
 
-    const priceValidityInfo = {
-      two,
-      four,
-      six,
-      eight,
-      singleSupplement
-    }
 
-    // Set the hotelInfo object in a cookie
-    document.cookie = `priceValidityInfo=${encodeURIComponent(
-      JSON.stringify(priceValidityInfo)
-    )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+ 
 
-    // Optionally, reset the form
-    form.reset();
-    alert("priceValidityo Info saved in cookies!");
-  }
+  const handleSubmit = async (values) => {
+    try {
 
-  // itinerary form
-  const handleSubmitItinery = (event) => {
-    event.preventDefault();
-    const form = event.target;
+      const updatedValues = {
+        ...values,
+      };
+      setFormValue(updatedValues)
+      // form.resetFields()
 
-    // Extracting values from the form
-    const lunchTime = form.lunchTime.value;
-    const days = form.days.value;
-    const description = form.description.value;
+  
+      const formData = new FormData();
+      // formData.append("image", formValue.image[0].originFileObj) || null; 
+      formData.append("description", editorContent);
+      formData.append("title", formValue.title);
+      formData.append("price", formValue.price);
+      formData.append("days", formValue.days);
+      formData.append("country_id", selectedCountry.id);
+      formData.append("name", selectedCountry.name);
+      formData.append("hotels", JSON?.stringify(allhotelInfo));
+      formData.append("includes_excludes", JSON.stringify({
+        "includes": items?.map(i => i.text),
+        "excludes": itemsExcludes?.map(i => i.text)
+      }));
+  
+  console.log(formData)
+  
    
 
-    // Create hotelInfo object
-    const initeryInfo = {
-       lunchTime,
-       days,
-       description,
-    };
-
-
-        // Set the hotelInfo object in a cookie
-        document.cookie = `initeryInfo=${encodeURIComponent(
-            JSON.stringify(initeryInfo)
-        )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
-
-        // Optionally, reset the form
-        form.reset();
-        alert("initery Info saved in cookies!");
-};
-
-  // Handle form submission
-  const handleSubmit = (values) => {
-    const updatedValues = {
-      ...values,
-    };
-
-    setFormValue(updatedValues)
-    // form.resetFields()
-  };
-  // {
-  //   "includes": ["item1", "item2", "item3"],
-  //   "excludes": ["item4", "item5"]
-  // }
-
-  const inludesandexludes = {
-
-  }
-
-  const handleSubmitPublishedPackege = async () => {
-    const formData = new FormData();
-    formData.append("image", formValue.image[0].originFileObj) || null; // Attach image
-    formData.append("description", editorContent);
-    formData.append("title", formValue.title);
-    formData.append("price", formValue.price);
-    formData.append("days", formValue.days);
-    formData.append("country_id", selectedCountry.id);
-    formData.append("name", selectedCountry.name);
-    formData.append("includes_excludes", JSON.stringify({
-      "includes": items?.map(i => i.text),
-      "excludes": itemsExcludes?.map(i => i.text)
-    }));
-
-    formData.append("price_validity", JSON.stringify({
-
-      "priceValidityData": priceValidityInfo,
-    }));
-    // formData.append("excludesText", JSON.stringify(itemsExcludes));
-    // formData.append("hotel_all_data", JSON.stringify(hotelInfo));
-    // formData.append("priceValidity_all_data", JSON.stringify(priceValidityInfo));
-    // formData.append("itinery_all_data", JSON.stringify(itineryInfo));
-
-    console.log(formData.includesText)
-
-    try {
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -274,11 +158,14 @@ const CreateNewPage = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
+
+    
   };
 
-  if (loading) {
-    return <div>Loading</div>
-  }
+  // if (loading) {
+  //   return <div>Loading</div>
+  // }
+
 
 
   return (
@@ -376,12 +263,12 @@ const CreateNewPage = () => {
 
           {/* tab component here */}
           <div>
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} style={{border:"1px solid #F49D2A",borderRadius:"4px", padding:"8px"}}>
               <TabList>
-                <Tab style={{ color: "green", fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
-                <Tab style={{ color: "green", fontWeight: "700" }}>HOTELS</Tab>
-                <Tab style={{ color: "green", fontWeight: "700" }}>PRICE & VALIDITY</Tab>
-                <Tab style={{ color: "green", fontWeight: "700" }}>ITINERARY</Tab>
+                <Tab style={{fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
+                <Tab style={{fontWeight: "700" }}>HOTELS</Tab>
+                <Tab style={{fontWeight: "700" }}>PRICE & VALIDITY</Tab>
+                <Tab style={{fontWeight: "700" }}>ITINERARY</Tab>
               </TabList>
 
 
@@ -409,8 +296,8 @@ const CreateNewPage = () => {
                     <div className="mt-4">
                       {items.map((item, index) => (
                         <div key={item.id} className="p-2 border-b">
-                          {index + 1}. {item.text}
-                        </div>
+                        {index + 1}. {item.text}
+                      </div>
                       ))}
                     </div>
 
@@ -440,44 +327,63 @@ const CreateNewPage = () => {
                       ))}
                     </div>
                   </div>
+
+                  {/* <div className="py-8">
+                    <button type="button" className="bg-primary text-white px-6 py-1 rounded">Save</button>
+                  </div> */}
                 </div>
               </TabPanel>
-
+                      {/* hotel tab  */}
               <TabPanel>
-                <div className="border border-red-500 m-4 p-4">
+                <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
 
-                  <form onSubmit={handleSubmitHotel}>
+                  <form >
                     <div className="space-y-4">
                       {/* City */}
                       <div>
                         <p>City</p>
-                        <input required type="text" name="city" placeholder="City" className="border px-2 py-1 outline-none" />
+                        <input  name="city" placeholder="City" className="border px-2 py-1 outline-none" onChange={(e)=>setHotelInfo({
+                          ...hotelInfo,
+                          city : e.target?.value
+                        })} />
                       </div>
                       {/* Standard Hotel */}
                       <div>
                         <p>Standard Hotel</p>
-                        <input required type="text" name="hotel" placeholder="Standard Hotel" className="border px-2 py-1 outline-none" />
+                        <input  name="hotel" placeholder="Standard Hotel" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                          ...hotelInfo,
+                          city : e.target?.value
+                        })}  />
                       </div>
                       {/* Room Type One */}
                       <div>
                         <p>Room Type</p>
-                        <input required type="text" name="roomTypeOne" placeholder="Room Type" className="border px-2 py-1 outline-none" />
+                        <input  name="roomTypeOne" placeholder="Room Type" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                          ...hotelInfo,
+                          room_type : e.target?.value
+                        })} />
                       </div>
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input required type="text" name="supeiorHotel" placeholder="Supeior Hotel" className="border px-2 py-1 outline-none" />
+                        <input  name="supeiorHotel" placeholder="Supeior Hotel" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                          ...hotelInfo,
+                          standard_hotel : e.target?.value
+                        })} />
                       </div>
                       {/* Room Type Two */}
                       <div>
                         <p>Room Type</p>
-                        <input required type="text" name="roomTypeTwo" placeholder="Room Type" className="border px-2 py-1 outline-none" />
+                        <input  name="roomTypeTwo" placeholder="Room Type" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                          ...hotelInfo,
+                          room_type1 : e.target?.value
+                        })} />
                       </div>
                     </div>
 
                     <div className="py-8">
-                      <button type="submit" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
+                      <button onClick={()=> handleSubmitHotel()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
                     </div>
                   </form>
 
@@ -485,10 +391,10 @@ const CreateNewPage = () => {
               </TabPanel>
 
               <TabPanel>
-                <div className="border border-red-500 m-4 p-4">
+                <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">PRICE & VALIDITY</h1>
 
-                  <form onSubmit={handleSubmitPriceValidity}>
+                  <form >
                     <div className="space-y-4">
                       {/* 2px for */}
                       <div>
@@ -518,17 +424,17 @@ const CreateNewPage = () => {
 
                     </div>
                     <div className="py-8">
-                      <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                      <button type="button" className="bg-primary text-white px-6 py-1 rounded">Save Validaty</button>
                     </div>
                   </form>
                 </div>
               </TabPanel>
 
               <TabPanel>
-                <div className="border border-red-500 m-4 p-4">
+                <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">ITINERARY</h1>
 
-                  <form onSubmit={handleSubmitItinery}>
+                  <form>
                     <div className="space-y-4">
                       {/* LunchTime */}
                       <div>
@@ -551,7 +457,7 @@ const CreateNewPage = () => {
                     </div>
 
                     <div className="py-8">
-                      <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                      <button type="submit" className="bg-primary text-white px-6 py-1 rounded">Save Itinerary</button>
                     </div>
                   </form>
 
@@ -561,17 +467,9 @@ const CreateNewPage = () => {
           </div>
 
           <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: '#F49D2A', color: 'white' }}>
-            Save
+            Published Packege
           </Button>
         </Form>
-      </div>
-
-
-
-      <div className="flex justify-center py-4">
-        <button
-          onClick={() => handleSubmitPublishedPackege()}
-          className="bg-primary/85 hover:bg-primary text-white font-semibold px-8 py-2 rounded">Published Packege</button>
       </div>
     </div>
   )

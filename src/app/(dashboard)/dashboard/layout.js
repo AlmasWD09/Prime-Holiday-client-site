@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
   return (
     <Layout>
       <Sider
-        className="w-[354px] h-screen fixed"
+        className=""
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -28,7 +28,8 @@ const DashboardLayout = ({ children }) => {
 
 
         <Content>
-          <div className='bg-[#FFFFFF]'>
+          <div>
+          {/* <div className='bg-[#FFFFFF]'> */}
             {children}
           </div>
         </Content>
