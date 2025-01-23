@@ -10,11 +10,13 @@ import Link from "next/link";
 import axios from "axios";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useRouter } from "next/navigation";
 
 
 const CreateNewPage = () => {
-
+  const router = useRouter()
   const [loading, setLoading] = useState(true);
+
 
   const [form] = Form.useForm();
   const [editorContent, setEditorContent] = useState(null);
@@ -39,8 +41,14 @@ const CreateNewPage = () => {
 
   });
 
-  const [priceValidityInfo, setPriceValidityInfo] = useState([]);
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
+  const [priceValidityInfo, setPriceValidityInfo] = useState({
+    "2px":"",
+    "4px":"",
+    "6px":"",
+    "5px":"",
+    "single_supplement":"",
+  });
 
   const [allItinerary, setAllItinerary] = useState([])
   const [itineraryInfo, setItineraryInfo] = useState({
@@ -49,7 +57,6 @@ const CreateNewPage = () => {
     description: "",
   })
 
-  const [itineryInfo, setItineryInfo] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [formValue, setFormValue] = useState([]);
 
@@ -122,7 +129,22 @@ const CreateNewPage = () => {
   };
 
 
-  // hotel form
+  // Price & validity form
+  const handleSubmitPriceValidity = (event) => {
+    setAllPriceValidityInfo(prev => {
+      if (prev?.length) {
+        return prev?.concat(priceValidityInfo)
+
+      } else {
+        return [priceValidityInfo]
+      }
+    })
+  };
+
+console.log(allPriceValidityInfo)
+
+
+  // itinerary form
   const handleSubmitItinerary = (event) => {
     setAllItinerary(prev => {
       if (prev?.length) {
@@ -133,9 +155,6 @@ const CreateNewPage = () => {
       }
     })
   };
-
-
-
 
 
 
@@ -160,6 +179,7 @@ const CreateNewPage = () => {
       formData.append("country_id", selectedCountry.id);
       formData.append("name", selectedCountry.name);
       formData.append("hotels", JSON?.stringify(allhotelInfo));
+      formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
       formData.append("itinerary", JSON?.stringify(allItinerary));
       formData.append("includes_excludes", JSON.stringify({
         "includes": items?.map(i => i.text),
@@ -173,6 +193,7 @@ const CreateNewPage = () => {
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      router.push('/dashboard/create-packages')
       alert("Package created successfully!");
       console.log("Response:", response.data);
     } catch (error) {
@@ -413,32 +434,49 @@ const CreateNewPage = () => {
                       {/* 2px for */}
                       <div>
                         <p>2 Pax</p>
-                        <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
+                        <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
+                          ...priceValidityInfo,
+                          "2px": e.target?.value
+                        })}/>
                       </div>
                       {/* 4px for */}
                       <div>
                         <p>4 Pax</p>
-                        <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
+                        <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
+                          ...priceValidityInfo,
+                          "4px": e.target?.value
+                        })}/>
                       </div>
                       {/* 6px for */}
                       <div>
                         <p>6 Pax</p>
-                        <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
+                        <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
+                          ...priceValidityInfo,
+                          "6px": e.target?.value
+                        })}/>
                       </div>
                       {/* 8px for */}
                       <div>
                         <p>8 Pax</p>
-                        <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
+                        <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
+                          ...priceValidityInfo,
+                          "8px": e.target?.value
+                        })}/>
                       </div>
                       {/* Single Supplement for */}
                       <div>
                         <p>Single Supplement</p>
-                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
+                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" 
+                        onChange={(e) => setPriceValidityInfo({
+                          ...priceValidityInfo,
+                          "single_supplement": e.target?.value
+                        })}
+                        />
                       </div>
 
                     </div>
                     <div className="py-8">
-                      <button type="button" className="bg-primary text-white px-6 py-1 rounded">Save Validaty</button>
+                      <button  onClick={() => handleSubmitPriceValidity()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Validaty</button>
                     </div>
                   </form>
                 </div>
@@ -455,7 +493,7 @@ const CreateNewPage = () => {
                       <div>
                         <p>LunchTime</p>
                         <input required type="text" name="lunchTime" placeholder="LunchTime" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
-                          ...itineryInfo,
+                          ...itineraryInfo,
                           lunchTime: e.target?.value
                         })} />
                       </div>
@@ -464,7 +502,7 @@ const CreateNewPage = () => {
                       <div>
                         <p>Days</p>
                         <input required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
-                          ...itineryInfo,
+                          ...itineraryInfo,
                           days: e.target?.value
                         })} />
                       </div>
@@ -474,7 +512,7 @@ const CreateNewPage = () => {
                       <div>
                         <p>Itinery Description</p>
                         <textarea name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
-                          ...itineryInfo,
+                          ...itineraryInfo,
                           description: e.target?.value
                         })}></textarea>
                       </div>
