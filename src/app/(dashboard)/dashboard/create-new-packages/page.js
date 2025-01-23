@@ -31,17 +31,23 @@ const CreateNewPage = () => {
   });
   const [allhotelInfo, setAllHotelInfo] = useState([]);
   const [hotelInfo, setHotelInfo] = useState({
-    city : "",
-    standard_hotel : "",
-    room_type : "", 
-    supeior_hotel : "",
-    room_type1 : ""
+    city: "",
+    standard_hotel: "",
+    room_type: "",
+    supeior_hotel: "",
+    room_type1: ""
 
   });
 
   const [priceValidityInfo, setPriceValidityInfo] = useState([]);
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
 
+  const [allItinerary, setAllItinerary] = useState([])
+  const [itineraryInfo, setItineraryInfo] = useState({
+    lunchTime: "",
+    days: "",
+    description: "",
+  })
 
   const [itineryInfo, setItineryInfo] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
@@ -91,7 +97,7 @@ const CreateNewPage = () => {
     }
   };
 
-  const inludes = items?.map(i => i.text)
+
 
 
   const handleAddTwo = () => {
@@ -105,24 +111,38 @@ const CreateNewPage = () => {
 
   // hotel form
   const handleSubmitHotel = (event) => {
-  
-    setAllHotelInfo(prev=>{
-      if(prev?.length){
-      return  prev?.concat(hotelInfo)
+    setAllHotelInfo(prev => {
+      if (prev?.length) {
+        return prev?.concat(hotelInfo)
 
-      }else{
+      } else {
         return [hotelInfo]
       }
     })
-  
+  };
 
+
+  // hotel form
+  const handleSubmitItinerary = (event) => {
+    setAllItinerary(prev => {
+      if (prev?.length) {
+        return prev?.concat(itineraryInfo)
+
+      } else {
+        return [itineraryInfo]
+      }
+    })
   };
 
 
 
- 
+
+
+
 
   const handleSubmit = async (values) => {
+    // console.log(im.image[0].originFileObj)
+
     try {
 
       const updatedValues = {
@@ -131,9 +151,8 @@ const CreateNewPage = () => {
       setFormValue(updatedValues)
       // form.resetFields()
 
-  
       const formData = new FormData();
-      // formData.append("image", formValue.image[0].originFileObj) || null; 
+      formData.append("image", values.image[0].originFileObj);
       formData.append("description", editorContent);
       formData.append("title", formValue.title);
       formData.append("price", formValue.price);
@@ -141,14 +160,15 @@ const CreateNewPage = () => {
       formData.append("country_id", selectedCountry.id);
       formData.append("name", selectedCountry.name);
       formData.append("hotels", JSON?.stringify(allhotelInfo));
+      formData.append("itinerary", JSON?.stringify(allItinerary));
       formData.append("includes_excludes", JSON.stringify({
         "includes": items?.map(i => i.text),
         "excludes": itemsExcludes?.map(i => i.text)
       }));
-  
-  console.log(formData)
-  
-   
+
+      formData.forEach((value, key) => {
+        console.log('form data', key, value);
+      });
 
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -159,14 +179,7 @@ const CreateNewPage = () => {
       console.error("Error submitting form:", error);
     }
 
-    
   };
-
-  // if (loading) {
-  //   return <div>Loading</div>
-  // }
-
-
 
   return (
     <div className="bg-gray-200 m-8 p-8 ">
@@ -262,13 +275,13 @@ const CreateNewPage = () => {
           </div>
 
           {/* tab component here */}
-          <div>
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} style={{border:"1px solid #F49D2A",borderRadius:"4px", padding:"8px"}}>
-              <TabList>
-                <Tab style={{fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
-                <Tab style={{fontWeight: "700" }}>HOTELS</Tab>
-                <Tab style={{fontWeight: "700" }}>PRICE & VALIDITY</Tab>
-                <Tab style={{fontWeight: "700" }}>ITINERARY</Tab>
+          <div style={{ maxWidth: "600px" }}>
+            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} style={{ backgroundColor: "transparent", padding: "8px" }}>
+              <TabList >
+                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
+                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>HOTELS</Tab>
+                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>PRICE & VALIDITY</Tab>
+                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>ITINERARY</Tab>
               </TabList>
 
 
@@ -276,7 +289,7 @@ const CreateNewPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
 
                   <div className="p-4">
-                    <div className="flex justify-between lg:border-r border-[#D1D1D1] border-opacity-30">
+                    <div className="flex justify-between gap-3 lg:border-r border-[#D1D1D1] border-opacity-30">
                       <input
                         type="text"
                         placeholder="Enter your text"
@@ -296,14 +309,14 @@ const CreateNewPage = () => {
                     <div className="mt-4">
                       {items.map((item, index) => (
                         <div key={item.id} className="p-2 border-b">
-                        {index + 1}. {item.text}
-                      </div>
+                          {index + 1}. {item.text}
+                        </div>
                       ))}
                     </div>
 
                   </div>
                   <div className="p-4">
-                    <div className="flex justify-between ">
+                    <div className="flex justify-between gap-3">
                       <input
                         type="text"
                         placeholder="Enter your text"
@@ -333,7 +346,7 @@ const CreateNewPage = () => {
                   </div> */}
                 </div>
               </TabPanel>
-                      {/* hotel tab  */}
+              {/* hotel tab  */}
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
@@ -343,53 +356,54 @@ const CreateNewPage = () => {
                       {/* City */}
                       <div>
                         <p>City</p>
-                        <input  name="city" placeholder="City" className="border px-2 py-1 outline-none" onChange={(e)=>setHotelInfo({
+                        <input name="city" placeholder="City" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          city : e.target?.value
+                          city: e.target?.value
                         })} />
                       </div>
                       {/* Standard Hotel */}
                       <div>
                         <p>Standard Hotel</p>
-                        <input  name="hotel" placeholder="Standard Hotel" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                        <input name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          city : e.target?.value
-                        })}  />
+                          city: e.target?.value
+                        })} />
                       </div>
                       {/* Room Type One */}
                       <div>
                         <p>Room Type</p>
-                        <input  name="roomTypeOne" placeholder="Room Type" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                        <input name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          room_type : e.target?.value
+                          room_type: e.target?.value
                         })} />
                       </div>
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input  name="supeiorHotel" placeholder="Supeior Hotel" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                        <input name="supeiorHotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          standard_hotel : e.target?.value
+                          standard_hotel: e.target?.value
                         })} />
                       </div>
                       {/* Room Type Two */}
                       <div>
                         <p>Room Type</p>
-                        <input  name="roomTypeTwo" placeholder="Room Type" className="border px-2 py-1 outline-none"  onChange={(e)=>setHotelInfo({
+                        <input name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          room_type1 : e.target?.value
+                          room_type1: e.target?.value
                         })} />
                       </div>
                     </div>
 
                     <div className="py-8">
-                      <button onClick={()=> handleSubmitHotel()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
+                      <button onClick={() => handleSubmitHotel()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
                     </div>
                   </form>
 
                 </div>
               </TabPanel>
 
+              {/* price and validity */}
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">PRICE & VALIDITY</h1>
@@ -399,27 +413,27 @@ const CreateNewPage = () => {
                       {/* 2px for */}
                       <div>
                         <p>2 Pax</p>
-                        <input required type="number" name="two" placeholder="2px" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
                       </div>
                       {/* 4px for */}
                       <div>
                         <p>4 Pax</p>
-                        <input required type="number" name="four" placeholder="4px" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
                       </div>
                       {/* 6px for */}
                       <div>
                         <p>6 Pax</p>
-                        <input required type="number" name="six" placeholder="6px" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
                       </div>
                       {/* 8px for */}
                       <div>
                         <p>8 Pax</p>
-                        <input required type="number" name="eight" placeholder="8px" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
                       </div>
                       {/* Single Supplement for */}
                       <div>
                         <p>Single Supplement</p>
-                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" />
                       </div>
 
                     </div>
@@ -430,6 +444,7 @@ const CreateNewPage = () => {
                 </div>
               </TabPanel>
 
+              {/* Itinerary */}
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">ITINERARY</h1>
@@ -439,25 +454,36 @@ const CreateNewPage = () => {
                       {/* LunchTime */}
                       <div>
                         <p>LunchTime</p>
-                        <input required type="text" name="lunchTime" placeholder="LunchTime" className="border px-2 py-1 outline-none" />
+                        <input required type="text" name="lunchTime" placeholder="LunchTime" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                          ...itineryInfo,
+                          lunchTime: e.target?.value
+                        })} />
                       </div>
 
                       {/* days */}
                       <div>
                         <p>Days</p>
-                        <input required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none" />
+                        <input required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                          ...itineryInfo,
+                          days: e.target?.value
+                        })} />
                       </div>
 
 
                       {/* description */}
                       <div>
                         <p>Itinery Description</p>
-                        <textarea name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none"></textarea>
+                        <textarea name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                          ...itineryInfo,
+                          description: e.target?.value
+                        })}></textarea>
                       </div>
                     </div>
 
                     <div className="py-8">
-                      <button type="submit" className="bg-primary text-white px-6 py-1 rounded">Save Itinerary</button>
+                      <button type="button" 
+                      onClick={() => handleSubmitItinerary()}
+                      className="bg-primary text-white px-6 py-1 rounded">Save Itinerary</button>
                     </div>
                   </form>
 
@@ -466,7 +492,7 @@ const CreateNewPage = () => {
             </Tabs>
           </div>
 
-          <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: '#F49D2A', color: 'white' }}>
+          <Button htmlType="submit" type="primary" className="mt-4" >
             Published Packege
           </Button>
         </Form>

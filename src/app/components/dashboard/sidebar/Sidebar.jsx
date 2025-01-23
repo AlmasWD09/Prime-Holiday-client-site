@@ -6,7 +6,8 @@ import Image from 'next/image';
 
 const Sidebar = () => {
     return (
-        <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" style={{position:"fixed",height:"100vh", overflow:"hidden"}}>
+        <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" >
+        {/* <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" style={{position:"fixed",height:"100vh", overflow:"hidden"}}> */}
             <div className="pt-[168px]">
                 <div className="my-[8px] " >
                     <Link href={'/dashboard/create-destination'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]">
