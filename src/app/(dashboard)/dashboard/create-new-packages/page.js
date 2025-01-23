@@ -8,6 +8,8 @@ import TextEditor from "@/app/components/textEditor/TextEditor";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 
 const CreateNewPage = () => {
@@ -27,10 +29,12 @@ const CreateNewPage = () => {
     id: null,
     name: "",
   });
-  const [formValue, setFormValue] = useState(null);
-  const [hotelInfo, setHotelInfo] = useState(null);
-  const [priceValidityInfo, setPriceValidityInfo] = useState(null);
-  const [itineryInfo, setItineryInfo] = useState(null);
+  const [formValue, setFormValue] = useState([]);
+  const [hotelInfo, setHotelInfo] = useState([]);
+  const [priceValidityInfo, setPriceValidityInfo] = useState([]);
+  const [itineryInfo, setItineryInfo] = useState([]);
+  const [tabIndex, setTabIndex] = useState(0);
+
 
   // ================= all inor get cookie for start poine ===========================
   // hotel info get cookie 
@@ -75,8 +79,6 @@ const CreateNewPage = () => {
   // ================= all inor get cookie for end poine ===========================
 
 
-
-  // Fetch contient data
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://10.0.80.13:8000/api/admin/country');
@@ -120,6 +122,7 @@ const CreateNewPage = () => {
     }
   };
 
+  const inludes = items?.map(i => i.text)
 
 
   const handleAddTwo = () => {
@@ -130,6 +133,95 @@ const CreateNewPage = () => {
     }
   }
 
+
+  // hotel form
+  const handleSubmitHotel = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    // Extracting values from the form
+    const city = form.city.value;
+    const hotel = form.hotel.value;
+    const roomTypeOne = form.roomTypeOne.value;
+    const supeiorHotel = form.supeiorHotel.value;
+    const roomTypeTwo = form.roomTypeTwo.value;
+
+    // Create hotelInfo object
+    const hotelInfo = {
+      city,
+      hotel,
+      roomTypeOne,
+      supeiorHotel,
+      roomTypeTwo,
+    };
+
+    // Set the hotelInfo object in a cookie
+    document.cookie = `hotelInfo=${encodeURIComponent(
+      JSON.stringify(hotelInfo)
+    )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+
+    // Optionally, reset the form
+    form.reset();
+    alert("Hotel Info saved in cookies!");
+  };
+
+  // price validaty form
+  const handleSubmitPriceValidity = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const two = form.two.value;
+    const four = form.four.value;
+    const six = form.six.value;
+    const eight = form.eight.value;
+    const singleSupplement = form.singleSupplement.value;
+
+    const priceValidityInfo = {
+      two,
+      four,
+      six,
+      eight,
+      singleSupplement
+    }
+
+    // Set the hotelInfo object in a cookie
+    document.cookie = `priceValidityInfo=${encodeURIComponent(
+      JSON.stringify(priceValidityInfo)
+    )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+
+    // Optionally, reset the form
+    form.reset();
+    alert("priceValidityo Info saved in cookies!");
+  }
+
+  // itinerary form
+  const handleSubmitItinery = (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    // Extracting values from the form
+    const lunchTime = form.lunchTime.value;
+    const days = form.days.value;
+    const description = form.description.value;
+   
+
+    // Create hotelInfo object
+    const initeryInfo = {
+       lunchTime,
+       days,
+       description,
+    };
+
+
+        // Set the hotelInfo object in a cookie
+        document.cookie = `initeryInfo=${encodeURIComponent(
+            JSON.stringify(initeryInfo)
+        )}; path=/; max-age=${60 * 60 * 24};`; // Cookie expires in 1 day
+
+        // Optionally, reset the form
+        form.reset();
+        alert("initery Info saved in cookies!");
+};
+
   // Handle form submission
   const handleSubmit = (values) => {
     const updatedValues = {
@@ -137,24 +229,41 @@ const CreateNewPage = () => {
     };
 
     setFormValue(updatedValues)
-    form.resetFields()
+    // form.resetFields()
   };
+  // {
+  //   "includes": ["item1", "item2", "item3"],
+  //   "excludes": ["item4", "item5"]
+  // }
 
+  const inludesandexludes = {
+
+  }
 
   const handleSubmitPublishedPackege = async () => {
     const formData = new FormData();
-    formData.append("image", formValue.image[0].originFileObj); // Attach image
+    formData.append("image", formValue.image[0].originFileObj) || null; // Attach image
     formData.append("description", editorContent);
     formData.append("title", formValue.title);
     formData.append("price", formValue.price);
     formData.append("days", formValue.days);
     formData.append("country_id", selectedCountry.id);
     formData.append("name", selectedCountry.name);
-    formData.append("includesText", JSON.stringify(items));
-    formData.append("excludesText", JSON.stringify(itemsExcludes));
-    formData.append("hotel_all_data", JSON.stringify(hotelInfo));
-    formData.append("priceValidity_all_data", JSON.stringify(priceValidityInfo));
-    formData.append("itinery_all_data", JSON.stringify(itineryInfo));
+    formData.append("includes_excludes", JSON.stringify({
+      "includes": items?.map(i => i.text),
+      "excludes": itemsExcludes?.map(i => i.text)
+    }));
+
+    formData.append("price_validity", JSON.stringify({
+
+      "priceValidityData": priceValidityInfo,
+    }));
+    // formData.append("excludesText", JSON.stringify(itemsExcludes));
+    // formData.append("hotel_all_data", JSON.stringify(hotelInfo));
+    // formData.append("priceValidity_all_data", JSON.stringify(priceValidityInfo));
+    // formData.append("itinery_all_data", JSON.stringify(itineryInfo));
+
+    console.log(formData.includesText)
 
     try {
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
@@ -170,6 +279,7 @@ const CreateNewPage = () => {
   if (loading) {
     return <div>Loading</div>
   }
+
 
   return (
     <div className="bg-gray-200 m-8 p-8 ">
@@ -264,88 +374,191 @@ const CreateNewPage = () => {
             </Form.Item>
           </div>
 
-          {/* **** tab button *** */}
-          <section>
-            <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4  border-gray-300 pb-6">
-                <button className="py-3 text-center font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] ">INCLUDES & EXCLUDES</button>
-                <Link href={'/dashboard/hotal-package'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >HOTELS</button></Link>
-                <Link href={'/dashboard/price-validity'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >PRICE & VALIDITY</button></Link>
-                <Link href={'/dashboard/itinery'} className="py-3 text-center text-black font-bold border border-[#135029] rounded-xl border-opacity-30 hover:bg-[#135029] hover:text-[#FFFFF0] "><button >ITINERARY</button></Link>
-              </div>
+          {/* tab component here */}
+          <div>
+            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+              <TabList>
+                <Tab style={{ color: "green", fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
+                <Tab style={{ color: "green", fontWeight: "700" }}>HOTELS</Tab>
+                <Tab style={{ color: "green", fontWeight: "700" }}>PRICE & VALIDITY</Tab>
+                <Tab style={{ color: "green", fontWeight: "700" }}>ITINERARY</Tab>
+              </TabList>
 
-              {/* =============== INCLUDES & EXCLUDES Tab start =========================== */}
-              {
-                buttonText === "INCLUDES & EXCLUDES" && <div>
-                  <div className="flex justify-evenly bg-[#135029] py-4">
-                    <h3 className=" font-bold text-[#FFFFFF]">Includes</h3>
-                    <h3 className=" font-bold text-[#FFFFFF]">Excludes</h3>
-                  </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-                    {/* Includes Section */}
-                    <div className="p-4">
-                      <div className="flex justify-between lg:border-r border-[#D1D1D1] border-opacity-30">
-                        <input
-                          type="text"
-                          placeholder="Enter your text"
-                          value={inputValue} // Bind input value to state
-                          onChange={(e) => setInputValue(e.target.value)}
-                          className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
-                        />
-                        <button
-                          type="button"
-                          onClick={handleAdd}
-                          className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg"
-                        >
-                          Add
-                        </button>
-                      </div>
+              <TabPanel>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
 
-                      {/* Display the items */}
-                      <div className="mt-4">
-                        {items.map((item, index) => (
-                          <div key={item.id} className="p-2 border-b">
-                            {index + 1}. {item.text}
-                          </div>
-                        ))}
-                      </div>
-
+                  <div className="p-4">
+                    <div className="flex justify-between lg:border-r border-[#D1D1D1] border-opacity-30">
+                      <input
+                        type="text"
+                        placeholder="Enter your text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAdd}
+                        className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg"
+                      >
+                        Add
+                      </button>
                     </div>
 
+                    <div className="mt-4">
+                      {items.map((item, index) => (
+                        <div key={item.id} className="p-2 border-b">
+                          {index + 1}. {item.text}
+                        </div>
+                      ))}
+                    </div>
 
-                    {/* Excludes Section */}
-                    <div className="p-4">
-                      <div className="flex justify-between ">
-                        <input
-                          type="text"
-                          placeholder="Enter your text"
-                          value={inputValueExcludes}
-                          onChange={(e) => setInputValueExcludes(e.target.value)}
-                          className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
-                        />
-                        <button
-                          type="button"
-                          onClick={handleAddTwo}
-                          className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg">
-                          Add
-                        </button>
-                      </div>
-                      {/* Display the items */}
-                      <div className="mt-4">
-                        {itemsExcludes.map((item, index) => (
-                          <div key={item.id} className="p-2 border-b">
-                            {index + 1}. {item.text}
-                          </div>
-                        ))}
-                      </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex justify-between ">
+                      <input
+                        type="text"
+                        placeholder="Enter your text"
+                        value={inputValueExcludes}
+                        onChange={(e) => setInputValueExcludes(e.target.value)}
+                        className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAddTwo}
+                        className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg">
+                        Add
+                      </button>
+                    </div>
+
+                    <div className="mt-4">
+                      {itemsExcludes.map((item, index) => (
+                        <div key={item.id} className="p-2 border-b">
+                          {index + 1}. {item.text}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              }
-              {/* =============== INCLUDES & EXCLUDES Tab end ============================= */}
-            </div>
-          </section>
+              </TabPanel>
+
+              <TabPanel>
+                <div className="border border-red-500 m-4 p-4">
+                  <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
+
+                  <form onSubmit={handleSubmitHotel}>
+                    <div className="space-y-4">
+                      {/* City */}
+                      <div>
+                        <p>City</p>
+                        <input required type="text" name="city" placeholder="City" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* Standard Hotel */}
+                      <div>
+                        <p>Standard Hotel</p>
+                        <input required type="text" name="hotel" placeholder="Standard Hotel" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* Room Type One */}
+                      <div>
+                        <p>Room Type</p>
+                        <input required type="text" name="roomTypeOne" placeholder="Room Type" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* Supeior Hotel */}
+                      <div>
+                        <p>Supeior Hotel</p>
+                        <input required type="text" name="supeiorHotel" placeholder="Supeior Hotel" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* Room Type Two */}
+                      <div>
+                        <p>Room Type</p>
+                        <input required type="text" name="roomTypeTwo" placeholder="Room Type" className="border px-2 py-1 outline-none" />
+                      </div>
+                    </div>
+
+                    <div className="py-8">
+                      <button type="submit" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
+                    </div>
+                  </form>
+
+                </div>
+              </TabPanel>
+
+              <TabPanel>
+                <div className="border border-red-500 m-4 p-4">
+                  <h1 className="text-xl font-bold font-Roboto text-primary py-2">PRICE & VALIDITY</h1>
+
+                  <form onSubmit={handleSubmitPriceValidity}>
+                    <div className="space-y-4">
+                      {/* 2px for */}
+                      <div>
+                        <p>2 Pax</p>
+                        <input required type="number" name="two" placeholder="2px" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* 4px for */}
+                      <div>
+                        <p>4 Pax</p>
+                        <input required type="number" name="four" placeholder="4px" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* 6px for */}
+                      <div>
+                        <p>6 Pax</p>
+                        <input required type="number" name="six" placeholder="6px" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* 8px for */}
+                      <div>
+                        <p>8 Pax</p>
+                        <input required type="number" name="eight" placeholder="8px" className="border px-2 py-1 outline-none" />
+                      </div>
+                      {/* Single Supplement for */}
+                      <div>
+                        <p>Single Supplement</p>
+                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className="border px-2 py-1 outline-none" />
+                      </div>
+
+                    </div>
+                    <div className="py-8">
+                      <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                    </div>
+                  </form>
+                </div>
+              </TabPanel>
+
+              <TabPanel>
+                <div className="border border-red-500 m-4 p-4">
+                  <h1 className="text-xl font-bold font-Roboto text-primary py-2">ITINERARY</h1>
+
+                  <form onSubmit={handleSubmitItinery}>
+                    <div className="space-y-4">
+                      {/* LunchTime */}
+                      <div>
+                        <p>LunchTime</p>
+                        <input required type="text" name="lunchTime" placeholder="LunchTime" className="border px-2 py-1 outline-none" />
+                      </div>
+
+                      {/* days */}
+                      <div>
+                        <p>Days</p>
+                        <input required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none" />
+                      </div>
+
+
+                      {/* description */}
+                      <div>
+                        <p>Itinery Description</p>
+                        <textarea name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none"></textarea>
+                      </div>
+                    </div>
+
+                    <div className="py-8">
+                      <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                    </div>
+                  </form>
+
+                </div>
+              </TabPanel>
+            </Tabs>
+          </div>
 
           <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: '#F49D2A', color: 'white' }}>
             Save
