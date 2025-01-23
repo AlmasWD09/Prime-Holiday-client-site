@@ -80,22 +80,7 @@ const EditPackage = () => {
   // Handle form submission
   const handleSubmit = async (values) => {
     console.log('click hoica')
-    // const updatedValues = {
-    //   ...values,
-    //   description: editorContent,
-    // };
-    // console.log(values)
-
-
-    // const imageFile = values.image[0].originFileObj;
-    // if (!imageFile) {
-    //   console.error("Image file is required.");
-    //   return;
-    // }
-
-    // setImageData(imageFile)
-    // form.resetFields()
-
+  
   };
 
 
@@ -186,100 +171,6 @@ const EditPackage = () => {
           </Form.Item>
         </div>
       </Form>
-
-
-      {/* **** tab button *** */}
-      <section className=" pt-[56px]">
-        <div className="p-6 border border-[#B0B0B0] border-opacity-20 rounded-lg">
-          <div className="border-gray-300 pb-6">
-            <button className="py-3 font-bold text-2xl">INCLUDES & EXCLUDES</button>
-           
-          </div>
-
-          {/* =============== INCLUDES & EXCLUDES Tab start =========================== */}
-          {
-            buttonText === "INCLUDES & EXCLUDES" && <div>
-              <div className="flex justify-between px-4 bg-[#135029] py-4">
-                <h3 className=" font-bold text-[#FFFFFF]">Includes</h3>
-                <h3 className=" font-bold text-[#FFFFFF]">Excludes</h3>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-                {/* Includes Section */}
-                <div className="p-4">
-                  <div className="flex justify-between lg:border-r border-[#D1D1D1] border-opacity-30">
-                    <input
-                      type="text"
-                      placeholder="Enter your text"
-                      value={inputValue} // Bind input value to state
-                      onChange={(e) => setInputValue(e.target.value)}
-                      className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
-                    />
-                    <button
-                      onClick={handleAdd}
-                      className="border border-primary hover:bg-primary hover:text-white px-4 py-1 mr-4 rounded-lg"
-                    >
-                      Add
-                    </button>
-                  </div>
-
-                  {/* Display the items */}
-                  <div className="mt-4">
-                    {items.map((item, index) => (
-                      <div key={item.id} className="p-2 border-b">
-                        {index + 1}. {item.text}
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-
-
-                {/* Excludes Section */}
-                <div className="p-4">
-                  <div className="flex justify-between ">
-                    <input
-                      type="text"
-                      placeholder="Enter your text"
-                      value={inputValueExcludes}
-                      onChange={(e) => setInputValueExcludes(e.target.value)}
-                      className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
-                    />
-                    <button
-                      onClick={handleAddTwo}
-                      className="border border-primary hover:bg-primary hover:text-white px-4 py-1 mr-4 rounded-lg">
-                      Add
-                    </button>
-                  </div>
-                  {/* Display the items */}
-                  <div className="mt-4">
-                    {itemsExcludes.map((item, index) => (
-                      <div key={item.id} className="p-2 border-b">
-                        {index + 1}. {item.text}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          {/* =============== INCLUDES & EXCLUDES Tab end ============================= */}
-        </div>
-      </section>
-
-
-
-      <div className="flex justify-between items-center py-8">
-        <div className="">
-          <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
-        </div>
-        <div className="">
-          <button
-            onClick={() => handleSubmitPublishedPackege()}
-            className="bg-primary text-white px-6 py-1 rounded">PublishedPackege</button>
-        </div>
-      </div>
-
     </div>
   )
 }
