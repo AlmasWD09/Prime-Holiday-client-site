@@ -75,6 +75,11 @@ const EditDestination = () => {
       formData.append("country_id", id);
       formData.append("name", values.name);
       formData.append("title", values.title);
+      formData.append("image", values.image[0].originFileObj);
+
+      formData.forEach((value, key) => {
+        console.log('form data', key,"=====", value);
+      });
 
       if (fileList.length > 0) {
         formData.append("image", fileList[0].originFileObj);
@@ -97,7 +102,6 @@ const EditDestination = () => {
   };
 
 
-  
   return (
     <div className="m-8 p-8">
       <Form form={form} onFinish={handleSubmit} layout="vertical">
@@ -106,7 +110,7 @@ const EditDestination = () => {
         </h1>
 
         {/* Select Continent */}
-        <div className="max-w-2xl mb-2">
+        {/* <div className="max-w-2xl mb-2">
           <Form.Item
             name="continent"
             label="Select the Continent"
@@ -121,7 +125,7 @@ const EditDestination = () => {
               }))}
             />
           </Form.Item>
-        </div>
+        </div> */}
 
         {/* Country Name */}
         <div className="mb-2">

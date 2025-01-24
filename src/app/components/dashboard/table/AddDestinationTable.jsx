@@ -8,22 +8,11 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import useDestination from "@/hooks/useDestination";
 
 const AddDestinationTable = () => {
-  const [tableData, setTableData] = useState([]);
-  const router = useRouter();
-
-  useEffect(() => {
-    // Fetch data dynamically from the JSON file
-    const fetchData = async () => {
-      const response = await fetch("http://10.0.80.13:8000/api/admin/country");
-      const result = await response.json();
-      setTableData(result.countries.data);
-    };
-
-    fetchData();
-  }, []);
-
+  const [destinationData, refetch] = useDestination();
+  // const router = useRouter();
 
   // Delete package
   const handleDelete = async (item) => {
@@ -40,6 +29,7 @@ const AddDestinationTable = () => {
       if (result.isConfirmed) {
         const res = await axios.delete(`http://10.0.80.13:8000/api/admin/country/delete/${item.id}`)
         if (res.data.deletedCount > 0) {
+          refetch();
           Swal.fire({
             position: "top-center",
             icon: "success",
@@ -54,7 +44,7 @@ const AddDestinationTable = () => {
 
 
 
- 
+
 
   return (
     <section className="container px-4 mx-auto">
@@ -80,7 +70,7 @@ const AddDestinationTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {tableData?.map((item) => (
+                  {destinationData?.map((item) => (
                     <tr key={item.id}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div className="inline-flex items-center gap-x-3">
@@ -105,20 +95,20 @@ const AddDestinationTable = () => {
                             onClick={() => handleDelete(item)}
                             className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
                           >
-                            <TbTrashXFilled className="text-xl text-red-600"/>
+                            <TbTrashXFilled className="text-xl text-red-600" />
                           </button>
                           <Link href={`/dashboard/edit-destination/${item.id}`}>
-                          <button
-                            className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
-                          >
-                            <FiEdit className="text-xl "/>
-                          </button>
+                            <button
+                              className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
+                            >
+                              <FiEdit className="text-xl " />
+                            </button>
                           </Link>
                         </div>
                       </td>
                     </tr>
                   ))}
-                  {tableData.length === 0 && (
+                  {destinationData?.length === 0 && (
                     <tr>
                       <td
                         colSpan={4}
