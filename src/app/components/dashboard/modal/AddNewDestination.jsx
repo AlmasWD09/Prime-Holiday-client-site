@@ -8,8 +8,8 @@ import { IoMdClose } from "react-icons/io";
 const AddNewDestination = ({ setModalOpen }) => {
     const [form] = Form.useForm();
     const [contentData, setContentData] = useState([])
-const [contientId, setContientId] = useState(null)
-  
+    const [contientId, setContientId] = useState(null)
+
 
     useEffect(() => {
         // Fetch data dynamically from the JSON file
@@ -28,7 +28,7 @@ const [contientId, setContientId] = useState(null)
         try {
             const formData = new FormData();
 
-            formData.append("continent_id",contientId);
+            formData.append("continent_id", contientId);
             formData.append("name", values.name);
             formData.append("title", values.title);
             formData.append("image", values.image[0].originFileObj);
@@ -69,9 +69,9 @@ const [contientId, setContientId] = useState(null)
                                     name="content_id"
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
-                                    <Select 
-                                    onChange={(value) => setContientId(value)}
-                                     placeholder="Select the continent">
+                                    <Select
+                                        onChange={(value) => setContientId(value)}
+                                        placeholder="Select the continent">
                                         {contentData.map((singleContent, index) => (
                                             <Select.Option key={index} value={singleContent.id}>
                                                 {singleContent.name}
