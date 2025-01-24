@@ -92,6 +92,7 @@ const EditDestination = () => {
           <p>Select the continent</p>
           {contentData.length > 0 && singleContentData ? (
             <Select
+            placeholder="Enter The Country Name"
             defaultValue={'lsf'}
               value={selectedContinent} // Controlled value
               onChange={(value) => setSelectedContinent(value)} // Update selected value

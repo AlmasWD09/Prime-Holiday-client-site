@@ -160,7 +160,6 @@ console.log(allPriceValidityInfo)
 
 
   const handleSubmit = async (values) => {
-    // console.log(im.image[0].originFileObj)
 
     try {
 
@@ -173,9 +172,9 @@ console.log(allPriceValidityInfo)
       const formData = new FormData();
       formData.append("image", values.image[0].originFileObj);
       formData.append("description", editorContent);
-      formData.append("title", formValue.title);
-      formData.append("price", formValue.price);
-      formData.append("days", formValue.days);
+      formData.append("title", values.title);
+      formData.append("price", values.price);
+      formData.append("days", values.days);
       formData.append("country_id", selectedCountry.id);
       formData.append("name", selectedCountry.name);
       formData.append("hotels", JSON?.stringify(allhotelInfo));
@@ -218,7 +217,7 @@ console.log(allPriceValidityInfo)
         <Form form={form} onFinish={handleSubmit} layout="vertical" className="">
           {/* select  */}
           <div className="mb-2">
-            <p>Select the continent</p>
+            <p>Select the destination</p>
             <Form.Item
               name="continent"
 
