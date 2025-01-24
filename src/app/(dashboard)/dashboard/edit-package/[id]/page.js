@@ -77,24 +77,29 @@ const EditPackage = () => {
     }
   }, [singlePackage, form]);
 
-  console.log(singlePackage)
 
   const handleSubmitPackage = async (values) => {
-    // console.log(values)
+    console.log(values.image)
     try {
       const formData = new FormData();
-      formData.append("image", values.image?.[0]?.originFileObj);
-      formData.append("description", editorContent);
+      formData.append("country_id", id);
+      formData.append("name", values.name);
       formData.append("title", values.title);
+      formData.append("description", editorContent);
       formData.append("price", values.price);
+      // formData.append("image", values.image[0].originFileObj);
       formData.append("days", values.days);
-      formData.append("continent_name", values.continent_name);
-      formData.append("country_id", values.id);
-     
-   
+    
+      // formData.append("includes_excludes", JSON.stringify({
+      //   "includes": items?.map(i => i.text),
+      //   "excludes": itemsExcludes?.map(i => i.text)
+      // }));
+      // formData.append("hotels", JSON?.stringify(allhotelInfo));
+      // formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
+      // formData.append("itinerary", JSON?.stringify(allItinerary));
 
       formData.forEach((value, key) => {
-        console.log('form data', key,"=====", value);
+        console.log('form data', key,"=====", value.name);
       });
 
       const response = await axios.patch(
@@ -154,7 +159,7 @@ const EditPackage = () => {
           </Col>
 
           {/* Image Upload */}
-          {/* <Row >
+          <Row >
             <Form.Item
               label="Add package image"
               name="image"
@@ -182,11 +187,10 @@ const EditPackage = () => {
                 <p className="ant-upload-drag-icon">
                   <i className="fas fa-cloud-upload-alt" style={{ fontSize: 24, color: "#1890ff" }}></i>
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                <p className="ant-upload-hint">Support for a single or bulk upload. Only image files are allowed.</p>
+                <p className="ant-upload-text">Click or drag file  upload</p>
               </Upload.Dragger>
             </Form.Item>
-          </Row> */}
+          </Row>
         </div>
 
         {/* Title Field */}

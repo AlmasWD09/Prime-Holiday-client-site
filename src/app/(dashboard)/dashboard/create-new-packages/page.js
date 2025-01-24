@@ -170,21 +170,22 @@ console.log(allPriceValidityInfo)
       // form.resetFields()
 
       const formData = new FormData();
-      formData.append("image", values.image[0].originFileObj);
-      formData.append("description", editorContent);
-      formData.append("title", values.title);
-      formData.append("price", values.price);
-      formData.append("days", values.days);
       formData.append("country_id", selectedCountry.id);
       formData.append("name", selectedCountry.name);
-      formData.append("hotels", JSON?.stringify(allhotelInfo));
-      formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
-      formData.append("itinerary", JSON?.stringify(allItinerary));
+      formData.append("title", values.title);
+      formData.append("description", editorContent);
+      formData.append("price", values.price);
+      formData.append("image", values.image[0].originFileObj);
       formData.append("includes_excludes", JSON.stringify({
         "includes": items?.map(i => i.text),
         "excludes": itemsExcludes?.map(i => i.text)
       }));
-
+      formData.append("hotels", JSON?.stringify(allhotelInfo));
+      formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
+      formData.append("itinerary", JSON?.stringify(allItinerary));
+      formData.append("days", values.days);
+    
+      
       formData.forEach((value, key) => {
         console.log('form data', key, value);
       });
@@ -219,7 +220,7 @@ console.log(allPriceValidityInfo)
           <div className="mb-2">
             <p>Select the destination</p>
             <Form.Item
-              name="continent"
+              name="name"
 
             >
               <Select

@@ -64,21 +64,35 @@ const EditDestination = () => {
 
   // Handle form submission
   const handleSubmit = async (values) => {
-    const formData = {
-      ...values,
-      image: fileList[0]?.url || null, // Include the image URL or uploaded file
-    };
-
+   
+    console.log(values)
     try {
-      const response = await axios.put(
+      const formData = new FormData();
+      formData.append("country_id", id);
+      formData.append("name", values.name);
+      formData.append("title", values.title);
+      // formData.append("image", values.image[0].originFileObj);
+
+
+      formData.forEach((value, key) => {
+        console.log('form data', key,"=====", value.name);
+      });
+
+      const response = await axios.patch(
         `http://10.0.80.13:8000/api/admin/country/${id}`,
-        formData
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
-      console.log("Updated successfully:", response.data);
+
+      if (response.status === 200) {
+        alert("Destination updated successfully!");
+        // router.push("/dashboard/create-packages");
+      }
     } catch (error) {
-      console.error("Error updating:", error);
+      console.error("Error updating package:", error);
     }
-  };
+    };
+  
 
   return (
     <div className="m-8 p-8">
@@ -113,7 +127,7 @@ const EditDestination = () => {
         <div className="mb-2">
           <p>Country Name</p>
           <Form.Item
-            name="countryName"
+            name=""
             rules={[{ required: true, message: "Please enter the country name!" }]}
           >
             <Input placeholder="Enter the country name" className="max-w-sm" />
@@ -152,7 +166,7 @@ const EditDestination = () => {
         {/* Submit Button */}
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Save
+            Update Destination
           </Button>
         </Form.Item>
       </Form>

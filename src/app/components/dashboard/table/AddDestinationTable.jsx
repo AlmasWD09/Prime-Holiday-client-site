@@ -24,7 +24,6 @@ const AddDestinationTable = () => {
     fetchData();
   }, []);
 
-console.log(tableData)
 
   // Delete package
   const handleDelete = async (item) => {
