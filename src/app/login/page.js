@@ -1,22 +1,77 @@
 "use client"
 
-const LoginPage = () => {
+import { message } from "antd";
+import axios from "axios";
+import Cookies from 'js-cookie';
 
-    const handleSubmit = (e) => {
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+
+
+const LoginPage = () => {
+    const router = useRouter();
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, '-------', password)
-        e.target.reset()
-      };
+
+        const userInfo = {
+            email,
+            password,
+        }
+
+
+        try {
+            const response = await axios.post(
+                "http://10.0.80.13:8000/api/admin/login",
+                userInfo,
+                {
+                    headers: {
+                        "Content-Type": "application/json", // Specify JSON format
+                    },
+                }
+            );
+            console.log(response)
+            if (response?.data?.success) {
+                Swal.fire({
+                    title: 'Login success',
+                    icon: 'success'
+                });
+
+                const token = response.data.token;
+
+
+                // Check if the token exists before setting it in cookies
+                if (token) {
+                    Cookies.set('token', token, {
+                        expires: 1,  // Cookie will expire in 1 day (adjust as necessary)
+                        sameSite: 'Strict',  // Optional: Ensure cookie is sent in same-site context
+                    });
+                    console.log('Token set in cookies');
+                } else {
+                    console.error('No token available to set in cookies');
+                }
+            }
+
+            router.push('/admin/dashboard')
+            e.target.reset()
+
+        } catch (error) {
+            console.error("Error during login:", error);
+            message.error("Login failed. Please check your credentials.");
+        }
+    };
+
     return (
         <section className="bg-[#FFFFFF]">
             <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-                
-                <form   onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-100 px-10 py-16 rounded-md">
+
+                <form onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-100 px-10 py-16 rounded-md">
                     <div className="text-center">
-                    <h1 className="text-[36px] font-semibold font-Roboto text-[#272727]">Welcome back!</h1>
-                    <p>Please enter email & password to continue</p>
+                        <h1 className="text-[36px] font-semibold font-Roboto text-[#272727]">Welcome back!</h1>
+                        <p>Please enter email & password to continue</p>
                     </div>
 
                     <div className="relative flex items-center mt-8">
