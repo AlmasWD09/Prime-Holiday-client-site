@@ -17,68 +17,30 @@ import { FreeMode, Pagination } from "swiper/modules";
 import Link from "next/link";
 
 const InclusivePackage = () => {
-    // const [grounds, setgrounds] = useState([]);
-    // const [loading, setLoading] = useState(true); 
-    // const [error, setError] = useState(null); 
+    const [packageData, setPackageData] = useState([]);
 
 
-//  useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await fetch("/Inclusive.json");
-//         if (!response.ok) {
-//           throw new Error("Failed to fetch data");
-//         }
-//         const result = await response.json();
-//         setgrounds(result);
-//       } catch (err) {
-//         setError(err.message);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
 
-//     fetchData();
-//   }, []);
+ useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page");
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await response.json();
+        setPackageData(result.destinations.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   
 
-const grounds = [
-  {
-    image: "/photo01.png",
-    title1: "Immersion in cultural Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo02.png",
-   title1: "Essence of Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo03.png",
-    title1: "Luxury Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo01.png",
-    title1: "Immersion in cultural Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo02.png",
-    title1: "Essence of Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo03.png",
-    title1: "Luxury Oman",
-    title2: "9 Days From",
-  },
-  {
-    image: "/photo02.png",
-    title1: "Essence of Oman",
-    title2: "9 Days From"
-  }
-];
 const swiperRef = useRef(null);
 
   return (
@@ -135,14 +97,14 @@ const swiperRef = useRef(null);
             }}
           >
             {/* ================================== responsive all device end =========================== */}
-            {grounds.map((ground, idx) => (
+            {packageData?.slice(0, 7).map((singlePackge, idx) => (
               <SwiperSlide key={idx}>
                 <Link href={`/destination/${idx}`}>
                 <div className="relative  bg-[#135029] p-4 rounded-xl space-y-4 h-[400px] md:h-[440px] xl:h-full">
 
                   <Image
                     className="object-cover object-center w-full h-64 lg:h-72 rounded-xl"
-                    src={ground.image}
+                    src={singlePackge.image}
                     alt="inclusive photo"
                     width={500}
                     height={300}
@@ -150,10 +112,10 @@ const swiperRef = useRef(null);
                   
                   <div className="bg-[#135029] text-[#FFFFF0]">
                     <div className="space-y-2">
-                      <h5 className="text-[24px] font-bold">{ground.title1}</h5>
+                      <h5 className="text-[24px] font-bold">{singlePackge.country_name}</h5>
                       <h5>
-                        {ground.title2}{" "}
-                        <span className="font-bold text-primary">$2525</span>
+                        {singlePackge.name}{" "}
+                        <span className="font-bold text-primary">${singlePackge.price}</span>
                       </h5>
                     </div>
                   </div>

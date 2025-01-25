@@ -97,7 +97,7 @@ const AddDestinationTable = () => {
                           >
                             <TbTrashXFilled className="text-xl text-red-600" />
                           </button>
-                          <Link href={`/dashboard/edit-destination/${item.id}`}>
+                          <Link href={`/admin/dashboard/edit-destination/${item.id}`}>
                             <button
                               className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded"
                             >

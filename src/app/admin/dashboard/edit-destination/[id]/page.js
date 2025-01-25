@@ -4,6 +4,7 @@ import { Select, Input, Button, Form, Upload } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { UploadOutlined } from "@ant-design/icons";
 
 const EditDestination = () => {
   const { id } = useParams();
@@ -65,30 +66,31 @@ const EditDestination = () => {
 
   // Handle image changes
   const handleImageChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
+    setFileList(newFileList.slice(-1));
   };
 
   // Form submit handler
   const handleSubmit = async (values) => {
     try {
       const formData = new FormData();
-      formData.append("country_id", id);
-      formData.append("name", values.name);
-      formData.append("title", values.title);
-      formData.append("image", values.image[0].originFileObj);
+      formData.append("continent_id", values.continent || id || "24");
+      formData.append("name", values.name || "test_name");
+      formData.append("title", values.title || "Default Title");
 
-      formData.forEach((value, key) => {
-        console.log('form data', key,"=====", value);
-      });
-
-      if (fileList.length > 0) {
+      // Handle image field
+      if (fileList[0]?.originFileObj) {
         formData.append("image", fileList[0].originFileObj);
+      } else {
+        formData.append("image", ""); // Null if no image, matching Postman
       }
 
-      formData.append("continent", values.continent);
+      // Debugging the formData
+      formData.forEach((value, key) => {
+        console.log("formData:", key, value);
+      });
 
       const response = await axios.put(
-        `http://10.0.80.13:8000/api/admin/country/update/30/${id}`,
+        `http://10.0.80.13:8000/api/admin/country/update/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -101,15 +103,19 @@ const EditDestination = () => {
     }
   };
 
-
   return (
-    <div className="m-8 p-8">
-      <Form form={form} onFinish={handleSubmit} layout="vertical">
+    <div className="flex justify-center items-center h-[800px]">
+      <Form
+        form={form}
+        onFinish={handleSubmit}
+        layout="vertical"
+        style={{ border: "1 px solid red", width: "50%" }}
+      >
         <h1 className="font-Roboto font-bold text-primary text-[24px]">
           Edit Destination
         </h1>
 
-        {/* Select Continent */}
+        {/* Continent Selection */}
         {/* <div className="max-w-2xl mb-2">
           <Form.Item
             name="continent"
@@ -145,27 +151,29 @@ const EditDestination = () => {
             name="title"
             rules={[{ required: true, message: "Please enter the title!" }]}
           >
-            <Input placeholder="Enter the destination title" className="max-w-sm" />
+            <Input
+              placeholder="Enter the destination title"
+              className="max-w-sm"
+            />
           </Form.Item>
         </div>
 
         {/* Image Upload */}
-        <div className="mb-2 max-w-sm">
-          <Form.Item
-            label="Upload Image"
-            name="image"
-            rules={[{ required: true, message: "Please upload an image!" }]}
+        <Form.Item
+          label="Upload Image"
+          name="image"
+          rules={[{ required: true, message: "Please upload an image!" }]}
+        >
+          <Upload
+            listType="picture-card"
+            fileList={fileList}
+            maxCount={1} // Only allow one file
+            beforeUpload={() => false} // Prevent auto-upload
+            onChange={handleImageChange}
           >
-            <Upload
-              listType="picture"
-              fileList={fileList}
-              beforeUpload={() => false}
-              onChange={handleImageChange}
-            >
-              <Button>Upload Image</Button>
-            </Upload>
-          </Form.Item>
-        </div>
+            <Button icon={<UploadOutlined />}>Upload</Button>
+          </Upload>
+        </Form.Item>
 
         {/* Submit Button */}
         <Form.Item>
