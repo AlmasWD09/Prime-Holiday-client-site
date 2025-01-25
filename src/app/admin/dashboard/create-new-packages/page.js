@@ -193,7 +193,7 @@ console.log(allPriceValidityInfo)
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      router.push('/dashboard/create-packages')
+      router.push('/admin/dashboard/create-packages')
       alert("Package created successfully!");
       console.log("Response:", response.data);
     } catch (error) {
@@ -330,7 +330,7 @@ console.log(allPriceValidityInfo)
                     <div className="mt-4">
                       {items.map((item, index) => (
                         <div key={item.id} className="p-2 border-b">
-                          {index + 1}. {item.text}
+                        {item.text}
                         </div>
                       ))}
                     </div>
@@ -355,8 +355,8 @@ console.log(allPriceValidityInfo)
 
                     <div className="mt-4">
                       {itemsExcludes.map((item, index) => (
-                        <div key={item.id} className="p-2 border-b">
-                          {index + 1}. {item.text}
+                        <div key={index} className="p-2 border-b">
+                          {item.text}
                         </div>
                       ))}
                     </div>

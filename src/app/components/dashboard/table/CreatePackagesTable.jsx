@@ -53,13 +53,6 @@ const CreatePackagesTable = () => {
         });
     }
 
-
-
-
-    // Edit package
-    const handleEdit = (id) => {
-        router.push('/dashboard/edit-package')
-    }
     return (
         <section className="container px-4 mx-auto">
             <div className="flex flex-col mt-6">
@@ -143,7 +136,7 @@ const CreatePackagesTable = () => {
                                                     <button onClick={() => handleDelete(singlePackageData)} className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded">
                                                         <TbTrashXFilled className="text-xl text-red-600" />
                                                     </button>
-                                                    <Link href={`/dashboard/edit-package/${singlePackageData.id}`}><button className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded">
+                                                    <Link href={`/admin/dashboard/edit-package/${singlePackageData.id}`}><button className="bg-gray-200 w-8 h-8 flex justify-center items-center rounded">
                                                         <FiEdit className="text-xl " />
                                                     </button></Link>
                                                 </div>

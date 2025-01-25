@@ -1,6 +1,6 @@
 "use client";
 
-import { LeftOutlined } from "@ant-design/icons";
+import { LeftOutlined, UploadOutlined } from "@ant-design/icons";
 import { Select, Input, Button, Form, Upload, Row, Col } from "antd";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,8 +22,22 @@ const EditPackage = () => {
   const [itemsExcludes, setItemsExcludes] = useState([]);
 
   const [hasMounted, setHasMounted] = useState(false);
+  const [fileList, setFileList] = useState([]);
 
+  // image upload start ============
+  const handleImageChange = ({ fileList: newFileList }) => {
+    // Keep only the latest file
+    setFileList(newFileList.slice(-1));
+    form.setFieldsValue({ image: newFileList.slice(-1) }); // Sync with the form
+  };
 
+  const handleBeforeUpload = (file) => {
+    // Reset fileList and allow only the current image to be added
+    setFileList([file]);
+    return false; // Prevent automatic upload
+  };
+
+  // image upload end ============
 
 
   useEffect(() => {
@@ -79,45 +93,60 @@ const EditPackage = () => {
 
 
   const handleSubmitPackage = async (values) => {
-    console.log(values.image)
     try {
       const formData = new FormData();
-      formData.append("country_id", id);
-      formData.append("name", values.name);
-      formData.append("title", values.title);
-      formData.append("description", editorContent);
-      formData.append("price", values.price);
-      // formData.append("image", values.image[0].originFileObj);
-      formData.append("days", values.days);
-    
-      // formData.append("includes_excludes", JSON.stringify({
-      //   "includes": items?.map(i => i.text),
-      //   "excludes": itemsExcludes?.map(i => i.text)
-      // }));
-      // formData.append("hotels", JSON?.stringify(allhotelInfo));
-      // formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
-      // formData.append("itinerary", JSON?.stringify(allItinerary));
-
-      formData.forEach((value, key) => {
-        console.log('form data', key,"=====", value.name);
-      });
-
-      const response = await axios.patch(
-        `http://10.0.80.13:8000/api/admin/destination/update/${id}`,
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+  
+      // Append all required fields, matching Postman
+      formData.append("country_id", values?.id || "24"); // Default value for testing
+      formData.append("name", values.name || "test_name");
+      formData.append("description", editorContent || "<p>Default Description</p>");
+      formData.append("price", values.price || "1399");
+      formData.append("days", values.days || "7");
+      formData.append("_method", "PUT"); // Ensure this is included
+      formData.append("title", values.title || "Default Title"); // Optional field
+      formData.append(
+        "includes_excludes",
+        values.includes_excludes || '{"defaultKey": "defaultValue"}' // Optional JSON field
       );
-
-      if (response.status === 200) {
+  
+      // Handle image field
+      if (fileList[0]?.originFileObj) {
+        formData.append("image", fileList[0].originFileObj);
+      } else {
+        formData.append("image", ""); // Null if no image, matching Postman
+      }
+  
+      // Log FormData for debugging
+      formData.forEach((value, key) => {
+        console.log(`${key}:`, value);
+      });
+  
+      // Send request via Axios
+      const response = await axios.post(
+        `http://10.0.80.13:8000/api/admin/destination/update/${id || "105"}`, // Replace with the correct ID
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Let Axios handle this automatically
+          },
+        }
+      );
+  
+      console.log("Response:", response.data);
+  
+      if (response.data.success) {
         alert("Package updated successfully!");
-        router.push("/dashboard/create-packages");
+        router.push('/admin/dashboard/create-packages')
       }
     } catch (error) {
-      console.error("Error updating package:", error);
+      if (error.response) {
+        console.error("Server Error:", error.response.data);
+      } else {
+        console.error("Unexpected Error:", error.message);
+      }
     }
   };
-
-
+  
 
 
   return (
@@ -146,11 +175,11 @@ const EditPackage = () => {
             <Form.Item
               label="Select the destination"
               name="country_name"
-              rules={[{  message: "Please select a country!" }]}
+              // rules={[{ message: "Please select a country!" }]}
             >
               <Select placeholder="Select a country">
                 {countryData.map((country) => (
-                  <Select.Option key={country.id} value={country.id}>
+                  <Select.Option key={country.id} value={country.name}>
                     {country.name}
                   </Select.Option>
                 ))}
@@ -158,8 +187,17 @@ const EditPackage = () => {
             </Form.Item>
           </Col>
 
+          {/* Title Field */}
+          <Form.Item
+            label="Package name"
+            name="name"
+            rules={[{ message: "Please enter the title!" }]}
+          >
+            <Input placeholder="Enter the country name" />
+          </Form.Item>
+
           {/* Image Upload */}
-          <Row >
+          {/* <Row >
             <Form.Item
               label="Add package image"
               name="image"
@@ -190,17 +228,27 @@ const EditPackage = () => {
                 <p className="ant-upload-text">Click or drag file  upload</p>
               </Upload.Dragger>
             </Form.Item>
-          </Row>
-        </div>
+          </Row> */}
 
-        {/* Title Field */}
-        <Form.Item
-          label="Package title"
-          name="continent_name"
-          rules={[{  message: "Please enter the title!" }]}
-        >
-          <Input placeholder="Enter the country name" />
-        </Form.Item>
+          <Form.Item
+            label="Upload Image"
+            name="image"
+            valuePropName="fileList"
+            getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
+            rules={[{ required: true, message: "Please upload an image!" }]}
+          >
+            <Upload
+              listType="picture-card"
+              fileList={fileList}
+              beforeUpload={handleBeforeUpload}
+              onChange={handleImageChange}
+              accept="image/*"
+              maxCount={1} // Ensure only one image
+            >
+              {fileList.length < 1 && <Button icon={<UploadOutlined />}>Upload</Button>}
+            </Upload>
+          </Form.Item>
+        </div>
 
         {/* Package Description */}
         <Form.Item label="Package description" name="description">
@@ -220,7 +268,7 @@ const EditPackage = () => {
             <Form.Item
               label="Package Price"
               name="price"
-              rules={[{  message: "Please enter the price!" }]}
+              rules={[{ message: "Please enter the price!" }]}
             >
               <Input type="number" placeholder="Enter package price" />
             </Form.Item>
@@ -231,7 +279,7 @@ const EditPackage = () => {
             <Form.Item
               label="Number of Days"
               name="days"
-              rules={[{  message: "Please enter the number of days!" }]}
+              rules={[{ message: "Please enter the number of days!" }]}
             >
               <Input type="number" placeholder="Enter the number of days" />
             </Form.Item>
