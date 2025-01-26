@@ -17,15 +17,17 @@ const EditDestination = () => {
   useEffect(() => {
     const fetchContinents = async () => {
       try {
-        const response = await fetch("http://10.0.80.13:8000/api/admin/continent");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country");
         const result = await response.json();
-        setContentData(result.continents);
+        setContentData(result?.countries?.data);
       } catch (error) {
         console.error("Error fetching continents:", error);
       }
     };
     fetchContinents();
   }, []);
+
+
 
   // Fetch single country data for editing
   useEffect(() => {
@@ -40,7 +42,7 @@ const EditDestination = () => {
         // Set form default values when data is loaded
         if (result.country) {
           form.setFieldsValue({
-            continent: result.country.continentId,
+            continent_id: result.country.continent_id,
             name: result.country.name,
             title: result.country.title,
           });
@@ -64,29 +66,34 @@ const EditDestination = () => {
     fetchSingleCountry();
   }, [id, form]);
 
+
+
   // Handle image changes
   const handleImageChange = ({ fileList: newFileList }) => {
     setFileList(newFileList.slice(-1));
   };
 
+
   // Form submit handler
-  const handleSubmit = async (values) => {
+    const handleSubmit = async (values) => {
+console.log(values)
     try {
       const formData = new FormData();
-      formData.append("continent_id", values.continent || id || "24");
-      formData.append("name", values.name || "test_name");
-      formData.append("title", values.title || "Default Title");
+      formData.append("continent_id", values.continent_id || "24");
+      formData.append("name", singleContentData.name || "test_name");
+      formData.append("title", singleContentData.title || "Default Title");
+      formData.append("_method", "PUT");
 
-      // Handle image field
-      if (fileList[0]?.originFileObj) {
+      // Ensure the file exists before appending
+      if (fileList && fileList.length > 0 && fileList[0].originFileObj) {
         formData.append("image", fileList[0].originFileObj);
       } else {
-        formData.append("image", ""); // Null if no image, matching Postman
+        console.warn("No image file selected");
       }
 
-      // Debugging the formData
+      // Log the form data for debugging
       formData.forEach((value, key) => {
-        console.log("formData:", key, value);
+        console.log("Form Data Key: ", key, "Value: ", value);
       });
 
       const response = await axios.put(
@@ -103,6 +110,7 @@ const EditDestination = () => {
     }
   };
 
+
   return (
     <div className="flex justify-center items-center h-[800px]">
       <Form
@@ -116,29 +124,30 @@ const EditDestination = () => {
         </h1>
 
         {/* Continent Selection */}
-        {/* <div className="max-w-2xl mb-2">
-          <Form.Item
-            name="continent"
-            label="Select the Continent"
-            rules={[{ required: true, message: "Please select a continent!" }]}
-          >
-            <Select
-              placeholder="Select a continent"
-              style={{ width: 200 }}
-              options={contentData.map((continent) => ({
-                value: continent.id,
-                label: continent.name,
-              }))}
-            />
-          </Form.Item>
-        </div> */}
+        <div className="max-w-2xl mb-2">
+        <Form.Item
+              label="Select the destination"
+              name="country_id"
+              // rules={[{ message: "Please select a country!" }]}
+            >
+              <Select placeholder="Select a country">
+                {contentData.map((country) => (
+                  <Select.Option key={country.id} value={country.id}>
+                    {country.name}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+
+        </div>
 
         {/* Country Name */}
         <div className="mb-2">
           <Form.Item
             name="name"
             label="Country Name"
-            rules={[{ required: true, message: "Please enter the country name!" }]}
+            rules={[{
+             message: "Please enter the country name!" }]}
           >
             <Input placeholder="Enter the country name" className="max-w-sm" />
           </Form.Item>
@@ -149,7 +158,8 @@ const EditDestination = () => {
           <Form.Item
             label="Title"
             name="title"
-            rules={[{ required: true, message: "Please enter the title!" }]}
+            rules={[{
+             message: "Please enter the title!" }]}
           >
             <Input
               placeholder="Enter the destination title"
@@ -162,7 +172,6 @@ const EditDestination = () => {
         <Form.Item
           label="Upload Image"
           name="image"
-          rules={[{ required: true, message: "Please upload an image!" }]}
         >
           <Upload
             listType="picture-card"

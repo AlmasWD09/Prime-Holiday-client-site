@@ -209,7 +209,7 @@ console.log(allPriceValidityInfo)
         <Image src={"/hands.png"} alt="hands" width={100} height={100} className="w-[42px] h-[42px]" />
       </div>
       <div className="flex items-center gap-1">
-        <a href="/dashboard/create-packages"><span className="text-[30px] font-bold text-primary"><LeftOutlined /></span></a>
+        <a href="/admin/dashboard/create-packages"><span className="text-[30px] font-bold text-primary"><LeftOutlined /></span></a>
         <h1 className='text-[24px] font-Roboto font-bold text-primary'>Create New Packages</h1>
       </div>
 

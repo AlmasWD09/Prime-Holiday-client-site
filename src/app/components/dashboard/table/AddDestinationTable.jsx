@@ -145,7 +145,7 @@ import Link from "next/link";
 import useDestination from "@/hooks/useDestination";
 
 const AddDestinationTable = () => {
-  const [destinationData, refetch] = useDestination();
+  const [destinationData,refetch] = useDestination();
 
   // Delete package
   const handleDelete = async (item) => {

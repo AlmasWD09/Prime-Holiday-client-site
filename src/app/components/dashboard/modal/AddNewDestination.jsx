@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 const AddNewDestination = ({ setModalOpen }) => {
+    console.log(setModalOpen)
     const [form] = Form.useForm();
     const [contentData, setContentData] = useState([])
     const [contientId, setContientId] = useState(null)
@@ -44,12 +45,15 @@ const AddNewDestination = ({ setModalOpen }) => {
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
             if (response.status === 200) {
-                alert("Destination create successfully!");
-                router.push("/dashboard/create-destination");
+                alert("Destination create successfully!")
+                
             }
         } catch (error) {
             console.error("Error updating package:", error);
         }
+
+        setModalOpen(false)
+        form.resetFields();
     };
 
     const handleBack = () => {
@@ -120,7 +124,7 @@ const AddNewDestination = ({ setModalOpen }) => {
 
                             {/* Submit Button */}
                             <div className="py-4">
-                                <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                                <button type="submit" className="rounded bg-primary text-white px-6 py-1">Save</button>
                             </div>
                         </Form>
 
