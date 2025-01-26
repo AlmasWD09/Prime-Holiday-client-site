@@ -1,10 +1,11 @@
 
 "use client"
 import ReadMoreModal from "../modal/ReadMoreModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HotalTable from "./table/HotalTable";
 import PriceValidatyTable from "./table/PriceValidatyTable";
 import ModalPage from "../modal/Modal";
+import { useParams } from "next/navigation";
 
 
 
@@ -16,6 +17,50 @@ const Includes = () => {
     const [singleData, setSingleData] = useState(null)
     const [buttonColor, setButtonColor] = useState(0);
     const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
+
+
+    const { id } = useParams();
+    const [singlePackage, setSinglePackage] = useState([]);
+    const [loading, setLoading] = useState(true); // Optional: Loading state
+
+    useEffect(() => {
+        fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log('response',data?.country?.destinations)
+                setSinglePackage(data?.country?.destinations);
+                setLoading(false); // Set loading to false after data is fetched
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                setLoading(false); // Ensure loading is false even on error
+            });
+    }, [id]);
+
+
+
+
+
+    const includeData = singlePackage.map((item) => (item.includes_excludes.includes))
+    const excludeData = singlePackage.map((item) => (item.includes_excludes.excludes))
+    const itineraryData = singlePackage.map((item) => (item))
+    const itineraryData_one = itineraryData.map((item) => (item))
+// console.log("itineraryData_one", itineraryData_one)
+
+//     const result = itineraryData_one.map((item)=> item)
+
+//     console.log('result', result)
+
+const itineraryDescriptions = singlePackage.map((packageItem) => {
+    return packageItem.itinerary.map((item) => item);
+});
+
+console.log("Itinerary Descriptions:", itineraryDescriptions);
+
+
+
+//     const itineraryData_one = itineraryData.map((item) => (item))
+// console.log("itnerarDaTA_ONE----",itineraryData_one)
 
 
 
@@ -97,6 +142,7 @@ const Includes = () => {
         setIsOpen(true);
         setModal(true);
     };
+
     return (
         <>
             <section className="container mx-auto px-4 pt-[56px]">
@@ -126,101 +172,32 @@ const Includes = () => {
                                 {/* Includes Section */}
                                 <div className="lg:border-r border-[#D1D1D1] border-opacity-30">
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">8 nights hotel accommodation in selected hotel category.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Meals are provided as outlined in the itinerary.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Full day city tour of Muscat by Sedan car/SUV/10 seat van by English speaking guide.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Desert safari tour.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Round trip transfer from day 3 to day 8 by 4x4 Jeep (4 pax per Jeep) with English speaking guide.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Visit to Amouage perfume factory by car/SUV/van with English speaking guide. 
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Entrance fee wherever applicable.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">All applicable taxes. </p>
-                                        </li>
+                                        {
+                                            includeData.map((singleInclude, index) => {
+                                                return (
+                                                    <li key={index} className="flex items-start space-x-2">
+                                                        <span className="text-primary">&#9679;</span>
+                                                        <p className="text-[#5D5D5D] text-[16px] font-medium">{index}</p>
+                                                    </li>
+                                                )
+                                            })
+                                        }
                                     </ul>
                                 </div>
 
                                 {/* Excludes Section */}
                                 <div>
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">8 nights hotel accommodation in selected hotel category.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Meals are provided as outlined in the itinerary.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">Full day city tour of Muscat by Sedan car/SUV/10 seat van by English speaking guide.</p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Desert safari tour.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Round trip transfer from day 3 to day 8 by 4x4 Jeep (4 pax per Jeep) with English speaking guide.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Visit to Amouage perfume factory by car/SUV/van with English speaking guide. 
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            Entrance fee wherever applicable.
-                                            </p>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <span className="text-primary">&#9679;</span>
-                                            <p className="text-[#5D5D5D] text-[16px] font-medium">
-                                            All applicable taxes.
-                                            </p>
-                                        </li>
+                                        {
+                                            excludeData.map((singleExclude, index) => {
+                                                return (
+                                                    <li key={index} className="flex items-start space-x-2">
+                                                        <span className="text-primary">&#9679;</span>
+                                                        <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
+                                                    </li>
+                                                )
+                                            })
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -236,7 +213,7 @@ const Includes = () => {
                             <div className="py-3 text-center text-lg font-semibold bg-[#135029] text-[#FFFFF0]">
                                 <h2 className="text-[24px] font-bold">Hotels</h2>
                             </div>
-               
+
                             <HotalTable />
                         </div>
                     }
@@ -253,7 +230,7 @@ const Includes = () => {
                                     <h2 className="text-[#E15E59] text-[20px] font-medium">Not valid between 23 Dec 2024 - 04 Jan 2025</h2>
                                 </div>
                             </div>
- 
+
                             <PriceValidatyTable />
                         </div>
 
@@ -307,9 +284,9 @@ const Includes = () => {
 
                 {/* Read More modal */}
                 {
-                    readMoremodal && <ReadMoreModal readMoreOpen={readMoreOpen}  setReadMoreOpen={setReadMoreOpen} singleData={singleData} />
+                    readMoremodal && <ReadMoreModal readMoreOpen={readMoreOpen} setReadMoreOpen={setReadMoreOpen} singleData={singleData} />
                 }
-                
+
             </section>
         </>
     )

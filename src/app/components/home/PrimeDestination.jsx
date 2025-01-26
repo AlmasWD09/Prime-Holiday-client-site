@@ -101,7 +101,7 @@ const PrimeDestination = () => {
             <SwiperSlide key={idx}>
               <Link
                 href={`/destination/${ground?.id}`}
-                className="relative  cursor-pointer"
+                className="relative  cursor-pointer" 
               >
                 <Image
                   className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"

@@ -93,21 +93,22 @@ const EditPackage = () => {
 
 
   const handleSubmitPackage = async (values) => {
+    console.log(values)
     try {
       const formData = new FormData();
   
       // Append all required fields, matching Postman
-      formData.append("country_id", values?.id || "24"); // Default value for testing
+      formData.append("country_id", values?.country_id || "24"); // Default value for testing
       formData.append("name", values.name || "test_name");
       formData.append("description", editorContent || "<p>Default Description</p>");
       formData.append("price", values.price || "1399");
       formData.append("days", values.days || "7");
       formData.append("_method", "PUT"); // Ensure this is included
-      formData.append("title", values.title || "Default Title"); // Optional field
-      formData.append(
-        "includes_excludes",
-        values.includes_excludes || '{"defaultKey": "defaultValue"}' // Optional JSON field
-      );
+      // formData.append("title", values.title || "Default Title"); // Optional field
+      // formData.append(
+      //   "includes_excludes",
+      //   values.includes_excludes || '{"defaultKey": "defaultValue"}' // Optional JSON field
+      // );
   
       // Handle image field
       if (fileList[0]?.originFileObj) {
@@ -117,9 +118,9 @@ const EditPackage = () => {
       }
   
       // Log FormData for debugging
-      formData.forEach((value, key) => {
-        console.log(`${key}:`, value);
-      });
+      // formData.forEach((value, key) => {
+      //   console.log(`${key}:`, value);
+      // });
   
       // Send request via Axios
       const response = await axios.post(
@@ -174,12 +175,12 @@ const EditPackage = () => {
           <Col>
             <Form.Item
               label="Select the destination"
-              name="country_name"
+              name="country_id"
               // rules={[{ message: "Please select a country!" }]}
             >
               <Select placeholder="Select a country">
                 {countryData.map((country) => (
-                  <Select.Option key={country.id} value={country.name}>
+                  <Select.Option key={country.id} value={country.id}>
                     {country.name}
                   </Select.Option>
                 ))}
@@ -195,40 +196,6 @@ const EditPackage = () => {
           >
             <Input placeholder="Enter the country name" />
           </Form.Item>
-
-          {/* Image Upload */}
-          {/* <Row >
-            <Form.Item
-              label="Add package image"
-              name="image"
-              valuePropName="fileList"
-              getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
-              rules={[
-                {  message: "Please upload an image!" },
-                {
-                  validator: (_, value) =>
-                    value?.[0]?.type?.startsWith("image/")
-                      ? Promise.resolve()
-                      : Promise.reject("File must be an image!"),
-                },
-              ]}
-            >
-              <Upload.Dragger
-                beforeUpload={() => false}
-                listType="picture-card"
-                accept="image/*"
-                showUploadList={{
-                  showPreviewIcon: true,
-                  showRemoveIcon: true,
-                }}
-              >
-                <p className="ant-upload-drag-icon">
-                  <i className="fas fa-cloud-upload-alt" style={{ fontSize: 24, color: "#1890ff" }}></i>
-                </p>
-                <p className="ant-upload-text">Click or drag file  upload</p>
-              </Upload.Dragger>
-            </Form.Item>
-          </Row> */}
 
           <Form.Item
             label="Upload Image"
