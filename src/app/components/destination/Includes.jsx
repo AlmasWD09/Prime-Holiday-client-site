@@ -27,7 +27,7 @@ const Includes = () => {
         fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log('response',data?.country?.destinations)
+                // console.log('response',data?.country?.destinations)
                 setSinglePackage(data?.country?.destinations);
                 setLoading(false); // Set loading to false after data is fetched
             })
@@ -41,21 +41,17 @@ const Includes = () => {
 
 
 
-    const includeData = singlePackage.map((item) => (item.includes_excludes.includes))
-    const excludeData = singlePackage.map((item) => (item.includes_excludes.excludes))
-    const itineraryData = singlePackage.map((item) => (item))
-    const itineraryData_one = itineraryData.map((item) => (item))
-// console.log("itineraryData_one", itineraryData_one)
+    // const includeData = singlePackage.map((item) => (item.includes_excludes.includes))
+    // const excludeData = singlePackage.map((item) => (item.includes_excludes.excludes))
+    // const itineraryData = singlePackage.map((item) => (item))
+    // const itineraryData_one = itineraryData.map((item) => (item))
 
-//     const result = itineraryData_one.map((item)=> item)
 
-//     console.log('result', result)
+// const itineraryDescriptions = singlePackage.map((packageItem) => {
+//     return packageItem.itinerary.map((item) => item);
+// });
 
-const itineraryDescriptions = singlePackage.map((packageItem) => {
-    return packageItem.itinerary.map((item) => item);
-});
 
-console.log("Itinerary Descriptions:", itineraryDescriptions);
 
 
 
@@ -172,7 +168,7 @@ console.log("Itinerary Descriptions:", itineraryDescriptions);
                                 {/* Includes Section */}
                                 <div className="lg:border-r border-[#D1D1D1] border-opacity-30">
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        {
+                                        {/* {
                                             includeData.map((singleInclude, index) => {
                                                 return (
                                                     <li key={index} className="flex items-start space-x-2">
@@ -181,14 +177,14 @@ console.log("Itinerary Descriptions:", itineraryDescriptions);
                                                     </li>
                                                 )
                                             })
-                                        }
+                                        } */}
                                     </ul>
                                 </div>
 
                                 {/* Excludes Section */}
                                 <div>
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        {
+                                        {/* {
                                             excludeData.map((singleExclude, index) => {
                                                 return (
                                                     <li key={index} className="flex items-start space-x-2">
@@ -197,7 +193,7 @@ console.log("Itinerary Descriptions:", itineraryDescriptions);
                                                     </li>
                                                 )
                                             })
-                                        }
+                                        } */}
                                     </ul>
                                 </div>
                             </div>

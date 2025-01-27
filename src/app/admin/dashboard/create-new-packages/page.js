@@ -30,7 +30,7 @@ const CreateNewPage = () => {
   const [countryData, setCountryData] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({
     id: null,
-    name: "",
+    country_name: "",
   });
   const [allhotelInfo, setAllHotelInfo] = useState([]);
   const [hotelInfo, setHotelInfo] = useState({
@@ -84,7 +84,7 @@ const CreateNewPage = () => {
       // Update state with the selected country's details
       setSelectedCountry({
         id: country.id,
-        name: country.name,
+        country_name: country.name,
       });
     }
   };
@@ -167,11 +167,11 @@ const CreateNewPage = () => {
       };
       setFormValue(updatedValues)
       // form.resetFields()
+      console.log(values)
 
       const formData = new FormData();
       formData.append("country_id", selectedCountry.id);
-      formData.append("name", selectedCountry.name);
-      formData.append("title", values.title);
+      formData.append("name", values.name);
       formData.append("description", editorContent);
       formData.append("price", values.price);
       formData.append("image", values.image[0].originFileObj);
@@ -222,7 +222,7 @@ const CreateNewPage = () => {
           <div className="mb-2">
             <p>Select the destination</p>
             <Form.Item
-              name="name"
+              name="country_name"
 
             >
               <Select
@@ -238,6 +238,18 @@ const CreateNewPage = () => {
               </Select>
             </Form.Item>
 
+          </div>
+
+
+          {/* Title Field */}
+          <div className="mb-2">
+            <p>Package name</p>
+            <Form.Item
+              name="name"
+              rules={[{ required: true, message: "Please enter the name!" }]}
+            >
+              <Input placeholder="Enter the package name" className="max-w-xl" />
+            </Form.Item>
           </div>
 
 
@@ -259,16 +271,7 @@ const CreateNewPage = () => {
             </Form.Item>
           </div>
 
-          {/* Title Field */}
-          <div className="mb-2">
-            <p>Package title</p>
-            <Form.Item
-              name="title"
-              rules={[{ required: true, message: "Please enter the title!" }]}
-            >
-              <Input placeholder="Enter the destination name" className="max-w-xl" />
-            </Form.Item>
-          </div>
+
 
           {/* Package description */}
           <div className="max-w-xl mb-2">
