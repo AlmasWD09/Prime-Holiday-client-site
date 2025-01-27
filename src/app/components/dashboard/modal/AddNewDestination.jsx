@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 const AddNewDestination = ({ setModalOpen }) => {
-    console.log(setModalOpen)
+
     const [form] = Form.useForm();
     const [contentData, setContentData] = useState([])
     const [contientId, setContientId] = useState(null)

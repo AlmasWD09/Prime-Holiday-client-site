@@ -11,6 +11,7 @@ import axios from "axios";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 
 const CreateNewPage = () => {
@@ -43,11 +44,11 @@ const CreateNewPage = () => {
 
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
   const [priceValidityInfo, setPriceValidityInfo] = useState({
-    "2px":"",
-    "4px":"",
-    "6px":"",
-    "5px":"",
-    "single_supplement":"",
+    "2px": "",
+    "4px": "",
+    "6px": "",
+    "5px": "",
+    "single_supplement": "",
   });
 
   const [allItinerary, setAllItinerary] = useState([])
@@ -67,7 +68,6 @@ const CreateNewPage = () => {
       const result = await response.json();
       setCountryData(result.countries.data);
     };
-
     fetchData();
   }, []);
 
@@ -121,11 +121,11 @@ const CreateNewPage = () => {
     setAllHotelInfo(prev => {
       if (prev?.length) {
         return prev?.concat(hotelInfo)
-
       } else {
         return [hotelInfo]
       }
     })
+    setTabIndex(0)
   };
 
 
@@ -139,10 +139,8 @@ const CreateNewPage = () => {
         return [priceValidityInfo]
       }
     })
+    setTabIndex(0)
   };
-
-console.log(allPriceValidityInfo)
-
 
   // itinerary form
   const handleSubmitItinerary = (event) => {
@@ -154,6 +152,7 @@ console.log(allPriceValidityInfo)
         return [itineraryInfo]
       }
     })
+    setTabIndex(0)
   };
 
 
@@ -184,8 +183,8 @@ console.log(allPriceValidityInfo)
       formData.append("price_validity", JSON?.stringify(allPriceValidityInfo));
       formData.append("itinerary", JSON?.stringify(allItinerary));
       formData.append("days", values.days);
-    
-      
+
+
       formData.forEach((value, key) => {
         console.log('form data', key, value);
       });
@@ -193,9 +192,12 @@ console.log(allPriceValidityInfo)
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Package created successfully",
+      });
       router.push('/admin/dashboard/create-packages')
-      alert("Package created successfully!");
-      console.log("Response:", response.data);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -330,7 +332,7 @@ console.log(allPriceValidityInfo)
                     <div className="mt-4">
                       {items.map((item, index) => (
                         <div key={item.id} className="p-2 border-b">
-                        {item.text}
+                          {item.text}
                         </div>
                       ))}
                     </div>
@@ -362,9 +364,6 @@ console.log(allPriceValidityInfo)
                     </div>
                   </div>
 
-                  {/* <div className="py-8">
-                    <button type="button" className="bg-primary text-white px-6 py-1 rounded">Save</button>
-                  </div> */}
                 </div>
               </TabPanel>
               {/* hotel tab  */}
@@ -417,7 +416,7 @@ console.log(allPriceValidityInfo)
                     </div>
 
                     <div className="py-8">
-                      <button onClick={() => handleSubmitHotel()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Hotel</button>
+                      <button onClick={() => handleSubmitHotel()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Hotel</button>
                     </div>
                   </form>
 
@@ -437,7 +436,7 @@ console.log(allPriceValidityInfo)
                         <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
                           "2px": e.target?.value
-                        })}/>
+                        })} />
                       </div>
                       {/* 4px for */}
                       <div>
@@ -445,7 +444,7 @@ console.log(allPriceValidityInfo)
                         <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
                           "4px": e.target?.value
-                        })}/>
+                        })} />
                       </div>
                       {/* 6px for */}
                       <div>
@@ -453,7 +452,7 @@ console.log(allPriceValidityInfo)
                         <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
                           "6px": e.target?.value
-                        })}/>
+                        })} />
                       </div>
                       {/* 8px for */}
                       <div>
@@ -461,22 +460,22 @@ console.log(allPriceValidityInfo)
                         <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
                           "8px": e.target?.value
-                        })}/>
+                        })} />
                       </div>
                       {/* Single Supplement for */}
                       <div>
                         <p>Single Supplement</p>
-                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" 
-                        onChange={(e) => setPriceValidityInfo({
-                          ...priceValidityInfo,
-                          "single_supplement": e.target?.value
-                        })}
+                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                          onChange={(e) => setPriceValidityInfo({
+                            ...priceValidityInfo,
+                            "single_supplement": e.target?.value
+                          })}
                         />
                       </div>
 
                     </div>
                     <div className="py-8">
-                      <button  onClick={() => handleSubmitPriceValidity()} type="button" className="bg-primary text-white px-6 py-1 rounded">Save Validaty</button>
+                      <button onClick={() => handleSubmitPriceValidity()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
                     </div>
                   </form>
                 </div>
@@ -519,9 +518,9 @@ console.log(allPriceValidityInfo)
                     </div>
 
                     <div className="py-8">
-                      <button type="button" 
-                      onClick={() => handleSubmitItinerary()}
-                      className="bg-primary text-white px-6 py-1 rounded">Save Itinerary</button>
+                      <button type="button"
+                        onClick={() => handleSubmitItinerary()}
+                        className="bg-gray-500 text-white px-6 py-1 rounded">Save Itinerary</button>
                     </div>
                   </form>
 
@@ -530,7 +529,7 @@ console.log(allPriceValidityInfo)
             </Tabs>
           </div>
 
-          <Button htmlType="submit" type="primary" className="mt-4" >
+          <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: "#F49D2A" }}>
             Published Packege
           </Button>
         </Form>

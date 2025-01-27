@@ -1,8 +1,10 @@
 "use client";
 
+import axios from "axios";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
+import Swal from "sweetalert2";
 const ModalPage = ({ isOpen, setIsOpen }) => {
   const [formData, setFormData] = useState({
     title: "Mr.",
@@ -26,26 +28,60 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    formData.to_name = "Arif Biswas";
-    formData.from_name = "Prime Holiday Destinations Contact Form";
+    const form = e.target;
+    const title = form.title.value;
+    const first_name = form.first_name.value;
+    const last_name = form.last_name.value;
+    const email = form.email.value;
+    const telephone = form.telephone.value;
+    const enquiry = form.enquiry.value;
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-        formData,
-        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_ID
-      )
-      .then(
-        (result) => {
-          alert("Email sent successfully!");
-        },
-        (error) => {
-          alert("Failed to send email.");
-        }
-      );
+    const enquiryInfo = {
+      title,
+      first_name,
+      last_name,
+      email,
+      telephone,
+      enquiry,
+    }
+
+    try {
+      // Replace with your server's API endpoint
+      const response = axios.post("http://10.0.80.13:8000/api/admin/enquiry", enquiryInfo);
+
+      Swal.fire({
+        title: "Enquiry sent successfully",
+        icon: "success"
+      })
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting enquiry:", error);
+    } finally {
+      setIsOpen(false);
+    }
+    // formData.to_name = "Arif Biswas";
+    // formData.from_name = "Prime Holiday Destinations Contact Form";
+
+    // emailjs
+    //   .send(
+    //     process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+    //     process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+    //     formData,
+    //     process.env.NEXT_PUBLIC_EMAIL_PUBLIC_ID
+    //   )
+    //   .then(
+    //     (result) => {
+    //       alert("Email sent successfully!");
+    //     },
+    //     (error) => {
+    //       alert("Failed to send email.");
+    //     }
+    //   );
     // setIsOpen(false);
   };
+
+
+
 
   // modal close function
   const handleCloseModal = () => {
@@ -98,9 +134,9 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   <input
                     type="text"
                     id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
+                    name="first_name"
+                    // value={formData.firstName}
+                    // onChange={handleInputChange}
                     required
                     placeholder="Enter your first name"
                     className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
@@ -116,9 +152,9 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   <input
                     type="text"
                     id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
+                    name="last_name"
+                    // value={formData.lastName}
+                    // onChange={handleInputChange}
                     required
                     placeholder="Enter your last name"
                     className="md:mt-1 block w-full border border-primary rounded-lg  outline-none p-1 md:p-2"
@@ -201,9 +237,9 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                 </label>
                 <textarea
                   id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
+                  name="enquiry"
+                  // value={formData.message}
+                  // onChange={handleInputChange}
                   required
                   placeholder="Enter your Message"
                   rows={window.innerWidth < 768 ? 2 : 4}
@@ -217,8 +253,8 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
                   <input
                     type="checkbox"
                     name="subscribe"
-                    checked={formData.subscribe}
-                    onChange={handleInputChange}
+                    // checked={formData.subscribe}
+                    // onChange={handleInputChange}
                     className="mr-2"
                   />
                   Subscribe to our newsletter
