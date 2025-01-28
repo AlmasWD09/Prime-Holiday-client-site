@@ -47,7 +47,7 @@ const TextEditor = ({ onChange }) => {
 
   const handleEditorChange = (newContent) => {
     setContent(newContent); // Update editor content
-    const plainText = newContent.replace(/<[^>]+>/g, ""); // Strip HTML tags
+    const plainText = newContent
     onChange && onChange(plainText); // Call parent callback if provided
   };
 
