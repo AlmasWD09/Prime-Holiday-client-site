@@ -1,29 +1,20 @@
 "use client"
 
+import Item from "antd/es/list/Item";
 import Image from "next/image";
 
 
-const PriceValidatyTable = () => {
+const PriceValidatyTable = ({singleData}) => {
     const TABLE_HEAD = ["Hotel Category", "2 Pax", "4 Pax", "6 Pax", "8 Pax", "Single Supplement"];
 
     const TABLE_ROWS = [
         {
             id: "01",
             ratingTitle: "- Standard",
-            firstPax: "2525",
-            secondPax: "2525",
-            thirdPax: "2525",
-            fourPax: "2525",
-            singleSupliment: "2525",
         },
         {
             id: "02",
             ratingTitle: "- Superior",
-            firstPax: "2525",
-            secondPax: "2525",
-            thirdPax: "2525",
-            fourPax: "2525",
-            singleSupliment: "2525",
         },
 
     ];
@@ -50,7 +41,7 @@ const PriceValidatyTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {TABLE_ROWS.map(({firstPax, secondPax, thirdPax, fourPax, singleSupliment,ratingTitle }, index) => (
+                            {singleData?.price_validity?.map((item, index) => (
                                 <tr key={index} className="">
                                     <td className="py-4">
                                         <p variant="small" color="blue-gray" className="font-semibold text-center  py-2 bg-[#f0f8f3] rounded text-lg">
@@ -60,33 +51,34 @@ const PriceValidatyTable = () => {
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
-                                            {ratingTitle}
+                                            {/* {ratingTitle} */}
+                                            - Standard 
                                             </span>
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${firstPax}
+                                            ${item.two}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${secondPax}
+                                        ${item.four}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${thirdPax}
+                                        ${item.six}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${fourPax}
+                                        ${item.eight}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${singleSupliment}
+                                        ${item.single_supplement}
                                         </p>
                                     </td>
 

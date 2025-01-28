@@ -107,7 +107,7 @@ const HotalTable = ({singleData}) => {
                                     </td>
                                     <td className="p-4">
                                         <p as="a" href="#" variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                        {item.supeior_hotel || "N/A"}
+                                        {item.supeior_hotel}
                                         </p>
                                     </td>
                                     <td className="p-4">

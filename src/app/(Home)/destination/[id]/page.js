@@ -47,14 +47,14 @@ const DestinationDetails = ({params}) => {
     redirect("/not-found")
   }
 
-  console.log(singleData)
+
 
   return (
     <div className="pb-10">
       <Banner />
       <PrimeDestination  singleData={singleData} countryName={countryName} singlePackage={singlePackage} setSingleData={setSingleData} />
       {/* <Immersition /> */}
-      <Includes singleData={singleData} />
+      <Includes singleData={singleData} setSingleData={setSingleData}/>
       <DestinationLove />
     </div>
   );

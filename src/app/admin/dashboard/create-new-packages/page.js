@@ -43,13 +43,7 @@ const CreateNewPage = () => {
   });
 
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
-  const [priceValidityInfo, setPriceValidityInfo] = useState({
-    "2px": "",
-    "4px": "",
-    "6px": "",
-    "5px": "",
-    "single_supplement": "",
-  });
+  const [priceValidityInfo, setPriceValidityInfo] = useState([]);
 
   const [allItinerary, setAllItinerary] = useState([])
   const [itineraryInfo, setItineraryInfo] = useState({
@@ -128,7 +122,7 @@ const CreateNewPage = () => {
     setTabIndex(0)
   };
 
-console.log(hotelInfo, 'hotelInfo')
+
   // Price & validity form
   const handleSubmitPriceValidity = (event) => {
     setAllPriceValidityInfo(prev => {
@@ -166,7 +160,7 @@ console.log(hotelInfo, 'hotelInfo')
       };
       setFormValue(updatedValues)
       // form.resetFields()
-      console.log(values)
+      console.log("values-----------",values)
 
       const formData = new FormData();
       formData.append("country_id", selectedCountry.id);
@@ -188,10 +182,9 @@ console.log(hotelInfo, 'hotelInfo')
         console.log('form data', key, value);
       });
 
-      // const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
-      //   headers: { "Content-Type": "multipart/form-data" },
-      // });
-      console.log(response.data)
+      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -404,9 +397,9 @@ console.log(hotelInfo, 'hotelInfo')
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input name="supeiorHotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          standard_hotel: e.target?.value
+                          supeior_hotel: e.target?.value
                         })} />
                       </div>
                       {/* Room Type Two */}
@@ -439,7 +432,7 @@ console.log(hotelInfo, 'hotelInfo')
                         <p>2 Pax</p>
                         <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "2px": e.target?.value
+                          two: e.target?.value
                         })} />
                       </div>
                       {/* 4px for */}
@@ -447,7 +440,7 @@ console.log(hotelInfo, 'hotelInfo')
                         <p>4 Pax</p>
                         <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "4px": e.target?.value
+                          four: e.target?.value
                         })} />
                       </div>
                       {/* 6px for */}
@@ -455,7 +448,7 @@ console.log(hotelInfo, 'hotelInfo')
                         <p>6 Pax</p>
                         <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "6px": e.target?.value
+                          six: e.target?.value
                         })} />
                       </div>
                       {/* 8px for */}
@@ -463,13 +456,13 @@ console.log(hotelInfo, 'hotelInfo')
                         <p>8 Pax</p>
                         <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "8px": e.target?.value
+                          eight: e.target?.value
                         })} />
                       </div>
                       {/* Single Supplement for */}
                       <div>
                         <p>Single Supplement</p>
-                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                        <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                           onChange={(e) => setPriceValidityInfo({
                             ...priceValidityInfo,
                             "single_supplement": e.target?.value

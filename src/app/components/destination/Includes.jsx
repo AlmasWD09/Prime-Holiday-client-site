@@ -9,7 +9,8 @@ import ModalPage from "../modal/Modal";
 
 
 
-const Includes = ({ singleData }) => {
+const Includes = ({ singleData,setSingleData }) => {
+    console.log(setSingleData)
     const [isOpen, setIsOpen] = useState(false)
     const [readMoreOpen, setReadMoreOpen] = useState(false)
     const [readMoremodal, setMeadMoremodal] = useState(false);
@@ -41,7 +42,7 @@ const Includes = ({ singleData }) => {
     };
 
 
-    // console.log("singlePackageff------",singleData)
+    console.log("singlePackageff------",singleData)
 
 
 
@@ -138,7 +139,7 @@ const Includes = ({ singleData }) => {
                                 </div>
                             </div>
 
-                            <PriceValidatyTable />
+                            <PriceValidatyTable singleData={singleData}/>
                         </div>
 
                     }
@@ -155,12 +156,12 @@ const Includes = ({ singleData }) => {
 
                             <div>
                                 {
-                                    Itinerarys.map((item, idx) => {
+                                    singleData?.itinerary?.map((item, idx) => {
                                         return (
                                             <div key={idx} className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
                                                 <div className="flex justify-between ">
-                                                    <h4 className="text-[24px] text-[#135029] font-bold">{item.day}</h4>
-                                                    <h4 className="text-[24px] text-[#135029] font-bold">{item.lunchPeriod}</h4>
+                                                    <h4 className="text-[24px] text-[#135029] font-bold">Days {item.days}</h4>
+                                                    <h4 className="text-[24px] text-[#135029] font-bold">{item.lunchTime}</h4>
                                                 </div>
                                                 <div>
                                                     <p className="text-[18px] text-[#454545] font-medium">{item.description} <span
