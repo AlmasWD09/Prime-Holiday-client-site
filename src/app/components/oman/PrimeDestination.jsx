@@ -5,40 +5,17 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const PrimeDestination = () => {
-  const { id } = useParams();
-  const [singlePackage, setSinglePackage] = useState([]);
-  const [loading, setLoading] = useState(true); // Optional: Loading state
-  const [countryName, setCountryName] = useState(null);
-  const [singleData, setSingleData] = useState({})
+const PrimeDestination = ({singlePackage,setSingleData,countryName,singleData,country}) => {
+ 
 
 
-  useEffect(() => {
-    fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSinglePackage(data.country.destinations);
-        setCountryName(data.country.name)
-        // Set default value for singleData based on fetched data
-        if (data.country.destinations && data.country.destinations.length > 0) {
-          setSingleData(data.country.destinations[0]); // Default to the first item in the destinations array
-        }
-        setLoading(false); // Set loading to false after data is fetched
-        singleData('dd')
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false); // Ensure loading is false even on error
-      });
-  }, [id]);
+ 
 
 
   const handleSinglePackage = (value) => {
     setSingleData(value)
 
   }
-
-
 
   return (
     <>
@@ -76,7 +53,7 @@ const PrimeDestination = () => {
         </div>
       </section>
 
-      {/* ************* */}
+      {/* Immersition section */}
       <section className="container mx-auto px-4 pt-[56px]">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
           {/* left side content */}

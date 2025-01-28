@@ -14,7 +14,6 @@ import usePackages from "@/hooks/usePackages";
 
 const CreatePackagesTable = () => {
   const [createPackage, refetch] = usePackages()
-console.log(createPackage)
   // delete package for..
   const handleDelete = async (item) => {
     Swal.fire({

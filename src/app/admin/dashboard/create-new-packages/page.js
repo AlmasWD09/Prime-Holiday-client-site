@@ -24,9 +24,9 @@ const CreateNewPage = () => {
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
-  const [inputValueExcludes, setInputValueExcludes] = useState("");
+  const [inputValueExcludes, setInputValueExcludes] = useState([]);
   const [itemsExcludes, setItemsExcludes] = useState([]);
-  const [items, setItems] = useState([{}]); // For storing the array of objects
+  const [items, setItems] = useState([]); // For storing the array of objects
   const [countryData, setCountryData] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({
     id: null,
@@ -128,7 +128,7 @@ const CreateNewPage = () => {
     setTabIndex(0)
   };
 
-
+console.log(hotelInfo, 'hotelInfo')
   // Price & validity form
   const handleSubmitPriceValidity = (event) => {
     setAllPriceValidityInfo(prev => {
@@ -159,7 +159,6 @@ const CreateNewPage = () => {
 
 
   const handleSubmit = async (values) => {
-
     try {
 
       const updatedValues = {
@@ -189,9 +188,10 @@ const CreateNewPage = () => {
         console.log('form data', key, value);
       });
 
-      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      // const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
+      //   headers: { "Content-Type": "multipart/form-data" },
+      // });
+      console.log(response.data)
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -369,6 +369,7 @@ const CreateNewPage = () => {
 
                 </div>
               </TabPanel>
+
               {/* hotel tab  */}
               <TabPanel>
                 <div className="p-4">

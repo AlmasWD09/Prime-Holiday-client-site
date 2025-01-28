@@ -1,121 +1,22 @@
 
 "use client"
 import ReadMoreModal from "../modal/ReadMoreModal";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import HotalTable from "./table/HotalTable";
 import PriceValidatyTable from "./table/PriceValidatyTable";
 import ModalPage from "../modal/Modal";
-import { useParams } from "next/navigation";
 
 
 
-const Includes = () => {
+
+const Includes = ({ singleData }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [readMoreOpen, setReadMoreOpen] = useState(false)
     const [readMoremodal, setMeadMoremodal] = useState(false);
     const [modal, setModal] = useState(false);
-    const [singleData, setSingleData] = useState(null)
+
     const [buttonColor, setButtonColor] = useState(0);
     const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
-
-
-    const { id } = useParams();
-    const [singlePackage, setSinglePackage] = useState([]);
-    const [loading, setLoading] = useState(true); // Optional: Loading state
-
-    useEffect(() => {
-        fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log('response',data?.country?.destinations)
-                setSinglePackage(data?.country?.destinations);
-                setLoading(false); // Set loading to false after data is fetched
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-                setLoading(false); // Ensure loading is false even on error
-            });
-    }, [id]);
-
-
-
-
-
-    // const includeData = singlePackage.map((item) => (item.includes_excludes.includes))
-    // const excludeData = singlePackage.map((item) => (item.includes_excludes.excludes))
-    // const itineraryData = singlePackage.map((item) => (item))
-    // const itineraryData_one = itineraryData.map((item) => (item))
-
-
-// const itineraryDescriptions = singlePackage.map((packageItem) => {
-//     return packageItem.itinerary.map((item) => item);
-// });
-
-
-
-
-
-//     const itineraryData_one = itineraryData.map((item) => (item))
-// console.log("itnerarDaTA_ONE----",itineraryData_one)
-
-
-
-    const Itinerarys = [
-        {
-            id: "01",
-            day: "Day 01",
-            lunchPeriod: "Dinner",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "02",
-            day: "Day 02",
-            lunchPeriod: "Breakfast",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "03",
-            day: "Day 03",
-            lunchPeriod: "Full-Board",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "04",
-            day: "Day 04",
-            lunchPeriod: "Full-Board",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "05",
-            day: "Day 05",
-            lunchPeriod: "Breakfast & Dinner",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "06",
-            day: "Day 06",
-            lunchPeriod: "Breakfast & Dinner",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "07",
-            day: "Day 07",
-            lunchPeriod: "Breakfast & Dinner",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "08",
-            day: "Day 08",
-            lunchPeriod: "Breakfast & Dinner",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-        {
-            id: "09",
-            day: "Day 09",
-            lunchPeriod: "Breakfast",
-            description: "Arrive at Muscat airport, meet and assist by our representative and transfer to the selected hotel. Later in the afternoon, you will be met at the hotel for a Muscat by Night tour. Start your drive from the hotel to the residential area of Qurum and then along the mountain road towards the old town of Muscat passing through the corniche. Later you drive through the busy streets of Ruwi then drive by the beautiful Mohamed Al Ameen Mosque, which illuminates the Muscat skyline in the",
-        },
-    ]
 
 
     // handle modal show for single id
@@ -138,6 +39,13 @@ const Includes = () => {
         setIsOpen(true);
         setModal(true);
     };
+
+
+    // console.log("singlePackageff------",singleData)
+
+
+
+
 
     return (
         <>
@@ -166,34 +74,37 @@ const Includes = () => {
 
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
                                 {/* Includes Section */}
+
                                 <div className="lg:border-r border-[#D1D1D1] border-opacity-30">
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        {/* {
-                                            includeData.map((singleInclude, index) => {
+                                        {
+                                            singleData?.includes_excludes?.includes.map((singleInclude, index) => {
                                                 return (
                                                     <li key={index} className="flex items-start space-x-2">
                                                         <span className="text-primary">&#9679;</span>
-                                                        <p className="text-[#5D5D5D] text-[16px] font-medium">{index}</p>
+                                                        <p className="text-[#5D5D5D] text-[16px] font-medium">{singleInclude}</p>
                                                     </li>
                                                 )
                                             })
-                                        } */}
+                                        }
                                     </ul>
                                 </div>
 
                                 {/* Excludes Section */}
                                 <div>
                                     <ul className="p-6 space-y-4 text-gray-800">
-                                        {/* {
-                                            excludeData.map((singleExclude, index) => {
-                                                return (
-                                                    <li key={index} className="flex items-start space-x-2">
-                                                        <span className="text-primary">&#9679;</span>
-                                                        <p className="text-[#5D5D5D] text-[16px] font-medium">Return airport transfer.</p>
-                                                    </li>
-                                                )
-                                            })
-                                        } */}
+                                        {
+                                            singleData?.includes_excludes?.
+                                                excludes
+                                                .map((singleExclude, index) => {
+                                                    return (
+                                                        <li key={index} className="flex items-start space-x-2">
+                                                            <span className="text-primary">&#9679;</span>
+                                                            <p className="text-[#5D5D5D] text-[16px] font-medium">{singleExclude}</p>
+                                                        </li>
+                                                    )
+                                                })
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -210,7 +121,7 @@ const Includes = () => {
                                 <h2 className="text-[24px] font-bold">Hotels</h2>
                             </div>
 
-                            <HotalTable />
+                            <HotalTable singleData={singleData}/>
                         </div>
                     }
                     {/* =============== Hotel Tab end ============================= */}

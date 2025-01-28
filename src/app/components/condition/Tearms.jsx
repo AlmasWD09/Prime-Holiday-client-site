@@ -123,7 +123,7 @@ const Tearms = () => {
             For any queries related to these Terms & Conditions, please contact us at:
           </p>
           <ul className="list-disc pl-6">
-            <li className="text-[20px] md:text-[24px] font-normal text-[#454545]"><strong>Email: </strong>contact@primeholidaydestinations.com</li>
+            <li className="text-[20px] md:text-[24px] font-normal text-[#454545] break-words"><strong>Email: </strong>contact@primeholidaydestinations.com</li>
           </ul>
         </section>
       </div>
