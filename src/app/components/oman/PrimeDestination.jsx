@@ -1,62 +1,105 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const PrimeDestination = () => {
-    const grounds = [
-        {
-            image: "https://i.ibb.co.com/qJFPFtT/immersion-Cultural-Oman-photo-1.png",
-            title1: "Immersion in cultural Oman",
-            title2: "7 Days From"
-        },
-        {
-            image: "https://i.ibb.co.com/RcKjwcm/Picture6-1.png",
-            title1: "Essence of Oman",
-            title2: "7 Days From"
-        },
-        {
+  const { id } = useParams();
+  const [singlePackage, setSinglePackage] = useState([]);
+  const [loading, setLoading] = useState(true); // Optional: Loading state
+  const [countryName, setCountryName] = useState(null);
+  const [singleData, setSingleData] = useState({})
 
-            image: "https://i.ibb.co.com/vJ5rW1J/Luxury-Oman-photo-1.png",
-            title1: "Luxury Oman",
-            title2: "7 Days From"
-        },
-    ]
-    return (
-        <>
-            <section className="container mx-auto px-4 pt-20">
-                <h2 className="text-primary font-Roboto text-[28px] font-medium">Oman Packages </h2>
-                 <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
-                          {
-                            grounds.map((ground, idx) => {
-                              return (
-                                <div key={idx}>
-                                  <div className="relative bg-[#135029] p-4 rounded-xl space-y-4">
-                                    <Image
-                                      className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
-                                      src={ground.image}
-                                      alt={ground.title1}
-                                      width={300}
-                                      height={300}
-                                    />
-                                    <div className="bg-[#135029] text-[#FFFFF0]">
-                                      <div className="space-y-2">
-                                        <h5 className="text-[24px] font-Roboto font-bold">{ground.title1}</h5>
-                                        <h5>{ground.title2} <span className="font-bold text-primary">$5656.00</span></h5>
-                                      </div>
-                                      <div className="w-full pt-4">
-                                        <button className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )
-                            })
-                          }
-                        </div>
 
-            </section>
-        </>
-    )
+  useEffect(() => {
+    fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSinglePackage(data.country.destinations);
+        setCountryName(data.country.name)
+        // Set default value for singleData based on fetched data
+        if (data.country.destinations && data.country.destinations.length > 0) {
+          setSingleData(data.country.destinations[0]); // Default to the first item in the destinations array
+        }
+        setLoading(false); // Set loading to false after data is fetched
+        singleData('dd')
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Ensure loading is false even on error
+      });
+  }, [id]);
+
+
+  const handleSinglePackage = (value) => {
+    setSingleData(value)
+
+  }
+
+
+
+  return (
+    <>
+      <section className="container mx-auto px-4 pt-20">
+        <h2 className="text-primary font-Roboto text-[28px] font-medium">
+          {countryName} Packages</h2>
+        <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
+          {
+            singlePackage.map((ground, idx) => {
+              return (
+                <div key={idx}>
+                  <div className="relative bg-[#135029] p-4 rounded-xl space-y-4">
+                    <Image
+                      className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
+                      src={ground.image}
+                      alt={'ground photo'}
+                      width={300}
+                      height={300}
+                    />
+                    <div className="bg-[#135029] text-[#FFFFF0]">
+                      <div className="space-y-2">
+                        <h5 className="text-[24px] font-Roboto font-bold">{ground.package_name
+                        }</h5>
+                        <h5>{ground.days} Days Form <span className="font-bold text-primary">$5656.00</span></h5>
+                      </div>
+                      <div className="w-full pt-4">
+                        <button onClick={() => handleSinglePackage(ground)} className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </section>
+
+      {/* ************* */}
+      <section className="container mx-auto px-4 pt-[56px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+          {/* left side content */}
+          <div className="max-w-[699px] max-h[332px] col-span-2">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: singleData.description,
+              }}></div>
+          </div>
+          {/* right side image */}
+          <div className=" ">
+            <Image
+              src={singleData.image}
+              alt="immersition"
+              width={500}
+              height={200}
+              className="w-[493px] h-[332px] object-cover rounded-xl"
+            />
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default PrimeDestination

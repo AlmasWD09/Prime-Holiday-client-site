@@ -12,7 +12,7 @@ const DestinationDetails = ({params}) => {
     <div className="pb-10">
       <Banner />
       <PrimeDestination />
-      <Immersition />
+      {/* <Immersition /> */}
       <Includes />
       <DestinationLove />
     </div>

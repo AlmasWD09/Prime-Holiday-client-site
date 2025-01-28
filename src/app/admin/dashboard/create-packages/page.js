@@ -10,7 +10,7 @@ const createPpackages = () => {
 
     // handleNavigate page
     const handleCreateNewPackage = () =>{
-        router.push('/dashboard/create-new-packages')
+        router.push('/admin/dashboard/create-new-packages')
     }
   return (
     <div className="bg-gray-100 px-8 pt-20 h-[880px]">

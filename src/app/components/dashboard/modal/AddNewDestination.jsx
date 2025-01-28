@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 const AddNewDestination = ({ setModalOpen }) => {
+
     const [form] = Form.useForm();
     const [contentData, setContentData] = useState([])
+    const [contientId, setContientId] = useState(null)
+
 
     useEffect(() => {
         // Fetch data dynamically from the JSON file
@@ -22,48 +25,35 @@ const AddNewDestination = ({ setModalOpen }) => {
 
     // Handle form submission
     const handleSubmit = async (values) => {
-        // Create an object to capture the form values
-        const formData = {
-            name: values.name,  
-            title: values.title, 
-            continent_id: values.continent,  
-            days: values.days, 
-            description: values.description,  
-            price: values.price,  
-            image: values.image ? values.image[0]?.originFileObj : null  
-        };
 
-        // Log the object to console
-        console.log("Form Data as Object:", formData);
+        try {
+            const formData = new FormData();
 
-        // Here you can also handle the image upload (if present) and send the formData to your API.
-        if (formData.image) {
-            const uploadFormData = new FormData();
-            uploadFormData.append("country_id", "4"); // Hardcoded country_id
-            uploadFormData.append("name", formData.name);
-            uploadFormData.append("title", formData.title);
-            uploadFormData.append("days", formData.days);
-            uploadFormData.append("description", formData.description);
-            uploadFormData.append("price", formData.price);
-            uploadFormData.append("image", formData.image);
-            
-            try {
-                // Send the data to the server via axios POST request
-                const response = await axios.post('http://10.0.80.13:8000/api/admin/country/store', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',  // Ensure the correct content type is set
-                    },
-                });
-    
-                // Log the server response (success message or data)
-                console.log('Response:', response.data);
-                form.resetFields();
-            } catch (error) {
-                // Log error if the request fails
-                console.error('Error submitting form:', error);
+            formData.append("continent_id", contientId);
+            formData.append("name", values.name);
+            formData.append("title", values.title);
+            formData.append("image", values.image[0].originFileObj);
+
+
+            formData.forEach((value, key) => {
+                console.log('form data', key, "=====", value);
+            });
+
+            const response = await axios.post(
+                'http://10.0.80.13:8000/api/admin/country/store',
+                formData,
+                { headers: { "Content-Type": "multipart/form-data" } }
+            );
+            if (response.status === 200) {
+                alert("Destination create successfully!")
+                
             }
-           
+        } catch (error) {
+            console.error("Error updating package:", error);
         }
+
+        setModalOpen(false)
+        form.resetFields();
     };
 
     const handleBack = () => {
@@ -80,10 +70,12 @@ const AddNewDestination = ({ setModalOpen }) => {
                             <div className="mb-2">
                                 <p>Select the continent</p>
                                 <Form.Item
-                                    name="continent"
+                                    name="content_id"
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
-                                    <Select placeholder="Select the continent">
+                                    <Select
+                                        onChange={(value) => setContientId(value)}
+                                        placeholder="Select the continent">
                                         {contentData.map((singleContent, index) => (
                                             <Select.Option key={index} value={singleContent.id}>
                                                 {singleContent.name}
@@ -132,7 +124,7 @@ const AddNewDestination = ({ setModalOpen }) => {
 
                             {/* Submit Button */}
                             <div className="py-4">
-                                <button type="submit" className="bg-primary text-white px-6 py-1">Save</button>
+                                <button type="submit" className="rounded bg-primary text-white px-6 py-1">Save</button>
                             </div>
                         </Form>
 

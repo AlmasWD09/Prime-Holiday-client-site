@@ -4,7 +4,7 @@ import { useState } from "react";
 import Modal from "../modal/Modal";
 import Link from "next/link";
 import ScrollTopButton from "./ScrollTopButton";
-
+import Cookies from 'js-cookie';
 
 
 
@@ -18,6 +18,10 @@ const Footer = () => {
     setModal(true);
     setIsOpen(true);
   };
+
+  const role = 'admin'
+  const token = Cookies.get('token');
+
 
   return (
     <footer className="relative text-[#FFFFF0] font-Roboto"
@@ -70,7 +74,7 @@ const Footer = () => {
               </div>
               <div className="pt-[16px]">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
-                <p  className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</p>
+                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</p>
               </div>
             </div>
 
@@ -94,18 +98,24 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><a href="/about">About</a> | <a href="/destination">Destinations</a> | Blog | <a href="/conditions">Terms & Conditions</a> | <a href="/privacy">Privacy</a> | <a href="/cancelation">Cancellation & Refund</a></p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><Link href="/about">About</Link> | <Link href="/destination">Destinations</Link> | Blog | <Link href="/conditions">Terms & Conditions</Link> | <Link href="/privacy">Privacy</Link> | <Link href="/cancelation">Cancellation & Refund</Link> | <Link
+                  href={`${(role === 'admin') && token ? '/admin/dashboard' : '/login'}`}>
+                  Dashboard</Link>
+              </p>
+
+
+
               <p className="text-[18px] font-Roboto text-[#FFFFF0]">© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 
             <div className="md:text-end space-y-4 md:pb-10 2xl:pb-0">
               <div>
-                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations <Link href=""></Link> Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
               <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
                 <p>Colour palette inspired by</p>
-                <a href="https://www.instagram.com/thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</a>
+                <Link href="https://www.instagram.com/thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</Link>
               </div>
             </div>
           </div>
