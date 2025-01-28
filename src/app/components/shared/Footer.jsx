@@ -110,12 +110,12 @@ const Footer = () => {
 
             <div className="md:text-end space-y-4 md:pb-10 2xl:pb-0">
               <div>
-                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations <a href=""></a> Brand by Rizmali Travel & Tours Limited</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations <Link href=""></Link> Brand by Rizmali Travel & Tours Limited</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
               <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
                 <p>Colour palette inspired by</p>
-                <a href="https://www.instagram.com/thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</a>
+                <Link href="https://www.instagram.com/thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</Link>
               </div>
             </div>
           </div>

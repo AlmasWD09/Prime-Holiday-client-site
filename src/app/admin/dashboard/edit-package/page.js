@@ -8,6 +8,7 @@ import Image from "next/image";
 import TextEditor from "@/app/components/textEditor/TextEditor";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 // Dynamic import for JoditEditor
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
@@ -128,11 +129,11 @@ const EditPackage = () => {
         <Image src="/hands.png" alt="hands" width={42} height={42} />
       </div>
       <div className="flex items-center gap-1">
-        <a href="/dashboard/create-packages">
+        <Link href="/dashboard/create-packages">
           <span className="text-[30px] font-bold text-primary">
             <LeftOutlined />
           </span>
-        </a>
+        </Link>
         <h1 className="text-[24px] font-Roboto font-bold text-primary">Edit Package</h1>
       </div>
 

@@ -76,16 +76,17 @@ const AddDestinationTable = () => {
       // ),
     },
     {
-      title: "Country Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
       title: "Title",
       dataIndex: "title",
       key: "title",
       render: (title) => title || "N/A",
     },
+    {
+      title: "Country Name",
+      dataIndex: "name",
+      key: "name",
+    },
+
     {
       title: "Action",
       key: "action",

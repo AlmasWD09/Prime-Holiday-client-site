@@ -211,7 +211,7 @@ const CreateNewPage = () => {
         <Image src={"/hands.png"} alt="hands" width={100} height={100} className="w-[42px] h-[42px]" />
       </div>
       <div className="flex items-center gap-1">
-        <a href="/admin/dashboard/create-packages"><span className="text-[30px] font-bold text-primary"><LeftOutlined /></span></a>
+        <Link href="/admin/dashboard/create-packages"><span className="text-[30px] font-bold text-primary"><LeftOutlined /></span></Link>
         <h1 className='text-[24px] font-Roboto font-bold text-primary'>Create New Packages</h1>
       </div>
 
@@ -493,8 +493,8 @@ const CreateNewPage = () => {
                     <div className="space-y-4">
                       {/* LunchTime */}
                       <div>
-                        <p>LunchTime</p>
-                        <input required type="text" name="lunchTime" placeholder="LunchTime" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                        <p>Itinerary for</p>
+                        <input required type="text" name="lunchTime" placeholder="Itinerary name" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
                           ...itineraryInfo,
                           lunchTime: e.target?.value
                         })} />

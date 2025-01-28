@@ -18,13 +18,13 @@ import Link from "next/link";
 
 const InclusivePackage = () => {
     const [packageData, setPackageData] = useState([]);
-
+const [loading, setLoading] = useState(false)
 
 
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/destination");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -40,7 +40,6 @@ const InclusivePackage = () => {
     fetchData();
   }, []);
   
-
 const swiperRef = useRef(null);
 
   return (
@@ -112,9 +111,9 @@ const swiperRef = useRef(null);
                   
                   <div className="bg-[#135029] text-[#FFFFF0]">
                     <div className="space-y-2">
-                      <h5 className="text-[24px] font-bold">{singlePackge.country_name}</h5>
+                      <h5 className="text-[24px] font-bold">{singlePackge.name}</h5>
                       <h5>
-                        {singlePackge.name}{" "}
+                        {singlePackge.days} Days From{" "}
                         <span className="font-bold text-primary">${singlePackge.price}</span>
                       </h5>
                     </div>
