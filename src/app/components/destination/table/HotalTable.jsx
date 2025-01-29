@@ -3,7 +3,7 @@
 
 
 
-const HotalTable = () => {
+const HotalTable = ({singleData}) => {
     const TABLE_HEAD = ["City", "4* Standard Hotel", "Room Type", "4* Superior Hotel", "Room Type"];
 
     const TABLE_ROWS = [
@@ -73,6 +73,7 @@ const HotalTable = () => {
                     <table className="w-full min-w-max table-auto text-left mt-8 ">
                         <thead>
                             <tr>
+                               
                                 {TABLE_HEAD.map((head, index) => (
                                     <th key={index} className="border-b border-blue-gray-100 bg-[#fffff0] p-4">
                                         <p
@@ -87,31 +88,31 @@ const HotalTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {TABLE_ROWS.map(({ name, job, romType01, romType02, superior }, index) => (
+                            {singleData?.hotels?.map((item,index) => (
                                 <tr key={index} className="even:bg-[#ffe3bd]">
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                            {name}
+                                            {item.city}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                            {job}
+                                          {item.standard_hotel}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                            {romType01}
+                                            {item.room_type}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p as="a" href="#" variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                            {superior}
+                                        {item.supeior_hotel}
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p as="a" href="#" variant="small" color="blue-gray" className="text-[#454545] font-medium text-[18px]">
-                                            {romType02}
+                                            {item.room_type1}
                                         </p>
                                     </td>
                                 </tr>

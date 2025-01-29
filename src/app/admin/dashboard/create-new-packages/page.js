@@ -24,9 +24,9 @@ const CreateNewPage = () => {
   const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
   const [inputValue, setInputValue] = useState(""); // For tracking the input field value
-  const [inputValueExcludes, setInputValueExcludes] = useState("");
+  const [inputValueExcludes, setInputValueExcludes] = useState([]);
   const [itemsExcludes, setItemsExcludes] = useState([]);
-  const [items, setItems] = useState([{}]); // For storing the array of objects
+  const [items, setItems] = useState([]); // For storing the array of objects
   const [countryData, setCountryData] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({
     id: null,
@@ -43,13 +43,7 @@ const CreateNewPage = () => {
   });
 
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
-  const [priceValidityInfo, setPriceValidityInfo] = useState({
-    "2px": "",
-    "4px": "",
-    "6px": "",
-    "5px": "",
-    "single_supplement": "",
-  });
+  const [priceValidityInfo, setPriceValidityInfo] = useState([]);
 
   const [allItinerary, setAllItinerary] = useState([])
   const [itineraryInfo, setItineraryInfo] = useState({
@@ -159,7 +153,6 @@ const CreateNewPage = () => {
 
 
   const handleSubmit = async (values) => {
-
     try {
 
       const updatedValues = {
@@ -167,7 +160,7 @@ const CreateNewPage = () => {
       };
       setFormValue(updatedValues)
       // form.resetFields()
-      console.log(values)
+      console.log("values-----------",values)
 
       const formData = new FormData();
       formData.append("country_id", selectedCountry.id);
@@ -369,6 +362,7 @@ const CreateNewPage = () => {
 
                 </div>
               </TabPanel>
+
               {/* hotel tab  */}
               <TabPanel>
                 <div className="p-4">
@@ -403,9 +397,9 @@ const CreateNewPage = () => {
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input name="supeiorHotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          standard_hotel: e.target?.value
+                          supeior_hotel: e.target?.value
                         })} />
                       </div>
                       {/* Room Type Two */}
@@ -438,7 +432,7 @@ const CreateNewPage = () => {
                         <p>2 Pax</p>
                         <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "2px": e.target?.value
+                          two: e.target?.value
                         })} />
                       </div>
                       {/* 4px for */}
@@ -446,7 +440,7 @@ const CreateNewPage = () => {
                         <p>4 Pax</p>
                         <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "4px": e.target?.value
+                          four: e.target?.value
                         })} />
                       </div>
                       {/* 6px for */}
@@ -454,7 +448,7 @@ const CreateNewPage = () => {
                         <p>6 Pax</p>
                         <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "6px": e.target?.value
+                          six: e.target?.value
                         })} />
                       </div>
                       {/* 8px for */}
@@ -462,13 +456,13 @@ const CreateNewPage = () => {
                         <p>8 Pax</p>
                         <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
                           ...priceValidityInfo,
-                          "8px": e.target?.value
+                          eight: e.target?.value
                         })} />
                       </div>
                       {/* Single Supplement for */}
                       <div>
                         <p>Single Supplement</p>
-                        <input required type="number" name="singleSupplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                        <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                           onChange={(e) => setPriceValidityInfo({
                             ...priceValidityInfo,
                             "single_supplement": e.target?.value
