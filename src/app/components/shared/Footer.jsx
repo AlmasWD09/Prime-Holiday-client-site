@@ -72,7 +72,7 @@ const Footer = () => {
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">B16 8QG</p>
                 <p className="text-[18px] font-Roboto text-[#FFFFF0]">United Kingdom</p>
               </div>
-              <div className="pt-[16px]">
+              <div className="pt-[16px] break-words whitespace-normal">
                 <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
                 <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</p>
               </div>
