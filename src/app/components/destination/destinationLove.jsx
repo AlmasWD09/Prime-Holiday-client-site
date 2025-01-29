@@ -1,47 +1,34 @@
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const DestinationLove = () => {
-  const grounds = [
-    {
-      image: "/photo01.png",
-      title1: "Luxury of Morocco",
-      title2: "7 Days From",
-    },
-    {
-      image: "/photo02.png",
-      title1: "Immersion in cultural Qatar",
-      title2: "7 Days From",
-    },
-    {
-      image: "/photo03.png",
-      title1: "Essence of Qatar",
-      title2: "7 Days From",
-    },
-  ];
+ 
   const [destinationLoveData, setDestinationLoveData] = useState([]);
 
 
   useEffect(() => {
-      fetch("http://10.0.80.13:8000/api/admin/random-destination/")
-        .then((res) => res.json())
-        .then((data) => {
-          setDestinationLoveData(data?.destinations?.data)
-        });
-    }, []);
+    fetch("http://10.0.80.13:8000/api/admin/random-destination/")
+      .then((res) => res.json())
+      .then((data) => {
+        setDestinationLoveData(data?.destinations?.data)
+      });
+  }, []);
+
 
   return (
-      <section className="container mx-auto px-4 pt-[56px] pb-10 ">
-        <h2 className="text-primary font-Roboto text-[28px] font-medium">
-          Destinations you'll love
-        </h2>
+    <section className="container mx-auto px-4 pt-[56px] pb-10 ">
+      <h2 className="text-primary font-Roboto text-[28px] font-medium">
+        Destinations you'll love
+      </h2>
 
-        <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
-          {
-            destinationLoveData?.map((ground, idx) => {
-              return (
-                <div key={idx}>
+      <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 xl:grid-cols-3">
+        {
+          destinationLoveData?.map((ground, idx) => {
+            return (
+              <div key={idx}>
+                <Link href={`/destination/${ground.id}?per_page=${ground.country_id}`}>
                   <div className="max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
                     <Image
                       className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
@@ -60,13 +47,14 @@ const DestinationLove = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              )
-            })
-          }
-        </div>
-      </section>
-  
+                </Link>
+              </div>
+            )
+          })
+        }
+      </div>
+    </section>
+
   );
 };
 
