@@ -15,8 +15,6 @@ const DestinationDetails = ({params}) => {
   const [countryName, setCountryName] = useState(null);
   const [singleData, setSingleData] = useState({})
 
-  // console.log("SSSSSSSSSSSSSSSSSS", params)
-
   const {id} = useParams();
 
 

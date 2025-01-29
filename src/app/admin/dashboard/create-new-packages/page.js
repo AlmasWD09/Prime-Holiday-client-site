@@ -42,8 +42,18 @@ const CreateNewPage = () => {
 
   });
 
+
+  
+  const [priceValidityInfo, setPriceValidityInfo] = useState({
+    standard:[],
+    superior:[],
+  });
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
-  const [priceValidityInfo, setPriceValidityInfo] = useState([]);
+
+
+
+
+
 
   const [allItinerary, setAllItinerary] = useState([])
   const [itineraryInfo, setItineraryInfo] = useState({
@@ -122,19 +132,11 @@ const CreateNewPage = () => {
     setTabIndex(0)
   };
 
-
-  // Price & validity form
-  const handleSubmitPriceValidity = (event) => {
-    setAllPriceValidityInfo(prev => {
-      if (prev?.length) {
-        return prev?.concat(priceValidityInfo)
-
-      } else {
-        return [priceValidityInfo]
-      }
-    })
-    setTabIndex(0)
-  };
+// price & validity
+const handleSubmitPriceValidity = () =>{
+  setAllPriceValidityInfo(priceValidityInfo)
+  setTabIndex(0)
+}
 
   // itinerary form
   const handleSubmitItinerary = (event) => {
@@ -160,7 +162,6 @@ const CreateNewPage = () => {
       };
       setFormValue(updatedValues)
       // form.resetFields()
-      console.log("values-----------",values)
 
       const formData = new FormData();
       formData.append("country_id", selectedCountry.id);
@@ -196,6 +197,7 @@ const CreateNewPage = () => {
     }
 
   };
+
 
   return (
     <div className="bg-gray-200 m-8 p-8 ">
@@ -383,7 +385,7 @@ const CreateNewPage = () => {
                         <p>Standard Hotel</p>
                         <input name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
-                          city: e.target?.value
+                          standard_hotel: e.target?.value
                         })} />
                       </div>
                       {/* Room Type One */}
@@ -422,61 +424,213 @@ const CreateNewPage = () => {
 
               {/* price and validity */}
               <TabPanel>
-                <div className="p-4">
-                  <h1 className="text-xl font-bold font-Roboto text-primary py-2">PRICE & VALIDITY</h1>
+                <div className="flex flex-col border border-primary rounded-md">
 
-                  <form >
-                    <div className="space-y-4">
-                      {/* 2px for */}
-                      <div>
-                        <p>2 Pax</p>
-                        <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
-                          ...priceValidityInfo,
-                          two: e.target?.value
-                        })} />
-                      </div>
-                      {/* 4px for */}
-                      <div>
-                        <p>4 Pax</p>
-                        <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
-                          ...priceValidityInfo,
-                          four: e.target?.value
-                        })} />
-                      </div>
-                      {/* 6px for */}
-                      <div>
-                        <p>6 Pax</p>
-                        <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
-                          ...priceValidityInfo,
-                          six: e.target?.value
-                        })} />
-                      </div>
-                      {/* 8px for */}
-                      <div>
-                        <p>8 Pax</p>
-                        <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setPriceValidityInfo({
-                          ...priceValidityInfo,
-                          eight: e.target?.value
-                        })} />
-                      </div>
-                      {/* Single Supplement for */}
-                      <div>
-                        <p>Single Supplement</p>
-                        <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
-                          onChange={(e) => setPriceValidityInfo({
-                            ...priceValidityInfo,
-                            "single_supplement": e.target?.value
-                          })}
-                        />
-                      </div>
+                  <div className="flex justify-between">
+                    {/* tab-panel one */}
+                    <div className="p-4">
+                      <h1 className="text-xl font-bold font-Roboto text-primary py-2">Standard</h1>
+                      <div className="space-y-4">
+                        {/* 2px for */}
+                        <div>
+                          <p>2 Pax</p>
+                          <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
 
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.standard]; // Copy existing array
+                               updatedStandard[0] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 standard: updatedStandard, // Update the 'standard' array
+                               };
+                             });
+                          }} />
+                        </div>
+                        {/* 4px for */}
+                        <div>
+                          <p>4 Pax</p>
+                          <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.standard]; // Copy existing array
+                               updatedStandard[1] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 standard: updatedStandard, // Update the 'standard' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* 6px for */}
+                        <div>
+                          <p>6 Pax</p>
+                          <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.standard]; // Copy existing array
+                               updatedStandard[2] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 standard: updatedStandard, // Update the 'standard' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* 8px for */}
+                        <div>
+                          <p>8 Pax</p>
+                          <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.standard]; // Copy existing array
+                               updatedStandard[3] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 standard: updatedStandard, // Update the 'standard' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* Single Supplement for */}
+                        <div>
+                          <p>Single Supplement</p>
+                          <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                            onChange={(e) => {
+                              const newValue = Number(e.target.value); // Convert input to number
+ 
+                              setPriceValidityInfo((prev) => {
+                                const updatedStandard = [...prev.standard]; // Copy existing array
+                                updatedStandard[4] = newValue; // Insert/Update at specific index
+                          
+                                return {
+                                  ...prev,
+                                  standard: updatedStandard, // Update the 'standard' array
+                                };
+                              });
+                           }} 
+                          />
+                        </div>
+
+                      </div>
                     </div>
-                    <div className="py-8">
-                      <button onClick={() => handleSubmitPriceValidity()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
+
+                    {/* tab-panel two */}
+                    <div className="p-4">
+                      <h1 className="text-xl font-bold font-Roboto text-primary py-2">superior</h1>
+                      <div className="space-y-4">
+                        {/* 2px for */}
+                        <div>
+                          <p>2 Pax</p>
+                          <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.superior]; // Copy existing array
+                               updatedStandard[0] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 superior: updatedStandard, // Update the 'superior' array
+                               };
+                             });
+                          }} />
+                        </div>
+                        {/* 4px for */}
+                        <div>
+                          <p>4 Pax</p>
+                          <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.superior]; // Copy existing array
+                               updatedStandard[1] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 superior: updatedStandard, // Update the 'superior' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* 6px for */}
+                        <div>
+                          <p>6 Pax</p>
+                          <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.superior]; // Copy existing array
+                               updatedStandard[2] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 superior: updatedStandard, // Update the 'superior' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* 8px for */}
+                        <div>
+                          <p>8 Pax</p>
+                          <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = Number(e.target.value); // Convert input to number
+
+                             setPriceValidityInfo((prev) => {
+                               const updatedStandard = [...prev.superior]; // Copy existing array
+                               updatedStandard[3] = newValue; // Insert/Update at specific index
+                         
+                               return {
+                                 ...prev,
+                                 superior: updatedStandard, // Update the 'superior' array
+                               };
+                             });
+                          }}  />
+                        </div>
+                        {/* Single Supplement for */}
+                        <div>
+                          <p>Single Supplement</p>
+                          <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                            onChange={(e) => {
+                              const newValue = Number(e.target.value); // Convert input to number
+ 
+                              setPriceValidityInfo((prev) => {
+                                const updatedStandard = [...prev.superior]; // Copy existing array
+                                updatedStandard[4] = newValue; // Insert/Update at specific index
+                          
+                                return {
+                                  ...prev,
+                                  superior: updatedStandard, // Update the 'standard' array
+                                };
+                              });
+                           }} 
+                          />
+                        </div>
+
+                      </div>
                     </div>
-                  </form>
+                  </div>
+
+                  <div className="flex justify-center items-center py-8">
+                    <button onClick={() => handleSubmitPriceValidity()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
+                  </div>
                 </div>
+
+
               </TabPanel>
+
+
+
+
+
+
 
               {/* Itinerary */}
               <TabPanel>

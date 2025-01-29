@@ -19,6 +19,7 @@ const PriceValidatyTable = ({singleData}) => {
 
     ];
 
+    console.log(singleData?.price_validity?.standard)
     return (
         <div className="relative max-w-full">
             {/* Scroll Wrapper */}
@@ -41,7 +42,7 @@ const PriceValidatyTable = ({singleData}) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {singleData?.price_validity?.map((item, index) => (
+                            {singleData?.price_validity?.standard?.map((item, index) => (
                                 <tr key={index} className="">
                                     <td className="py-4">
                                         <p variant="small" color="blue-gray" className="font-semibold text-center  py-2 bg-[#f0f8f3] rounded text-lg">
@@ -51,17 +52,16 @@ const PriceValidatyTable = ({singleData}) => {
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
                                             <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]"/>
-                                            {/* {ratingTitle} */}
                                             - Standard 
                                             </span>
                                         </p>
                                     </td>
                                     <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
-                                            ${item.two}
+                                           {item}
                                         </p>
                                     </td>
-                                    <td className="p-4">
+                                    {/* <td className="p-4">
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                         ${item.four}
                                         </p>
@@ -80,7 +80,7 @@ const PriceValidatyTable = ({singleData}) => {
                                         <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
                                         ${item.single_supplement}
                                         </p>
-                                    </td>
+                                    </td> */}
 
                                 </tr>
                             ))}
