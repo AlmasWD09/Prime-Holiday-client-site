@@ -1,7 +1,7 @@
 "use client";
 
 import { LeftOutlined, UploadOutlined } from "@ant-design/icons";
-import { Select, Input, Button, Form, Upload, Row, Col } from "antd";
+import { Select, Input, Button, Form, Upload, Row, Col, Modal } from "antd";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -13,6 +13,9 @@ import Title from "antd/es/skeleton/Title";
 import Link from "next/link";
 // Dynamic import for JoditEditor
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+
+
+
 
 const EditPackage = () => {
   const { id } = useParams();
@@ -26,6 +29,55 @@ const EditPackage = () => {
 
   const [hasMounted, setHasMounted] = useState(false);
   const [fileList, setFileList] = useState([]);
+
+  // first modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hotelText, sethotelText] = useState();
+
+  // second modal
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [privacyText, setPrivacyText] = useState("");
+
+  console.log(singlePackage.hotels)
+
+
+  //========= first modal start=========================
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  //========== first modal end ===========================
+
+
+
+
+
+  // ====== second modal start =======================
+  const showPrivacyModal = () => {
+    setIsPrivacyModalOpen(true);
+  };
+
+  const handlePrivacyOk = () => {
+    setIsPrivacyModalOpen(false);
+  };
+
+  const handlePrivacyCancel = () => {
+    setIsPrivacyModalOpen(false);
+  };
+  // ====== second modal end =======================
+
+
+
+
+
+
 
   // image upload start ============
   const handleImageChange = ({ fileList: newFileList }) => {
@@ -99,7 +151,7 @@ const EditPackage = () => {
     console.log(values)
     try {
       const formData = new FormData();
-  
+
       // Append all required fields, matching Postman
       formData.append("country_id", values?.country_id || "24"); // Default value for testing
       formData.append("name", values.name || "test_name");
@@ -112,19 +164,19 @@ const EditPackage = () => {
       //   "includes_excludes",
       //   values.includes_excludes || '{"defaultKey": "defaultValue"}' // Optional JSON field
       // );
-  
+
       // Handle image field
       if (fileList[0]?.originFileObj) {
         formData.append("image", fileList[0].originFileObj);
       } else {
         formData.append("image", ""); // Null if no image, matching Postman
       }
-  
+
       // Log FormData for debugging
       // formData.forEach((value, key) => {
       //   console.log(`${key}:`, value);
       // });
-  
+
       // Send request via Axios
       const response = await axios.post(
         `http://10.0.80.13:8000/api/admin/destination/update/${id || "105"}`, // Replace with the correct ID
@@ -135,15 +187,15 @@ const EditPackage = () => {
           },
         }
       );
-  
+
       console.log("Response:", response.data);
-  
+
       if (response.data.success) {
-       Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title:'Package Update Succesfully',
-       })
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: 'Package Update Succesfully',
+        })
         router.push('/admin/dashboard/create-packages')
       }
     } catch (error) {
@@ -154,9 +206,10 @@ const EditPackage = () => {
       }
     }
   };
-  
 
 
+  // console.log(singlePackage)
+  console.log(Array.isArray(singlePackage.hotels));
   return (
     <div className="bg-gray-200 m-8 p-8">
       {/* Header Section */}
@@ -183,7 +236,7 @@ const EditPackage = () => {
             <Form.Item
               label="Select the destination"
               name="country_id"
-              // rules={[{ message: "Please select a country!" }]}
+            // rules={[{ message: "Please select a country!" }]}
             >
               <Select placeholder="Select a country">
                 {countryData.map((country) => (
@@ -259,6 +312,94 @@ const EditPackage = () => {
             </Form.Item>
           </Col>
         </Row>
+
+
+
+
+
+
+
+        <div>
+          {/* first modal */}
+          <Button type="primary"
+            onClick={showModal}>
+            Hotel
+          </Button>
+          <Modal
+            title="Hotel"
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            okText="Update Hotel"
+            okButtonProps={{
+              style: { backgroundColor: "gray", borderColor: "gray", color: "white" }
+            }}
+          >
+            <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
+            {singlePackage?.hotels?.map((hotel, index) => (
+              <div key={index} className="p-4">
+                <form >
+                  <div className="space-y-4">
+                    {/* City */}
+                    <div>
+                      <p>City</p>
+                      <input value={hotel.city} name="city" placeholder="City" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        ...hotelInfo,
+                        city: e.target?.value
+                      })} />
+                    </div>
+                    {/* Standard Hotel */}
+                    <div>
+                      <p>Standard Hotel</p>
+                      <input value={hotel.standard_hotel} name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        ...hotelInfo,
+                        standard_hotel: e.target?.value
+                      })} />
+                    </div>
+                    {/* Room Type One */}
+                    <div>
+                      <p>Room Type</p>
+                      <input value={hotel.room_type} name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        ...hotelInfo,
+                        room_type: e.target?.value
+                      })} />
+                    </div>
+                    {/* Supeior Hotel */}
+                    <div>
+                      <p>Supeior Hotel</p>
+                      <input value={hotel.supeior_hotel} name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        ...hotelInfo,
+                        supeior_hotel: e.target?.value
+                      })} />
+                    </div>
+                    {/* Room Type Two */}
+                    <div>
+                      <p>Room Type</p>
+                      <input value={hotel.room_type1} name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        ...hotelInfo,
+                        room_type1: e.target?.value
+                      })} />
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            ))}
+          </Modal>
+
+
+
+          {/* second modal */}
+          <Button type="primary" onClick={showPrivacyModal} style={{ marginLeft: "10px" }}>
+            Price $ Validity
+          </Button>
+          <Modal title="Price $ Validity" open={isPrivacyModalOpen} onOk={handlePrivacyOk} onCancel={handlePrivacyCancel}>
+            <p>ffffffff</p>
+            <p>ffffffff</p>
+          </Modal>
+        </div>
+
+
 
         {/* Submit Button */}
         <Form.Item>

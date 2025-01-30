@@ -2,8 +2,8 @@
 
 import { IoCloseSharp } from "react-icons/io5";
 
-const ReadMoreModal = ({ readMoreOpen, setReadMoreOpen, singleData }) => {
-    const { day, lunchPeriod, description } = singleData || {}
+const ReadMoreModal = ({ readMoreOpen, setReadMoreOpen, modalValue }) => {
+    const { days, lunchTime, description } = modalValue || {}
 
     // modal close function
     const handleCloseModal = () => {
@@ -22,20 +22,19 @@ const ReadMoreModal = ({ readMoreOpen, setReadMoreOpen, singleData }) => {
                             <div className="bg-primary w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"><IoCloseSharp className="text-xl text-[#FFFFF0] w-10 h-10 p-2" /></div>
 
                         </button>
-                        <h2 className="text-2xl font-bold text-center text-[#135029] mb-6">
+                        {/* <h2 className="text-2xl font-bold text-center text-[#135029] mb-6">
                             {lunchPeriod}
-                        </h2>
+                        </h2> */}
 
                         <form>
 
-                            <div className="border border-[#135029] rounded-lg p-4 mt-2 space-y-4">
-                                <div className="flex justify-between text-[#135029] font-bold">
-                                    <h4>{day}</h4>
-                                    <h4>{lunchPeriod}</h4>
+                            <div  className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
+                                <div className="flex justify-between ">
+                                    <h4 className="text-[24px] text-[#135029] font-bold">Days {days}</h4>
+                                    <h4 className="text-[24px] text-[#135029] font-bold">{lunchTime}</h4>
                                 </div>
                                 <div>
-                                    <p>
-                                        {description}
+                                    <p className="text-[18px] text-[#454545] font-medium">{description} 
                                     </p>
                                 </div>
                             </div>

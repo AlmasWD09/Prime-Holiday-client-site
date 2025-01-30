@@ -6,18 +6,18 @@ import DestinationLove from "@/app/components/destination/destinationLove";
 import Immersition from "@/app/components/destination/Immersition";
 import Includes from "@/app/components/destination/Includes";
 import { useEffect, useState } from "react";
-import { redirect, useParams } from "next/navigation";
+import { redirect, useParams, useSearchParams } from "next/navigation";
 
-const DestinationDetails = ({params}) => {
- 
+const DestinationDetails = ({ params }) => {
+
   const [singlePackage, setSinglePackage] = useState([]);
- const  [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [countryName, setCountryName] = useState(null);
   const [singleData, setSingleData] = useState({})
 
-  // console.log("SSSSSSSSSSSSSSSSSS", params)
+  const { id } = useParams();
+  const paramsId = useSearchParams();
 
-  const {id} = useParams();
 
 
   useEffect(() => {
@@ -32,29 +32,35 @@ const DestinationDetails = ({params}) => {
         if (data.country.destinations && data.country.destinations.length > 0) {
           setSingleData(data.country.destinations[0]); // Default to the first item in the destinations array
         }
-       
+
       })
       .catch((error) => {
         setLoading(false)
         console.error("Error fetching data:", error);
-       
+
       });
   }, [id]);
 
-  // console.log(singlePackage)
-
-  if(!singlePackage?.length && !loading){
+  if (!singlePackage?.length && !loading) {
     redirect("/not-found")
   }
+
+
+  // useEffect(() => {
+  //   if (paramsId) {
+  //     const findData = singlePackage.find((packegeValue) => packegeValue.country_id === paramsId)
+  //     setSingleData(findData)
+  //   }
+  // }, [paramsId])
 
 
 
   return (
     <div className="pb-10">
       <Banner />
-      <PrimeDestination  singleData={singleData} countryName={countryName} singlePackage={singlePackage} setSingleData={setSingleData} />
+      <PrimeDestination singleData={singleData} countryName={countryName} singlePackage={singlePackage} setSingleData={setSingleData} />
       {/* <Immersition /> */}
-      <Includes singleData={singleData} setSingleData={setSingleData}/>
+      <Includes singleData={singleData} setSingleData={setSingleData} />
       <DestinationLove />
     </div>
   );

@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const PrimeDestination = ({singlePackage,setSingleData,countryName,singleData,country}) => {
- 
+const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleData, country }) => {
 
 
- 
+
+
 
 
   const handleSinglePackage = (value) => {

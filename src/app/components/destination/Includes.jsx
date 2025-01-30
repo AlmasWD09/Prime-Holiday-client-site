@@ -1,29 +1,30 @@
 
 "use client"
 import ReadMoreModal from "../modal/ReadMoreModal";
-import {useState } from "react";
+import { useState } from "react";
 import HotalTable from "./table/HotalTable";
 import PriceValidatyTable from "./table/PriceValidatyTable";
 import ModalPage from "../modal/Modal";
+import { TbCircleLetterG } from "react-icons/tb";
 
 
 
 
-const Includes = ({ singleData,setSingleData }) => {
-    console.log(setSingleData)
+const Includes = ({ singleData, setSingleData }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [readMoreOpen, setReadMoreOpen] = useState(false)
     const [readMoremodal, setMeadMoremodal] = useState(false);
     const [modal, setModal] = useState(false);
+    const [modalValue,setmodalValue] = useState('')
+
 
     const [buttonColor, setButtonColor] = useState(0);
     const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
 
 
     // handle modal show for single id
-    const handleModalShow = (id) => {
-        const findData = Itinerarys.find((item) => item.id === id)
-        setSingleData(findData)
+    const handleModalShow = (item) => {
+        setmodalValue(item)
         setMeadMoremodal(true);
         setReadMoreOpen(true);
     }
@@ -40,12 +41,6 @@ const Includes = ({ singleData,setSingleData }) => {
         setIsOpen(true);
         setModal(true);
     };
-
-
-    console.log("singlePackageff------",singleData)
-
-
-
 
 
     return (
@@ -122,7 +117,7 @@ const Includes = ({ singleData,setSingleData }) => {
                                 <h2 className="text-[24px] font-bold">Hotels</h2>
                             </div>
 
-                            <HotalTable singleData={singleData}/>
+                            <HotalTable singleData={singleData} />
                         </div>
                     }
                     {/* =============== Hotel Tab end ============================= */}
@@ -139,7 +134,7 @@ const Includes = ({ singleData,setSingleData }) => {
                                 </div>
                             </div>
 
-                            <PriceValidatyTable singleData={singleData}/>
+                            <PriceValidatyTable singleData={singleData} />
                         </div>
 
                     }
@@ -165,7 +160,7 @@ const Includes = ({ singleData,setSingleData }) => {
                                                 </div>
                                                 <div>
                                                     <p className="text-[18px] text-[#454545] font-medium">{item.description} <span
-                                                        onClick={() => handleModalShow(item.id)}
+                                                        onClick={() => handleModalShow(item)}
                                                         className="text-primary font-semibold cursor-pointer">... Read more</span>
                                                     </p>
                                                 </div>
@@ -192,7 +187,7 @@ const Includes = ({ singleData,setSingleData }) => {
 
                 {/* Read More modal */}
                 {
-                    readMoremodal && <ReadMoreModal readMoreOpen={readMoreOpen} setReadMoreOpen={setReadMoreOpen} singleData={singleData} />
+                    readMoremodal && <ReadMoreModal readMoreOpen={readMoreOpen} setReadMoreOpen={setReadMoreOpen} modalValue={modalValue} />
                 }
 
             </section>

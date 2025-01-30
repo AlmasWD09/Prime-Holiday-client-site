@@ -98,7 +98,7 @@ const swiperRef = useRef(null);
             {/* ================================== responsive all device end =========================== */}
             {packageData?.slice(0, 7).map((singlePackge, idx) => (
               <SwiperSlide key={idx}>
-                <Link href={`/destination/${idx}`}>
+                <Link href={`/destination/${singlePackge.id}`}>
                 <div className="relative  bg-[#135029] p-4 rounded-xl space-y-4 h-[400px] md:h-[440px] xl:h-full">
 
                   <Image
