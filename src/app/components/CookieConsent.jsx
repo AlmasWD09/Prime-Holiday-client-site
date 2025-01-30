@@ -23,21 +23,21 @@ const CookieConsent = () => {
   if (!showModal) return null; // Modal hide korar jonno return null
 
   return (
-    <div className="fixed inset-0 z-50 ">
+    <div className="fixed inset-0 z-50">
       {/* Modal Section */}
-      <div className="fixed bottom-5 left-5 z-50 bg-white p-4 rounded-lg shadow-lg max-w-sm text-left border border-gray-300">
+      <div className="h-[200px] w-[400px] flex flex-col justify-center items-center fixed bottom-5 left-5 z-50 bg-white p-4 rounded-lg shadow-lg max-w-sm text-left border border-gray-300">
         <p className="text-sm font-semibold">We use cookies to enhance your experience.</p>
         <p className="text-xs text-gray-600 mt-1">By continuing, you agree to our cookie policy.</p>
-        <div className="mt-3 flex justify-end space-x-2">
+        <div className="mt-3 flex justify-end space-x-2 pt-4">
           <button
             onClick={() => closeModal(true)}
-            className="bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs"
+            className="bg-green-500 text-white px-3 py-2 h-[40px] w-[100px] rounded-lg text-xs"
           >
             Accept All
           </button>
           <button
             onClick={() => closeModal(false)}
-            className="bg-red-500 text-white px-3 py-1.5 rounded-lg text-xs"
+            className="bg-red-500 text-white px-3 py-2 h-[40px] w-[100px] rounded-lg text-xs"
           >
             Reject All
           </button>

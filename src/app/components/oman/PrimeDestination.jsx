@@ -3,13 +3,11 @@
 import Image from "next/image"
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleData, country }) => {
 
 
-
-
+// const packageTitle = singlePackage.map((item) => item.package_name)
 
 
   const handleSinglePackage = (value) => {
@@ -55,6 +53,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 
       {/* Immersition section */}
       <section className="container mx-auto px-4 pt-[56px]">
+        {/* <h1 className="font-bold font-Roboto text-[#135029] text-[28px] pb-[24px]">{packageTitle}</h1> */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
           {/* left side content */}
           <div className="max-w-[699px] max-h[332px] col-span-2">

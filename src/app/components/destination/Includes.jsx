@@ -15,7 +15,7 @@ const Includes = ({ singleData, setSingleData }) => {
     const [readMoreOpen, setReadMoreOpen] = useState(false)
     const [readMoremodal, setMeadMoremodal] = useState(false);
     const [modal, setModal] = useState(false);
-    const [modalValue,setmodalValue] = useState('')
+    const [modalValue, setmodalValue] = useState('')
 
 
     const [buttonColor, setButtonColor] = useState(0);
