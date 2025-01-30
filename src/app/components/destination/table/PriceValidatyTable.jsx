@@ -19,7 +19,6 @@ const PriceValidatyTable = ({ singleData }) => {
 
     ];
 
-    console.log(singleData?.price_validity?.standard)
     return (
         <div className="relative max-w-full">
             {/* Scroll Wrapper */}
@@ -58,6 +57,32 @@ const PriceValidatyTable = ({ singleData }) => {
                                     </p>
                                 </td>
                                 {singleData?.price_validity?.standard?.map((item, index) => {
+                                    return (
+
+                                        <td key={index} className="p-4">
+                                            <p variant="small" color="blue-gray" className="font-bold text-center border border-[#135029] p-2 hover:bg-[#135029] hover:text-[#FFFFF0] rounded text-[18px]">
+                                                {item}
+                                            </p>
+                                        </td>
+                                    )
+                                })
+                                }
+                            </tr>
+                            <tr>
+                                <td className="py-4">
+                                    <p variant="small" color="blue-gray" className="font-semibold text-center  py-2 bg-[#f0f8f3] rounded text-lg">
+                                        <span className="flex items-center gap-3 px-2">
+                                            <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]" />
+                                            <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]" />
+                                            <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]" />
+                                            <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]" />
+                                            <Image src={'/svgImage/star.svg'} alt="rating icon" width={20} height={20} className="h-[20px] w-[20px]" />
+                                            {/* {ratingTitle} */}
+                                            - Superior
+                                        </span>
+                                    </p>
+                                </td>
+                                {singleData?.price_validity?.superior?.map((item, index) => {
                                     return (
 
                                         <td key={index} className="p-4">

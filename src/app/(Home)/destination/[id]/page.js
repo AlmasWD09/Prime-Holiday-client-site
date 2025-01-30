@@ -19,7 +19,6 @@ const DestinationDetails = ({ params }) => {
   const paramsId = useSearchParams();
 
 
-
   useEffect(() => {
     setLoading(true)
     fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
@@ -30,7 +29,7 @@ const DestinationDetails = ({ params }) => {
         setLoading(false)
         // Set default value for singleData based on fetched data
         if (data.country.destinations && data.country.destinations.length > 0) {
-          setSingleData(data.country.destinations[0]); // Default to the first item in the destinations array
+          setSingleData(data.country.destinations[0]); 
         }
 
       })
@@ -41,9 +40,10 @@ const DestinationDetails = ({ params }) => {
       });
   }, [id]);
 
-  if (!singlePackage?.length && !loading) {
-    redirect("/not-found")
-  }
+ 
+  // if (!singlePackage?.length && !loading) {
+  //   redirect("/not-found")
+  // }
 
 
   // useEffect(() => {
