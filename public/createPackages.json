@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "key": "0",
+    "image": "/asia04.png",
+    "title": "Immersion in culture Oman",
+    "countryName": "Oman",
+    "continent": "Asia",
+    "price": "5656.00"
+  },
+  {
+    "id": 2,
+    "key": "1",
+    "image": "/asia02.png",
+    "title": "Adventure in Sahara",
+    "countryName": "Morocco",
+    "continent": "Africa",
+    "price": "4599.00"
+  },
+  {
+    "id": 3,
+    "key": "3",
+    "image": "/asia02.png",
+    "title": "Adventure in Sahara",
+    "countryName": "Morocco",
+    "continent": "Africa",
+    "price": "4599.00"
+  },
+  {
+    "id": 4,
+    "key": "4",
+    "image": "/asia02.png",
+    "title": "Adventure in Sahara",
+    "countryName": "Morocco",
+    "continent": "Africa",
+    "price": "4599.00"
+  },
+  {
+    "id": 5,
+    "key": "5",
+    "image": "/asia02.png",
+    "title": "Adventure in Sahara",
+    "countryName": "Morocco",
+    "continent": "Africa",
+    "price": "4599.00"
+  }
+]

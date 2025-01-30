@@ -7,7 +7,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { FaQuoteLeft } from "react-icons/fa";
 import Image from "next/image";
 
 const Testimonial = () => {
@@ -43,56 +42,37 @@ const Testimonial = () => {
       quote: "Exceptional Design",
       description:
         "The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.",
-        name: "TESTIMONIALS OF SATISFACTION",
+      name: "TESTIMONIALS OF SATISFACTION",
       image: "http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735190896/inbxylz2xcnyngok5ncq.png",
     },
   ];
 
   return (
-      <div className="container mx-auto px-4 mt-20 ">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}  // Update timer
-        onSlideChange={onSlideChange}  // Reset timer on slide change
-        className="mySwiper max-w-6xl"
-      >
-        {reviews.map((review, index) => (
-          <SwiperSlide key={index}>
-          <div  className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+    <>
+      <section className="container mx-auto px-4 my-16">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
 
-             {/* left side content */}
-            <div className=" w-full ">
-              <h1 className="font-semibold text-primary text-2xl md:text-4xl ">
-                {review.name}
-              </h1>
-              <p className="max-w-md mt-6 font-Roboto">
-                {review.description}
-              </p>
-            </div>
-
-             {/* right side image */}
-             <Image
-              className="object-cover object-center h-[300px] rounded-xl lg:h-[400px] w-[500px]"
-              src={review.image}
-              alt="testimonial"
-              width={100}
-              height={100}
-            />
+          {/* left side content */}
+          <div className=" w-full ">
+            <h1 className="font-bold font-Roboto text-primary text-2xl lg:text-5xl">
+            Testimonials Of Satisfaction
+            </h1>
+            <p className="max-w-3xl mt-6 font-Roboto text-[20px] lg:text-[28px] text-[#454545]">
+            The best measure to our services comes from our customers. Keep an eye out as our travellers share their stories. We'll be sharing feedback from our travellers here shortly, so you can see what makes PHD unique.
+            </p>
           </div>
-          </SwiperSlide>
-        ))} 
-      </Swiper>
-    </div>
 
+          {/* right side image */}
+          <Image
+            className="object-cover object-center h-[300px] rounded-xl lg:h-[344px] md:w-[330px] lg:w-[440px]"
+            src="/testimonial02.png"
+            alt="testimonial"
+            width={500}
+            height={400}
+          />
+        </div>
+      </section>
+    </>
   );
 };
 

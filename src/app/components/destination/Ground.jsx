@@ -40,13 +40,13 @@ const Ground = () => {
                             width={300}
                             height={300}
                         />
-                        <div className="absolute w-full flex  items-center justify-between bottom-0 p-3 bg-[#135029] text-white">
+                        <div className="absolute w-full flex  items-center justify-between bottom-0 p-3 bg-[#135029] text-[#FFFFF0]">
                            <div>
                             <h5>{ground.title1}</h5>
                             <h5>{ground.title2} <span className="font-bold">$2525</span></h5>
                            </div>
                             <div className="">
-                                <button className="bg-primary text-white px-4 py-2">View</button>
+                                <button className="bg-primary text-[#FFFFF0] px-4 py-2">View</button>
                             </div>
                         </div>
                     </div>

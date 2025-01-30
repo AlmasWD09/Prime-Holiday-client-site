@@ -1,92 +1,150 @@
 "use client"
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
-import { FaWhatsapp } from "react-icons/fa";
-import { RiMessage2Line } from "react-icons/ri";
+import { useState } from "react";
+import Modal from "../modal/Modal";
+import Link from "next/link";
+import ScrollTopButton from "./ScrollTopButton";
+import Cookies from 'js-cookie';
+
 
 
 const Footer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState(false);
+
+
+  // modal show function
+  const handleModal = () => {
+    setModal(true);
+    setIsOpen(true);
+  };
+
+  const role = 'admin'
+  const token = Cookies.get('token');
+
+
   return (
-    <footer className="relative bg-gray-900 text-white -z-10"
+    <footer className="relative text-[#FFFFF0] font-Roboto"
       style={{
-        backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)"
-      }}>
-
-      {/* Overlay */}
-      <div className="absolute -z-20 top-0 left-0 w-full h-full bg-green-900 bg-opacity-70"></div>
-
-
-      <section className="container mx-auto px-4 py-8  h-full z-20">
+        backgroundImage: "url(/footer.png)",
+        // backgroundImage: "url(http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735182160/lskef7d2q40k09xumb04.png)",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
+      }}
+    >
+      <section className="container mx-auto px-4 pb-20 md:pb-[42px] h-full ">
         <div className="flex justify-center">
-          <h1 className="text-[36px] md:text-[64px] font-Roboto font-semibold text-primary">Connect with us</h1>
+          <h1 className="text-[36px] md:text-5xl font-Roboto font-bold text-primary pt-[54px]">Connect With Us</h1>
         </div>
-        <div className="pt-10 space-y-20 md:space-y-0">
+        <div className="pt-10  md:space-y-0">
           {/* div onte */}
-          <div className="flex flex-col md:flex-row justify-between pb-4 space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between pb-0 space-y-4 md:space-y-0">
             <div>
-              <div className="flex gap-4 pb-4 text-primary">
-                <FaInstagram />
-                <FaFacebook />
-                <Image src="http://res.cloudinary.com/dzzyhqpnk/image/upload/v1735185926/vsqrzow0aghuq7iskhmk.png" alt="icon" width={16} height={16} />
-                <FaFacebook />
+              <div className="flex gap-4 border-b pb-[16px] text-primary">
+                <Link href={'https://www.instagram.com/phdbyrizmali'}>
+                  <Image src="/logo/instagram.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+
+                <Link href={'https://www.facebook.com/phdbyrizmali'}>
+                  <Image src="/logo/facebook.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+
+                <Link href={'https://www.pinterest.com/phdbyrizmali'}>
+                  <Image src="/logo/pinterest.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+                <Link href={'https://www.youtube.com/@phdbyrizmali7'}>
+                  <Image src="/logo/youtube.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px]" />
+                </Link>
+
+
               </div>
-              <div className="border-t py-4">
-                <GoLocation className="text-primary" />
-                <p>65 Hartfield Crescent</p>
-                <p>Birmingham
-                </p>
-                <p>B27 7QE</p>
+
+              <div className="border-b py-[16px] text-wrap">
+                <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
+                {/* <p className="text-[18px] font-Roboto text-[#FFFFF0]">65 Hartfield Crescent</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Birmingham</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">B27 7QE</p> */}
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">83-85 Hagley Road</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Suite 2A, 6th Floor</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Cobalt Square</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Birmingham</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">B16 8QG</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">United Kingdom</p>
               </div>
-              <div className="border-t pt-4">
-                <RiMessage2Line className="text-primary" />
-                <p className="border-b pb-4">contact@primeholidaydestinations.com</p>
+              <div className="pt-[16px] break-words whitespace-normal">
+                <Image src="/logo/sms.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
+                <p className="border-b font-Roboto text-[18px] text-[#FFFFF0] pb-[16px]">contact@primeholidaydestinations.com</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 ">
-              <button onClick={() => handleModal()} className="border border-primary rounded-xl hover:bg-primary uppercase text-white px-6 py-2">Enquire now</button>
+
+            <div className="">
+              <button
+                onClick={() => handleModal()}
+                className="text-[18px] font-Roboto border border-primary rounded-xl hover:bg-primary uppercase text-[#FFFFF0] font-bold px-4 py-2 hidden md:block">Enquire now</button>
             </div>
           </div>
           {/* div two */}
-          <div className="flex flex-col md:flex-row justify-between pb-16 space-y-4 md:space-y-0">
-            <div className=" pt-4">
-              <FaWhatsapp className="text-primary" />
-              <p>+44 7553 778086</p>
+          <div className="flex flex-col md:flex-row justify-between  space-y-4 md:space-y-0">
+            <div className="md:pt-[16px]">
+              <Image src="/logo/whatsapp.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]">+44 7553 778086</p>
             </div>
+
             <div>
-              <Image src="/logo.png" alt="nav logo" width={200} height={200} />
+              <Image src="/logo.png" alt="nav logo" width={200} height={200} className=" md:w-[358px] md:h-[198px] object-contain" />
             </div>
           </div>
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p>About | Destinations | Blog | Terms & Conditions | Privacy | Cancellation & Refund</p>
-              <p>© 2024 Rizmali Travel & Tours Limited</p>
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><Link href="/about">About</Link> | <Link href="/destination">Destinations</Link> | Blog | <Link href="/conditions">Terms & Conditions</Link> | <Link href="/privacy">Privacy</Link> | <Link href="/cancelation">Cancellation & Refund</Link> | <Link
+                  href={`${(role === 'admin') && token ? '/admin/dashboard' : '/login'}`}>
+                  Dashboard</Link>
+              </p>
+
+
+
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]">© 2024 Rizmali Travel & Tours Limited</p>
             </div>
 
-            <div className="md:text-end space-y-4">
+            <div className="md:text-end space-y-4 md:pb-10 2xl:pb-0">
               <div>
-                <p>Prime Holiday Destinations a Brand by Rizmali Travel & Tours Limited</p>
-                <p>Company Number 14730696  I  Registered in England</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Prime Holiday Destinations <Link href=""></Link> Brand by Rizmali Travel & Tours Limited</p>
+                <p className="text-[18px] font-Roboto text-[#FFFFF0]">Company Number 14730696  I  Registered in England</p>
               </div>
-              <div><p>Colour palette inspired by @thehousewiththepinkbed</p></div>
+              <div className="lg:pb-0 flex md:flex-col lg:flex-row md:justify-end lg:items-center gap-2">
+                <p>Colour palette inspired by</p>
+                <Link href="https://www.instagram.com/thehousewiththepinkbed" className="text-[16px] font-Roboto text-[#FFFFF0] hover:underline">thehousewiththepinkbed</Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <div className="bg-[#135029] py-6">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between space-y-6 md:space-y-0">
+
+      {/* scroll button */}
+      <div className="absolute w-fit flex justify-end right-[30px] md:right-[16px] bottom-[240px] md:bottom-[185px] lg:bottom-[120px] 2xl:right-[120px] 2xl:bottom-[150px]">
+        <ScrollTopButton />
+      </div>
+
+
+      <div className="bg-[#135029] py-[24px]">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row md:justify-between lg:items-center gap-8">
           <div>
-            <p className="uppercase text-xs">Stay Up To Date</p>
-            <h2 className="text-xl">Subscribe to Our Newsletter</h2>
+            <p className="text-xs font-medium font-Roboto">Stay Up to Date</p>
+            <h2 className="text-[24px] font-Roboto font-medium">Subscribe to Our Newsletter</h2>
           </div>
-          <div className="flex gap-6">
-            <button className="border pl-2 pr-16 text-start py-2 rounded-xl">Enter Your Email</button>
-            <button className="border px-4 py-2 uppercase rounded-xl">Subscribe</button>
+          <div>
+            {/* Email form */}
+            <form className="flex flex-col md:flex-row gap-[16px] ">
+              <input type="email" name="email" id="" placeholder="Enter Your Email" className="bg-transparent outline-none border text-[#FFFFF0] text-start rounded-xl w-[298px] h-[35px] py-[10px] pl-[16px] flex items-center" />
+              <input type="button" value="Subscribe" className="border text-start rounded-xl w-fit h-[35px] 4xl:h-0 px-[16px]  flex items-center cursor-pointer" />
+            </form>
           </div>
         </div>
       </div>
+      {/* modal component */}
+      {modal && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
     </footer>
   )
 }

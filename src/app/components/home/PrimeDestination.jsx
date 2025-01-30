@@ -1,140 +1,138 @@
-
 "use client";
-import Image from "next/image";
-import { BiSolidRightArrow } from "react-icons/bi";
-import { BiSolidLeftArrow } from "react-icons/bi";
-
-import React, { useRef } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-// Import required modules
+import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { FreeMode, Pagination } from "swiper/modules";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import Image from "next/image";
+import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
+// Import required modules
+import { useEffect, useRef, useState } from "react";
 
 const PrimeDestination = () => {
-    const grounds = [
-        {
-            image: "/prime01.png",
-            title1: "Qatar",
-            title2: "9 Days From",
-        },
-        {
-            image: "/prime02.png",
-            title1: "Sri Lanka",
-            title2: "9 Days From",
-        },
-        {
-            image: "/prime01.png",
-            title1: "Morocco",
-            title2: "9 Days From",
-        },
-        {
-            image: "/prime01.png",
-            title1: "Qatar",
-            title2: "9 Days From",
-        },
-        {
-            image: "/prime01.png",
-            title1: "Sri Lanka",
-            title2: "9 Days From",
-        },
-        {
-            image: "/prime01.png",
-            title1: "Morocco",
-            title2: "9 Days From",
-        },
-    ];
+  const [grounds, setgrounds] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);  
 
-    const swiperRef = useRef(null);
+ 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country");
+       
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await response.json();
+        setgrounds(result?.countries?.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <section>
-            <div className="container mx-auto px-4 py-10">
-                <div className="md:flex md:items-center md:justify-between pb-4">
-                    <h1 className="text-2xl md:text-4xl font-bold text-primary">
-                        Prime Destinations
-                    </h1>
+    fetchData();
+  }, []);
+  const swiperRef = useRef(null);
 
-                    <div className="text-end md:text-start md:flex justify-between mt-8 md:mt-0">
-                        <button
-                            title="Previous Slide"
-                            onClick={() => swiperRef.current?.slidePrev()}
-                            className="p-2 mx-3 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
-                        >
-                            <BiSolidLeftArrow className="w-4 h-4" />
-                        </button>
-                        <button
-                            title="Next Slide"
-                            onClick={() => swiperRef.current?.slideNext()}
-                            className="p-2 mx-3 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-white"
-                        >
-                            <BiSolidRightArrow className="w-4 h-4" />
-                        </button>
+  return (
+    <section>
+      <div className="container mx-auto px-4">
+        <div className="md:flex md:items-center md:justify-between pt-10 md:pt-16">
+          <h1 className="text-2xl lg:text-5xl font-bold font-Roboto text-primary md:pb-4">
+            Prime Destinations
+          </h1>
+
+          <div className="text-end md:text-start md:flex justify-between gap-3 pb-4">
+            <button
+              title="Previous Slide"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="p-2 mx-3 md:mx-0 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
+            >
+              <BiSolidLeftArrow className="w-4 h-4" />
+            </button>
+            <button
+              title="Next Slide"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="p-2 text-primary transition-colors duration-300 rounded-full rtl:-scale-x-100 border border-primary hover:bg-primary hover:text-[#FFFFF0]"
+            >
+              <BiSolidRightArrow className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* ================================== responsive all device start =========================== */}
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={20}
+          freeMode={true}
+          // pagination={{
+          //   clickable: true,
+          // }}
+          modules={[FreeMode, Pagination]}
+          className="mySwiper"
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+          }}
+        >
+          {/* ================================== responsive all device end =========================== */}
+          {grounds?.slice(0, 7).map((ground, idx) => (
+            <SwiperSlide key={idx}>
+              <Link
+                href={`/destination/${ground?.id}`}
+                className="relative  cursor-pointer" 
+              >
+                <Image
+                  className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
+                  src={ground.image}
+                  alt={"ground"}
+                  width={300}
+                  height={300}
+                />
+
+                <div className="absolute z-10 w-[96%] md:w-[92%] lg:w-[94%] xl:w-[96%]  mx-auto ml-2 sm:ml-0 md:ml-4  bottom-2 sm:bottom-4 xl:bottom-3 p-1 sm:p-3 rounded-xl flex gap-2 bg-[#B0B0B0] bg-opacity-30 ">
+                  <div className="flex  text-start z-20 text-[#FFFFF0]">
+                    <h2 className="">
+                      <FaLocationDot className="text-2xl pt-2 " />
+                    </h2>
+                    <div>
+                      <div>
+                        <h2 className="text-xl font-bold text-[#FFFFF0]">
+                          {ground.name}
+                        </h2>
+                      </div>
+                      <h2 >{ground.title}</h2>
                     </div>
+                  </div>
                 </div>
-
-                {/* ================================== responsive all device start =========================== */}
-                <Swiper
-                    slidesPerView={1}
-                    spaceBetween={20}
-                    freeMode={true}
-                    // pagination={{
-                    //   clickable: true,
-                    // }}
-                    modules={[FreeMode, Pagination]}
-                    className="mySwiper"
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 30,
-                        },
-                        1024: {
-                            slidesPerView: 2,
-                            spaceBetween: 40,
-                        },
-                    }}
-                >
-                    {/* ================================== responsive all device end =========================== */}
-                    {grounds.map((ground, idx) => (
-                        <SwiperSlide key={idx}>
-                            <div className="relative -z-10">
-                                <Image
-                                    className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
-                                    src={ground.image}
-                                    alt={ground.title1}
-                                    width={300}
-                                    height={300}
-                                />
-
-                                <div className="absolute z-10  w-full  bottom-10  p-3 bg-[#B0B0B04D]  text-red-200 flex justify-start gap-2  rounded-lg">
-                                <div className="">
-                                    <div className="flex text-start ">
-                                        <h2><FaLocationDot size={30}  className="text-2xl pt-2 text-[#FFFFFF] " /></h2>
-                                        <div>
-                                            <h2 className="text-[24px] font-bold text-[#FFFFFF]">{ground.title1}</h2>
-                                            <h2 className="text-[16px] font-medium text-[#FFFFFF]">{ground.title2}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </section>
-    );
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
+  );
 };
 
 export default PrimeDestination;
