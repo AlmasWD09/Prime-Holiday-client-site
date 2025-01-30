@@ -15,6 +15,7 @@ import usePackages from "@/hooks/usePackages";
 const CreatePackagesTable = () => {
   const [createPackage, refetch] = usePackages()
   // delete package for..
+  console.log('createpaackage',createPackage)
   const handleDelete = async (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -129,5 +130,3 @@ const CreatePackagesTable = () => {
 };
 
 export default CreatePackagesTable;
-
-

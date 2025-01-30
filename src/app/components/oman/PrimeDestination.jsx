@@ -3,15 +3,22 @@
 import Image from "next/image"
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleData, country }) => {
-
-
-// const packageTitle = singlePackage.map((item) => item.package_name)
-
+  const [showFull, setShowFull] = useState(false);
+  const maxLength = 900;
+  const description = singleData?.description || "";
+// console.log('single package',singlePackage);
 
   const handleSinglePackage = (value) => {
-    setSingleData(value)
+
+
+    setSingleData(singlePackage.find((item) => item.id === value));
+
+// console.log(singlePackage.find((item) => item.id === value))
+
+  //  console.log(value);
 
   }
 
@@ -40,7 +47,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
                         <h5>{ground.days} Days Form <span className="font-bold text-primary">$5656.00</span></h5>
                       </div>
                       <div className="w-full pt-4">
-                        <button onClick={() => handleSinglePackage(ground)} className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
+                        <button onClick={()=>handleSinglePackage(ground?.id) } className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
                       </div>
                     </div>
                   </div>
@@ -53,14 +60,34 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 
       {/* Immersition section */}
       <section className="container mx-auto px-4 pt-[56px]">
-        {/* <h1 className="font-bold font-Roboto text-[#135029] text-[28px] pb-[24px]">{packageTitle}</h1> */}
+        <h1 className="font-bold font-Roboto text-[#135029] text-[28px] pb-[24px]">{singleData?.package_name}</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
           {/* left side content */}
           <div className="max-w-[699px] max-h[332px] col-span-2">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: singleData.description,
-              }}></div>
+
+
+          <div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: showFull
+            ? description
+            : description.length > maxLength
+            ? description.slice(0, maxLength) + "..."
+            : description,
+        }}
+      ></div>
+      {description.length > maxLength && (
+        <button
+          onClick={() => setShowFull(!showFull)}
+          className="text-blue-500 hover:underline mt-2"
+        >
+          {showFull ? "See Less" : "See More"}
+        </button>
+      )}
+    </div>
+
+
+
           </div>
           {/* right side image */}
           <div className=" ">
