@@ -1,4 +1,5 @@
 
+import CookieConsent from "../components/CookieConsent";
 import Footer from "../components/shared/Footer";
 import Navbar from "../components/shared/Navbar";
 
@@ -13,6 +14,7 @@ export default function layout({ children }) {
  
       <div>
         <Navbar />
+        <CookieConsent />
         {children}
         <Footer />
       </div>
