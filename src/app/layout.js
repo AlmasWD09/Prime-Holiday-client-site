@@ -1,4 +1,4 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 import '../styles/fonts.css';
 import "./globals.css";
 
@@ -15,10 +15,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={` antialiased bg-[#fffff0]`}
+        className={`bg-[#fffff0]`}
       >
 
-        <AntdRegistry>{children}</AntdRegistry>
+        <div>
+          {children}
+        </div>
 
       </body>
     </html>

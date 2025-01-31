@@ -120,7 +120,7 @@ const EditDestination = () => {
         form={form}
         onFinish={handleSubmit}
         layout="vertical"
-        style={{ border: "1 px solid red", width: "50%" }}
+        style={{ border: "1px solid red", width: "50%" }}
       >
         <h1 className="font-Roboto font-bold text-primary text-[24px]">
           Edit Destination
