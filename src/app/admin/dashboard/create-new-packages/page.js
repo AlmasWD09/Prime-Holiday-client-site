@@ -136,7 +136,6 @@ const handleSubmitPriceValidity = () =>{
   setAllPriceValidityInfo(priceValidityInfo)
   setTabIndex(2)
 }
-
   // itinerary form
   const handleSubmitItinerary = (event) => {
     setAllItinerary(prev => {
