@@ -63,10 +63,11 @@ const AddNewDestination = ({ setModalOpen }) => {
     return (
         <div className="relative">
             <div className="fixed inset-0 z-[9999px] flex items-center justify-center bg-black bg-opacity-50">
-                <div className="max-w-2xl mx-auto my-16 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
-                    <div className="space-y-4">
+                <div className="max-w-2xl mx-auto my-24 fixed inset-0 z-50 flex items-center justify-center bg-[#FFFFFF] pt-10 md:pt-0 rounded-xl">
+                    <div className="space-y-4 w-full p-8">
                         <Form form={form} onFinish={handleSubmit} layout="vertical">
                             {/* Select Continent */}
+                            <h1 className="text-[24px] font-Roboto font-bold text-primary">Add New Destination</h1>
                             <div className="mb-2">
                                 <p>Select the continent</p>
                                 <Form.Item
@@ -74,6 +75,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
                                     <Select
+                                    style={{height:'40px'}}
                                         onChange={(value) => setContientId(value)}
                                         placeholder="Select the continent">
                                         {contentData.map((singleContent, index) => (
@@ -92,7 +94,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     name="name"
                                     rules={[{ required: true, message: "Please enter the country name!" }]}
                                 >
-                                    <Input placeholder="Enter the country name" />
+                                    <Input style={{height:'40px'}} placeholder="Enter the country name" />
                                 </Form.Item>
                             </div>
 
@@ -103,7 +105,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     name="title"
                                     rules={[{ required: true, message: "Please enter the title!" }]}
                                 >
-                                    <Input placeholder="Enter the destination name" />
+                                    <Input style={{height:'40px'}} placeholder="Enter the destination name" />
                                 </Form.Item>
                             </div>
 
@@ -124,14 +126,14 @@ const AddNewDestination = ({ setModalOpen }) => {
 
                             {/* Submit Button */}
                             <div className="py-4">
-                                <button type="submit" className="rounded bg-primary text-white px-6 py-1">Save</button>
+                                <button type="submit" className="rounded bg-primary text-white px-6 py-1 text-[16px] font-semibold">Save</button>
                             </div>
                         </Form>
 
                         {/* Close Button */}
                         <div
                             onClick={handleBack}
-                            className="absolute right-2 -top-3 bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center">
+                            className="absolute right-2 -top-3 bg-gray-300 h-[30px] w-[30px] rounded-full flex justify-center items-center text-[16px] font-bold">
                             <button className="text-xl"><IoMdClose /></button>
                         </div>
                     </div>

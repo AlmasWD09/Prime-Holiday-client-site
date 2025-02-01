@@ -16,7 +16,7 @@ const Sidebar = () => {
         // <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" >
         <div className=" fixed h-full px-2 pb-[64px] bg-[#fffff0] w-[260px] " style={{ overflow: "hidden" }}>
             <div className="flex items-center justify-center">
-                <Image src={'/Group 84.png'} alt='dashboard logo' width={300} height={100} className='' />
+                <Image src={'/Group 87.png'} alt='dashboard logo' width={300} height={100} className='' />
             </div>
             <div className="  h-[calc(100vh-300px)] pt-12 space-y-4">
                 <div className="bg-[#bed6d649] p-[8px] rounded-[8px] " >
