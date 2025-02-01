@@ -91,9 +91,9 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 
           </div>
           {/* right side image */}
-          <div className=" ">
+          <div >
             <Image
-              src={singleData.image}
+              src={singleData.image || "/default-image.jpg"}
               alt="immersition"
               width={500}
               height={200}
