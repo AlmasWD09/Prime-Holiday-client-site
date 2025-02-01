@@ -438,8 +438,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 2px for */}
                         <div>
                           <p>2 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.standard]; // Copy existing array
@@ -455,8 +455,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 4px for */}
                         <div>
                           <p>4 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.standard]; // Copy existing array
@@ -472,8 +472,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 6px for */}
                         <div>
                           <p>6 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.standard]; // Copy existing array
@@ -489,8 +489,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 8px for */}
                         <div>
                           <p>8 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.standard]; // Copy existing array
@@ -506,9 +506,9 @@ const handleSubmitPriceValidity = () =>{
                         {/* Single Supplement for */}
                         <div>
                           <p>Single Supplement</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                             onChange={(e) => {
-                              const newValue = Number(e.target.value); // Convert input to number
+                              const newValue = (e.target.value); // Convert input to number
  
                               setPriceValidityInfo((prev) => {
                                 const updatedStandard = [...prev.standard]; // Copy existing array
@@ -533,8 +533,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 2px for */}
                         <div>
                           <p>2 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to 
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.superior]; // Copy existing array
@@ -550,8 +550,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 4px for */}
                         <div>
                           <p>4 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.superior]; // Copy existing array
@@ -567,8 +567,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 6px for */}
                         <div>
                           <p>6 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.superior]; // Copy existing array
@@ -584,8 +584,8 @@ const handleSubmitPriceValidity = () =>{
                         {/* 8px for */}
                         <div>
                           <p>8 Pax</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                             const newValue = (e.target.value); // Convert input to number
 
                              setPriceValidityInfo((prev) => {
                                const updatedStandard = [...prev.superior]; // Copy existing array
@@ -601,9 +601,9 @@ const handleSubmitPriceValidity = () =>{
                         {/* Single Supplement for */}
                         <div>
                           <p>Single Supplement</p>
-                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                          <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="text" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                             onChange={(e) => {
-                              const newValue = Number(e.target.value); // Convert input to number
+                              const newValue = (e.target.value); // Convert input to number
  
                               setPriceValidityInfo((prev) => {
                                 const updatedStandard = [...prev.superior]; // Copy existing array
