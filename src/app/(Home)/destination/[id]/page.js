@@ -24,6 +24,8 @@ const DestinationDetails = ({ params }) => {
     fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
       .then((res) => res.json())
       .then((data) => {
+
+        console.log('data',data)
         setSinglePackage(data.country.destinations);
         setCountryName(data.country.name)
         setLoading(false)
@@ -41,17 +43,6 @@ const DestinationDetails = ({ params }) => {
   }, [id]);
 
  
-  // if (!singlePackage?.length && !loading) {
-  //   redirect("/not-found")
-  // }
-
-
-  // useEffect(() => {
-  //   if (paramsId) {
-  //     const findData = singlePackage.find((packegeValue) => packegeValue.country_id === paramsId)
-  //     setSingleData(findData)
-  //   }
-  // }, [paramsId])
 
 
 

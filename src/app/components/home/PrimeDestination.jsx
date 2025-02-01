@@ -97,7 +97,7 @@ const PrimeDestination = () => {
           }}
         >
           {/* ================================== responsive all device end =========================== */}
-          {grounds?.slice(0, 7).map((ground, idx) => (
+          {grounds?.slice(-7).map((ground, idx) => (
             <SwiperSlide key={idx}>
               <Link
                 href={`/destination/${ground?.id}`}

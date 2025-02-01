@@ -10,6 +10,7 @@ const usePackages = () => {
     queryKey: ["package"],
     queryFn: async () => {
       const result = await axiosPublic.get("/destination");
+      console.log(result);
       return result?.data?.destinations?.data;
     },
   });

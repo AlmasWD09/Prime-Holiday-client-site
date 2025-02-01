@@ -14,14 +14,8 @@ const Sidebar = () => {
     }
     return (
         // <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" >
-          <div className=" flex flex-col justify-between  items-center px-4 pb-[64px]" style={{position:"fixed", backgroundColor:"#fffff0",height:"100vh" }}>
-
-           <div className='pt-16'>
-           <div className='flex justify-center items-center'>
-                <Image src={'/logo.png'} alt='' width={200} height={200} className='h-40 w-40 rounded-full border'/>
-            </div>
-
-            <div className="pt-8">
+          <div className=" flex flex-col justify-between h-screen mx-4 pb-[64px]" style={{height:"100vh", overflow:"hidden"}}>
+            <div className="pt-[168px]">
                 <div className="my-[8px] " >
                     <Link href={'/admin/dashboard/create-destination'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]">
                         <Image src={'/dashboardLogo02.png'} alt='dashboard logo' width={50} height={50} className='w-[16px] h-[16px] ' />
@@ -37,15 +31,14 @@ const Sidebar = () => {
                     </Link>
                 </div>
             </div>
-           </div>
 
 
 
             <div>
-                <div className="bg-[#bed6d649] w-[170px] p-[8px] rounded-[8px] my-[8px] " >
+                <div className="bg-[#bed6d649] p-[8px] rounded-[8px] my-[8px] " >
                     <Link href={'/'} className="flex items-center gap-1 font-Roboto font-medium text-[16px]"><FaHome />Home</Link>
                 </div>
-                <div className="bg-[#bed6d649] w-[170px] p-[8px] flex justify-between items-center rounded-[8px]">
+                <div className="bg-[#bed6d649] p-[8px] flex justify-between items-center rounded-[8px]">
                     <div className="flex items-center gap-1 font-Roboto font-medium">
                         <FaUserGroup />Rizmali
                     </div>
