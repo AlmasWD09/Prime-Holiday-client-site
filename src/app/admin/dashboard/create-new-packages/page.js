@@ -181,15 +181,15 @@ const handleSubmitPriceValidity = () =>{
         console.log('form data', key, value);
       });
 
-      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Package created successfully",
-      });
-      router.push('/admin/dashboard/create-packages')
+      // const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
+      //   headers: { "Content-Type": "multipart/form-data" },
+      // });
+      // Swal.fire({
+      //   position: "top-center",
+      //   icon: "success",
+      //   title: "Package created successfully",
+      // });
+      // router.push('/admin/dashboard/create-packages')
     } catch (error) {
       console.error("Error submitting form:", error);
       Swal.fire({
@@ -654,8 +654,8 @@ const handleSubmitPriceValidity = () =>{
 
                       {/* days */}
                       <div>
-                        <p>Days</p>
-                        <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                        <p>Day</p>
+                        <input  style={{height:'44px',width:'100%',backgroundColor:'white',border:'1px solid #D1D1D1'}} required type="number" name="day" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
                           ...itineraryInfo,
                           days: e.target?.value
                         })} />
@@ -680,6 +680,9 @@ const handleSubmitPriceValidity = () =>{
                   </form>
 
                 </div>
+
+
+
               </TabPanel>
             </Tabs>
           </div>

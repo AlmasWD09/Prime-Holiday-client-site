@@ -2,7 +2,8 @@
 
 import AboutPrime from "@/app/components/about/AboutPrime"
 import Banner from "@/app/components/about/Banner"
-import DestinationLove from "@/app/components/about/DestinationLove"
+import DestinationLove from "@/app/components/destination/destinationLove"
+
 
 
 
