@@ -57,7 +57,6 @@ const Footer = () => {
 
 
               </div>
-
               <div className="border-b py-[16px] text-wrap">
                 <Image src="/logo/location.png" alt="icon" width={20} height={20} className="w-[24px] h-[24px] mb-[8px]" />
                 {/* <p className="text-[18px] font-Roboto text-[#FFFFF0]">65 Hartfield Crescent</p>

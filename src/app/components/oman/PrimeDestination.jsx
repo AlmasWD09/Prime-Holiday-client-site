@@ -60,32 +60,12 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 
       {/* Immersition section */}
       <section className="container mx-auto px-4 pt-[56px]">
-        <h1 className="font-bold font-Roboto text-[#135029] text-[28px] pb-[24px]">{singleData?.package_name}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 my-8">
           {/* left side content */}
+
           <div className="max-w-[699px] max-h[332px] col-span-2">
-
-
-            {/* <div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: showFull
-                    ? description
-                    : description.length > maxLength
-                      ? description.slice(0, maxLength) + "..."
-                      : description,
-                }}
-              ></div>
-              {description.length > maxLength && (
-                <button
-                  onClick={() => setShowFull(!showFull)}
-                  className="text-blue-500 hover:underline mt-2"
-                >
-                  {showFull ? "See Less" : "Read More..."}
-                </button>
-              )}
-            </div> */}
-
+            <h1 className="font-bold font-Roboto text-[#135029] text-[28px] mb-8 ">{singleData?.package_name}</h1>
 
             <div>
               <div
@@ -102,7 +82,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
                   onClick={() => setShowFull(!showFull)}
                   className="text-blue-500 hover:underline mt-2"
                 >
-                  {showFull ? "See Less" : "Read More..."}
+                  {showFull ? "See Less" : "See More"}
                 </button>
               )}
             </div>
@@ -111,9 +91,9 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 
           </div>
           {/* right side image */}
-          <div className=" ">
+          <div >
             <Image
-              src={singleData.image}
+              src={singleData.image || "/default-image.jpg"}
               alt="immersition"
               width={500}
               height={200}

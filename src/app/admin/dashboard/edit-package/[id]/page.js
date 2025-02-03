@@ -72,9 +72,9 @@ const EditPackage = () => {
   const [itineraryList, setItineraryList] = useState([]);
   const [editItnaryingIndex, setEdiItnarytingIndex] = useState(null);
   const [editedItinerary, setEditedItinerary] = useState({
-      lunchTime: "",
-      days: "",
-      description: ""
+    lunchTime: "",
+    days: "",
+    description: ""
   });
 
 
@@ -234,7 +234,7 @@ const EditPackage = () => {
 
       formData.append('hotels', JSON.stringify(hotels))
       formData.append('price_validity', JSON.stringify(allPriceValidityInfo))
-   
+
 
       formData.append('itinerary', JSON.stringify(itineraryList))
 
@@ -315,19 +315,21 @@ const EditPackage = () => {
 
 
   };
-  console.log('itinerary',itineraryList);
+  console.log('itinerary', itineraryList);
+
+
+
+  const handleItnarySave = () => {
+    const updatedList = [...itineraryList]; // Create a copy of the array
+    updatedList[editItnaryingIndex] = editedItinerary; // Update the specific item
+    setItineraryList(updatedList); // Update state with the new list
+    setEdiItnarytingIndex(null); // Exit edit mode
+  };
 
   const handleItnaryChange = (e, field) => {
     setEditedItinerary({ ...editedItinerary, [field]: e.target.value });
   };
 
-
-  const handleItnarySave = () => {
-    const updatedItinerary = [...itineraryList];
-    updatedItinerary[editItnaryingIndex] = editedItinerary;
-    setItineraryList(updatedItinerary);
-   
-  };
   const handleInputChange = (index, value) => {
     const updatedIncludes = [...includes];
     updatedIncludes[index] = value;
@@ -338,7 +340,9 @@ const EditPackage = () => {
     updateexludes[index] = value;
     setExclues(updateexludes);
   };
-
+  const handleAddItinerary = () => {
+    setItineraryList([...itineraryList, { lunchTime: "Lunch Time", days: "Day", description: "Description" }]);
+  };
   // console.log('itineraryList---', itineraryList);
 
   // Log all includes values in console
@@ -372,16 +376,16 @@ const EditPackage = () => {
     setAllItinerary(prev => {
       if (prev?.length) {
         return prev?.concat(itineraryInfo)
-        
+
       } else {
         return [itineraryInfo]
       }
     })
-    
-    
-    
+
+
+
   };
-  console.log('ITNARY',singlePackage?.itinerary)
+  console.log('ITNARY', singlePackage?.itinerary)
 
 
   const standardPrice = singlePackage?.price_validity?.standard;
@@ -645,7 +649,7 @@ const EditPackage = () => {
                       </tr>
                     )}
 
-                    
+
 
                     {hotels?.length > 0 && hotels?.map((hotel, index) => (
                       <tr key={index} className="border">
@@ -801,89 +805,99 @@ const EditPackage = () => {
 
             {/* Itinerary */}
             <TabPanel>
-            <div className="p-4 bg-white rounded-sm">
-      <h1 className="text-xl font-bold font-Roboto text-primary py-2">
-        ITINERARY
-      </h1>
+              <div className="p-4 bg-white rounded-sm">
+                <h1 className="text-xl font-bold font-Roboto text-primary py-2">
+                  ITINERARY
+                </h1>
 
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2">Lunch Time</th>
-            <th className="border p-2">Days</th>
-            <th className="border p-2">Description</th>
-            <th className="border p-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itineraryList.length === 0 && (
-            <tr>
-              <td colSpan="4" className="border p-2 text-center">
-                No data available
-              </td>
-            </tr>
-          )}
+                <table className="w-full border-collapse border border-gray-300">
+                  <thead>
+                    <tr className="bg-gray-200">
+                      <th className="border p-2">Lunch Time</th>
+                      <th className="border p-2">Days</th>
+                      <th className="border p-2">Description</th>
+                      <th className="border p-2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {itineraryList.length === 0 && (
+                      <tr>
+                        <td colSpan="4" className="border p-2 text-center">
+                          No data available
+                        </td>
+                      </tr>
+                    )}
 
-          {itineraryList.length > 0 &&
-            itineraryList.map((item, index) => (
-              <tr key={index} className="border">
-                {editItnaryingIndex === index ? (
-                  <>
-                    <td className="border p-2">
-                      <input
-                        type="text"
-                        value={editedItinerary?.lunchTime || ""}
-                        onChange={(e) => handleItnaryChange(e, "lunchTime")}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border p-2">
-                      <input
-                        type="number"
-                        value={editedItinerary?.days || ""}
-                        onChange={(e) => handleItnaryChange(e, "days")}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border p-2">
-                      <textarea
-                        value={editedItinerary?.description || ""}
-                        onChange={(e) => handleItnaryChange(e, "description")}
-                        className="border p-1 w-full"
-                        rows={4}
-                      />
-                    </td>
-                    <td className="border p-2">
-                      <button
-                        type="button"
-                        onClick={handleItnarySave}
-                        className="bg-green-500 text-white px-2 py-1 rounded"
-                      >
-                        Save
-                      </button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td className="border p-2">{item.lunchTime}</td>
-                    <td className="border p-2">{item.days}</td>
-                    <td className="border p-2">{item.description}</td>
-                    <td className="border p-2">
-                      <button
-                        type="button"
-                        onClick={() => handleEditItnaryClick(index)}
-                        className="bg-primary text-white px-2 py-1 rounded"
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </>
-                )}
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+                    {itineraryList.length > 0 &&
+                      itineraryList.map((item, index) => (
+                        <tr key={index} className="border">
+                          {editItnaryingIndex === index ? (
+                            <>
+                              <td className="border p-2">
+                                <input
+                                  type="text"
+                                  value={editedItinerary?.lunchTime || ""}
+                                  onChange={(e) => handleItnaryChange(e, "lunchTime")}
+                                  className="border p-1 w-full"
+                                />
+                              </td>
+                              <td className="border p-2">
+                                <input
+                                  type="number"
+                                  value={editedItinerary?.days || ""}
+                                  onChange={(e) => handleItnaryChange(e, "days")}
+                                  className="border p-1 w-full"
+                                />
+                              </td>
+                              <td className="border p-2">
+                                <textarea
+                                  value={editedItinerary?.description || ""}
+                                  onChange={(e) => handleItnaryChange(e, "description")}
+                                  className="border p-1 w-full"
+                                  rows={4}
+                                />
+                              </td>
+                              <td className="border p-2">
+                                <button
+                                  type="button"
+                                  onClick={handleItnarySave}
+                                  className="bg-green-500 text-white px-2 py-1 rounded"
+                                >
+                                  Save
+                                </button>
+                              </td>
+                            </>
+                          ) : (
+                            <>
+                              <td className="border p-2">{item.lunchTime}</td>
+                              <td className="border p-2">{item.days}</td>
+                              <td className="border p-2">{item.description}</td>
+                              <td className="border p-2">
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditItnaryClick(index)}
+                                  className="bg-primary text-white px-2 py-1 rounded"
+                                >
+                                  Edit
+                                </button>
+                              </td>
+                            </>
+                          )}
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+
+                <div className="flex items-center justify-end">
+                <button
+                  type="button"
+                  onClick={handleAddItinerary}
+                  className="mt-4 px-4 py-2 bg-primary text-white rounded-lg"
+                >
+                  + Add Itinerary
+                </button>
+                </div>
+              </div>
             </TabPanel>
           </Tabs>
         </div>

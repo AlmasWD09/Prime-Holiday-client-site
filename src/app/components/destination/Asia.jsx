@@ -6,35 +6,27 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Asia = ({ asiadata }) => {
 
-  console.log('ajfasjj', asiadata)
 
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  // const [tamName, setTabName] = useState("Includes & Excludes");
+
+  if (!asiadata || asiadata.length === 0) return <p>Loading...</p>;
 
   return (
 
     <div className="pt-6 lg:pt-20">
       <h1 className="text-primary text-xl font-bold py-2">Asia</h1>
-
-
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-
         {
           asiadata?.slice(0, 1).map((ground, idx) =>
             <div
-              // onMouseEnter={() => setHoveredIndex(0)}
-              // onMouseLeave={() => setHoveredIndex(null)}
-              key={idx}
+              key={ground.id || idx}
+
               className="relative w-full lg:col-span-3 h-full lg:h-[600px] overflow-hidden  rounded-xl"
 
             >
               <Image
                 src={ground.image}
                 alt="First Destination"
-                className={`w-full h-full rounded-xl object-cover transition-transform duration-500 ease-in-out ${hoveredIndex === 0 ? "scale-110" : ""
-                  }`}
+                className={`w-full h-full rounded-xl object-cover transition-transform duration-500 ease-in-out }`}
                 width={500}
                 height={500}
               />
@@ -66,14 +58,13 @@ const Asia = ({ asiadata }) => {
         {
           asiadata?.slice(-3).map((ground, idx) =>
             <div
+              key={ground.id || idx}
               className="relative  overflow-hidden  rounded-xl"
-              // onMouseEnter={() => setHoveredIndex(2)}
-              // onMouseLeave={() => setHoveredIndex(null)}
             >
               <Image
                 src={ground.image}
                 alt="Eiffel Tower"
-                className={`w-full h-full rounded-xl object-cover transition-transform duration-500 ease-in-out ${hoveredIndex === 2 ? "scale-110" : ""
+                className={`w-full h-full rounded-xl object-cover transition-transform duration-500 ease-in-out
                   }`}
                 width={100}
                 height={100}
