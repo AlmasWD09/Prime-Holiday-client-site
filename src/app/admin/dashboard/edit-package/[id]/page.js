@@ -783,12 +783,12 @@ const EditPackage = () => {
                             value={allPriceValidityInfo.superior[index] || ''}
                             style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }}
                             required
-                            type="number"
+                            type="text"
                             name={label.toLowerCase().replace(' ', '_')}
                             placeholder={label}
                             className="rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                             onChange={(e) => {
-                              const newValue = Number(e.target.value);
+                              const newValue = (e.target.value);
                               setAllPriceValidityInfo((prev) => {
                                 const updatedSuperior = [...prev.superior];
                                 updatedSuperior[index] = newValue;
