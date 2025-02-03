@@ -120,20 +120,20 @@ const EditDestination = () => {
         form={form}
         onFinish={handleSubmit}
         layout="vertical"
-        style={{ border: "1 px solid red", width: "50%" }}
+        style={{ width: "50%",backgroundColor: "#fffff0", padding: "20px", borderRadius: "10px" }}
       >
-        <h1 className="font-Roboto font-bold text-primary text-[24px]">
+        <h1 className="font-Roboto font-bold text-primary text-[24px] mb-4">
           Edit Destination
         </h1>
 
         {/* Continent Selection */}
-        <div className="max-w-2xl mb-2">
+        <div className=" mb-2">
           <Form.Item
             label="Select the continent"
             name="continent_id"
           // rules={[{ message: "Please select a country!" }]}
           >
-            <Select placeholder="Select a country">
+            <Select style={{height: "40px", width: "100%"}} placeholder="Select a country">
               {contentData.map((country) => (
                 <Select.Option key={country.id} value={country.id}>
                   {country.name}
@@ -145,7 +145,7 @@ const EditDestination = () => {
         </div>
 
         {/* Country Name */}
-        <div className="mb-2">
+        <div className="mb-2 w-full">
           <Form.Item
             name="name"
             label="Country Name"
@@ -153,7 +153,7 @@ const EditDestination = () => {
               message: "Please enter the country name!"
             }]}
           >
-            <Input placeholder="Enter the country name" className="max-w-sm" />
+            <Input style={{height: "40px", width: "100%"}} placeholder="Enter the country name"  />
           </Form.Item>
         </div>
 
@@ -167,8 +167,9 @@ const EditDestination = () => {
             }]}
           >
             <Input
+            style={{height: "40px", width: "100%"}}
               placeholder="Enter the destination title"
-              className="max-w-sm"
+              
             />
           </Form.Item>
         </div>
@@ -191,7 +192,7 @@ const EditDestination = () => {
 
         {/* Submit Button */}
         <Form.Item>
-          <Button  htmlType="submit" style={{backgroundColor:"#6B7280",color:"white", border:"1px solid #6B7280"}}>
+          <Button  htmlType="submit" style={{backgroundColor:"#F49D2A",color:"white",fontSize:"16px"}}>
             Update Destination
           </Button>
         </Form.Item>

@@ -12,7 +12,8 @@ const DashboardLayout = ({ children }) => {
     <AuthProvider>
       <Layout>
         <Sider
-          className=""
+          //  style={{ overflow: "auto", height: "100vh", position: "fixed", left: 0, backgroundColor: "#fffff0", }}
+          style={{ width: '260px' }}
           breakpoint="lg"
           collapsedWidth="0"
           onBreakpoint={(broken) => {
@@ -27,7 +28,16 @@ const DashboardLayout = ({ children }) => {
         </Sider>
 
         <Layout>
-          <Content>
+
+          <div className="bg-[#135029] py-3 text-white">
+            <h1 className="text-[36px] font-Roboto font-semibold pl-20">Welcome to Dashboard </h1>
+          </div>
+          <Content style={{marginLeft:16}}>
+
+            {/* Header goes here */}
+
+
+            {/* Content goes here */}
             <div>{children}</div>
           </Content>
         </Layout>

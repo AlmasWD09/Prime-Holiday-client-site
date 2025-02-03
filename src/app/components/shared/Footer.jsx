@@ -96,7 +96,7 @@ const Footer = () => {
           {/* div three */}
           <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
             <div>
-              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><Link href="/about">About</Link> | <Link href="/destination">Destinations</Link> | Blog | <Link href="/conditions">Terms & Conditions</Link> | <Link href="/privacy">Privacy</Link> | <Link href="/cancelation">Cancellation & Refund</Link> 
+              <p className="text-[18px] font-Roboto text-[#FFFFF0]"><Link  href="/about">About</Link> | <Link href="/destination">Destinations</Link> | Blog | <Link href="/conditions">Terms & Conditions</Link> | <Link href="/privacy">Privacy</Link> | <Link href="/cancelation">Cancellation & Refund</Link> 
               </p>
 
 
