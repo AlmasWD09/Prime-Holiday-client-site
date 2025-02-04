@@ -181,9 +181,9 @@ const Includes = ({ singleData, setSingleData }) => {
                                                         {item.description.length > 800 && (
                                                             <span
                                                                 onClick={() => toggleReadMore(idx)}
-                                                                className="text-primary font-semibold cursor-pointer pl-2"
+                                                                className="text-primary font-semibold cursor-pointer pl-1"
                                                             >
-                                                                {isExpanded ? "Read Less" : "Read More"}
+                                                                {isExpanded ? "ReadLess" : "ReadMore"}
                                                             </span>
                                                         )}
                                                     </p>

@@ -80,7 +80,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
               {description.length > maxLength && (
                 <button
                   onClick={() => setShowFull(!showFull)}
-                  className="text-blue-500 hover:underline mt-2"
+                  className="text-primary font-semibold cursor-pointer pl-1"
                 >
                   {showFull ? "See Less" : "See More"}
                 </button>

@@ -3,7 +3,6 @@
 import Banner from "@/app/components/oman/Banner";
 import PrimeDestination from "@/app/components/oman/PrimeDestination";
 import DestinationLove from "@/app/components/destination/destinationLove";
-import Immersition from "@/app/components/destination/Immersition";
 import Includes from "@/app/components/destination/Includes";
 import { useEffect, useState } from "react";
 import { redirect, useParams, useSearchParams } from "next/navigation";
@@ -25,13 +24,13 @@ const DestinationDetails = ({ params }) => {
       .then((res) => res.json())
       .then((data) => {
 
-        console.log('data',data)
+        console.log('data', data)
         setSinglePackage(data.country.destinations);
         setCountryName(data.country.name)
         setLoading(false)
         // Set default value for singleData based on fetched data
         if (data.country.destinations && data.country.destinations.length > 0) {
-          setSingleData(data.country.destinations[0]); 
+          setSingleData(data.country.destinations[0]);
         }
 
       })
@@ -42,16 +41,29 @@ const DestinationDetails = ({ params }) => {
       });
   }, [id]);
 
- 
+
 
 
 
   return (
     <div className="pb-10">
       <Banner />
-      <PrimeDestination singleData={singleData} countryName={countryName} singlePackage={singlePackage} setSingleData={setSingleData} />
-      {/* <Immersition /> */}
-      <Includes singleData={singleData} setSingleData={setSingleData} />
+      {
+        singleData?.description ? <div>
+          <PrimeDestination singleData={singleData} countryName={countryName} singlePackage={singlePackage} setSingleData={setSingleData} />
+
+          <Includes singleData={singleData} setSingleData={setSingleData} />
+        </div>
+          :
+          <div className="flex justify-center pt-40">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-gray-800">Data Not Found</h1>
+              <p className="text-gray-800">Please Data Add!! </p>
+            </div>
+          </div>
+
+      }
+
       <DestinationLove />
     </div>
   );
