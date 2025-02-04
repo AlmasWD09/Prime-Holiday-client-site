@@ -46,12 +46,12 @@ const AddNewDestination = ({ setModalOpen }) => {
             );
             if (response.status === 200) {
                 alert("Destination create successfully!")
-                
+
             }
         } catch (error) {
             console.error("Error updating package:", error);
         }
-
+        window.location.href = "/admin/dashboard/create-destination"
         setModalOpen(false)
         form.resetFields();
     };
@@ -75,7 +75,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     rules={[{ required: true, message: "Please select a continent!" }]}
                                 >
                                     <Select
-                                    style={{height:'40px'}}
+                                        style={{ height: '40px' }}
                                         onChange={(value) => setContientId(value)}
                                         placeholder="Select the continent">
                                         {contentData.map((singleContent, index) => (
@@ -94,7 +94,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     name="name"
                                     rules={[{ required: true, message: "Please enter the country name!" }]}
                                 >
-                                    <Input style={{height:'40px'}} placeholder="Enter the country name" />
+                                    <Input style={{ height: '40px' }} placeholder="Enter the country name" />
                                 </Form.Item>
                             </div>
 
@@ -105,7 +105,7 @@ const AddNewDestination = ({ setModalOpen }) => {
                                     name="title"
                                     rules={[{ required: true, message: "Please enter the title!" }]}
                                 >
-                                    <Input style={{height:'40px'}} placeholder="Enter the destination name" />
+                                    <Input style={{ height: '40px' }} placeholder="Enter the destination name" />
                                 </Form.Item>
                             </div>
 

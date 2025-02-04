@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 
 const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleData, country }) => {
-  const [showFull, setShowFull] = useState(false);
+
   const maxLength = 900;
   const description = singleData?.description || "";
   // console.log('single package',singlePackage);
@@ -21,6 +21,28 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
     //  console.log(value);
 
   }
+
+  const [showFull, setShowFull] = useState(false);
+
+  // Function to strip ALL HTML tags properly
+  const stripHtml = (html) => {
+    if (!html) return "";
+    return html
+      .replace(/<\/?[^>]+(>|$)/g, "") // Remove HTML tags
+      .replace(/&nbsp;/g, " ") // Replace non-breaking spaces
+      .replace(/\s+/g, " ") // Remove extra spaces
+      .trim(); // Trim leading/trailing spaces
+  };
+
+  // Get plain text from HTML
+  const plainText = stripHtml(description);
+
+  // Check if truncation is needed
+  const isTruncated = plainText.length > maxLength;
+
+  // Decide what to show (slice at nearest space)
+  const truncatedText = plainText.slice(0, plainText.indexOf(" ", maxLength)) + "...";
+  const displayText = showFull ? description : isTruncated ? truncatedText : description;
 
   return (
     <>
@@ -67,25 +89,22 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
           <div className="max-w-[699px] max-h[332px] col-span-2">
             <h1 className="font-bold font-Roboto text-[#135029] text-[28px] mb-8 ">{singleData?.package_name}</h1>
 
-            <div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: showFull
-                    ? description
-                    : description.length > maxLength
-                      ? description.slice(0, maxLength) + "..."
-                      : description,
-                }}
-              ></div>
-              {description.length > maxLength && (
-                <button
-                  onClick={() => setShowFull(!showFull)}
-                  className="text-primary font-semibold cursor-pointer pl-1"
-                >
-                  {showFull ? "See Less" : "See More"}
-                </button>
-              )}
-            </div>
+
+          
+   
+
+<div>
+      <div dangerouslySetInnerHTML={{ __html: displayText }}></div>
+
+      {isTruncated && (
+        <button
+          onClick={() => setShowFull(!showFull)}
+          className="text-primary font-semibold cursor-pointer pl-1"
+        >
+          {showFull ? "See Less" : "See More"}
+        </button>
+      )}
+    </div>
 
 
 
@@ -107,3 +126,4 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
 }
 
 export default PrimeDestination
+
