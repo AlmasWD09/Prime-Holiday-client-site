@@ -128,16 +128,6 @@ const CreateNewPage = () => {
         return [hotelInfo]
       }
     })
-
-      // Clear Input Fields
-      setHotelInfo({
-        city: "",
-        standard_hotel: "",
-        room_type: "",
-        supeior_hotel: "",
-        room_type1: "",
-      });
-   
   };
 
   // price & validity

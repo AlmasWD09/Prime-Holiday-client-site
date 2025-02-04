@@ -28,13 +28,13 @@ const ReadMoreModal = ({ readMoreOpen, setReadMoreOpen, modalValue }) => {
 
                         <form>
 
-                            <div  className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
+                            <div className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
                                 <div className="flex justify-between ">
                                     <h4 className="text-[24px] text-[#135029] font-bold">Days {days}</h4>
                                     <h4 className="text-[24px] text-[#135029] font-bold">{lunchTime}</h4>
                                 </div>
                                 <div>
-                                    <p className="text-[18px] text-[#454545] font-medium">{description} 
+                                    <p className="text-[18px] text-[#454545] font-medium">{description}
                                     </p>
                                 </div>
                             </div>

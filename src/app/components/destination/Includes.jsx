@@ -16,7 +16,15 @@ const Includes = ({ singleData, setSingleData }) => {
     const [readMoremodal, setMeadMoremodal] = useState(false);
     const [modal, setModal] = useState(false);
     const [modalValue, setmodalValue] = useState('')
-
+    //========= ReadMore text start ===========
+    const [expanded, setExpanded] = useState({});
+    const toggleReadMore = (idx) => {
+        setExpanded(prevState => ({
+            ...prevState,
+            [idx]: !prevState[idx]
+        }));
+    };
+//========= ReadMore text end ================
 
     const [buttonColor, setButtonColor] = useState(0);
     const [buttonText, setButtonText] = useState("INCLUDES & EXCLUDES")
@@ -41,6 +49,10 @@ const Includes = ({ singleData, setSingleData }) => {
         setIsOpen(true);
         setModal(true);
     };
+
+   
+
+
 
 
     return (
@@ -152,6 +164,7 @@ const Includes = ({ singleData, setSingleData }) => {
                             <div>
                                 {
                                     singleData?.itinerary?.map((item, idx) => {
+                                        const isExpanded = expanded[idx];
                                         return (
                                             <div key={idx} className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
                                                 <div className="flex justify-between ">
@@ -159,9 +172,20 @@ const Includes = ({ singleData, setSingleData }) => {
                                                     <h4 className="text-[24px] text-[#135029] font-bold">{item.lunchTime}</h4>
                                                 </div>
                                                 <div>
-                                                    <p className="text-[18px] text-[#454545] font-medium">{item.description} <span
+                                                    {/* <p className="text-[18px] text-[#454545] font-medium">{item.description} <span
                                                         onClick={() => handleModalShow(item)}
                                                         className="text-primary font-semibold cursor-pointer">... Read more</span>
+                                                    </p> */}
+                                                    <p className="text-[18px] text-[#454545] font-medium">
+                                                        {isExpanded ? item.description : `${item.description.slice(0, 800)}... `}
+                                                        {item.description.length > 800 && (
+                                                            <span
+                                                                onClick={() => toggleReadMore(idx)}
+                                                                className="text-primary font-semibold cursor-pointer pl-2"
+                                                            >
+                                                                {isExpanded ? "Read Less" : "Read More"}
+                                                            </span>
+                                                        )}
                                                     </p>
                                                 </div>
                                             </div>
