@@ -128,7 +128,16 @@ const CreateNewPage = () => {
         return [hotelInfo]
       }
     })
-    setTabIndex(1)
+
+      // Clear Input Fields
+      setHotelInfo({
+        city: "",
+        standard_hotel: "",
+        room_type: "",
+        supeior_hotel: "",
+        room_type1: "",
+      });
+   
   };
 
   // price & validity
@@ -146,7 +155,6 @@ const CreateNewPage = () => {
         return [itineraryInfo]
       }
     })
-    setTabIndex(3)
   };
 
 
@@ -184,6 +192,7 @@ const CreateNewPage = () => {
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log('response', response)
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -201,6 +210,7 @@ const CreateNewPage = () => {
 
   };
 
+  console.log(allhotelInfo)
 
   return (
     <div className="bg-gray-200 ml-8 p-8 ">
@@ -322,7 +332,7 @@ const CreateNewPage = () => {
                       <button
                         type="button"
                         onClick={handleAdd}
-                        className="border border-primary bg-primary text-white text-primary px-4 py-1 mr-4 rounded-lg"
+                        className="border border-primary bg-primary text-white  px-4 py-1 mr-4 rounded-lg"
                       >
                         Add
                       </button>
@@ -370,6 +380,11 @@ const CreateNewPage = () => {
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
+                  {
+                    allhotelInfo.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg">
+                      <p className=" w-fit rounded-md font-bold">Total Hotel <span className="bg-primary text-white rounded-full text-xs h-[10px] w-[20px] p-[2px]">{allhotelInfo.length}</span></p>
+                    </div>
+                  }
 
                   <form >
                     <div className="space-y-4">
@@ -640,6 +655,11 @@ const CreateNewPage = () => {
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">ITINERARY</h1>
+                  {
+                    allItinerary.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg">
+                      <p className=" w-fit rounded-md font-bold">Total Itinerary <span className="bg-primary text-white rounded-full text-xs h-[10px] w-[20px] p-[2px]">{allItinerary.length}</span></p>
+                    </div>
+                  }
 
                   <form>
                     <div className="space-y-4">
