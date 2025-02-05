@@ -451,7 +451,7 @@ const CreateNewPage = () => {
                     </div>
 
                     <div className="py-8">
-                      <button onClick={() => handleSubmitHotel(hotelInfo)} type="button" className="bg-[#1E1E1E]  text-white px-6 py-1 rounded">Save Hotel</button>
+                      <button onClick={() => handleSubmitHotel(hotelInfo)} type="button" className="bg-gray-500 text-white  px-6 py-1 rounded">Save Hotel</button>
                     </div>
                   </form>
 
