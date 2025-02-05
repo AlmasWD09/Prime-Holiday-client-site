@@ -20,7 +20,6 @@ const InclusivePackage = () => {
     const [packageData, setPackageData] = useState([]);
 const [loading, setLoading] = useState(false)
 
-
  useEffect(() => {
     const fetchData = async () => {
       try {
