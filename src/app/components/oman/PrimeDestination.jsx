@@ -57,16 +57,16 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
                   <div className="relative bg-[#135029] p-4 rounded-xl space-y-4">
                     <Image
                       className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
-                      src={ground.image}
+                      src={ground?.image}
                       alt={'ground photo'}
                       width={300}
                       height={300}
                     />
                     <div className="bg-[#135029] text-[#FFFFF0]">
                       <div className="space-y-2">
-                        <h5 className="text-[24px] font-Roboto font-bold">{ground.package_name
+                        <h5 className="text-[24px] font-Roboto font-bold">{ground?.package_name
                         }</h5>
-                        <h5>{ground.days} Days Form <span className="font-bold text-primary">${ground.price}</span></h5>
+                        <h5>{ground.days} Days Form <span className="font-bold text-primary">${ground?.price}</span></h5>
                       </div>
                       <div className="w-full pt-4">
                         <button onClick={() => handleSinglePackage(ground?.id)} className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>
@@ -111,7 +111,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
           {/* right side image */}
           <div >
             <Image
-              src={singleData.image || "/default-image.jpg"}
+              src={singleData?.image || "/default-image.jpg"}
               alt="immersition"
               width={500}
               height={200}
