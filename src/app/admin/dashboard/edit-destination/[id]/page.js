@@ -19,7 +19,7 @@ const EditDestination = () => {
   useEffect(() => {
     const fetchContinents = async () => {
       try {
-        const response = await fetch("http://10.0.80.13:8000/api/admin/continent");
+        const response = await fetch("http://localhost:3000/api/admin/continent");
         const result = await response.json();
         setContentData(result.continents);
       } catch (error) {
@@ -37,7 +37,7 @@ const EditDestination = () => {
     const fetchSingleCountry = async () => {
       try {
         const response = await fetch(
-          `http://10.0.80.13:8000/api/admin/country/${id}`
+          `http://localhost:3000/api/admin/country/${id}`
         );
         const result = await response.json();
         setSingleContentData(result.country);
@@ -97,7 +97,7 @@ const EditDestination = () => {
     try {
 
       const response = await axios.post(
-        `http://10.0.80.13:8000/api/admin/country/update/${id}`,
+        `http://localhost:3000/api/admin/country/update/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
