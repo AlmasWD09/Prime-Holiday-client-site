@@ -9,7 +9,7 @@ const DestinationLove = () => {
 
 
   useEffect(() => {
-    fetch("http://10.0.80.13:8000/api/admin/random-destination/")
+    fetch("http://localhost:3000/api/admin/random-destination/")
       .then((res) => res.json())
       .then((data) => {
         setDestinationLoveData(data?.destinations?.data)

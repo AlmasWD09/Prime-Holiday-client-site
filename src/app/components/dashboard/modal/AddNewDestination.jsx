@@ -15,7 +15,7 @@ const AddNewDestination = ({ setModalOpen }) => {
     useEffect(() => {
         // Fetch data dynamically from the JSON file
         const fetchData = async () => {
-            const response = await fetch('http://10.0.80.13:8000/api/admin/continent');
+            const response = await fetch('http://localhost:3000/api/admin/continent');
             const result = await response.json();
             setContentData(result.continents);
         };
@@ -40,7 +40,7 @@ const AddNewDestination = ({ setModalOpen }) => {
             });
 
             const response = await axios.post(
-                'http://10.0.80.13:8000/api/admin/country/store',
+                'http://localhost:3000/api/admin/country/store',
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
