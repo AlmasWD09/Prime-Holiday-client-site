@@ -44,6 +44,7 @@ const PrimeDestination = () => {
   }, []);
 
   
+  console.log(africaData)
   return (
     <section className="container mx-auto px-4 pt-16 md:pt-20">
       <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
@@ -69,8 +70,8 @@ const PrimeDestination = () => {
                       <FaLocationDot className="text-2xl pt-2" />
                     </div>
                     <div>
-                      <h2 className="text-[24px] font-bold font-Roboto">{ground.title}</h2>
-                      <h2 className="text-[16px] font-medium">{ground.name}</h2>
+                      <h2 className="text-[24px] font-bold font-Roboto">{ground.name}</h2>
+                      <h2 className="text-[16px] font-medium">{ground.title}</h2>
                     </div>
                   </div>
                 </div>

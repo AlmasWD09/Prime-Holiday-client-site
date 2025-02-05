@@ -51,7 +51,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
           {countryName} Packages</h2>
         <div className="grid grid-cols-1 gap-4  md:grid-cols-2 xl:grid-cols-3">
           {
-            singlePackage.map((ground, idx) => {
+            singlePackage?.map((ground, idx) => {
               return (
                 <div key={idx}>
                   <div className="relative bg-[#135029] p-4 rounded-xl space-y-4">
@@ -66,7 +66,7 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
                       <div className="space-y-2">
                         <h5 className="text-[24px] font-Roboto font-bold">{ground.package_name
                         }</h5>
-                        <h5>{ground.days} Days Form <span className="font-bold text-primary">$5656.00</span></h5>
+                        <h5>{ground.days} Days Form <span className="font-bold text-primary">${ground.price}</span></h5>
                       </div>
                       <div className="w-full pt-4">
                         <button onClick={() => handleSinglePackage(ground?.id)} className="w-full text-center bg-primary text-[#FFFFF0] px-4 py-1 rounded-xl">View</button>

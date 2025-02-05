@@ -168,7 +168,7 @@ const Includes = ({ singleData, setSingleData }) => {
                                         return (
                                             <div key={idx} className="border border-[#135029] rounded-lg p-2 mt-2 space-y-4">
                                                 <div className="flex justify-between ">
-                                                    <h4 className="text-[24px] text-[#135029] font-bold">Days {item.days}</h4>
+                                                    <h4 className="text-[24px] text-[#135029] font-bold">Day {item.days}</h4>
                                                     <h4 className="text-[24px] text-[#135029] font-bold">{item.lunchTime}</h4>
                                                 </div>
                                                 <div>

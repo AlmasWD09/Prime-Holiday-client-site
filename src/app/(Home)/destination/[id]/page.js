@@ -42,7 +42,7 @@ const DestinationDetails = ({ params }) => {
   }, [id]);
 
 
-
+console.log(singleData)
 
 
   return (

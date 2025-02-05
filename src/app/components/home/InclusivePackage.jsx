@@ -42,7 +42,8 @@ const [loading, setLoading] = useState(false)
   
 const swiperRef = useRef(null);
 
-console.log('package',packageData)
+
+
   return (
       <section>
         <div className="container mx-auto px-4">
