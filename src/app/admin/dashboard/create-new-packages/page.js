@@ -121,54 +121,53 @@ const CreateNewPage = () => {
 
   // hotel form
   const handleSubmitHotel = (event) => {
-    if(event?.city) {
-        setAllHotelInfo(prev => {
-      if (prev?.length) {
-       
-        return prev?.concat(event)
-      } else {
-        return [event]
-      }
-    })
-    setHotelInfo({
-      city: "",
-      standard_hotel: "",
-      room_type: "",
-      supeior_hotel: "",
-      room_type1: ""
-    })
+    if (event?.city) {
+      setAllHotelInfo(prev => {
+        if (prev?.length) {
+
+          return prev?.concat(event)
+        } else {
+          return [event]
+        }
+      })
+      setHotelInfo({
+        city: "",
+        standard_hotel: "",
+        room_type: "",
+        supeior_hotel: "",
+        room_type1: ""
+      })
     }
-    
-  
+
+
   };
 
 
   // price & validity
   const handleSubmitPriceValidity = (event) => {
-
-      setAllPriceValidityInfo(priceValidityInfo)
-    setTabIndex(2)
+    setAllPriceValidityInfo(priceValidityInfo)
+    setTabIndex(3)
   }
 
 
 
   // itinerary form
   const handleSubmitItinerary = (event) => {
-  if(event?.days){
-    setAllItinerary(prev => {
-      if (prev?.length) {
-        return prev?.concat(event)
+    if (event?.days) {
+      setAllItinerary(prev => {
+        if (prev?.length) {
+          return prev?.concat(event)
 
-      } else {
-        return [event]
-      }
-    })
-    setItineraryInfo({
-      lunchTime: "",
-      days: "",
-      description: "",
-    })
-  }
+        } else {
+          return [event]
+        }
+      })
+      setItineraryInfo({
+        lunchTime: "",
+        days: "",
+        description: "",
+      })
+    }
   };
 
 
@@ -397,13 +396,13 @@ const CreateNewPage = () => {
                   {
                     allhotelInfo.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg flex gap-2 items-center font-semibold"> Hotels
                       {
-                        allhotelInfo?.map((item,index)=>{
+                        allhotelInfo?.map((item, index) => {
                           return (
-                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index +1 }.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">{item?.city} </span></p>
+                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index + 1}.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">{item?.city} </span></p>
                           )
                         })
                       }
-                    
+
                     </div>
                   }
 
@@ -415,7 +414,7 @@ const CreateNewPage = () => {
                         <input value={hotelInfo?.city} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="city" placeholder="City" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           city: e.target?.value
-                        })}  />
+                        })} />
                       </div>
                       {/* Standard Hotel */}
                       <div>
@@ -423,31 +422,31 @@ const CreateNewPage = () => {
                         <input value={hotelInfo?.standard_hotel} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           standard_hotel: e.target?.value
-                        })}  />
+                        })} />
                       </div>
                       {/* Room Type One */}
                       <div>
                         <p>Room Type</p>
-                        <input  value={hotelInfo?.room_type} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.room_type} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           room_type: e.target?.value
-                        })}  />
+                        })} />
                       </div>
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input  value={hotelInfo?.supeior_hotel}  style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.supeior_hotel} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           supeior_hotel: e.target?.value
-                        })}  />
+                        })} />
                       </div>
                       {/* Room Type Two */}
                       <div>
                         <p>Room Type</p>
-                        <input  value={hotelInfo?.room_type1} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.room_type1} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           room_type1: e.target?.value
-                        })}  />
+                        })} />
                       </div>
                     </div>
 
@@ -474,7 +473,7 @@ const CreateNewPage = () => {
                         {/* 2px for */}
                         <div>
                           <p>2 Pax</p>
-                          <input  style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
                             const newValue = (e.target.value); // Convert input to number
 
                             setPriceValidityInfo((prev) => {
@@ -491,7 +490,7 @@ const CreateNewPage = () => {
                         {/* 4px for */}
                         <div>
                           <p>4 Pax</p>
-                          <input  style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
                             const newValue = (e.target.value); // Convert input to number
 
                             setPriceValidityInfo((prev) => {
@@ -659,11 +658,9 @@ const CreateNewPage = () => {
                   </div>
 
                   <div className="pl-4 py-8">
-                    <button onClick={() => handleSubmitPriceValidity()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
+                    <button onClick={() => handleSubmitPriceValidity(priceValidityInfo)} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
                   </div>
                 </div>
-
-
               </TabPanel>
 
 
@@ -679,13 +676,13 @@ const CreateNewPage = () => {
                   {
                     allItinerary.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg flex gap-2 items-center font-semibold"> Itinerary
                       {
-                        allItinerary?.map((item,index)=>{
+                        allItinerary?.map((item, index) => {
                           return (
-                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index +1 }.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">day:({item.days}) </span></p>
+                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index + 1}.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">day:({item.days}) </span></p>
                           )
                         })
                       }
-                    
+
                     </div>
                   }
 
