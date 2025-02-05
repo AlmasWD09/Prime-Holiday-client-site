@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 
 const CookieConsent = () => {
   const [showModal, setShowModal] = useState(false); // Default vabe modal open hobe na
+  const [isClient, setIsClient] = useState(false);
 
+  
   // Check localStorage for previous acceptance
   useEffect(() => {
     const cookieAccepted = localStorage.getItem("cookieAccepted");
@@ -21,6 +23,7 @@ const CookieConsent = () => {
   };
 
   if (!showModal) return null; // Modal hide korar jonno return null
+  // if (!isClient || !showModal) return null;
 
   return (
     <div className="fixed inset-0 z-50">

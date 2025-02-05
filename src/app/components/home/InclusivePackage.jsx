@@ -24,7 +24,7 @@ const [loading, setLoading] = useState(false)
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.0.80.13:8000/api/admin/destination");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page=7");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -42,7 +42,8 @@ const [loading, setLoading] = useState(false)
   
 const swiperRef = useRef(null);
 
-console.log(packageData)
+
+
   return (
       <section>
         <div className="container mx-auto px-4">
@@ -97,9 +98,9 @@ console.log(packageData)
             }}
           >
             {/* ================================== responsive all device end =========================== */}
-            {packageData?.slice(0, 7).map((singlePackge, idx) => (
+            {packageData?.map((singlePackge, idx) => (
               <SwiperSlide key={idx}>
-                <Link href={`/destination/${singlePackge.id}`}>
+                <Link href={`/destination/${singlePackge.country_id}`}>
                 <div className="relative  bg-[#135029] p-4 rounded-xl space-y-4 h-[400px] md:h-[440px] xl:h-full">
 
                   <Image

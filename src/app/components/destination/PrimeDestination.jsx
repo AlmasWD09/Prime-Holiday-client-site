@@ -2,36 +2,22 @@
 
 import Asia from "@/app/components/destination/Asia";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 
 const PrimeDestination = () => {
-  const grounds = [
-    {
-      image: "/primeDestination01.png",
-      title1: "Egypt",
-      title2: "The Gift of The Nile",
-    },
-    {
-      image: "/primeDestination02.png",
-      title1: "Morocco",
-      title2: "Land Of Light",
-    },
-    {
-      image: "/primeDestination03.png",
-      title1: "Zanzibar",
-      title2: "Spice Island",
-    },
-  ];
-  const [countryData, setCountryData] = useState([]);
+  
+  const [africaData, setafricaData] = useState([]);
+  const [asiadata, setasiadata] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.0.80.13:8000/api/admin/country");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country/continent/1?per_page=3");
 
         const result = await response.json();
-        setCountryData(result)
+        setafricaData(result?.countries?.data)
       } catch (err) {
         setError(err.message);
       }
@@ -40,20 +26,40 @@ const PrimeDestination = () => {
     fetchData();
   }, []);
 
-  console.log(countryData)
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country/continent/3?per_page=4");
+
+        const result = await response.json();
+        setasiadata(result?.countries?.data)
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
+  console.log(africaData)
   return (
     <section className="container mx-auto px-4 pt-16 md:pt-20">
       <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
-      {/* <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
-        {grounds.map((ground, idx) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {africaData.map((ground, idx) => {
           return (
-            <div key={idx}>
+
+            <Link href={`/destination/${ground.id}`} key={idx}>
+
+            <div>
               <div className="relative -z-10">
                 <Image
                   className="object-cover object-center w-full h-96 lg:h-96 rounded-xl"
                   src={ground.image}
-                  alt={ground.title1}
+                  alt={ground.title}
                   width={300}
                   height={300}
                 />
@@ -64,18 +70,20 @@ const PrimeDestination = () => {
                       <FaLocationDot className="text-2xl pt-2" />
                     </div>
                     <div>
-                      <h2 className="text-[24px] font-bold font-Roboto">{ground.title1}</h2>
-                      <h2 className="text-[16px] font-medium">{ground.title2}</h2>
+                      <h2 className="text-[24px] font-bold font-Roboto">{ground.name}</h2>
+                      <h2 className="text-[16px] font-medium">{ground.title}</h2>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            </Link>
           );
         })}
-      </div> */}
+      </div>
       {/* asia component here... */}
-      <Asia />
+      <Asia asiadata={asiadata} />
     </section>
   );
 };

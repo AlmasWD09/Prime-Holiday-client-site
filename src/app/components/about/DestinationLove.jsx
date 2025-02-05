@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 const DestinationLove = () => {
+
+
   const grounds = [
     {
       image: "/photo01.png",
@@ -22,6 +24,8 @@ const DestinationLove = () => {
       title2: "9 Days From",
     },
   ]
+
+  
   return (
     <>
       <section className="container mx-auto px-4 pt-10 pb-10">

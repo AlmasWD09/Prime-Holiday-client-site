@@ -43,13 +43,12 @@ const CreateNewPage = () => {
   });
 
 
-  
+
   const [priceValidityInfo, setPriceValidityInfo] = useState({
-    standard:[],
-    superior:[],
+    standard: [],
+    superior: [],
   });
   const [allPriceValidityInfo, setAllPriceValidityInfo] = useState([]);
-
 
 
 
@@ -64,7 +63,7 @@ const CreateNewPage = () => {
 
   const [tabIndex, setTabIndex] = useState(0);
   const [formValue, setFormValue] = useState([]);
-
+  console.log('tabindex', tabIndex)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -122,33 +121,53 @@ const CreateNewPage = () => {
 
   // hotel form
   const handleSubmitHotel = (event) => {
-    setAllHotelInfo(prev => {
-      if (prev?.length) {
-        return prev?.concat(hotelInfo)
-      } else {
-        return [hotelInfo]
-      }
-    })
-    setTabIndex(0)
+    if (event?.city) {
+      setAllHotelInfo(prev => {
+        if (prev?.length) {
+
+          return prev?.concat(event)
+        } else {
+          return [event]
+        }
+      })
+      setHotelInfo({
+        city: "",
+        standard_hotel: "",
+        room_type: "",
+        supeior_hotel: "",
+        room_type1: ""
+      })
+    }
+
+
   };
 
-// price & validity
-const handleSubmitPriceValidity = () =>{
-  setAllPriceValidityInfo(priceValidityInfo)
-  setTabIndex(0)
-}
+
+  // price & validity
+  const handleSubmitPriceValidity = (event) => {
+    setAllPriceValidityInfo(priceValidityInfo)
+    setTabIndex(3)
+  }
+
+
 
   // itinerary form
   const handleSubmitItinerary = (event) => {
-    setAllItinerary(prev => {
-      if (prev?.length) {
-        return prev?.concat(itineraryInfo)
+    if (event?.days) {
+      setAllItinerary(prev => {
+        if (prev?.length) {
+          return prev?.concat(event)
 
-      } else {
-        return [itineraryInfo]
-      }
-    })
-    setTabIndex(0)
+        } else {
+          return [event]
+        }
+      })
+      setItineraryInfo({
+        lunchTime: "",
+        days: "",
+        description: "",
+      })
+    }
   };
 
 
@@ -186,6 +205,7 @@ const handleSubmitPriceValidity = () =>{
       const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log('response', response)
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -194,25 +214,28 @@ const handleSubmitPriceValidity = () =>{
       router.push('/admin/dashboard/create-packages')
     } catch (error) {
       console.error("Error submitting form:", error);
+      Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: "Error creating package",
+      });
     }
 
   };
 
 
+
   return (
-    <div className="bg-gray-200 m-8 p-8 ">
-      <div className="flex  items-center gap-[16px]">
-        <h1 className="text-[36px] font-Roboto font-semibold">Hello, Rizmali</h1>
-        <Image src={"/hands.png"} alt="hands" width={100} height={100} className="w-[42px] h-[42px]" />
-      </div>
-      <div className="flex items-center gap-1">
-        <Link href="/admin/dashboard/create-packages"><span className="text-[30px] font-bold text-primary"><LeftOutlined /></span></Link>
-        <h1 className='text-[24px] font-Roboto font-bold text-primary'>Create New Packages</h1>
+    <div className="bg-gray-200 ml-8 p-8 ">
+
+      <div className="flex items-center gap-1 mb-6">
+        <Link href="/admin/dashboard/create-packages"><span className="text-4xl font-bold text-primary"><LeftOutlined /></span></Link>
+        <h1 className='text-4xl font-Roboto font-bold text-primary'>Create New Packages</h1>
       </div>
 
-      <div className="p-8">
+      <div className="">
         {/* form here */}
-        <Form form={form} onFinish={handleSubmit} layout="vertical" className="">
+        <Form form={form} onFinish={handleSubmit} layout="vertical" className="w-full">
           {/* select  */}
           <div className="mb-2">
             <p>Select the destination</p>
@@ -221,8 +244,9 @@ const handleSubmitPriceValidity = () =>{
 
             >
               <Select
+                style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }}
                 placeholder="Enter the country name"
-                className="max-w-xl"
+                className=""
                 onChange={handleChange}
               >
                 {countryData?.map((singleCountry, index) => (
@@ -243,13 +267,13 @@ const handleSubmitPriceValidity = () =>{
               name="name"
               rules={[{ required: true, message: "Please enter the name!" }]}
             >
-              <Input placeholder="Enter the package name" className="max-w-xl" />
+              <Input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} placeholder="Enter the package name" className="" />
             </Form.Item>
           </div>
 
 
           {/* Image Upload Field */}
-          <div className="max-w-xl mb-2">
+          <div className=" mb-2">
             <p>Add package image</p>
             <Form.Item
               name="image"
@@ -269,7 +293,7 @@ const handleSubmitPriceValidity = () =>{
 
 
           {/* Package description */}
-          <div className="max-w-xl mb-2">
+          <div className=" mb-2">
             <TextEditor onChange={handleTextEditorChange} />
           </div>
 
@@ -280,7 +304,7 @@ const handleSubmitPriceValidity = () =>{
               name="price"
               rules={[{ required: true, message: "Please enter the price!" }]}
             >
-              <Input placeholder="Enter the price of package" className="max-w-xl" type="number" min={0} />
+              <Input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} placeholder="Enter the price of package" className="" type="number" min={0} />
             </Form.Item>
           </div>
 
@@ -291,29 +315,29 @@ const handleSubmitPriceValidity = () =>{
               name="days"
               rules={[{ required: true, message: "Please enter the number of days!" }]}
             >
-              <Input type="number" placeholder="Enter the days" className="max-w-xl" />
+              <Input style={{ height: '44px' }} type="number" placeholder="Enter the days" className="" />
             </Form.Item>
           </div>
 
           {/* tab component here */}
-          <div style={{ maxWidth: "600px" }}>
+          <div style={{ width: '100%' }}>
             <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} style={{ backgroundColor: "transparent", padding: "8px" }}>
               <TabList >
-                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>INCLUDES & EXCLUDES</Tab>
-                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>HOTELS</Tab>
-                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>PRICE & VALIDITY</Tab>
-                <Tab style={{ backgroundColor: "transparent", padding: "8px", fontWeight: "700" }}>ITINERARY</Tab>
+                <Tab style={{ backgroundColor: "transparent", fontWeight: "700", color: '#4F4F4F' }}>INCLUDES & EXCLUDES</Tab>
+                <Tab style={{ backgroundColor: "transparent", fontWeight: "700", color: '#4F4F4F' }}>HOTELS</Tab>
+                <Tab style={{ backgroundColor: "transparent", fontWeight: "700", color: '#4F4F4F' }}>PRICE & VALIDITY</Tab>
+                <Tab style={{ backgroundColor: "transparent", fontWeight: "700", color: '#4F4F4F' }}>ITINERARY</Tab>
               </TabList>
 
 
               <TabPanel>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
 
-                  <div className="p-4">
+                  <div className="">
                     <div className="flex justify-between gap-3 lg:border-r border-[#D1D1D1] border-opacity-30">
-                      <input
+                      <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }}
                         type="text"
-                        placeholder="Enter your text"
+                        placeholder="Enter your includes text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
@@ -321,26 +345,26 @@ const handleSubmitPriceValidity = () =>{
                       <button
                         type="button"
                         onClick={handleAdd}
-                        className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg"
+                        className="border border-primary bg-primary text-white  px-4 py-1 mr-4 rounded-lg"
                       >
                         Add
                       </button>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-4 pr-4 space-y-2">
                       {items.map((item, index) => (
-                        <div key={item.id} className="p-2 border-b">
-                          {item.text}
+                        <div key={item.id} className="p-2 border-b text-[16px] bg-[#FFFFF0] ">
+                          <span>{index + 1} .</span>  {item.text}
                         </div>
                       ))}
                     </div>
 
                   </div>
-                  <div className="p-4">
+                  <div className="">
                     <div className="flex justify-between gap-3">
-                      <input
+                      <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }}
                         type="text"
-                        placeholder="Enter your text"
+                        placeholder="Enter your excludes text"
                         value={inputValueExcludes}
                         onChange={(e) => setInputValueExcludes(e.target.value)}
                         className="bg-transparent border border-primary outline-none px-2 py-1 rounded-lg"
@@ -348,15 +372,15 @@ const handleSubmitPriceValidity = () =>{
                       <button
                         type="button"
                         onClick={handleAddTwo}
-                        className="border border-primary hover:bg-primary hover:text-white text-primary px-4 py-1 mr-4 rounded-lg">
+                        className="border border-primary bg-primary text-white  px-4 py-1 mr-4 rounded-lg">
                         Add
                       </button>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-4 space-y-2 pr-4">
                       {itemsExcludes.map((item, index) => (
-                        <div key={index} className="p-2 border-b">
-                          {item.text}
+                        <div key={index} className="p-2 border-b text-[16px] bg-[#FFFFF0]">
+                          <span>{index + 1} .</span> {item.text}
                         </div>
                       ))}
                     </div>
@@ -369,13 +393,25 @@ const handleSubmitPriceValidity = () =>{
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">Hotel</h1>
+                  {
+                    allhotelInfo.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg flex gap-2 items-center font-semibold"> Hotels
+                      {
+                        allhotelInfo?.map((item, index) => {
+                          return (
+                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index + 1}.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">{item?.city} </span></p>
+                          )
+                        })
+                      }
+
+                    </div>
+                  }
 
                   <form >
                     <div className="space-y-4">
                       {/* City */}
                       <div>
                         <p>City</p>
-                        <input name="city" placeholder="City" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.city} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="city" placeholder="City" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           city: e.target?.value
                         })} />
@@ -383,7 +419,7 @@ const handleSubmitPriceValidity = () =>{
                       {/* Standard Hotel */}
                       <div>
                         <p>Standard Hotel</p>
-                        <input name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.standard_hotel} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="hotel" placeholder="Standard Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           standard_hotel: e.target?.value
                         })} />
@@ -391,7 +427,7 @@ const handleSubmitPriceValidity = () =>{
                       {/* Room Type One */}
                       <div>
                         <p>Room Type</p>
-                        <input name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.room_type} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeOne" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           room_type: e.target?.value
                         })} />
@@ -399,7 +435,7 @@ const handleSubmitPriceValidity = () =>{
                       {/* Supeior Hotel */}
                       <div>
                         <p>Supeior Hotel</p>
-                        <input name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.supeior_hotel} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="supeior_hotel" placeholder="Supeior Hotel" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           supeior_hotel: e.target?.value
                         })} />
@@ -407,7 +443,7 @@ const handleSubmitPriceValidity = () =>{
                       {/* Room Type Two */}
                       <div>
                         <p>Room Type</p>
-                        <input name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
+                        <input value={hotelInfo?.room_type1} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="roomTypeTwo" placeholder="Room Type" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => setHotelInfo({
                           ...hotelInfo,
                           room_type1: e.target?.value
                         })} />
@@ -415,7 +451,7 @@ const handleSubmitPriceValidity = () =>{
                     </div>
 
                     <div className="py-8">
-                      <button onClick={() => handleSubmitHotel()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Hotel</button>
+                      <button onClick={() => handleSubmitHotel(hotelInfo)} type="button" className="bg-gray-500 text-white  px-6 py-1 rounded">Save Hotel</button>
                     </div>
                   </form>
 
@@ -424,98 +460,101 @@ const handleSubmitPriceValidity = () =>{
 
               {/* price and validity */}
               <TabPanel>
-                <div className="flex flex-col border border-primary rounded-md">
+                <div className="flex flex-col  rounded-md">
 
                   <div className="flex justify-between">
                     {/* tab-panel one */}
-                    <div className="p-4">
+                    <div className="p-4 w-1/2">
                       <h1 className="text-xl font-bold font-Roboto text-primary py-2">Standard</h1>
                       <div className="space-y-4">
+
+
+
                         {/* 2px for */}
                         <div>
                           <p>2 Pax</p>
-                          <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.standard]; // Copy existing array
-                               updatedStandard[0] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 standard: updatedStandard, // Update the 'standard' array
-                               };
-                             });
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.standard]; // Copy existing array
+                              updatedStandard[0] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                standard: updatedStandard, // Update the 'standard' array
+                              };
+                            });
                           }} />
                         </div>
                         {/* 4px for */}
                         <div>
                           <p>4 Pax</p>
-                          <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.standard]; // Copy existing array
-                               updatedStandard[1] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 standard: updatedStandard, // Update the 'standard' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.standard]; // Copy existing array
+                              updatedStandard[1] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                standard: updatedStandard, // Update the 'standard' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* 6px for */}
                         <div>
                           <p>6 Pax</p>
-                          <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.standard]; // Copy existing array
-                               updatedStandard[2] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 standard: updatedStandard, // Update the 'standard' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.standard]; // Copy existing array
+                              updatedStandard[2] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                standard: updatedStandard, // Update the 'standard' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* 8px for */}
                         <div>
                           <p>8 Pax</p>
-                          <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.standard]; // Copy existing array
-                               updatedStandard[3] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 standard: updatedStandard, // Update the 'standard' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.standard]; // Copy existing array
+                              updatedStandard[3] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                standard: updatedStandard, // Update the 'standard' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* Single Supplement for */}
                         <div>
                           <p>Single Supplement</p>
-                          <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                             onChange={(e) => {
-                              const newValue = Number(e.target.value); // Convert input to number
- 
+                              const newValue = (e.target.value); // Convert input to number
+
                               setPriceValidityInfo((prev) => {
                                 const updatedStandard = [...prev.standard]; // Copy existing array
                                 updatedStandard[4] = newValue; // Insert/Update at specific index
-                          
+
                                 return {
                                   ...prev,
                                   standard: updatedStandard, // Update the 'standard' array
                                 };
                               });
-                           }} 
+                            }}
                           />
                         </div>
 
@@ -523,94 +562,94 @@ const handleSubmitPriceValidity = () =>{
                     </div>
 
                     {/* tab-panel two */}
-                    <div className="p-4">
+                    <div className="p-4 w-1/2">
                       <h1 className="text-xl font-bold font-Roboto text-primary py-2">superior</h1>
                       <div className="space-y-4">
                         {/* 2px for */}
                         <div>
                           <p>2 Pax</p>
-                          <input required type="number" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="two" placeholder="2px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to 
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.superior]; // Copy existing array
-                               updatedStandard[0] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 superior: updatedStandard, // Update the 'superior' array
-                               };
-                             });
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.superior]; // Copy existing array
+                              updatedStandard[0] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                superior: updatedStandard, // Update the 'superior' array
+                              };
+                            });
                           }} />
                         </div>
                         {/* 4px for */}
                         <div>
                           <p>4 Pax</p>
-                          <input required type="number" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="four" placeholder="4px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.superior]; // Copy existing array
-                               updatedStandard[1] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 superior: updatedStandard, // Update the 'superior' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.superior]; // Copy existing array
+                              updatedStandard[1] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                superior: updatedStandard, // Update the 'superior' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* 6px for */}
                         <div>
                           <p>6 Pax</p>
-                          <input required type="number" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="six" placeholder="6px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.superior]; // Copy existing array
-                               updatedStandard[2] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 superior: updatedStandard, // Update the 'superior' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.superior]; // Copy existing array
+                              updatedStandard[2] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                superior: updatedStandard, // Update the 'superior' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* 8px for */}
                         <div>
                           <p>8 Pax</p>
-                          <input required type="number" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
-                             const newValue = Number(e.target.value); // Convert input to number
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="eight" placeholder="8px" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500" onChange={(e) => {
+                            const newValue = (e.target.value); // Convert input to number
 
-                             setPriceValidityInfo((prev) => {
-                               const updatedStandard = [...prev.superior]; // Copy existing array
-                               updatedStandard[3] = newValue; // Insert/Update at specific index
-                         
-                               return {
-                                 ...prev,
-                                 superior: updatedStandard, // Update the 'superior' array
-                               };
-                             });
-                          }}  />
+                            setPriceValidityInfo((prev) => {
+                              const updatedStandard = [...prev.superior]; // Copy existing array
+                              updatedStandard[3] = newValue; // Insert/Update at specific index
+
+                              return {
+                                ...prev,
+                                superior: updatedStandard, // Update the 'superior' array
+                              };
+                            });
+                          }} />
                         </div>
                         {/* Single Supplement for */}
                         <div>
                           <p>Single Supplement</p>
-                          <input required type="number" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
+                          <input style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="single_supplement" placeholder="Single Supplement" className=" rounded px-2 py-1 outline-none bg-transparent border border-gray-500"
                             onChange={(e) => {
-                              const newValue = Number(e.target.value); // Convert input to number
- 
+                              const newValue = (e.target.value); // Convert input to number
+
                               setPriceValidityInfo((prev) => {
                                 const updatedStandard = [...prev.superior]; // Copy existing array
                                 updatedStandard[4] = newValue; // Insert/Update at specific index
-                          
+
                                 return {
                                   ...prev,
                                   superior: updatedStandard, // Update the 'standard' array
                                 };
                               });
-                           }} 
+                            }}
                           />
                         </div>
 
@@ -618,12 +657,10 @@ const handleSubmitPriceValidity = () =>{
                     </div>
                   </div>
 
-                  <div className="flex justify-center items-center py-8">
-                    <button onClick={() => handleSubmitPriceValidity()} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
+                  <div className="pl-4 py-8">
+                    <button onClick={() => handleSubmitPriceValidity(priceValidityInfo)} type="button" className="bg-gray-500 text-white px-6 py-1 rounded">Save Validaty</button>
                   </div>
                 </div>
-
-
               </TabPanel>
 
 
@@ -636,13 +673,25 @@ const handleSubmitPriceValidity = () =>{
               <TabPanel>
                 <div className="p-4">
                   <h1 className="text-xl font-bold font-Roboto text-primary py-2">ITINERARY</h1>
+                  {
+                    allItinerary.length > 0 && <div className="border border-gray-300 w-fit p-2 rounded-lg flex gap-2 items-center font-semibold"> Itinerary
+                      {
+                        allItinerary?.map((item, index) => {
+                          return (
+                            <p className=" w-fit rounded-md font-bold border border-gray-300 p-2">{index + 1}.  <span className=" text-black rounded-full text-xs h-[10px] w-[20px] p-[2px]">day:({item.days}) </span></p>
+                          )
+                        })
+                      }
+
+                    </div>
+                  }
 
                   <form>
                     <div className="space-y-4">
                       {/* LunchTime */}
                       <div>
                         <p>Itinerary for</p>
-                        <input required type="text" name="lunchTime" placeholder="Itinerary name" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                        <input value={itineraryInfo?.lunchTime} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="text" name="lunchTime" placeholder="Itinerary name" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
                           ...itineraryInfo,
                           lunchTime: e.target?.value
                         })} />
@@ -650,8 +699,8 @@ const handleSubmitPriceValidity = () =>{
 
                       {/* days */}
                       <div>
-                        <p>Days</p>
-                        <input required type="number" name="days" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                        <p>Day</p>
+                        <input value={itineraryInfo?.days} style={{ height: '44px', width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} required type="number" name="day" placeholder="Days" className="border px-2 py-1 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
                           ...itineraryInfo,
                           days: e.target?.value
                         })} />
@@ -661,7 +710,7 @@ const handleSubmitPriceValidity = () =>{
                       {/* description */}
                       <div>
                         <p>Itinery Description</p>
-                        <textarea name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
+                        <textarea value={itineraryInfo?.description} style={{ width: '100%', backgroundColor: 'white', border: '1px solid #D1D1D1' }} name="description" placeholder="Enter Your Description...." rows={10} cols={60} className="border p-2 outline-none bg-transparent border-gray-500 rounded" onChange={(e) => setItineraryInfo({
                           ...itineraryInfo,
                           description: e.target?.value
                         })}></textarea>
@@ -670,19 +719,25 @@ const handleSubmitPriceValidity = () =>{
 
                     <div className="py-8">
                       <button type="button"
-                        onClick={() => handleSubmitItinerary()}
+                        onClick={() => handleSubmitItinerary(itineraryInfo)}
                         className="bg-gray-500 text-white px-6 py-1 rounded">Save Itinerary</button>
                     </div>
                   </form>
 
                 </div>
+
+
+
               </TabPanel>
             </Tabs>
           </div>
 
-          <Button htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: "#F49D2A" }}>
-            Published Packege
-          </Button>
+
+          <div className="flex items-center justify-end">
+            <Button classNames="" htmlType="submit" type="primary" className="mt-4" style={{ backgroundColor: "#F49D2A", height: '44px', fontSize: '16px', fontWeight: '500' }}>
+              Published Packege
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

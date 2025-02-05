@@ -43,6 +43,7 @@ const PrimeDestination = () => {
     fetchData();
   }, []);
   const swiperRef = useRef(null);
+  console.log("Fetched Grounds Data:", grounds);
 
   return (
     <section>
@@ -97,15 +98,15 @@ const PrimeDestination = () => {
           }}
         >
           {/* ================================== responsive all device end =========================== */}
-          {grounds?.slice(0, 7).map((ground, idx) => (
-            <SwiperSlide key={idx}>
+          {grounds?.slice(-7).map((ground, idx) => (
+            <SwiperSlide key={ground.id || `slide-${idx}`}>
               <Link
                 href={`/destination/${ground?.id}`}
                 className="relative  cursor-pointer" 
               >
                 <Image
                   className="object-cover object-center w-full h-96  lg:h-96 rounded-xl"
-                  src={ground.image}
+                  src={ground.image || "https://via.placeholder.com/150"}
                   alt={"ground"}
                   width={300}
                   height={300}

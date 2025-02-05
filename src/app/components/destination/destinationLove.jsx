@@ -17,6 +17,7 @@ const DestinationLove = () => {
   }, []);
 
 
+  console.log('destination data',destinationLoveData)
   return (
     <section className="container mx-auto px-4 pt-[56px] pb-10 ">
       <h2 className="text-primary font-Roboto text-[28px] font-medium">
@@ -28,7 +29,7 @@ const DestinationLove = () => {
           destinationLoveData?.map((ground, idx) => {
             return (
               <div key={idx}>
-                <Link href={`/destination/${ground.id}`}>
+                <Link href={`/destination/${ground.country_id}`}>
                   <div className="max-w-md bg-[#135029] p-4 rounded-xl space-y-4">
                     <Image
                       className="object-cover object-center w-full h-64  lg:h-72 rounded-xl "
