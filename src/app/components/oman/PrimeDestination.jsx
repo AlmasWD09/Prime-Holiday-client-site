@@ -107,7 +107,6 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
             </div>
 
 
-
           </div>
           {/* right side image */}
           <div >
