@@ -90,21 +90,21 @@ const PrimeDestination = ({ singlePackage, setSingleData, countryName, singleDat
             <h1 className="font-bold font-Roboto text-[#135029] text-[28px] mb-8 ">{singleData?.package_name}</h1>
 
 
-          
-   
 
-<div>
-      <div dangerouslySetInnerHTML={{ __html: displayText }}></div>
 
-      {isTruncated && (
-        <button
-          onClick={() => setShowFull(!showFull)}
-          className="text-primary font-semibold cursor-pointer pl-1"
-        >
-          {showFull ? "See Less" : "See More"}
-        </button>
-      )}
-    </div>
+
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: displayText }}></div>
+
+              {isTruncated && (
+                <button
+                  onClick={() => setShowFull(!showFull)}
+                  className="text-primary font-semibold cursor-pointer pl-1"
+                >
+                  {showFull ? "See Less" : "See More"}
+                </button>
+              )}
+            </div>
 
 
 

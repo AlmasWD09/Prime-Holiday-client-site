@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -17,12 +18,8 @@ const Asia = ({ asiadata }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {
           asiadata?.slice(0, 1).map((ground, idx) =>
-            <div
-              key={ground.id || idx}
-
-              className="relative w-full lg:col-span-3 h-full lg:h-[600px] overflow-hidden  rounded-xl"
-
-            >
+            <div key={ground.id || idx} className="relative w-full lg:col-span-3 h-full lg:h-[600px] overflow-hidden  rounded-xl">
+              <Link href={`/destination/${ground.id}`} >
               <Image
                 src={ground.image}
                 alt="First Destination"
@@ -41,26 +38,15 @@ const Asia = ({ asiadata }) => {
                   </div>
                 </div>
               </div>
+            </Link>
             </div>
           )
         }
 
-
-
-
-
-
-
-
-
-
-
         {
           asiadata?.slice(-3).map((ground, idx) =>
-            <div
-              key={ground.id || idx}
-              className="relative  overflow-hidden  rounded-xl"
-            >
+            <div key={ground.id || idx} className="relative  overflow-hidden  rounded-xl">
+              <Link href={`/destination/${ground.id}`}>
               <Image
                 src={ground.image}
                 alt="Eiffel Tower"
@@ -80,6 +66,7 @@ const Asia = ({ asiadata }) => {
                   </div>
                 </div>
               </div>
+              </Link>
             </div>
 
           )

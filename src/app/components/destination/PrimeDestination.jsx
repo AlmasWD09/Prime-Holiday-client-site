@@ -7,23 +7,7 @@ import { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 
 const PrimeDestination = () => {
-  const grounds = [
-    {
-      image: "/primeDestination01.png",
-      title1: "Egypt",
-      title2: "The Gift of The Nile",
-    },
-    {
-      image: "/primeDestination02.png",
-      title1: "Morocco",
-      title2: "Land Of Light",
-    },
-    {
-      image: "/primeDestination03.png",
-      title1: "Zanzibar",
-      title2: "Spice Island",
-    },
-  ];
+  
   const [africaData, setafricaData] = useState([]);
   const [asiadata, setasiadata] = useState([]);
 
@@ -59,9 +43,7 @@ const PrimeDestination = () => {
     fetchData();
   }, []);
 
-  console.log('asia',asiadata)
-  console.log('africa',africaData)
-
+  
   return (
     <section className="container mx-auto px-4 pt-16 md:pt-20">
       <h2 className="text-primary md:text-xl font-bold py-2">Africa</h2>
@@ -71,7 +53,7 @@ const PrimeDestination = () => {
 
             <Link href={`/destination/${ground.id}`} key={idx}>
 
-            <div key={idx}>
+            <div>
               <div className="relative -z-10">
                 <Image
                   className="object-cover object-center w-full h-96 lg:h-96 rounded-xl"
