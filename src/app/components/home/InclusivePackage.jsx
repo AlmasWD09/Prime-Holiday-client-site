@@ -24,12 +24,12 @@ const [loading, setLoading] = useState(false)
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/admin/destination/?per_page=7");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/destination/?per_page=7");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const result = await response.json();
-        setPackageData(result.destinations.data);
+        setPackageData(result?.destinations?.data);
       } catch (err) {
         setError(err.message);
       } finally {

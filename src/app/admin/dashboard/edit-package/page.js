@@ -31,7 +31,7 @@ const EditPackage = () => {
     // Fetch the package details
     const fetchSingleData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/admin/destination/${id}`);
+        const response = await axios.get(`http://10.0.80.13:8000/api/admin/destination/${id}`);
         setSinglePackage(response.data.destination);
       } catch (error) {
         console.error("Error fetching package data:", error);
@@ -45,7 +45,7 @@ const EditPackage = () => {
     // Fetch country data
     const fetchCountryData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/admin/country");
+        const response = await axios.get("http://10.0.80.13:8000/api/admin/country");
         setCountryData(response.data.countries.data);
       } catch (error) {
         console.error("Error fetching country data:", error);
@@ -104,7 +104,7 @@ const EditPackage = () => {
       });
 
       const response = await axios.patch(
-        `http://localhost:3000/api/admin/destination/update/${id}`,
+        `http://10.0.80.13:8000/api/admin/destination/update/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

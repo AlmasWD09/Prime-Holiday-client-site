@@ -67,7 +67,7 @@ const CreateNewPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:3000/api/admin/country');
+      const response = await fetch('http://10.0.80.13:8000/api/admin/country');
       const result = await response.json();
       setCountryData(result.countries.data);
     };
@@ -202,7 +202,7 @@ const CreateNewPage = () => {
         console.log('form data', key, value);
       });
 
-      const response = await axios.post("http://localhost:3000/api/admin/destination/store", formData, {
+      const response = await axios.post("http://10.0.80.13:8000/api/admin/destination/store", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log('response', response)

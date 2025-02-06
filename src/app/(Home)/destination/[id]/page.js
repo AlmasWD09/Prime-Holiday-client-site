@@ -20,7 +20,7 @@ const DestinationDetails = ({ params }) => {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:3000/api/admin/destination/country/${id}`)
+    fetch(`http://10.0.80.13:8000/api/admin/destination/country/${id}`)
       .then((res) => res.json())
       .then((data) => {
 

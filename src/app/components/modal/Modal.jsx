@@ -47,7 +47,7 @@ const ModalPage = ({ isOpen, setIsOpen }) => {
 
     try {
       // Replace with your server's API endpoint
-      const response = axios.post("http://localhost:3000/api/admin/enquiry", enquiryInfo);
+      const response = axios.post("http://10.0.80.13:8000/api/admin/enquiry", enquiryInfo);
 
       Swal.fire({
         title: "Enquiry sent successfully",

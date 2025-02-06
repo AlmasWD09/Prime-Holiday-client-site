@@ -25,7 +25,7 @@ const LoginPage = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/admin/login",
+                "http://10.0.80.13:8000/api/admin/login",
                 userInfo,
                 {
                     headers: {
