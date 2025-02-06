@@ -1,13 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import Sidebar from "@/app/components/dashboard/sidebar/Sidebar";
 import AuthProvider from "@/services/AuthProvider";
+import Cookies from 'js-cookie';
+import { useRouter } from "next/navigation";
+
 
 const { Content, Sider } = Layout;
 
 const DashboardLayout = ({ children }) => {
+  const router = useRouter();
+  const [isAuth, setIsAuth] = useState(false);
+  const [loading, setLoading] = useState(true); 
+  
+  useEffect(() => {
+    const tokenGet = Cookies.get("token"); 
+  
+    if (!tokenGet) {
+      router.push('/login'); 
+    } else {
+      setIsAuth(true);
+    }
+    
+    setLoading(false); 
+  }, [router]);
+  
+  
+
   return (
     <AuthProvider>
       <Layout>
