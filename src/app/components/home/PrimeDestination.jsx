@@ -21,12 +21,11 @@ const PrimeDestination = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);  
 
- 
   
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/admin/country");
+        const response = await fetch("http://10.0.80.13:8000/api/admin/country");
        
         if (!response.ok) {
           throw new Error("Failed to fetch data");

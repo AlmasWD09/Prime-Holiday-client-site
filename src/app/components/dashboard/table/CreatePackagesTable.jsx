@@ -31,7 +31,7 @@ const CreatePackagesTable = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axios.delete(
-          `http://localhost:3000/api/admin/destination/delete/${item.id}`
+          `http://10.0.80.13:8000/api/admin/destination/delete/${item.id}`
         );
         if (res.data.success) {
           refetch();
